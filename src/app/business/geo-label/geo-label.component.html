@@ -3,7 +3,12 @@
   <!-- <div class="map-tool">
     <app-mapbox-map-tool></app-mapbox-map-tool>
   </div> -->
-
+  <div  class="side-nav">
+    <app-side-nav></app-side-nav>
+  </div>
+  <div class="children-container">
+    <router-outlet></router-outlet>
+  </div>
   <div id="measure-tool">
     <app-mapbox-measure (clearMeasure) = "clearMeasure($event)"></app-mapbox-measure>
   </div>
@@ -23,6 +28,6 @@
     </div>
      <app-search-control [treeNodeInfo]="treeNodeInfo" [searchGeometry]="searchGeometry"></app-search-control> 
   </div> -->
+ 
 
-  
 </div>

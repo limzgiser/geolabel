@@ -7,7 +7,8 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: () => import('../cityfun/login/login.module').then(m => m.LoginModule),
+    loadChildren: () =>
+      import('../cityfun/login/login.module').then((m) => m.LoginModule),
   },
   {
     path: 'layout',
@@ -18,18 +19,22 @@ export const routes: Routes = [
 
       {
         path: 'geolabel',
-        loadChildren: () => import('../business/geo-label/geo-label.module').then(m => m.GeoLabelModule),
-      }
-    ]
-  }
+        loadChildren: () =>
+          import('../business/geo-label/geo-label.module').then(
+            (m) => m.GeoLabelModule
+          ),
+       
+      },
+    ],
+  },
 ];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
       useHash: true,
-      preloadingStrategy: PreloadAllModules
-    })
+      preloadingStrategy: PreloadAllModules,
+    }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RouteRoutingModule { }
+export class RouteRoutingModule {}

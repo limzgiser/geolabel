@@ -1,0 +1,42 @@
+<div class="search">
+  <app-label-container [closeble] = 'false' *ngIf="isOpen" (closed)="closePancel($event)">
+    <div class="top">
+      <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+        <input type="text" nz-input placeholder="请输入关键字" />
+      </nz-input-group>
+      <div class="condition param-item">
+        <span
+          >属性筛选<i
+            nz-icon
+            style="margin-left: 5px"
+            nzType="up"
+            nzTheme="outline"
+          ></i
+        ></span>
+        <span>清空条件</span>
+      </div>
+      <div class="mark-classify param-item">
+        <span>标记分类：</span>
+        <nz-select ngModel="道路">
+          <nz-option nzValue="道路" nzLabel="道路"></nz-option>
+          <nz-option nzValue="道路" nzLabel="道路"></nz-option>
+          <nz-option nzValue="道路" nzLabel="道路" nzDisabled></nz-option>
+        </nz-select>
+      </div>
+      <div class="select-time param-item">
+        <span>创建时间：</span>
+        <nz-range-picker
+          [(ngModel)]="dateRange"
+          (ngModelChange)="onChange($event)"
+        ></nz-range-picker>
+      </div>
+    </div>
+    <div class="bottom">
+      <app-label-list ></app-label-list>
+    </div>
+  </app-label-container>
+</div>
+
+<ng-template #suffixButton>
+  <button nz-button nzType="primary" nzSize="large" nzSearch>查询</button>
+</ng-template>

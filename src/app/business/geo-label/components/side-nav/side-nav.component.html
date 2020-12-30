@@ -1,3 +1,16 @@
-<p>
-  side-nav works!
-</p>
+<div class="container">
+  <div
+    class="item"
+    [class.select]="item.title == selectItem.title"
+    *ngFor="let item of navData"
+    (click)="itemClick(item)"
+  >
+    <span> {{ item.title }}</span>
+    <i
+      nz-icon
+      style="font-size: 18px; margin-top: 5px"
+      nzType="{{ item.type }}"
+      nzTheme="outline"
+    ></i>
+  </div>
+</div>

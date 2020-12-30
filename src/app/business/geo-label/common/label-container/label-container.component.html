@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="title">
+    <div class="left">
+      {{ title }}
+    </div>
+    <div class="right">
+      <span class="toggle" *ngIf="toggleble"  (click)="togglePanel(!showPanel)">
+        <ng-container *ngIf="showPanel; else elseTemplate">
+          收起
+        </ng-container>
+        <ng-template #elseTemplate>展开</ng-template>
+      </span>
+      <i
+        nz-icon
+        class="close"
+        *ngIf="closeble"
+        nzType="close"
+        nzTheme="outline"
+        (click)="close()"
+      ></i>
+    </div>
+  </div>
+  <div class="content" @toggle *ngIf="showPanel">
+    <ng-content></ng-content>
+  </div>
+</div>

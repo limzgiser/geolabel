@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="title">
+    <div class="left">
+      共找到 <span class="total-count">{{ total }}</span> 条结果
+    </div>
+    <div class="right" (click)="togglePanel(!showPanel)">
+      <ng-container *ngIf="showPanel; else elseTemplate"> 收起 </ng-container>
+      <ng-template #elseTemplate>展开</ng-template>
+    </div>
+  </div>
+
+  <div class="data-content" @listToggle *ngIf="showPanel">
+    <app-cf-scroll>
+      <div class="content">
+        <div class="item" *ngFor="let item of labelList; let i = index">
+          <img class="index-logo" src="./assets/img/map/pin_{{ i + 1 }}.png" />
+          <div class="right">
+            <img [src]="'./assets/img/map/icon_list_private.png'" />
+            <span>{{ item.title }}</span>
+            <img [src]="'./assets/img/map/icon_list_selected.png'" />
+          </div>
+        </div>
+      </div>
+    </app-cf-scroll>
+
+    <div class="pagination">
+      <nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>
+    </div>
+  </div>
+</div>

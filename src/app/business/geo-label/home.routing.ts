@@ -6,9 +6,16 @@ const routes: Routes = [
   {
     path: '',
     component: GeoLabelComponent,
-    children:[
-      
-    ]
+    children: [
+      { path: '', redirectTo: 'sign', pathMatch: 'full' },
+      {
+        path: 'sign',
+        loadChildren: () =>
+          import('./sign/sign.module').then(
+            (m) => m.SignModule
+          ),
+      },
+    ],
   },
 ];
 

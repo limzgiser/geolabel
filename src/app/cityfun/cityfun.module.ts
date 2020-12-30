@@ -21,7 +21,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MapboxMapComponent } from '../cityfun/mapbox-map/mapbox-map.component';
 import { SharedModule } from '../shared/shared.module';
-import { CfScrollComponent } from './cf-scroll/cf-scroll.component';
+
 
 @NgModule({
   imports: [
@@ -32,7 +32,7 @@ import { CfScrollComponent } from './cf-scroll/cf-scroll.component';
     MapToolComponent,
     CfTreeComponent,
     MapboxMapComponent,
-    CfScrollComponent,
+     
     MapboxMaptreeControlComponent,
     NavBarComponent,
     UserAdminV1Component,
@@ -49,7 +49,7 @@ import { CfScrollComponent } from './cf-scroll/cf-scroll.component';
     CfTreeComponent,
     MapboxMapComponent,
     SharedModule,
-    CfScrollComponent,
+ 
     MapboxMaptreeControlComponent,
     NavBarComponent,
     UserAdminV1Component,
