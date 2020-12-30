@@ -1,0 +1,28 @@
+<div class="tree-list-container" (mouseleave)="toggleList('hide')">
+  <div id="switch-tool">
+    <app-mapbox-main-switch
+      (iclick)="switchClick($event)"
+      (iMouseEnter)="switchMouseEnter($event)"
+    >
+    </app-mapbox-main-switch>
+  </div>
+  <div class="map-layer" *ngIf="showIndex === 0 && basemaps.length > 1">
+    <app-map-image-list
+      (miClick)="mapImgClick($event)"
+      [data]="basemaps"
+      [type]="'basemaps'"
+    ></app-map-image-list>
+  </div>
+  <div class="map-image" *ngIf="showIndex === 1 && images.length > 1">
+    <app-map-image-list
+      (miClick)="mapImgClick($event)"
+      [data]="images"
+      [type]="'images'"
+    ></app-map-image-list>
+  </div>
+  <div class="map-tree" [style.display]="showIndex === 2 ? 'flex' : 'none'">
+    <app-mapbox-maptree-control
+      (showLegend)="showLegend($event)"
+    ></app-mapbox-maptree-control>
+  </div>
+</div>

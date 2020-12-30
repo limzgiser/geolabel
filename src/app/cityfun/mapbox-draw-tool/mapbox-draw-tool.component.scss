@@ -1,0 +1,20 @@
+#main-container{
+  display: flex;
+  flex-direction: column;
+  .tool-item{
+    height: 36px;
+    width: 36px;
+    border-radius: 18px;
+    background: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    // line-height: 30px;
+     margin-top: 10px;
+    border: 1px solid #eee;
+    cursor: pointer;
+  }
+
+
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "建筑高度分布",
+    "nodeid": "B914AA73-4A67-484F-B30A-FCB44463653B",
+    "legned":["./assets/1","./assets/2"]
+  },
+  {
+    "name": "建筑年代分布",
+    "nodeid": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
+    "legned":["./assets/3","./assets/4"]
+  },
+  {
+    "name": "建筑用途分布",
+    "nodeid": "E75382D0-1BFC-4CC3-86FF-5429D39FA0E8",
+    "legned":["./assets/5","./assets/6"]
+  },
+  {
+    "name": "法人注册分布",
+    "nodeid": "D2E7EEA9-6443-4BD6-B633-F1790B0960E4",
+    "legned":["./assets/7","./assets/8"]
+  }
+
+]

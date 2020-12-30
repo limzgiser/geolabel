@@ -1,0 +1,15 @@
+<!-- 导航栏组件 -->
+
+<div id="menuContanter">
+  <div class="menu-logo">
+    <img src='{{webetaInfo?.headerimg}}' />
+  </div>
+  <div id="nav-bars">
+    <div id="navbars">
+      <div class='navbaritem' *ngFor="let item of data.data">
+        <span [class.select]='item.selected' (click)="menuRouter(item);">{{item?.title}}</span>
+        <div class="bottom" [class.active]='item.selected'></div>
+      </div>
+    </div>
+  </div>
+</div>

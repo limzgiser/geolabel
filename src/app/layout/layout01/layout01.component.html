@@ -1,0 +1,21 @@
+<div class="inner-content">
+  <div class="headder">
+    <!-- <app-header></app-header> -->
+    <app-cf-menu-top></app-cf-menu-top>
+  </div>
+  <div class="main-container">
+    <!-- <div class="left">
+        <app-side-menu></app-side-menu>
+    </div> -->
+    <div class="right">
+      <router-outlet></router-outlet>
+      <div class="map-container">
+        <!-- <app-ol-map [mapid]="'olmap'">
+          <div id="olmap"></div>
+        </app-ol-map> -->
+        <app-mapbox-map></app-mapbox-map>
+      </div>
+    </div>
+  </div>
+
+</div>

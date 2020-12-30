@@ -1,0 +1,33 @@
+<div id="pancle">
+  <app-cf-scroll id="tree-containe">
+    <div class="content">
+      <ng-container *ngIf="type=='basemaps'; else elseTemplate">
+        <div class="item" *ngFor="let item of data;let i = index" (click)="itemClick(item,i)">
+          <div *ngIf="!item.active; else elseTempCircle">
+            <span class="defaultcircle"></span>
+          </div>
+          <div>
+            <span [class.activetext]='item.active'> {{item.title}}</span>
+            <img [class.activeimg]='item.active' [src]="item.img">
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <div class="item" *ngFor="let item of data;let i = index" (click)="itemClick(item,i)">
+          <div *ngIf="!item.active; else elseTempCircle">
+            <span class="defaultcircle"></span>
+          </div>
+          <div>
+            <span [class.activetext]='item.active'> {{item.title}}</span>
+            <!-- <img [class.activeimg]='item.active' [src]="item.img"> -->
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #elseTempCircle>
+        <span class="choosecircle">
+          <span class="maincircle"></span>
+        </span>
+      </ng-template>
+    </div>
+  </app-cf-scroll>
+</div>

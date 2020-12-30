@@ -1,0 +1,30 @@
+{
+  "version": "v1.0.0",
+  "href": null,
+  "status": {
+    "code": "200",
+    "desc": "操作成功"
+  },
+  "data_tpl":[
+    {
+      "level": 1,
+      "title": "一张图",
+      "icon": "mail",
+      "open": true,
+      "selected": false,
+      "disabled": false,
+      "id": "home"
+    }
+  ],
+  "data": [
+    {
+      "level": 1,
+      "title": "标记管理",
+      "icon": "mail",
+      "open": true,
+      "selected": false,
+      "disabled": false,
+      "id": "geolabel"
+    }
+  ]
+}

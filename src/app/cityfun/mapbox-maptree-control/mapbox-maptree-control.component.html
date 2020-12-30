@@ -1,0 +1,7 @@
+<app-cf-tree *ngIf="nodes"
+ [nodes]="nodes"
+ (initSelectKeys)="loadInitLayers($event)"
+  (selectKeys)="selectLayers($event)"
+  (removeKeys)="removeLayers($event)"
+  (treeDestroy)="treeDestroy($event)">
+</app-cf-tree>

@@ -1,0 +1,9 @@
+{
+  "copyright": [
+    "版权所有：©2019 苏州城方信息技术有限公司",
+    "技术支持：苏州城方信息技术有限公司"
+  ],
+  "loginimg": "./assets/img/login/login_logo.png",
+  "headerimg": "./assets/img/login/logo.png",
+  "cfemail": false
+}

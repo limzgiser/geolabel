@@ -1,0 +1,58 @@
+#menuContanter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  // background: #091035;
+  height: 100%;
+  .menu-logo {
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  #nav-bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+  }
+  #navbars {
+    display: flex;
+    align-items: center;
+    color: #bdd4ed;
+    font-size: 16px;
+    span {
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+      padding: 0 6px;
+    }
+    span:hover {
+      color: #ffffff;
+      cursor: pointer;
+    }
+  }
+  .navbaritem {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 15px;
+
+  }
+  .select {
+    color: #ffffff;
+    font-weight: bold;
+  }
+  .bottom {
+    // width: 80px;
+    height: 4px;
+    margin-top: 5px;
+
+  }
+  .active {
+    background: #fff;
+  }
+}

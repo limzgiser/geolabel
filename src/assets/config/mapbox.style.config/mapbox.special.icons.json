@@ -1,0 +1,577 @@
+[
+  {
+    "id": "ef0",
+    "name": "安全岛",
+    "url": "./assets/img/treelyricon/4787.png"
+  },
+  {
+    "id": "ef1",
+    "name": "报刊亭",
+    "url": "./assets/img/treelyricon/4695.png"
+  },
+  {
+    "id": "ef2",
+    "name": "变压器箱",
+    "url": "./assets/img/treelyricon/4717.png"
+  },
+  {
+    "id": "ef3",
+    "name": "便道桩",
+    "url": "./assets/img/treelyricon/4791.png"
+  },
+  {
+    "id": "ef4",
+    "name": "便民服务点",
+    "url": "./assets/img/treelyricon/4891.png"
+  },
+  {
+    "id": "ef5",
+    "name": "不明井盖",
+    "url": "./assets/img/treelyricon/4650.png"
+  },
+  {
+    "id": "ef6",
+    "name": "不明立杆",
+    "url": "./assets/img/treelyricon/4676.png"
+  },
+  {
+    "id": "ef7",
+    "name": "充电桩",
+    "url": "./assets/img/treelyricon/4736.png"
+  },
+  {
+    "id": "ef8",
+    "name": "出租车站牌",
+    "url": "./assets/img/treelyricon/4759.png"
+  },
+  {
+    "id": "ef9",
+    "name": "道路隔音屏",
+    "url": "./assets/img/treelyricon/4800.png"
+  },
+  {
+    "id": "ef10",
+    "name": "道路信息显示屏",
+    "url": "./assets/img/treelyricon/4795.png"
+  },
+  {
+    "id": "ef11",
+    "name": "地灯",
+    "url": "./assets/img/treelyricon/4688.png"
+  },
+  {
+    "id": "ef12",
+    "name": "地名牌",
+    "url": "./assets/img/treelyricon/4775.png"
+  },
+  {
+    "id": "ef13",
+    "name": "地下通道",
+    "url": "./assets/img/treelyricon/4764.png"
+  },
+  {
+    "id": "ef14",
+    "name": "电话亭",
+    "url": "./assets/img/treelyricon/4700.png"
+  },
+  {
+    "id": "ef15",
+    "name": "电缆井盖",
+    "url": "./assets/img/treelyricon/4644.png"
+  },
+  {
+    "id": "ef16",
+    "name": "电力井盖",
+    "url": "./assets/img/treelyricon/4642.png"
+  },
+  {
+    "id": "ef17",
+    "name": "电力立杆",
+    "url": "./assets/img/treelyricon/4667.png"
+  },
+  {
+    "id": "ef18",
+    "name": "电力设施",
+    "url": "./assets/img/treelyricon/4664.png"
+  },
+  {
+    "id": "ef19",
+    "name": "电视井盖",
+    "url": "./assets/img/treelyricon/4627.png"
+  },
+  {
+    "id": "ef20",
+    "name": "电信交接箱",
+    "url": "./assets/img/treelyricon/4893.png"
+  },
+  {
+    "id": "ef21",
+    "name": "电信井盖",
+    "url": "./assets/img/treelyricon/4895.png"
+  },
+  {
+    "id": "ef22",
+    "name": "雕塑",
+    "url": "./assets/img/treelyricon/4854.png"
+  },
+  {
+    "id": "ef23",
+    "name": "防撞桶",
+    "url": "./assets/img/treelyricon/4786.png"
+  },
+  {
+    "id": "ef24",
+    "name": "非机动车停放点",
+    "url": "./assets/img/treelyricon/4803.png"
+  },
+  {
+    "id": "ef25",
+    "name": "港监设施",
+    "url": "./assets/img/treelyricon/4843.png"
+  },
+  {
+    "id": "ef26",
+    "name": "高压线铁塔",
+    "url": "./assets/img/treelyricon/4915.png"
+  },
+  {
+    "id": "ef27",
+    "name": "工地",
+    "url": "./assets/img/treelyricon/4919.png"
+  },
+  {
+    "id": "ef28",
+    "name": "公安井盖",
+    "url": "./assets/img/treelyricon/4632.png"
+  },
+  {
+    "id": "ef29",
+    "name": "公厕指示牌",
+    "url": "./assets/img/treelyricon/4819.png"
+  },
+  {
+    "id": "ef30",
+    "name": "公房地下室",
+    "url": "./assets/img/treelyricon/4870.png"
+  },
+  {
+    "id": "ef31",
+    "name": "公共厕所",
+    "url": "./assets/img/treelyricon/4817.png"
+  },
+  {
+    "id": "ef32",
+    "name": "公交井盖",
+    "url": "./assets/img/treelyricon/4647.png"
+  },
+  {
+    "id": "ef33",
+    "name": "公交站亭",
+    "url": "./assets/img/treelyricon/4757.png"
+  },
+  {
+    "id": "ef34",
+    "name": "供水器",
+    "url": "./assets/img/treelyricon/4655.png"
+  },
+  {
+    "id": "ef35",
+    "name": "供水设施",
+    "url": "./assets/img/treelyricon/4655.png"
+  },
+  {
+    "id": "ef36",
+    "name": "古树名木",
+    "url": "./assets/img/treelyricon/4843.png"
+  },
+  {
+    "id": "ef37",
+    "name": "广电交接箱",
+    "url": "./assets/img/treelyricon/4896.png"
+  },
+  {
+    "id": "ef38",
+    "name": "过街天桥",
+    "url": "./assets/img/treelyricon/4762.png"
+  },
+  {
+    "id": "ef39",
+    "name": "行树",
+    "url": "./assets/img/treelyricon/4846.png"
+  },
+  {
+    "id": "ef40",
+    "name": "户外广告",
+    "url": "./assets/img/treelyricon/4827.png"
+  },
+  {
+    "id": "ef41",
+    "name": "护树设施",
+    "url": "./assets/img/treelyricon/4850.png"
+  },
+  {
+    "id": "ef42",
+    "name": "花架花钵",
+    "url": "./assets/img/treelyricon/4852.png"
+  },
+  {
+    "id": "ef43",
+    "name": "化粪池井盖",
+    "url": "./assets/img/treelyricon/4645-2.png"
+  },
+  {
+    "id": "ef44",
+    "name": "环保监测站",
+    "url": "./assets/img/treelyricon/4834.png"
+  },
+  {
+    "id": "ef45",
+    "name": "监控电子眼",
+    "url": "./assets/img/treelyricon/4723.png"
+  },
+  {
+    "id": "ef46",
+    "name": "交通标志牌",
+    "url": "./assets/img/treelyricon/4767.png"
+  },
+  {
+    "id": "ef47",
+    "name": "交通岗亭",
+    "url": "./assets/img/treelyricon/4779.png"
+  },
+  {
+    "id": "ef48",
+    "name": "交通信号灯",
+    "url": "./assets/img/treelyricon/4774.png"
+  },
+  {
+    "id": "ef49",
+    "name": "交通信号设施",
+    "url": "./assets/img/treelyricon/4777.png"
+  },
+  {
+    "id": "ef50",
+    "name": "街头坐椅",
+    "url": "./assets/img/treelyricon/4857.png"
+  },
+  {
+    "id": "ef51",
+    "name": "景观灯",
+    "url": "./assets/img/treelyricon/4688.png"
+  },
+  {
+    "id": "ef52",
+    "name": "跨河管道",
+    "url": "./assets/img/treelyricon/4743.png"
+  },
+  {
+    "id": "ef53",
+    "name": "跨河桥",
+    "url": "./assets/img/treelyricon/4766.png"
+  },
+  {
+    "id": "ef54",
+    "name": "垃圾间楼",
+    "url": "./assets/img/treelyricon/4823.png"
+  },
+  {
+    "id": "ef55",
+    "name": "垃圾箱",
+    "url": "./assets/img/treelyricon/4825.png"
+  },
+  {
+    "id": "ef56",
+    "name": "立交桥",
+    "url": "./assets/img/treelyricon/4765.png"
+  },
+  {
+    "id": "ef57",
+    "name": "立体车库",
+    "url": "./assets/img/treelyricon/4753.png"
+  },
+  {
+    "id": "ef58",
+    "name": "联通交接箱",
+    "url": "./assets/img/treelyricon/4898.png"
+  },
+  {
+    "id": "ef59",
+    "name": "联通井盖",
+    "url": "./assets/img/treelyricon/4899.png"
+  },
+  {
+    "id": "ef60",
+    "name": "路灯",
+    "url": "./assets/img/treelyricon/4682.png"
+  },
+  {
+    "id": "ef61",
+    "name": "路灯井盖",
+    "url": "./assets/img/treelyricon/4923.png"
+  },
+  {
+    "id": "ef62",
+    "name": "路名牌",
+    "url": "./assets/img/treelyricon/4772.png"
+  },
+  {
+    "id": "ef63",
+    "name": "露天燃气管道",
+    "url": "./assets/img/treelyricon/4749.png"
+  },
+  {
+    "id": "ef64",
+    "name": "旅游指示牌",
+    "url": "./assets/img/treelyricon/47751.png"
+  },
+  {
+    "id": "ef65",
+    "name": "绿地附属设施",
+    "url": "./assets/img/treelyricon/4860.png"
+  },
+  {
+    "id": "ef66",
+    "name": "牌匾标识",
+    "url": "./assets/img/treelyricon/4829.png"
+  },
+  {
+    "id": "ef67",
+    "name": "喷泉",
+    "url": "./assets/img/treelyricon/4862.png"
+  },
+  {
+    "id": "ef68",
+    "name": "旗杆",
+    "url": "./assets/img/treelyricon/4679.png"
+  },
+  {
+    "id": "ef69",
+    "name": "气象监测站",
+    "url": "./assets/img/treelyricon/4831.png"
+  },
+  {
+    "id": "ef70",
+    "name": "燃气井盖",
+    "url": "./assets/img/treelyricon/4631.png"
+  },
+  {
+    "id": "ef71",
+    "name": "燃气调压站箱",
+    "url": "./assets/img/treelyricon/4718.png"
+  },
+  {
+    "id": "ef72",
+    "name": "热力井盖",
+    "url": "./assets/img/treelyricon/4924.png"
+  },
+  {
+    "id": "ef73",
+    "name": "人防工事",
+    "url": "./assets/img/treelyricon/4867.png"
+  },
+  {
+    "id": "ef74",
+    "name": "人防设施指示牌",
+    "url": "./assets/img/treelyricon/4905.png"
+  },
+  {
+    "id": "ef75",
+    "name": "人行横道桩",
+    "url": "./assets/img/treelyricon/4785.png"
+  },
+  {
+    "id": "ef76",
+    "name": "柔性隔离体",
+    "url": "./assets/img/treelyricon/4793.png"
+  },
+  {
+    "id": "ef77",
+    "name": "上水井盖",
+    "url": "./assets/img/treelyricon/4611.png"
+  },
+  {
+    "id": "ef78",
+    "name": "售货亭",
+    "url": "./assets/img/treelyricon/4702.png"
+  },
+  {
+    "id": "ef79",
+    "name": "输油气井盖",
+    "url": "./assets/img/treelyricon/4648.png"
+  },
+  {
+    "id": "ef80",
+    "name": "水井",
+    "url": "./assets/img/treelyricon/4651.png"
+  },
+  {
+    "id": "ef81",
+    "name": "水域标识牌",
+    "url": "./assets/img/treelyricon/4812.png"
+  },
+  {
+    "id": "ef82",
+    "name": "水域附属设施",
+    "url": "./assets/img/treelyricon/4885.png"
+  },
+  {
+    "id": "ef83",
+    "name": "特殊部件",
+    "url": "./assets/img/treelyricon/4906.png"
+  },
+  {
+    "id": "ef84",
+    "name": "特殊井盖",
+    "url": "./assets/img/treelyricon/4649.png"
+  },
+  {
+    "id": "ef85",
+    "name": "特殊立杆",
+    "url": "./assets/img/treelyricon/4675.png"
+  },
+  {
+    "id": "ef86",
+    "name": "铁通交接箱",
+    "url": "./assets/img/treelyricon/4907.png"
+  },
+  {
+    "id": "ef87",
+    "name": "铁通井盖",
+    "url": "./assets/img/treelyricon/4908.png"
+  },
+  {
+    "id": "ef88",
+    "name": "停车咪表",
+    "url": "./assets/img/treelyricon/4755.png"
+  },
+  {
+    "id": "ef89",
+    "name": "通信交接箱",
+    "url": "./assets/img/treelyricon/4661.png"
+  },
+  {
+    "id": "ef90",
+    "name": "通信井盖",
+    "url": "./assets/img/treelyricon/4625.png"
+  },
+  {
+    "id": "ef91",
+    "name": "通信立杆",
+    "url": "./assets/img/treelyricon/4910.png"
+  },
+  {
+    "id": "ef92",
+    "name": "网络井盖",
+    "url": "./assets/img/treelyricon/4925.png"
+  },
+  {
+    "id": "ef93",
+    "name": "网通交接箱",
+    "url": "./assets/img/treelyricon/4911.png"
+  },
+  {
+    "id": "ef94",
+    "name": "网通井盖",
+    "url": "./assets/img/treelyricon/4913.png"
+  },
+  {
+    "id": "ef95",
+    "name": "污水井盖",
+    "url": "./assets/img/treelyricon/4612.png"
+  },
+  {
+    "id": "ef96",
+    "name": "污水口监测站",
+    "url": "./assets/img/treelyricon/4840.png"
+  },
+  {
+    "id": "ef97",
+    "name": "限高架标志",
+    "url": "./assets/img/treelyricon/4769.png"
+  },
+  {
+    "id": "ef98",
+    "name": "消防设施",
+    "url": "./assets/img/treelyricon/4671.png"
+  },
+  {
+    "id": "ef99",
+    "name": "信号灯电源井盖",
+    "url": "./assets/img/treelyricon/4672.png"
+  },
+  {
+    "id": "ef100",
+    "name": "信息亭",
+    "url": "./assets/img/treelyricon/4701.png"
+  },
+  {
+    "id": "ef101",
+    "name": "休息亭",
+    "url": "./assets/img/treelyricon/4731.png"
+  },
+  {
+    "id": "ef102",
+    "name": "宣传栏",
+    "url": "./assets/img/treelyricon/4830.png"
+  },
+  {
+    "id": "ef103",
+    "name": "移动交接箱",
+    "url": "./assets/img/treelyricon/4897.png"
+  },
+  {
+    "id": "ef104",
+    "name": "移动井盖",
+    "url": "./assets/img/treelyricon/4926.png"
+  },
+  {
+    "id": "ef105",
+    "name": "邮筒",
+    "url": "./assets/img/treelyricon/4699.png"
+  },
+  {
+    "id": "ef106",
+    "name": "雨水箅子",
+    "url": "./assets/img/treelyricon/2943.png"
+  },
+  {
+    "id": "ef107",
+    "name": "雨水井盖",
+    "url": "./assets/img/treelyricon/4620.png"
+  },
+  {
+    "id": "ef108",
+    "name": "园林井盖",
+    "url": "./assets/img/treelyricon/4640.png"
+  },
+  {
+    "id": "ef109",
+    "name": "噪声显示屏",
+    "url": "./assets/img/treelyricon/4841.png"
+  },
+  {
+    "id": "ef110",
+    "name": "栈桥",
+    "url": "./assets/img/treelyricon/4810.png"
+  },
+  {
+    "id": "ef111",
+    "name": "治安岗亭",
+    "url": "./assets/img/treelyricon/4726.png"
+  },
+  {
+    "id": "ef112",
+    "name": "重大危险源",
+    "url": "./assets/img/treelyricon/4877.png"
+  },
+  {
+    "id": "ef113",
+    "name": "自动售货机",
+    "url": "./assets/img/treelyricon/4707.png"
+  },
+  {
+    "id": "ef114",
+    "name": "自行车租赁点",
+    "url": "./assets/img/treelyricon/4804.png"
+  }
+]

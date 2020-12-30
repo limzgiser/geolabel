@@ -1,0 +1,6 @@
+<div id="tool-container">
+  <div class="item  item-{{item.type}}" *ngFor="let item of data" (mouseenter)="mouseenter(item)" (mouseleave)="mouseleave(item);" (click)="itemClick(item)">
+    <img *ngIf="!item.hover" [src]='item.dimg' />
+    <img *ngIf="item.hover" [src]='item.simg' />
+  </div>
+</div>

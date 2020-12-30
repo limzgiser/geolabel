@@ -1,0 +1,9 @@
+<div id="pancel" *ngIf="data">
+  <div *ngFor="let item  of data "  (click)="iclick(item);"
+  [ngStyle]="item.name ==='compass' ?transFormStyle:''"
+    (mouseover)="mouseover(item);" (mouseleave)="mouseleave(item);"
+    >
+      <img *ngIf="item.active " src="{{item.simg}}">
+      <img *ngIf="!item.active" src="{{item.dimg}}">
+  </div>
+</div>

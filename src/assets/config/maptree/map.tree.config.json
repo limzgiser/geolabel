@@ -1,0 +1,93 @@
+{
+  "version": "v1.0.0",
+  "href": "",
+  "ticket": "3DA397BEA3A3B7D3AD4AEBA5C8F5FC4034E1B70A3CA2A8F710B40279A406C20E55AD0E16C178EBC6AA5F9715A16B1FD12E68780802C837E3890C4F410D36E1FA03097491561E787B39F52131B9955A76D5B0E95C0ED303D289ED3E3A02536C0F03A20376D7311798",
+  "status": {
+    "code": "200",
+    "desc": "操作成功"
+  },
+  "data": [
+    {
+      "key": "37DBC94F-BD47-4506-8B3A-E935E4964226",
+      "title": "规划建设",
+      "icon": "root.png",
+      "expanded": true,
+      "children": [
+        {
+          "key": "B914AA73-4A67-484F-B30A-FCB44463653B",
+          "title": "建筑高度分布",
+          "query": true,
+          "isLeaf": true,
+          "checked": true
+        },
+        {
+          "key": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
+          "title": "建筑年代分布",
+          "query": false,
+          "layerId": "1",
+          "isLeaf": true,
+          "checked": false
+        },
+        {
+          "key": "E75382D0-1BFC-4CC3-86FF-5429D39FA0E8",
+          "title": "建筑用途分布",
+          "query": false,
+          "layerId": "2",
+          "isLeaf": true,
+          "checked": false
+        },
+        {
+          "key": "D2E7EEA9-6443-4BD6-B633-F1790B0960E4",
+          "title": "法人注册分布",
+          "query": false,
+          "layerId": "3",
+          "isLeaf": true,
+          "checked": false
+        },
+        {
+          "key": "69206F39-F91A-40B7-AD36-17847101D41B",
+          "title": "人口精细化管理",
+          "query": false,
+          "isLeaf": true,
+          "checked": false
+        }
+      ]
+    },
+    {
+    "key": "10388E84-1372-49A2-B406-A81483AE535F",
+      "title": "经济发展",
+      "icon": "root.png",
+      "expanded": true,
+      "children": [
+
+        {
+          "key": "D2E7EEA9-6443-4BD6-B633-F1790B0960E4",
+          "title": "法人注册分布",
+          "query": false,
+          "layerId": "3",
+          "isLeaf": true,
+          "checked": false
+        }
+
+      ]
+    },
+    {
+    "key": "10FBB129-1238-4291-B0BA-06B1B9287173",
+      "title": "经济发展",
+      "icon": "root.png",
+      "expanded": true,
+      "children": [
+
+        {
+          "key": "69206F39-F91A-40B7-AD36-17847101D41B",
+          "title": "人口精细化管理",
+          "query": false,
+          "isLeaf": true,
+          "checked": false
+        }
+      ]
+    }
+  ],
+  "template": null,
+  "userkey": "653b8a0d-7951-46d0-926c-5d45470832dd"
+}

@@ -1,0 +1,53 @@
+<div class="containier">
+  <div class="searchMeun">
+    <nz-input-group [nzSuffix]="suffixIcon" style="width: 180px">
+      <input type="text" nz-input placeholder="搜索图层树"  [(ngModel)]="searchValue" />
+    </nz-input-group>
+    <ng-template #suffixIcon>
+      <i nz-icon nzType="search"></i>
+    </ng-template>
+    <button nz-button nzType="primary" (click)="clearAllSelected()">清除选择</button>
+  </div>
+  <div class="layer-sta">
+    共有{{totalLayer}}个图层
+  </div>
+  <app-cf-scroll id="tree-container">
+    <div class="content">
+      <nz-tree [(nzData)]="nodes" nzCheckable nzMultiple (nzClick)="openFolder($event)"
+        (nzDblClick)="openFolder($event)" [nzHideUnMatched]='false' [nzSearchValue]="searchValue"
+        [nzCheckedKeys]="defaultCheckedKeys" [nzTreeTemplate]="nzTreeTemplate" (nzCheckBoxChange)="checkChange($event)"
+        [nzExpandedIcon]="mutiExpandedIconTpl" (nzSearchValueChange)=searchValueChange($event)>
+      </nz-tree>
+      <ng-template #nzTreeTemplate let-node>
+        <span class="custom-node" [class.active]="activedNode?.key === node.key">
+          <div *ngIf="!node.isLeaf">
+            <img src="./assets/img/maptree/group-node.png" />
+            <span [ngStyle]="{'color': node.origin.searched?'#1077e9':'rgba(0,0,0,0.65)'}" class="parent-name">
+              {{ node.title }}</span>
+          </div>
+          <div *ngIf="node.isLeaf" >
+            <!-- (contextmenu)="contextMenu($event, menu)" -->
+            <img src="./assets/img/maptree/leaf-node.png" />
+            <span [ngStyle]="{'color': node.origin.searched?'#1077e9':'rgba(0,0,0,0.65)'}"
+              class="child-name">{{ node.title }}</span>
+            <img class="chilld-search" *ngIf="node.origin.query" (click) ="treeSearch(node)" src="./assets/img/maptree/search.png" />
+          </div>
+        </span>
+      </ng-template>
+      <ng-template #mutiExpandedIconTpl let-node>
+        <i style="color: #0c9fb2;" *ngIf="!node.origin.isLeaf" nz-icon
+          [nzType]="node.isExpanded ? 'minus-square' : 'plus-square'" nzTheme="outline"></i>
+      </ng-template>
+      <!-- <nz-dropdown-menu style="pointer-events: none;" #menu="nzDropdownMenu">
+        <ul nz-menu>
+          <li nz-menu-item (click)="selectDropdown()">Action 1</li>
+          <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+        </ul>
+      </nz-dropdown-menu> -->
+    </div>
+
+
+  </app-cf-scroll>
+
+
+</div>

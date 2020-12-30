@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "code": 200,
+    "msg": "操作成功"
+  },
+  "data": {
+    "info": {
+      "id": "chnd4kj3",
+      "name": "",
+      "copyright": ""
+    },
+    "resources": [
+      {
+        "id": "service.modules",
+        "uri": "./assets/config/services.modules.config.json"
+      }
+    ]
+  }
+}

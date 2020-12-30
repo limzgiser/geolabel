@@ -1,0 +1,128 @@
+{
+  "status": {
+    "code": "200",
+    "desc": "操作成功"
+  },
+  "data": {
+    "mapinfo": {
+      "extent": null,
+      "extent_tpl": {
+        "xmin": 120.67967269912378,
+        "ymin": 31.2938931596835,
+        "xmax": 120.70445265714949,
+        "ymax": 31.34402267651852
+      },
+      "camera": null,
+      "camera_tpl": {
+        "position": [120.66301081752493, 31.31077324680751, 100.5191284881641],
+        "pitch": -10.77667031556409,
+        "heading": 16.692613541711115,
+        "roll": 0.0
+      },
+      "spatialReference": "EPSG:3857",
+      "zoom": 1
+    },
+    "defaultlayers": [
+      {
+        "aid": "google-image-aid",
+        "isbase": true
+      }
+    ],
+    "layers": [
+      {
+        "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70",
+        "name": "建筑高度分布",
+        "type": "mapbox-style",
+        "tokenid": "",
+        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzgdfb.json",
+        "des": ""
+      },
+      {
+        "id": "FA0593A5-9A52-4B45-BA80-D9E56B579256",
+        "name": "建筑年代分布",
+        "type": "mapbox-style",
+        "tokenid": "",
+        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzndfb.json",
+        "des": ""
+      },
+      {
+        "id": "234D8324-EA53-46ED-BAF4-E2757BD93575",
+        "name": "建筑用途分布",
+        "type": "mapbox-style",
+        "tokenid": "",
+        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzlxfb.json",
+        "des": ""
+      },
+      {
+        "id": "5186F9D2-DC69-42E6-95B3-EFF7C11A5D6A",
+        "name": "法人注册分布",
+        "type": "mapbox-style",
+        "tokenid": "",
+        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/mdfb.json",
+        "des": ""
+      },
+      {
+        "id": "4248CDE5-5332-45EC-A684-C1AB99006996",
+        "name": "人口精细化管理",
+        "type": "mapbox-style",
+        "tokenid": "",
+        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/gefhydhfx.json",
+        "des": ""
+      }
+    ],
+    "alayers": [
+      {
+        "aid": "B914AA73-4A67-484F-B30A-FCB44463653B",
+        "name": "建筑高度分布",
+        "layers": [
+          {
+            "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70"
+          }
+        ]
+      },
+      {
+        "aid": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
+        "name": "建筑年代分布",
+        "layers": [
+          {
+            "id": "FA0593A5-9A52-4B45-BA80-D9E56B579256"
+          }
+        ]
+      },
+      {
+        "aid": "E75382D0-1BFC-4CC3-86FF-5429D39FA0E8",
+        "name": "建筑用途分布",
+        "layers": [
+          {
+            "id": "234D8324-EA53-46ED-BAF4-E2757BD93575"
+          }
+        ]
+      },
+      {
+        "aid": "D2E7EEA9-6443-4BD6-B633-F1790B0960E4",
+        "name": "法人注册分布",
+        "layers": [
+          {
+            "id": "5186F9D2-DC69-42E6-95B3-EFF7C11A5D6A"
+          }
+        ]
+      },
+      {
+        "aid": "69206F39-F91A-40B7-AD36-17847101D41B",
+        "name": "人口精细化管理",
+        "layers": [
+          {
+            "id": "4248CDE5-5332-45EC-A684-C1AB99006996"
+          }
+        ]
+      }
+    ],
+    "tokens": [
+      {
+        "id": "Token_scm",
+        "type": "result",
+        "val": ""
+      }
+    ]
+  }
+}

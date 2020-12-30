@@ -1,0 +1,97 @@
+#right-menu {
+  float: right;
+  height: 100%;
+  color: #3d3d3d;
+  white-space: normal;
+  position: relative;
+  color: #ffffff;
+
+  .ring {
+    width: 100px;
+    height: 100%;
+    float: left;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+  }
+
+  .user-info {
+    font-size: 14px;
+    height: 100%;
+    width: 120px;
+    float: right;
+    /* border-left: 1px solid #ccc; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    i {
+      font-size: 16px;
+      margin: 0 5px;
+    }
+
+    p {
+      display: inline-block;
+      line-height: 60px;
+      margin: 0;
+    }
+  }
+
+  .user-operation {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 120px;
+    background: #FFFFFF;
+    border-left: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    border-radius: 0px 0px 0px 10px;
+    color: #333;
+    z-index: 1000;
+  }
+
+  .user-operation ul {
+    padding: 5px 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  .user-operation ul li {
+    display: block;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    cursor: pointer;
+  }
+
+  .user-operation ul li span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url('/assets/img/menu/icon_user.png')
+  }
+
+  .user-operation ul li:nth-child(2) span {
+    background-position: -30px 0;
+  }
+
+  .user-operation ul li:nth-child(3) span {
+    background-position: -60px 0;
+  }
+
+  .user-operation ul li:last-child span {
+    background-position: -90px 0;
+  }
+
+  .user-operation ul li p {
+    margin: 0;
+  }
+
+  .user-operation ul li:hover span {
+    background-position-y: -30px;
+  }
+}

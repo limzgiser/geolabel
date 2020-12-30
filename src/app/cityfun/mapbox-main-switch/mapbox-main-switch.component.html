@@ -1,0 +1,11 @@
+<div id="main-container">
+    <div  class="item" [class.active] = "item.active" (click)="itemClick(item);" (mouseenter) = "mouseEnter(item)" (mouseleave) = "mouseleave(item)" *ngFor="let item of data">
+      <ng-container *ngIf="item.active; else elseTemplate">
+        <img [src]="item.simg">
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img [src]="item.dimg">
+      </ng-template>
+        {{item.title}}
+    </div>
+</div>

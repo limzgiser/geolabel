@@ -1,0 +1,25 @@
+{
+  "token": "1iszAO4crvWZXQVAurEkY9DAh1WA/O+DpkFRGingMnGmNK/Fs5QDkszrhQ6vcds3rKKC5ih8Y/8FoTk5whGYktb6O1Ge8V2xa11sXoq1UJiWlNZwBo5g21HQ0DpMnIM/",
+  "status": {
+    "code": "200",
+    "desc": "登录成功"
+  },
+  "data": {
+    "UserId": "2a043240-0caf-43e6-b219-c381a4e43d06",
+    "Account": "wjadmin",
+    "RealName": "Admin",
+    "HeadIcon": null,
+    "Gender": 1,
+    "Mobile": null,
+    "Telephone": null,
+    "Email": null,
+    "CompanyId": "6cb8831a-1d73-4b2c-af2f-c1b82fe74dee",
+    "RoleId": "4c5bf03f-47fa-4734-8d80-ce9eeb9c7864",
+    "RoleName": "平台管理者",
+    "PostId": "null",
+    "PostName": null,
+    "DutyId": "4ea431a3-8136-48d4-b941-7dadd3eb2e17",
+    "DutyName": "中心管理员",
+    "UserRoles": []
+  }
+}

@@ -1,0 +1,35 @@
+#tool-container {
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #fff;
+  }
+
+  .item:first-child {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 6px #c9c9c9;
+    cursor: pointer;
+  }
+
+  .item:nth-child(n+2) {
+    border-bottom: 1px solid #e7e7e7;
+  }
+
+  .item:nth-child(2) {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+
+  .item:last-child {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}

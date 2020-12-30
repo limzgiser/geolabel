@@ -1,0 +1,25 @@
+#pancel {
+
+  div {
+    width: 30px;
+    height: 30px;
+    border-radius:15px;
+    // background: #00d2ff;
+    margin-bottom: 15px;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+  }
+
+  div:last-child {
+    margin-bottom: 0px;
+  }
+  img{
+    width: 30px;
+  }
+}

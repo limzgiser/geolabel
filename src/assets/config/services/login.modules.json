@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "code": 200,
+    "msg": "操作成功"
+  },
+  "data": [
+    {
+      "id": "login",
+      "url": "./assets/config/mock.data/login.json",
+      "queryParams": [
+        {
+          "key": "account"
+        },
+        {
+          "key": "password"
+        }
+      ]
+    }
+  ]
+}

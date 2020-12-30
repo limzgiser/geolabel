@@ -1,0 +1,28 @@
+<div id="main-container">
+  <div class="item-top">
+    <div class="tool-item" *ngFor="let item of [data [0]];let i = index" (click)="drawClick(item)"
+    (mouseenter)="mouseenter(item)" (mouseleave)="mouseleave(item)">
+    <ng-container *ngIf="item.active; else elseTemplate">
+      <img [src]="item.simg">
+    </ng-container>
+    <ng-template #elseTemplate>
+      <img [src]="item.dimg">
+    </ng-template>
+
+  </div>
+  </div>
+  <app-map-2d-3d [reset]  = "reset"></app-map-2d-3d>
+  
+  <div class="item-bottom">
+    <div class="tool-item tool-item-bottom" *ngFor="let item of  data.slice(1,data.length);let i = index"
+      (click)="drawClick(item)" (mouseenter)="mouseenter(item)" (mouseleave)="mouseleave(item)">
+      <ng-container *ngIf="item.active ; else elseTemplate">
+        <img [src]="item.simg">
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img [src]="item.dimg">
+      </ng-template>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/mapbox-gl/dist/mapbox-gl.css";
+@import "../node_modules/@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css";
+@import "~ng-zorro-antd/ng-zorro-antd.css";
+
+// ---------------------------- 测试tip style  ----------------------------
+
+  .mapboxgl-popup-content{
+  padding: 5px;
+  background-color: #fcd86e;
+  font-size: 14px;
+}
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip
+{
+  border-top-color: #fcd86e;
+}
