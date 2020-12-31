@@ -1,4 +1,13 @@
-
-<div id="wrapper">
-  <app-label-search></app-label-search>
+<div class="wrapper">
+  <app-label-search *ngIf="markerStatue != 2"></app-label-search>
+  <app-label-add *ngIf="markerStatue == 2"></app-label-add>
+  <!-- <app-label-add></app-label-add> -->
+  <div class="add-mark">
+    <button nz-button nzType="primary" (click)="addMarker()">
+      <i nz-icon nzType="plus" nzTheme="outline"></i>添加标记
+    </button>
+    <div class="cancel" *ngIf="markerStatue != 0">
+      <button nz-button nzType="default" (click)="stopMarker()">取消</button>
+    </div>
+  </div>
 </div>

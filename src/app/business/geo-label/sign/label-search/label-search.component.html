@@ -1,5 +1,5 @@
 <div class="search">
-  <app-label-container [closeble] = 'false' *ngIf="isOpen" (closed)="closePancel($event)">
+  <app-label-container title="标记查询" [closeble] = 'false' *ngIf="isOpen" (closed)="closePancel($event)">
     <div class="top">
       <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
         <input type="text" nz-input placeholder="请输入关键字" />

@@ -1,7 +1,7 @@
 
 
 import { Injectable } from '@angular/core';
-
+import {map,maxBy} from "lodash"
 
 @Injectable({
   providedIn: 'root'
@@ -94,14 +94,14 @@ export class MainFormatService {
     }
 
     return {
-      result: _.map(table.tdc, tr => {
+      result: map(table.tdc, tr => {
         const item = {};
-        _.map(tr, td => {
+        map(tr, td => {
           item[td.did] = td.dv;
         });
         return item;
       }),
-      fields: _.map(table.tts, tr => {
+      fields: map(table.tts, tr => {
         const item = {};
         item['PKey'] = tr.did;
         item['Name'] = tr.tcd;
@@ -200,7 +200,7 @@ export class MainFormatService {
   }
   // 归一化geojson
   normalizationGoeJsonField(geojson, field) {
-    const maxFeature = _.maxBy(geojson.features, (i) => {
+    const maxFeature = maxBy(geojson.features, (i) => {
       return Number(i.properties[field]);
     });
     if (maxFeature) {

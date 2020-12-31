@@ -10,3 +10,8 @@ export interface labelItem {
   type: string;
   collected: boolean;
 }
+
+export interface MarkerStatueItem {
+  title: string;
+  id?: string;
+}

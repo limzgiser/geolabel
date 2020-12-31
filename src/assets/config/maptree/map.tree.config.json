@@ -18,7 +18,7 @@
           "title": "建筑高度分布",
           "query": true,
           "isLeaf": true,
-          "checked": true
+          "checked": false
         },
         {
           "key": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",

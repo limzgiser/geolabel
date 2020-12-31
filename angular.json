@@ -39,10 +39,6 @@
 
             ],
             "scripts": [
-              "node_modules/@antv/g2/dist/g2.min.js",
-              "src/assets/libs/lodash.js",
-              "node_modules/mapbox-gl/dist/mapbox-gl.js"
-
             ]
           },
           "configurations": {

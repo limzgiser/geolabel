@@ -5,12 +5,18 @@
 
 // ---------------------------- 测试tip style  ----------------------------
 
-  .mapboxgl-popup-content{
+.mapboxgl-popup-content {
   padding: 5px;
   background-color: #fcd86e;
   font-size: 14px;
 }
-.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip
-{
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
   border-top-color: #fcd86e;
+}
+.add-marker {
+  display: block;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
 }

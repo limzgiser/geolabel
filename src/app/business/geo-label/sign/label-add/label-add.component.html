@@ -1,0 +1,47 @@
+<div class="editmark">
+  <app-label-container
+    title="新建标记"
+    [closeble]="true"
+    [toggleble]="false"
+    *ngIf="isOpen"
+    (closed)="closePancel($event)"
+  >
+    <div class="top">
+      <app-add-marker-statue></app-add-marker-statue>
+      <div class="base-info-item">
+        <label> <span>*</span>名称：</label>
+        <input
+          nz-input
+          placeholder="请输入标记名称（15个字以内）"
+          [(ngModel)]="value"
+        />
+      </div>
+      <div class="base-info-item">
+        <label> <span>*</span>公开度：</label>
+        <nz-radio-group [(ngModel)]="radioValue">
+          <label nz-radio nzValue="公开">公开</label>
+          <label nz-radio nzValue="私有">私有</label>
+        </nz-radio-group>
+      </div>
+      <div class="base-info-item">
+        <label><span>*</span>分类：</label>
+        <input nz-input placeholder="请选择" [(ngModel)]="value" />
+      </div>
+      <div class="base-info-item">
+        <label><span>*</span>标签：</label>
+        <input nz-input placeholder="新建标签" [(ngModel)]="value" />
+      </div>
+      <div class="base-info-item">
+        <label>描述信息：</label>
+        <textarea
+          nz-input
+          placeholder="请输入该标记描述信息"
+          [nzAutosize]="{ minRows: 3, maxRows: 3 }"
+        ></textarea>
+      </div>
+    </div>
+    <div class="bottom">
+      <button nz-button nzType="primary">下一步</button>
+    </div>
+  </app-label-container>
+</div>

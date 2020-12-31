@@ -1,5 +1,6 @@
-import * as turf from '@turf/turf';
-import mapboxgl from 'mapbox-gl';
+import { lineString, polygon } from '@turf/turf';
+import { throttle } from 'lodash';
+import * as mapboxgl from 'mapbox-gl';
 interface Point {
   lng: number;
   lat: number;
@@ -63,13 +64,11 @@ export class Mapdraw {
     this.offEvent();
 
     this.dbclick_callback = function (e) {
-      self.map.getCanvas().style.cursor = 'hand';
       self.endPoint = e.lngLat;
       let result = [];
       switch (self.drawType) {
         case 'line':
           result = [...self.clickPoints, self.movePoint];
-
           break;
         case 'polygon':
           result = [
@@ -82,14 +81,15 @@ export class Mapdraw {
       }
       self.offEvent();
       self.drawGeoJSON(result);
+
+      self.map.getCanvas().style.cursor = '';
       callback(result);
     };
 
     this.click_callback = function (e) {
-
       self.clickPoints.push(e.lngLat);
     };
-    this.mousemove_callback = _.throttle(function (e) {
+    this.mousemove_callback = throttle(function (e) {
       self.map.getCanvas().style.cursor = 'crosshair';
 
       self.movePoint = e.lngLat;
@@ -132,12 +132,12 @@ export class Mapdraw {
     let geoJson = this.arrayToGeoJSON(points);
     switch (this.drawType) {
       case 'line':
-        this.map.getSource(this.lineLayerId).setData(geoJson);
+        (<any>this.map.getSource(this.lineLayerId)).setData(geoJson);
         break;
       case 'polygon':
-        this.map.getSource(this.lineLayerId).setData(geoJson);
+        (<any>this.map.getSource(this.lineLayerId)).setData(geoJson);
         if (points.length > 2) {
-          this.map.getSource(this.polygonLayerId).setData(geoJson);
+          (<any>this.map.getSource(this.polygonLayerId)).setData(geoJson);
         }
         break;
       default:
@@ -155,9 +155,9 @@ export class Mapdraw {
     });
     switch (this.drawType) {
       case 'line':
-        return Points.length > 1 ? turf.lineString(colloction) : null;
+        return Points.length > 1 ? lineString(colloction) : null;
       case 'polygon':
-        return Points.length > 1 ? turf.polygon([colloction]) : null;
+        return Points.length > 1 ? polygon([colloction]) : null;
 
       default:
         break;
@@ -165,11 +165,11 @@ export class Mapdraw {
   }
 
   public clearSource() {
-    this.map.getSource(this.lineLayerId).setData({
+    (<any>this.map.getSource(this.lineLayerId)).setData({
       type: 'FeatureCollection',
       features: [],
     });
-    this.map.getSource(this.polygonLayerId).setData({
+    (<any>this.map.getSource(this.polygonLayerId)).setData({
       type: 'FeatureCollection',
       features: [],
     });
@@ -183,7 +183,7 @@ export class Mapdraw {
   private stopDraw() {
     this.stopD = true;
   }
-  public clear(){
+  public clear() {
     this.resetDraw();
   }
 }

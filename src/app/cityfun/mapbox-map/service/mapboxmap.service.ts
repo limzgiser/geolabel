@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { ModuleDataRxInquireService } from "@cmss/core";
+import * as  mapboxgl from 'mapbox-gl';
 import { mapTo, delay } from 'rxjs/operators';
 // mapboxgl.srid = 4326;   // 4326 or 3857
 
@@ -178,6 +179,11 @@ export class MapboxmapService {
    */
   public getMap() {
     return this.mapboxmap;
+  }
+
+  public setCursor(type){
+    const canvas = this.mapboxmap.getCanvas();
+    canvas.style.cursor = type || '';
   }
 
   /**

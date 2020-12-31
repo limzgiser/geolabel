@@ -41,7 +41,7 @@ export class GeoLabelComponent implements OnInit {
         this.mapInit(1);
       }
       mapboxglmap.on('load', () => {
-        console.log('is first loaded 2 ');
+        // console.log('is first loaded 2 ');
         this.mapInit(2);
 
       });
@@ -56,20 +56,13 @@ export class GeoLabelComponent implements OnInit {
       // this.drawPolygon();
       this.mapboxglmap = mapboxglmap;
 
-
-
-
-
-
     });
 
   }
 
  
   mapInit(type) {
-    console.log(type);
     
-
   }
   drawEnd(data) {
     if (data) {
@@ -77,19 +70,12 @@ export class GeoLabelComponent implements OnInit {
     } else {
       this.searchGeometry = null;
     }
-
   }
-  
   
   clearMeasure(e) {
 
   }
   ngOnDestroy(): void {
     this.sub.unsubscribe();
-
-  
   }
- 
- 
-
 }

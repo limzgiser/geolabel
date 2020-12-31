@@ -5,11 +5,10 @@ import { SiginRoutes } from './sigin.routing';
 import { LabelCommonModule } from '../common/label-common.module';
 import { LabelSearchComponent } from './label-search/label-search.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LabelAddComponent } from './label-add/label-add.component';
 
 @NgModule({
-  imports: [
-    CommonModule,SiginRoutes,LabelCommonModule,SharedModule
-  ],
-  declarations: [SignComponent,LabelSearchComponent]
+  imports: [CommonModule, SiginRoutes, LabelCommonModule, SharedModule],
+  declarations: [SignComponent, LabelSearchComponent, LabelAddComponent],
 })
-export class SignModule { }
+export class SignModule {}

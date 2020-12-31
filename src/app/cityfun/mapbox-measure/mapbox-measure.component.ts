@@ -74,94 +74,7 @@ export class MapboxMeasureComponent implements OnInit {
   }
   init() {
     this.mapMeasure = new MapMeasure(this.mapboxglmap);
-    //   this.mapboxglmap.on('draw.create', updateArea.bind(this));
-    //   // this.mapboxglmap.on('draw.delete', updateArea);
-    //   // this.mapboxglmap.on('draw.update', updateArea);
-    //   function updateArea(e) {
-
-    //     this.startDraw = false;
-    //     this.drawCoorDinates = [];
-    //   }
-
-    //   this.mapboxglmap.on('click', e => {
-    //     const { lng, lat } = e.lngLat;
-    //     if (this.startDraw) {
-    //       this.drawCoorDinates.push([lng, lat]);
-
-    //     }
-
-    //   });
-    //   this.mapboxglmap.on('dbclick', e => {
-    //     const { lng, lat } = e.lngLat;
-    //     if (this.startDraw) {
-    //       this.drawCoorDinates.push([lng, lat]);
-
-    //     }
-    //   });
-
-    //   this.mapboxglmap.on('mousemove', e => {
-
-    //     const { lng, lat } = e.lngLat;
-    //     if (this.startDraw) {
-    //       let tmpCoordinates = [...this.drawCoorDinates, [lng, lat]];
-
-    //       if (this.measureType === 'length' && tmpCoordinates.length > 1) {
-    //         const length = this.measure(tmpCoordinates);
-    //         if (this.pupup) {
-    //           this.pupup.setLngLat([lng, lat])
-    //             .setHTML(`${Math.floor(length * 100) / 100} km`).addTo(this.mapboxglmap);
-    //         } else {
-    //           this.pupup = new mapboxgl.Popup({
-    //             closeButton: false,
-    //             closeOnClick: false,
-    //             // closeOnMove: true
-    //           })
-    //             .setLngLat([lng, lat])
-    //             .setHTML(`${Math.floor(length * 100) / 100} km`)
-    //             .addTo(this.mapboxglmap);
-    //         }
-    //       }
-    //       if (this.measureType === 'area' && tmpCoordinates.length > 2) {
-    //         tmpCoordinates = [...tmpCoordinates, tmpCoordinates[0]];
-    //         const area = this.measure(tmpCoordinates);
-    //         const polygon = turf.polygon([tmpCoordinates]);
-    //         const center = turf.centerOfMass(polygon);
-    //         if (this.pupup) {
-    //           this.pupup.setLngLat(center.geometry.coordinates)
-    //             .setHTML(`${Math.floor(area / 1000 / 1000 * 100) / 100} km<sup>2</sup>`).addTo(this.mapboxglmap);
-    //         } else {
-    //           this.pupup = new mapboxgl.Popup({
-    //             closeButton: false,
-    //             closeOnClick: false,
-    //             // closeOnMove: true
-    //           })
-    //             .setLngLat(center.geometry.coordinates)
-    //             .setHTML(`${Math.floor(area / 1000 / 1000 * 100) / 100} km<sup>2</sup>`)
-    //             .addTo(this.mapboxglmap);
-    //         }
-    //       }
-    //     }
-    //   });
-    // }
-    // measure(coordinates) {
-    // if (this.measureType === 'length' && coordinates.length && coordinates.length > 1) {
-    //   let line = turf.lineString(coordinates);
-    //   let length = turf.length(line, { units: 'kilometers' });
-
-    //   return length || 0;
-    // }
-    // if (this.measureType === 'area' && coordinates.length && coordinates.length > 3) {
-    //   let tmpCoordinates = [];
-    //   if (coordinates[0][0] !== coordinates[coordinates.length - 1][0] && coordinates[0][1] !== coordinates[coordinates.length - 1][1]) {
-    //     tmpCoordinates = [...coordinates, coordinates[0]];
-    //   } else {
-    //     tmpCoordinates = coordinates;
-    //   }
-    //   let polygon = turf.polygon([tmpCoordinates]);
-    //   const area = turf.area(polygon);
-    //   return area;
-
-    // }
+    
   }
 
   drawClick(e) {
@@ -212,7 +125,7 @@ export class MapboxMeasureComponent implements OnInit {
         this.draw.deleteAll();
 
     }
-    // document.querySelector('body').style.cursor = 'pointer';
+
   }
   restCacheCoors() {
     this.startDraw = false;

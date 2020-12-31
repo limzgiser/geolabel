@@ -1,0 +1,11 @@
+<div id="container">
+  <div
+    class="item"
+    [class.active]="item.id == selectItem.id"
+    *ngFor="let item of statues"
+  >
+    {{ item.title }}
+  </div>
+  <img class="arrow arrow01" [src]="'./assets/img/map/icon_detail_arrow.png'" />
+  <img class="arrow arrow02" [src]="'./assets/img/map/icon_detail_arrow.png'" />
+</div>
