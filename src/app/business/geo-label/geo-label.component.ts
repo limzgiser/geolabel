@@ -42,7 +42,7 @@ export class GeoLabelComponent implements OnInit {
       }
       mapboxglmap.on('load', () => {
         // console.log('is first loaded 2 ');
-        this.mapInit(2);
+        // this.mapInit(2);
 
       });
 

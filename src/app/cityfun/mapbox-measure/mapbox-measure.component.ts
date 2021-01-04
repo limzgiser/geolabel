@@ -1,7 +1,6 @@
-import { MapboxDrawService } from './../cityfun-services/mapbox-draw.service';
+
 import { MapboxmapService } from './../mapbox-map/service/mapboxmap.service';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import * as turf from '@turf/turf';
 import {MapMeasure} from './measure'
 @Component({
   selector: 'app-mapbox-measure',
@@ -10,7 +9,7 @@ import {MapMeasure} from './measure'
 })
 export class MapboxMeasureComponent implements OnInit {
 
-  constructor(private mapboxmapService: MapboxmapService, private mapboxDrawService: MapboxDrawService) { }
+  constructor(private mapboxmapService: MapboxmapService,) { }
   mapboxglmap = null;
   draw = null;
   startDraw = false; // 记录是否开始绘制
@@ -79,9 +78,8 @@ export class MapboxMeasureComponent implements OnInit {
 
   drawClick(e) {
     // this.draw.deleteAll();
-    this.mapboxDrawService.reset(this.mapboxglmap);
-    this.draw = this.mapboxDrawService.getMapboxDraw();
-    this.mapboxglmap.addControl(this.draw, 'top-right');
+    // this.mapboxDrawService.reset(this.mapboxglmap);
+ 
     this.pupup ? this.pupup.remove() : null;
     switch (e.id) {
       case 'full-ext':
@@ -96,33 +94,24 @@ export class MapboxMeasureComponent implements OnInit {
         break;
       case 'delete':
         this.restCacheCoors();
-        this.draw.deleteAll();
         this.pupup ? this.pupup.remove() : null;
         this.mapMeasure && this.mapMeasure.clear();
         this.clearMeasure.emit(null);
 
         break;
       case 'draw_line_string':
-        // this.drawCoorDinates = [];
-        // this.startDraw = true;
-        // this.measureType = 'length';
-        // this.draw.changeMode(e.id);
         this.mapMeasure && this.mapMeasure.clear();
         this.mapMeasure && this.mapMeasure.measure('line');
 
         break;
       case 'draw_polygon':
-        // this.drawCoorDinates = [];
-        // this.startDraw = true;
-        // this.measureType = 'area';
-        // this.draw.changeMode(e.id);
         this.mapMeasure && this.mapMeasure.clear();
         this.mapMeasure && this.mapMeasure.measure('polygon');
 
         break;
       default:
         this.startDraw = false;
-        this.draw.deleteAll();
+        // this.draw.deleteAll();
 
     }
 

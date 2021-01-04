@@ -1,5 +1,5 @@
 import { EventEmitter } from '@angular/core';
-import { MapboxDrawService } from './../cityfun-services/mapbox-draw.service';
+// import { MapboxDrawService } from './../cityfun-services/mapbox-draw.service';
 import { MapboxmapService } from './../mapbox-map/service/mapboxmap.service';
 import { Component, OnInit, Input, Output } from '@angular/core';
 
@@ -10,7 +10,7 @@ import { Component, OnInit, Input, Output } from '@angular/core';
   styleUrls: ['./mapbox-draw-tool.component.scss']
 })
 export class MapboxDrawToolComponent implements OnInit {
-  constructor(private mapboxmapService: MapboxmapService, private mapboxDrawService: MapboxDrawService) { }
+  constructor(private mapboxmapService: MapboxmapService, ) { }
   mapboxglmap = null;
   draw = null;
   @Output() drawEnd = new EventEmitter<any>();
@@ -81,20 +81,20 @@ export class MapboxDrawToolComponent implements OnInit {
   drawClick(e) {
     this.tmp = 1;
     // this.draw.deleteAll();
-    this.mapboxDrawService.reset(this.mapboxglmap);
-    this.draw = this.mapboxDrawService.getMapboxDraw();
-    this.mapboxglmap.addControl(this.draw, 'top-right');
+    // this.mapboxDrawService.reset(this.mapboxglmap);
+    // this.draw = this.mapboxDrawService.getMapboxDraw();
+    // this.mapboxglmap.addControl(this.draw, 'top-right');
 
     switch (e.id) {
       case 'delete':
-        this.draw.deleteAll();
-        if (this.tmp === 1) {
-          this.drawEnd.emit(null);
-          this.tmp = 0;
-        }
+        // this.draw.deleteAll();
+        // if (this.tmp === 1) {
+        //   this.drawEnd.emit(null);
+        //   this.tmp = 0;
+        // }
         break;
       default:
-        this.draw.changeMode(e.id);
+        // this.draw.changeMode(e.id);
 
 
     }

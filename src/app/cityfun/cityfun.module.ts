@@ -3,9 +3,9 @@ import { CoreMessageService } from './cityfun-services/core-message.service';
  
 import { MapImageListComponent } from './map-image-list/map-image-list.component';
 import { MapboxMeasureComponent } from './mapbox-measure/mapbox-measure.component';
-import { MapboxDrawService } from './cityfun-services/mapbox-draw.service';
+// import { MapboxDrawService } from './cityfun-services/mapbox-draw.service';
 import { MapboxMainSwitchComponent } from './mapbox-main-switch/mapbox-main-switch.component';
-import { MapboxDrawToolComponent } from './mapbox-draw-tool/mapbox-draw-tool.component';
+// import { MapboxDrawToolComponent } from './mapbox-draw-tool/mapbox-draw-tool.component';
 import { MapboxMapToolBarComponent } from './mapbox-map-tool-bar/mapbox-map-tool-bar.component';
 import { CfMenuTopComponent } from './cf-menu-top/cf-menu-top.component';
 import { UserAdminV1Component } from './cf-menu-top/user-admin-v1/user-admin-v1.component';
@@ -38,7 +38,7 @@ import { SharedModule } from '../shared/shared.module';
     UserAdminV1Component,
     CfMenuTopComponent,
     MapboxMapToolBarComponent,
-    MapboxDrawToolComponent,
+    // MapboxDrawToolComponent,
     MapboxMainSwitchComponent,
     MapboxMeasureComponent,
     Map2d3dComponent
@@ -55,13 +55,13 @@ import { SharedModule } from '../shared/shared.module';
     UserAdminV1Component,
     CfMenuTopComponent,
     MapboxMapToolBarComponent,
-    MapboxDrawToolComponent,
+    // MapboxDrawToolComponent,
     MapboxMainSwitchComponent,
     MapboxMeasureComponent,
     Map2d3dComponent
   ],
   providers: [
-    MapboxDrawService,
+    // MapboxDrawService,
     CoreMessageService
   ]
 })

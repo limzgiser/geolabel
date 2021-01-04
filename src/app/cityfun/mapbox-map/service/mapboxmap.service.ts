@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { ModuleDataRxInquireService } from "@cmss/core";
 import * as  mapboxgl from 'mapbox-gl';
 import { mapTo, delay } from 'rxjs/operators';
+import { cursorType } from "./mapboxTypes";
 // mapboxgl.srid = 4326;   // 4326 or 3857
 
 @Injectable({
@@ -181,7 +182,7 @@ export class MapboxmapService {
     return this.mapboxmap;
   }
 
-  public setCursor(type){
+  public setCursor(type:cursorType){
     const canvas = this.mapboxmap.getCanvas();
     canvas.style.cursor = type || '';
   }

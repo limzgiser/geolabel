@@ -1,6 +1,9 @@
 <div class="wrapper">
   <app-label-search *ngIf="markerStatue != 2"></app-label-search>
-  <app-label-add *ngIf="markerStatue == 2"></app-label-add>
+  <app-label-add
+    *ngIf="markerStatue == 2"
+    (showEditToolEvent)="toggleEditTool($event)"
+  ></app-label-add>
   <!-- <app-label-add></app-label-add> -->
   <div class="add-mark">
     <button nz-button nzType="primary" (click)="addMarker()">
@@ -9,5 +12,8 @@
     <div class="cancel" *ngIf="markerStatue != 0">
       <button nz-button nzType="default" (click)="stopMarker()">取消</button>
     </div>
+  </div>
+  <div class="edit-tool" *ngIf="showEditTool">
+    <lb-edit-tool></lb-edit-tool>
   </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="tool-container" @showEditToolAni>
+  <div
+    class="item"
+    *ngFor="let item of tools; let i = index"
+    (click)="tooItemClick(item, i)"
+    [class.select]="i === selectIndex"
+  >
+    <div class="item-content">
+      <ng-container *ngIf="i === selectIndex; else elseTemplate">
+        <img [src]="item.selectImg" />
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img [src]="item.defaultImg" />
+      </ng-template>
+      <span > {{ item.label }}</span>
+    </div>
+  </div>
+ 
+</div>

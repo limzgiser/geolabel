@@ -7,6 +7,9 @@ export enum MarkerStatue {
 }
 export const event_mousemove_key = 'map-mousemove';
 export const event_click_key = 'map-click';
+export const event_draw_create = 'draw.create';
+export const event_draw_delete= 'draw.delete';
+export const event_draw_update= 'draw.update';
 export function offMapEvent(
   map: mapboxgl.Map,
   type: string,

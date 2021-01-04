@@ -1,0 +1,29 @@
+.container {
+  padding: 0 16px, 16px, 16px;
+  .base-info-item {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    & > label {
+      font-size: 14px;
+      color: #333333;
+      margin-bottom: 8px;
+    }
+    & > label > span {
+      color: red;
+    }
+  }
+  .tags{
+      display: flex;
+      flex-wrap: wrap;
+  }
+  .item-tag{
+      margin-bottom: 8px;
+  }
+  .editable-tag {
+    background: rgb(255, 255, 255);
+    border-style: dashed;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+}

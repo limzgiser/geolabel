@@ -13,19 +13,6 @@ app-label-container {
   box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
   .top {
     padding: 16px;
-    .base-info-item {
-      margin-top: 16px;
-      display: flex;
-      flex-direction: column;
-      & > label {
-        font-size: 14px;
-        color: #333333;
-        margin-bottom: 8px;
-      }
-      & > label > span {
-        color: red;
-      }
-    }
   }
   .bottom {
     position: absolute;
@@ -39,5 +26,8 @@ app-label-container {
     left: 0px;
     width: 100%;
     background: #ffffff;
+    & > :nth-child(2) {
+      margin-left: 8px;
+    }
   }
 }

@@ -23,6 +23,7 @@ export class SignComponent implements OnInit {
   markerStatue: MarkerStatue = MarkerStatue.none; // 状态
   moveMarker: mapboxgl.Marker = null;
   editMarker: mapboxgl.Marker = null;
+  showEditTool:boolean = false;
   eventCallBack = {
     // key: function () {},
   };
@@ -70,7 +71,7 @@ export class SignComponent implements OnInit {
       self.markerStatue = MarkerStatue.editing;
       let { lng, lat } = e.lngLat;
       self.addMoveMarker([lng, lat], false);
-      self.mapboxmapService.setCursor('default');
+      self.mapboxmapService.setCursor('grab');
       offMapEvent(
         self.mapboxmap,
         'mousemove',
@@ -132,5 +133,9 @@ export class SignComponent implements OnInit {
           .addTo(this.mapboxmap);
       }
     }
+  }
+
+  toggleEditTool(isShow:boolean):void{
+    this.showEditTool = isShow;
   }
 }

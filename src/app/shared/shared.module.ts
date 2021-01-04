@@ -23,6 +23,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzTagModule } from 'ng-zorro-antd/tag';
 const antZORRO = [
   NzMenuModule,
   NzMessageModule,
@@ -37,7 +38,8 @@ const antZORRO = [
   NzSelectModule,
   NzDatePickerModule,
   NzFormModule,
-  NzRadioModule
+  NzRadioModule,
+  NzTagModule
 ];
 
 const directive = [NgxG2Directive];

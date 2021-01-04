@@ -1,4 +1,3 @@
-
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { GeoLabelComponent } from './geo-label.component';
@@ -10,10 +9,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'sign', pathMatch: 'full' },
       {
         path: 'sign',
-        loadChildren: () =>
-          import('./sign/sign.module').then(
-            (m) => m.SignModule
-          ),
+        loadChildren: () =>  import('./sign/sign.module').then((m) => m.SignModule),
       },
     ],
   },
@@ -21,6 +17,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class GeoLabelRoutesModule {}

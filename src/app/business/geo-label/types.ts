@@ -1,3 +1,5 @@
+import { Feature } from '@turf/turf';
+
 export interface NavItem {
   title: string;
   type?: string;
@@ -14,4 +16,19 @@ export interface labelItem {
 export interface MarkerStatueItem {
   title: string;
   id?: string;
+}
+
+export interface drawToolItem {
+  label: string;
+  type: string;
+  defaultImg?: string;
+  selectImg?: string;
+}
+
+export interface FeatureListItem {
+  feature: Feature;
+  title: string;
+  type: string ;// 'Point' | 'LineString' | 'Polygon';
+  des?: string;
+  icon?: string;
 }

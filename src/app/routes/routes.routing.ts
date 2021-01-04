@@ -19,11 +19,7 @@ export const routes: Routes = [
 
       {
         path: 'geolabel',
-        loadChildren: () =>
-          import('../business/geo-label/geo-label.module').then(
-            (m) => m.GeoLabelModule
-          ),
-       
+        loadChildren: () =>  import('../business/geo-label/geo-label.module').then( m => m.GeoLabelModule  ),
       },
     ],
   },

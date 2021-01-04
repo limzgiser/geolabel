@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { MarkerStatueItem } from '../../types';
 
 @Component({
   selector: 'app-add-marker-statue',
   templateUrl: './add-marker-statue.component.html',
   styleUrls: ['./add-marker-statue.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddMarkerStatueComponent implements OnInit {
   constructor() {}
 
+  @Input() selectIndex:number =  0 ;
   @Input() statues: Array<MarkerStatueItem> = [
     {
       title: '01-基本信息',
@@ -23,7 +25,9 @@ export class AddMarkerStatueComponent implements OnInit {
       id: '003',
     },
   ];
-  selectItem:MarkerStatueItem =  this.statues[1];
 
   ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges): void {
+    
+  }
 }
