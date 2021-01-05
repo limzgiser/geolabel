@@ -24,7 +24,7 @@ export class TreelyrControlComponent implements OnInit {
       this.basemaps[0].active = true;
       this.images[0].active = true;
     });
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.mapboxglmap = mapboxglmap;
       if (mapboxglmap.isStyleLoaded()) {
         // this.mapInit();

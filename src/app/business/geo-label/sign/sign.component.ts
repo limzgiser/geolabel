@@ -28,7 +28,7 @@ export class SignComponent implements OnInit {
     // key: function () {},
   };
   ngOnInit() {
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.mapboxmap = mapboxglmap;
       if (
         mapboxglmap.isStyleLoaded() ||

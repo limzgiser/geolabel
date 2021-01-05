@@ -46,7 +46,7 @@ export class MapToolComponent implements OnInit {
   data = null;
   ngOnInit() {
     this.data = this.mockData;
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.pitchChangeCallback();
       mapboxglmap.on("pitch", e => {
         this.pitchChangeCallback();

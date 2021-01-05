@@ -36,7 +36,7 @@ export class MapboxMaptreeControlComponent implements OnInit {
 
     });
 
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.mapboxglmap = mapboxglmap;
       if (mapboxglmap.isStyleLoaded()) {
         this.mapInit();

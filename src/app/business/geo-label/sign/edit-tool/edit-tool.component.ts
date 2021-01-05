@@ -90,7 +90,6 @@ export class EditToolComponent implements OnInit {
       defaultImg: './assets/img/map/icon_mark_circle.png',
       selectImg: './assets/img/map/icon_mark_circle_selected.png',
     },
-
     // {
     //   label: '矩形',
     //   type:'draw_rectangle',
@@ -104,7 +103,7 @@ export class EditToolComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private editToolService: EditToolService
   ) {
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.mapboxglmap = mapboxglmap;
       if (this.mapboxmapService.firstFullLoaded) {
         this.mapInit();

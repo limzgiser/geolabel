@@ -35,7 +35,7 @@ export class GeoLabelComponent implements OnInit {
     this.sub = this.coreMessageService.nodemessage.subscribe((nodeinfo: any) => {
       this.treeNodeInfo = nodeinfo;
     });
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.mapboxglmap = mapboxglmap;
       if (this.mapboxmapService.firstFullLoaded) {
         this.mapInit(1);

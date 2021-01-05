@@ -61,7 +61,7 @@ export class MapboxMeasureComponent implements OnInit {
     }
   ];
   ngOnInit() {
-    this.mapboxmapService.init().then((mapboxglmap: any) => {
+    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
       this.mapboxglmap = mapboxglmap;
       if (mapboxglmap.isStyleLoaded() || this.mapboxmapService.firstFullLoaded) {
         this.init();
