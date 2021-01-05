@@ -18,7 +18,7 @@ import {
   SimpleSelectMode,
 } from 'mapbox-gl-draw-circle';
 import { drawToolItem } from '../../types';
-import { FeatureCollection } from '@turf/turf';
+import { Feature, FeatureCollection } from '@turf/turf';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { EditToolService } from '../edit-tool.service';
 import {
@@ -27,6 +27,7 @@ import {
   event_draw_update,
   offMapEvent,
 } from '../../utils/mapTool';
+import { remove } from 'lodash';
 
 @Component({
   selector: 'lb-edit-tool',
@@ -65,6 +66,7 @@ export class EditToolComponent implements OnInit {
   mapboxglmap: mapboxgl.Map = null;
   mapboxDraw: MapboxDraw = null;
   selectIndex: number = -1;
+  deletesub = null;
   @Input() tools: Array<drawToolItem> = [
     {
       label: '点',
@@ -160,6 +162,13 @@ export class EditToolComponent implements OnInit {
     this.mapboxglmap.on('draw.create', this.eventCallBack[event_draw_create]);
     this.mapboxglmap.on('draw.delete', this.eventCallBack[event_draw_delete]);
     this.mapboxglmap.on('draw.update', this.eventCallBack[event_draw_update]);
+
+
+    this.deletesub = this.editToolService.deleteFeature$.subscribe(
+      (feature: Feature) => {
+         this.delete([feature.id as string]);
+      }
+    );
   }
   tooItemClick(item: drawToolItem, index: number): void {
     this.selectIndex = index;

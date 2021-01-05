@@ -9,7 +9,21 @@ const routes: Routes = [
       { path: '', redirectTo: 'sign', pathMatch: 'full' },
       {
         path: 'sign',
-        loadChildren: () =>  import('./sign/sign.module').then((m) => m.SignModule),
+        loadChildren: () =>
+          import('./sign/sign.module').then((m) => m.SignModule),
+        data: { path: 'sign' },
+      },
+      {
+        path: 'classify',
+        loadChildren: () =>
+          import('./classify/classify.module').then((m) => m.ClassifyModule),
+        data: { path: 'classify' },
+      },
+      {
+        path: 'collect',
+        loadChildren: () =>
+          import('./collect/collect.module').then((m) => m.CollectModule),
+        data: { path: 'collect' },
       },
     ],
   },

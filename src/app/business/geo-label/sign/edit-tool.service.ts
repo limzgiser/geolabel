@@ -13,7 +13,9 @@ export class EditToolService {
   private subDelete = new Subject<Feature>();
   readonly deleteFeature$ = this.subDelete.asObservable();
 
-  constructor() {}
+  constructor() { 
+    
+  }
   addFeature(feature: Feature) {
     this.subAdd.next(feature);
   }

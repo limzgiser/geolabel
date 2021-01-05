@@ -6,6 +6,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Feature } from '@turf/turf';
+import { remove } from 'lodash';
 import { FeatureListItem } from '../../../types';
 import { EditToolService } from '../../edit-tool.service';
 
@@ -59,9 +60,20 @@ export class LabelFeatureComponent implements OnInit {
         this.changeDetectorRef.markForCheck();
       }
     );
+    this.deletesub = this.editToolService.deleteFeature$.subscribe(
+      (feature: Feature) => {
+        remove(this.features, (item: FeatureListItem) => {
+          return item.feature.id === feature.id;
+        });
+      }
+    );
+  }
+  removeFeature(featureListItem: FeatureListItem): void {
+    this.editToolService.deleteFeature(featureListItem.feature);
   }
   ngOnDestroy(): void {
     this.editsub && this.editsub.unsubscribe();
     this.addsub && this.addsub.unsubscribe();
+    this.deletesub && this.deletesub.unsubscribe();
   }
 }

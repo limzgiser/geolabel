@@ -1,6 +1,6 @@
 <div class="editmark">
   <app-label-container
-    title="新建标记"
+    [title]="'新建标记'"
     [closeble]="false"
     [toggleble]="false"
     *ngIf="isOpen"
@@ -12,13 +12,14 @@
       ></app-add-marker-statue>
       <app-base-info *ngIf="addStatueIndex == 0"></app-base-info>
       <app-label-feature *ngIf="addStatueIndex == 1"></app-label-feature>
+      <app-label-success *ngIf="addStatueIndex == 2"></app-label-success>
     </div>
-    <div class="bottom">
+    <div class="bottom" *ngIf="addStatueIndex < 2">
       <button
         nz-button
         nzType="default"
         (click)="beforeClick()"
-        *ngIf="addStatueIndex > 0"
+        *ngIf="addStatueIndex == 1"
       >
         上一步
       </button>

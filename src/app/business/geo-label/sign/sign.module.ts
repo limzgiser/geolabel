@@ -11,12 +11,20 @@ import { LabelFeatureComponent } from './label-add/label-feature/label-feature.c
 import { EditToolComponent } from './edit-tool/edit-tool.component';
 import { EditToolService } from './edit-tool.service';
 import { AddTagIconPipe } from './label-add/label-feature/addTagIcon.pipe';
+import { LabelSuccessComponent } from './label-add/label-success/label-success.component';
 
 @NgModule({
   imports: [CommonModule, SiginRoutes, LabelCommonModule, SharedModule],
-  declarations: [SignComponent, LabelSearchComponent, LabelAddComponent,BaseInfoComponent,LabelFeatureComponent, EditToolComponent,AddTagIconPipe],
-  providers:[
-    EditToolService
-  ]
+  declarations: [
+    SignComponent,
+    LabelSearchComponent,
+    LabelAddComponent,
+    BaseInfoComponent,
+    LabelFeatureComponent,
+    EditToolComponent,
+    AddTagIconPipe,
+    LabelSuccessComponent,
+  ],
+  providers: [EditToolService],
 })
 export class SignModule {}

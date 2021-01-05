@@ -48,6 +48,7 @@
     "@angular/language-service": "~9.1.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/lodash": "^4.14.167",
     "@types/mapbox-gl": "^1.11.1",
     "@types/node": "^12.11.1",
     "archiver": "^4.0.1",
