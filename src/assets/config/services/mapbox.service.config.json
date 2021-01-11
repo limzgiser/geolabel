@@ -23,7 +23,7 @@
     {
       "id": "base.map",
       "des": "底图样式",
-      "url": "http://webres.cityfun.com.cn/szmap/szmap_dark/3857/map_dark.json"
+      "url": "http://webres.cityfun.com.cn/szmap/szmap/3857/map.json"
     },
     {
       "id": "tree.legend",

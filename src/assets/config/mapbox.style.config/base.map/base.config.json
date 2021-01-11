@@ -5,14 +5,14 @@
       "des": "",
       "img": "./assets/img/mapthumbnail/dark.png",
       "style": "http://webres.cityfun.com.cn/szmap/szmap_dark/3857/map_dark.json",
-      "active": true
+      "active": false
     },
     {
       "title": "苏州底图-彩色",
       "des": "",
       "img": "./assets/img/mapthumbnail/color.png",
       "style": "http://webres.cityfun.com.cn/szmap/szmap/3857/map.json",
-      "active": false
+      "active": true
     }
   ],
   "images": [
