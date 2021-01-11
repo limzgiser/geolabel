@@ -8,7 +8,7 @@ import {
 import { Feature } from '@turf/turf';
 import { remove } from 'lodash';
 import { FeatureListItem } from '../../../types';
-import { EditToolService } from '../../edit-tool.service';
+import { EditToolService } from '../../services/edit-tool.service';
 
 @Component({
   selector: 'app-label-feature',

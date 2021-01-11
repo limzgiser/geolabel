@@ -9,9 +9,10 @@ import { LabelAddComponent } from './label-add/label-add.component';
 import { BaseInfoComponent } from './label-add/base-info/base-info.component';
 import { LabelFeatureComponent } from './label-add/label-feature/label-feature.component';
 import { EditToolComponent } from './edit-tool/edit-tool.component';
-import { EditToolService } from './edit-tool.service';
+import { EditToolService } from './services/edit-tool.service';
 import { AddTagIconPipe } from './label-add/label-feature/addTagIcon.pipe';
 import { LabelSuccessComponent } from './label-add/label-success/label-success.component';
+import {SignBaseinfoService} from "./services/sign-baseinfo.service";
 
 @NgModule({
   imports: [CommonModule, SiginRoutes, LabelCommonModule, SharedModule],
@@ -25,6 +26,6 @@ import { LabelSuccessComponent } from './label-add/label-success/label-success.c
     AddTagIconPipe,
     LabelSuccessComponent,
   ],
-  providers: [EditToolService],
+  providers: [EditToolService,SignBaseinfoService],
 })
 export class SignModule {}

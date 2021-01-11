@@ -20,7 +20,7 @@ import {
 import { drawToolItem } from '../../types';
 import { Feature, FeatureCollection } from '@turf/turf';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { EditToolService } from '../edit-tool.service';
+import { EditToolService } from '../services/edit-tool.service';
 import {
   event_draw_create,
   event_draw_delete,
