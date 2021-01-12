@@ -1,6 +1,7 @@
-import { ModuleDataRxInquireService } from '@cmss/core';
+
 import { Router, ActivatedRoute, NavigationStart, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import {CfhttpService} from "../../services/cfhttp.service";
 
 @Component({
   selector: 'app-cf-menu-top',
@@ -13,7 +14,7 @@ export class CfMenuTopComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private dataRxInquireService: ModuleDataRxInquireService
+    private cfHttp: CfhttpService
   ) {
     router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -44,7 +45,7 @@ export class CfMenuTopComponent implements OnInit {
   activeNavBarSelect(routerArr) {
 
     if (!this.data) {
-      this.dataRxInquireService.get('cf', 'menu.config').subscribe(res => {
+      this.cfHttp.get('menu.config').subscribe(res => {
 
         this.data = { data: res.data };
 
@@ -72,7 +73,7 @@ export class CfMenuTopComponent implements OnInit {
     this.router.navigate([`./layout/${e.id}`]);
   }
   getMeta() {
-    this.dataRxInquireService.get('cf', 'web.meta').subscribe((res) => {
+    this.cfHttp.get('web.meta').subscribe((res) => {
       this.webetaInfo = res;
     });
   }

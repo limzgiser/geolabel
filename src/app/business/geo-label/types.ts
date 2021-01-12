@@ -43,8 +43,14 @@ export interface LabelgeoFeature {
 export interface LabelBaseInfo {
   "title": string;
   "ispublic": number|string;
-  "categoryid": number|string;
-  "taginfos":string;
+  "categoryid"?: Array<number|string> ;
+  "taginfos":Array<string>;
   "desc": string;
-  "geoms":Array<LabelgeoFeature>
+  "geo"?:string;
+  "graphs"?:Array<LabelgeoFeature>;
+}
+
+export interface soureTagInfo {
+  baseInfo:LabelBaseInfo;
+  graphs:Array<any>
 }

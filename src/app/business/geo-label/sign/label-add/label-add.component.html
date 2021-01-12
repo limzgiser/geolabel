@@ -9,7 +9,7 @@
     <div class="top">
       <app-add-marker-statue [selectIndex]="addStatueIndex"  ></app-add-marker-statue>
       <app-base-info #baseInfoComponent *ngIf="addStatueIndex == 0" [baseInfo]="addSourceInfo.baseInfo"></app-base-info>
-      <app-label-feature #labelFeatureComponent *ngIf="addStatueIndex == 1" [features]="addSourceInfo.geoms"></app-label-feature>
+      <app-label-feature #labelFeatureComponent *ngIf="addStatueIndex == 1" [features]="addSourceInfo.graphs"></app-label-feature>
       <app-label-success *ngIf="addStatueIndex == 2" (createAgainEmit)="createAgain();" (viewDetailEmit)="viewDetail()"></app-label-success>
     </div>
     <div class="bottom" *ngIf="addStatueIndex < 2">

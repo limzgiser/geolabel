@@ -1,0 +1,11 @@
+{
+  "status": {
+    "code": "200",
+    "desc": "操作成功"
+  },
+  "data":  {
+    "map.config":"./assets/config/mapboxmap.config.json",
+    "service.config":"./assets/config/service.config.json",
+    "menu.config": "./assets/config/menu.config.json"
+  }
+}

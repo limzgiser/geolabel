@@ -7,8 +7,9 @@ import { Subscription } from 'rxjs';
 import { mapTo, delay } from 'rxjs/operators';
 // import { ids } from './search-control/search.default.style';
 import { HttpClient } from '@angular/common/http';
+import {CfhttpService} from "../../services/cfhttp.service";
 
-import { ModuleDataRxInquireService } from "@cmss/core";
+
 
 @Component({
   selector: 'app-geo-label',
@@ -18,7 +19,7 @@ import { ModuleDataRxInquireService } from "@cmss/core";
 export class GeoLabelComponent implements OnInit {
 
   constructor(private mapboxmapService: MapboxmapService,
-    private dataRxInquireService: ModuleDataRxInquireService
+    private cfHttp: CfhttpService
     , private coreMessageService: CoreMessageService,
     private http: HttpClient) { }
   mapboxglmap = null;
@@ -27,9 +28,9 @@ export class GeoLabelComponent implements OnInit {
   sub: Subscription;
   treeNodeInfo = null;
   searchGeometry = null;
-  
- 
-  
+
+
+
   ngOnInit() {
 
     this.sub = this.coreMessageService.nodemessage.subscribe((nodeinfo: any) => {
@@ -60,9 +61,9 @@ export class GeoLabelComponent implements OnInit {
 
   }
 
- 
+
   mapInit(type) {
-    
+
   }
   drawEnd(data) {
     if (data) {
@@ -71,7 +72,7 @@ export class GeoLabelComponent implements OnInit {
       this.searchGeometry = null;
     }
   }
-  
+
   clearMeasure(e) {
 
   }

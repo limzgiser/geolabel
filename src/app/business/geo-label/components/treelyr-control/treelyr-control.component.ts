@@ -121,7 +121,7 @@ export class TreelyrControlComponent implements OnInit {
     });
   }
   showLegend(legends) {
-      console.log(legends);
+     // console.log(legends);
   }
   mapImgClick(event) {
     let [type, index] = event;

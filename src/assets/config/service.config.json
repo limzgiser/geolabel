@@ -1,0 +1,47 @@
+{
+
+  "host": {
+    "{{api}}": "http://192.168.2.88/"
+  },
+  "list": [
+    {
+      "id": "base.map",
+      "des": "底图样式",
+      "url": "http://webres.cityfun.com.cn/szmap/szmap_dark/3857/map_dark.json"
+    }, {
+      "id": "mapbox.map",
+      "des": "mapbox服务配置文件",
+      "url": "./assets/config/mapboxmap.config.json"
+    },
+    {
+      "id": "web.meta",
+      "des": "web元信息",
+      "url": "./assets/config/mock.data/web.meta.json"
+    },
+    {
+      "id": "menu.config",
+      "url": "./assets/config/menu.config.json"
+    },
+    {
+      "id": "tree.config",
+      "url": "./assets/config/maptree/map.tree.config.json"
+    },  {
+      "id": "tree.legend",
+      "des": "图层树节点ID，图层ID",
+      "url": "./assets/config/maptree/mapbox.tree.legend.json"
+    },
+    {
+      "id": "--------------------------------------------------------------------"
+    },
+    {
+      "id": "login",
+      "des": "登陆",
+      "url": "{{api}}yztbhser/api/admin/auth/login"
+    },
+    {
+      "id": "add.tag",
+      "des": "添加标记",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagAdd"
+    }
+  ]
+}

@@ -3,37 +3,37 @@
     <nz-form-item >
       <nz-form-label  [nzSpan]="6" nzRequired nzFor="name">名称</nz-form-label>
       <nz-form-control [nzSpan]="18" nzErrorTip="请输入名称!">
-        <input nz-input formControlName="name"   />
+        <input nz-input formControlName="title"   />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item >
       <nz-form-label    [nzSpan]="6"  nzRequired nzFor="isPublic">公开度</nz-form-label>
       <nz-form-control  [nzSpan]="18"  nzErrorTip="请选择公开度!">
-        <nz-radio-group   id="isPublic"  formControlName="isPublic">
-          <label nz-radio nzValue="公开">公开</label>
-          <label nz-radio nzValue="私有">私有</label>
+        <nz-radio-group   id="ispublic"  formControlName="ispublic">
+          <label nz-radio nzValue='1'>公开</label>
+          <label nz-radio nzValue='0'>私有</label>
         </nz-radio-group>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item >
       <nz-form-label [nzSpan]="6"  nzRequired nzFor="classify">分类</nz-form-label>
       <nz-form-control [nzSpan]="18"   nzErrorTip="请选择分类!">
-        <nz-cascader id="classify" formControlName="classify"   [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="onChanges($event)"  >
+        <nz-cascader id="categoryid" formControlName="categoryid"   [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="onChanges($event)"  >
         </nz-cascader>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item >
       <nz-form-label [nzSpan]="6"  nzRequired nzFor="tag">标签</nz-form-label>
       <nz-form-control [nzSpan]="18"   nzErrorTip="请添加标签!">
-        <lb-form-tag  id="tag" formControlName="tag"  ></lb-form-tag>
+        <lb-form-tag  id="taginfos" formControlName="taginfos"  ></lb-form-tag>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item >
       <nz-form-label [nzSpan]="6"  nzRequired nzFor="desInfo">描述信息</nz-form-label>
       <nz-form-control [nzSpan]="18"  nzErrorTip="请输入描述信息！!">
-     <textarea id="desInfo"
+     <textarea id="desc"
                nz-input
-               formControlName="desInfo"
+               formControlName="desc"
                placeholder="请输入该标记描述信息"
                [nzAutosize]="{ minRows: 3, maxRows: 3 }"
      ></textarea>

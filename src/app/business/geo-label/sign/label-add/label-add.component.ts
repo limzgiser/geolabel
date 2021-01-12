@@ -2,8 +2,12 @@ import {ChangeDetectorRef, EventEmitter, Input, Optional, Output, ViewChild} fro
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {BaseInfoComponent} from "./base-info/base-info.component";
 import {LabelFeatureComponent} from "./label-feature/label-feature.component";
-import {LabelBaseInfo} from "../../types";
+import {LabelBaseInfo, soureTagInfo} from "../../types";
 import { cloneDeep } from 'lodash';
+import {SignComponent} from "../sign.component";
+import {SignService} from "../sign.service";
+import {sourceTagToParams} from "../../utils/main-format";
+
 
 @Component({
   selector: 'app-label-add',
@@ -15,18 +19,16 @@ import { cloneDeep } from 'lodash';
 export class LabelAddComponent implements OnInit {
   addStatueIndex: number = 0;
   isOpen: boolean = true;
-
-
   @Output() showEditToolEvent = new EventEmitter<boolean>();
   @ViewChild('baseInfoComponent', { static: false }) private baseInfoComponent: BaseInfoComponent;
   @ViewChild('labelFeatureComponent',{static:false}) private  labelFeatureComponent:LabelFeatureComponent;
 
   addServeInfo:LabelBaseInfo =   null;
-  addSourceInfo  = {
-    baseInfo:null,
-    geoms:[],
+  addSourceInfo :soureTagInfo = {
+    baseInfo: null,
+    graphs: [],
   };
-  constructor( ) {}
+  constructor(private  signComponent:SignComponent,private  signService:SignService) {}
   ngOnInit() {
 
   }
@@ -38,15 +40,15 @@ export class LabelAddComponent implements OnInit {
          if(this.baseInfoComponent.validateForm.valid){
            // 获取基础信息表单
            this.addSourceInfo.baseInfo = cloneDeep(this.baseInfoComponent.validateForm.value) ;
-           // console.log(this.baseInfoComponent.validateForm.value);
            this.addStatueIndex++;
          }
          break;
        case 1:
          // 空间集合要素
-         // console.log(this.labelFeatureComponent.features);
-         this.addSourceInfo.geoms = this.labelFeatureComponent.features;
-         this.addStatueIndex ++;
+         this.addSourceInfo.graphs = this.labelFeatureComponent.features;
+         let {lng,lat} = this.signComponent.editMarker.getLngLat();
+         this.addTag([lng,lat],this.addSourceInfo);
+
          break;
 
      }
@@ -68,6 +70,14 @@ export class LabelAddComponent implements OnInit {
   }
   viewDetail():void{
 
+  }
+  addTag(geo:[number,number],source:soureTagInfo){
+  let res =    sourceTagToParams(geo,source);
+    this.signService.addTag(res).subscribe((success:boolean)=>{
+      if(success){
+        this.addStatueIndex ++;
+      }
+    })
   }
    toggleDrawTool(statueIndex: number): void {
     if (statueIndex == 1) {

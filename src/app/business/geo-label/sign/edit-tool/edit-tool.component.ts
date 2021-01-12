@@ -96,7 +96,6 @@ export class EditToolComponent implements OnInit {
     function updateArea(data: any, type: 'create' | 'delete' | 'update') {
       self.cdr.markForCheck();
       self.selectIndex = -1;
-      console.log(data)
       switch (type) {
         case 'create':
           self.editToolService.addFeature(data.features[0]);

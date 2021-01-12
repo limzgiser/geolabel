@@ -1,18 +1,10 @@
-<!--
- * @Author: your name
- * @Date: 2019-12-19 08:53:23
- * @LastEditTime: 2020-07-28 16:42:44
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \SCMPortal\src\app\business\sharecoms\user-admin-v1\user-admin-v1.component.html
- -->
- <div id="right-menu">
+<div id="right-menu">
     <div class="ring" (click)='switchFullScreen();'>
       <img title="全屏/退出全屏" src="./assets/img/menu/icon_fullscreen.png">
     </div>
     <div class="user-info" (click)="showUserOperation($event)">
       <i class="anticon anticon-user"></i>
-      <p>{{authInfo.data.RealName}}</p>
+      <p>{{authInfo?.data?.userName}}</p>
       <i class="down" [ngClass]="{'rotate90': menuDropDown, 'rotate180': !menuDropDown}"></i>
     </div>
     <div class="user-operation" *ngIf="menuDropDown">

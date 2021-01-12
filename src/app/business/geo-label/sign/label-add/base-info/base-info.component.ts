@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { NzCascaderOption } from 'ng-zorro-antd/cascader';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {LabelBaseInfo, LabelgeoFeature} from "../../../types";
 
 @Component({
   selector: 'app-base-info',
@@ -17,43 +18,43 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class BaseInfoComponent implements OnInit,OnChanges {
-
-@Input() baseInfo = null;
+defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "desc": '',categoryid:[]};
+@Input() baseInfo:LabelBaseInfo = null;
   validateForm!: FormGroup;
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
    options = [
     {
-      value: '道路',
+      value: '1',
       label: '道路',
       children: [
         {
-          value: '高速',
+          value: '11',
           label: '高速',
           children: [
             {
-              value: '钢型路面',
+              value: '111',
               label: '钢型路面',
               isLeaf: true
             }
           ]
         },
         {
-          value: '国道',
+          value: '111',
           label: '国道',
           isLeaf: true
         }
       ]
     },
     {
-      value: '铁路',
+      value: '1111',
       label: '铁路',
       children: [
         {
-          value: '国道',
+          value: '1111',
           label: '国道',
           children: [
             {
-              value: '柔性路面',
+              value: '1111',
               label: '柔性路面',
               isLeaf: true
             }
@@ -81,15 +82,13 @@ export class BaseInfoComponent implements OnInit,OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
 
-    let {name,isPublic,classify,desInfo,tag} = this.baseInfo || {
-      name:"",isPublic:"",classify:[],desInfo:"",tag:[]
-    };
+    const {title,ispublic,taginfos,desc,categoryid} = this.baseInfo ||  this.defaultValue;
     this.validateForm = this.fb.group({
-      name: [name,  [Validators.required]],
-      isPublic: [isPublic, [Validators.required]],
-      classify: [classify, [Validators.required ]],
-      desInfo: [desInfo, [Validators.required]],
-      tag:[ tag, [Validators.required]],
+      title: [title,  [Validators.required]],
+      ispublic: [ ispublic, [Validators.required]],
+      categoryid: [categoryid, [Validators.required ]],
+      desc: [desc, [Validators.required]],
+      taginfos:[ taginfos , [Validators.required]],
     });
   }
 

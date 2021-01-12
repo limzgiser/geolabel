@@ -7,15 +7,14 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefaultInterceptor } from './shared/services/default.interceptor';
-import { CoreModule, StartupService, ResourceMetaInfoService } from '@cmss/core';
+import { MenuConfigService } from './services/menu.config.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { CfhttpService } from './services/cfhttp.service';
 import { MapboxmapService } from './cityfun/mapbox-map/service/mapboxmap.service';
-export function StartupServiceFactory(startupService: StartupService) {
-  return () =>
-    startupService.loadRootConfig('./assets/config/root.config.json');
-}
+import {InterceptorService} from "./services/interceptor.service";
+import {MainConfigService} from "./services/main.config.service";
+
+
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ export function StartupServiceFactory(startupService: StartupService) {
     BrowserModule,
     BrowserAnimationsModule,
     LayoutRoutesModule,
-    CoreModule,
     CityfunModule
   ],
   bootstrap: [
@@ -34,15 +32,10 @@ export function StartupServiceFactory(startupService: StartupService) {
   ],
   providers: [
     MapboxmapService,
-    ResourceMetaInfoService,
-    StartupService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: StartupServiceFactory,
-      deps: [StartupService],
-      multi: true
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
+    MainConfigService,
+    MenuConfigService,
+    CfhttpService,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
   ]
 })
 export class AppModule { }

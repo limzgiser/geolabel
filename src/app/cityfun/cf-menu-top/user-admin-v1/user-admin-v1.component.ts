@@ -17,12 +17,13 @@ import { Component, OnInit } from '@angular/core';
 export class UserAdminV1Component implements OnInit {
   constructor(private router: Router) { }
   logined = false;
-  authInfo;
+  authInfo = null;
   public menuDropDown = false;
   isFullscreen: any = true;   // 全屏事件
   ngOnInit() {
     this.logined = this.isLogin();
     this.authInfo = JSON.parse(sessionStorage.getItem('authInfo'));
+
   }
   /**
    * 登录

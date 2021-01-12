@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ModuleDataRxInquireService } from '@cmss/core';
+
 import * as mapboxgl from 'mapbox-gl';
 import { Observable, of } from 'rxjs';
 import { mapTo, delay, take, switchMap } from 'rxjs/operators';
 import { cursorType } from './mapboxTypes';
+import {CfhttpService} from "../../../services/cfhttp.service";
 // mapboxgl.srid = 4326;   // 4326 or 3857
 
 @Injectable({
@@ -19,7 +20,7 @@ export class MapboxmapService {
   firstFullLoaded = false;
   constructor(
     private http: HttpClient,
-    private dataRxInquireService: ModuleDataRxInquireService
+    private cfHttp: CfhttpService
   ) {
     this.init().subscribe((res) => {
       console.log('地图创建完成');
@@ -102,7 +103,7 @@ export class MapboxmapService {
    * 获取底图样式配置文件
    */
   private getBaseMapStyle() {
-    return this.dataRxInquireService.get('mapboxmap', 'base.map').pipe(take(1)); //.toPromise();
+    return this.cfHttp.get('base.map').pipe(take(1)); //.toPromise();
   }
 
   /**

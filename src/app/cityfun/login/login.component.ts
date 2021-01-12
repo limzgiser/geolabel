@@ -9,7 +9,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { calcMD5 } from '../../shared/services/md5';
-import { ModuleDataRxInquireService } from '@cmss/core';
+import {CfhttpService} from "../../services/cfhttp.service";
+import {Base, loginInfo} from "../../types/types";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     fb: FormBuilder,
     private mzMessageService: NzMessageService,
     private router: Router,
-    private dataRxInquireService: ModuleDataRxInquireService
+    private cfHttp: CfhttpService
   ) {
     this.form = fb.group({
       account: ['', [Validators.required]],
@@ -55,19 +57,23 @@ export class LoginComponent implements OnInit, OnDestroy {
   public onSubmit(values: Object): void {
     this.submitted = true;
     if (this.form.valid) {
-      const params = {
-        account: this.account.value,
-        password: calcMD5(this.password.value),
-      };
-      this.dataRxInquireService.get('login', 'login', null, params).subscribe(
-        (res: any) => {
-          if (res && res.status.code.toString().indexOf('200') >= 0) {
-            this.loginSuccessCallBack(res.data);
-            this.mzMessageService.info(res.status.desc);
+      // const params = {
+      //   account: this.account.value,
+      //   password: calcMD5(this.password.value),
+      // };
+      this.cfHttp.post('login',{
+        password: this.password.value,
+        userName: this.account.value,
+      }).subscribe(
+        (res: Base<loginInfo>) => {
+          if (res && res.code == 1 ) {
+            let userInfo   = Object.assign(res.data,{userName:this.account.value,})         ;
+            this.loginSuccessCallBack(userInfo);
+            this.mzMessageService.info(res.msg);
             this.router.navigate(['./layout']);
           } else {
             this.submitted = false;
-            this.mzMessageService.info(res.status.desc);
+            this.mzMessageService.error(res.msg);
           }
         },
         (error) => {
@@ -92,7 +98,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {}
   getMeta() {
-    this.dataRxInquireService.get('cf', 'web.meta').subscribe((res) => {
+    this.cfHttp.get('web.meta'  ).subscribe((res) => {
       this.webetaInfo = res;
     });
   }

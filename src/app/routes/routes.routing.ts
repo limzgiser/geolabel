@@ -2,11 +2,15 @@ import { AuthGuard } from '../shared/services/auth.guard';
 import { Layout01Component } from '../layout/layout01/layout01.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {MainConfigService} from "../services/main.config.service";
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
+    resolve: {
+      maincfg: MainConfigService,
+    },
     loadChildren: () =>
       import('../cityfun/login/login.module').then((m) => m.LoginModule),
   },

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { ModuleDataRxInquireService } from '@cmss/core';
+
 import { MapboxmapService } from './../mapbox-map/service/mapboxmap.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {CfhttpService} from "../../services/cfhttp.service";
 
 
 
@@ -13,7 +14,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class MapboxMaptreeControlComponent implements OnInit {
   mapboxglmap = null;
   constructor(private mapboxmapService: MapboxmapService,
-    private dataRxInquireService: ModuleDataRxInquireService,
+    private cfHttp:CfhttpService,
     private http: HttpClient) { }
   defaultKeys: Array<string> = [];
   isLoadedDefaultLayers = false;
@@ -148,14 +149,14 @@ export class MapboxMaptreeControlComponent implements OnInit {
 
   // 图层书配置文件
   private getTreeConfig() {
-    return this.dataRxInquireService.get('mapboxmap', 'tree.config', null, null).toPromise();
+    return this.cfHttp.get('tree.config', ).toPromise();
   }
   private getMapboxMapConfig() {
-    return this.dataRxInquireService.get('mapboxmap', 'mapbox.map').toPromise();
+    return this.cfHttp.get('mapbox.map').toPromise();
   }
 
   private getTreeKeyLyrIdConfig() {
-    return this.dataRxInquireService.get('mapboxmap', 'tree.legend', null, null).toPromise();
+    return this.cfHttp.get('tree.legend', ).toPromise();
   }
 
   treeDestroy(data) {
