@@ -102,6 +102,7 @@ export class SignComponent implements OnInit {
       this.editMarker = null;
     }
     this.mapboxmapService.setCursor('default');
+    this.showEditTool = false;
   }
   // 添加 Move Marker
   addMoveMarker(coordinate: [number, number], isMoveing?: boolean): void {

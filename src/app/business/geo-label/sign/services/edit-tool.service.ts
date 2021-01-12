@@ -13,17 +13,25 @@ export class EditToolService {
   private subDelete = new Subject<Feature>();
   readonly deleteFeature$ = this.subDelete.asObservable();
 
-  constructor() { 
-    
+  private subAddToMap = new Subject<Array<Feature>>();
+  readonly addToMap$ = this.subAddToMap.asObservable();
+
+
+
+  constructor() {
+
   }
-  addFeature(feature: Feature) {
+  addFeature(feature: Feature): void  {
     this.subAdd.next(feature);
   }
 
-  editFeature(feature: Feature) {
+  editFeature(feature: Feature): void  {
     this.subEdit.next(feature);
   }
   deleteFeature(feature: Feature): void {
     this.subDelete.next(feature);
+  }
+  addFeatureToMap(features:Array<Feature>):void{
+    this.subAddToMap.next(features)
   }
 }

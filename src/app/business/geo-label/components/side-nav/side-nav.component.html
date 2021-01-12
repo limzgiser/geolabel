@@ -5,12 +5,8 @@
     *ngFor="let item of navData"
     (click)="itemClick(item)"
   >
+    <img *ngIf="item.title != selectItem.title" [src]="item.defaultIcon">
+    <img  *ngIf="item.title == selectItem.title" [src]="item.selectIcon">
     <span> {{ item.title }}</span>
-    <i
-      nz-icon
-      style="font-size: 18px; margin-top: 5px"
-      nzType="{{ item.type }}"
-      nzTheme="outline"
-    ></i>
   </div>
 </div>

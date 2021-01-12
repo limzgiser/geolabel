@@ -3,8 +3,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
-
+    height:  50vh;
+    .top{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img{
+        width: 60px;
+        height: 60px;
+      }
+      .success{
+        font-size: 16px;
+        font-weight: bold;
+        font-family: Microsoft YaHei;
+      }
+    }
     .bottom{
         display: flex;
         margin-top: 20px;
@@ -12,7 +25,10 @@
             font-size: 16px;
             font-weight: bold;
         }
+        button:first-child{
+          margin-right: 10px;
+        }
     }
-   
+
 
 }

@@ -2,8 +2,8 @@
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
     <nz-form-item >
       <nz-form-label  [nzSpan]="6" nzRequired nzFor="name">名称</nz-form-label>
-      <nz-form-control [nzSpan]="18" nzErrorTip="请输入名称，且不超过15个字符!">
-        <input nz-input formControlName="name" id="name" />
+      <nz-form-control [nzSpan]="18" nzErrorTip="请输入名称!">
+        <input nz-input formControlName="name"   />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item >
@@ -22,7 +22,12 @@
         </nz-cascader>
       </nz-form-control>
     </nz-form-item>
-
+    <nz-form-item >
+      <nz-form-label [nzSpan]="6"  nzRequired nzFor="tag">标签</nz-form-label>
+      <nz-form-control [nzSpan]="18"   nzErrorTip="请添加标签!">
+        <lb-form-tag  id="tag" formControlName="tag"  ></lb-form-tag>
+      </nz-form-control>
+    </nz-form-item>
     <nz-form-item >
       <nz-form-label [nzSpan]="6"  nzRequired nzFor="desInfo">描述信息</nz-form-label>
       <nz-form-control [nzSpan]="18"  nzErrorTip="请输入描述信息！!">
@@ -34,16 +39,10 @@
      ></textarea>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item >
-      <nz-form-label [nzSpan]="6"  nzRequired nzFor="tag">标签</nz-form-label>
-      <nz-form-control [nzSpan]="18"   nzErrorTip="请添加标签!">
-        <lb-form-tag  id="tag" formControlName="tag"  ></lb-form-tag>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 16, offset: 8 }">
-        <button nz-button nzType="primary" [disabled]="!validateForm.valid" >Submit</button>
-      </nz-form-control>
-    </nz-form-item>
+<!--    <nz-form-item>-->
+<!--      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 16, offset: 8 }">-->
+<!--        <button nz-button nzType="primary" [disabled]="!validateForm.valid" >Submit</button>-->
+<!--      </nz-form-control>-->
+<!--    </nz-form-item>-->
   </form>
 </div>

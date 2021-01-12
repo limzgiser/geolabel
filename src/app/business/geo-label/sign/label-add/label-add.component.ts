@@ -1,6 +1,9 @@
-import { EventEmitter, Output } from '@angular/core';
+import {ChangeDetectorRef, EventEmitter, Input, Optional, Output, ViewChild} from '@angular/core';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import {SignBaseinfoService} from "../services/sign-baseinfo.service";
+import {BaseInfoComponent} from "./base-info/base-info.component";
+import {LabelFeatureComponent} from "./label-feature/label-feature.component";
+import {LabelBaseInfo} from "../../types";
+import { cloneDeep } from 'lodash';
 
 @Component({
   selector: 'app-label-add',
@@ -12,27 +15,58 @@ import {SignBaseinfoService} from "../services/sign-baseinfo.service";
 export class LabelAddComponent implements OnInit {
   addStatueIndex: number = 0;
   isOpen: boolean = true;
-  value: string = '1234';
-  radioValue: string = '私有';
+
+
   @Output() showEditToolEvent = new EventEmitter<boolean>();
-  constructor(private  signBaseinfoService:SignBaseinfoService) {}
+  @ViewChild('baseInfoComponent', { static: false }) private baseInfoComponent: BaseInfoComponent;
+  @ViewChild('labelFeatureComponent',{static:false}) private  labelFeatureComponent:LabelFeatureComponent;
 
-  ngOnInit() {}
-  closePancel(e) {
-    this.isOpen = false;
+  addServeInfo:LabelBaseInfo =   null;
+  addSourceInfo  = {
+    baseInfo:null,
+    geoms:[],
+  };
+  constructor( ) {}
+  ngOnInit() {
+
   }
-
   nextClick(): void {
-    this.signBaseinfoService.nexStep();
-    // this.addStatueIndex += 1;
-    // this.toggleDrawTool(this.addStatueIndex);
-    // this.signBaseinfoService.nexStep();
+     switch (this.addStatueIndex) {
+       case 0:
+         this.baseInfoComponent.submitForm();
+         // 验证基础信息表单
+         if(this.baseInfoComponent.validateForm.valid){
+           // 获取基础信息表单
+           this.addSourceInfo.baseInfo = cloneDeep(this.baseInfoComponent.validateForm.value) ;
+           // console.log(this.baseInfoComponent.validateForm.value);
+           this.addStatueIndex++;
+         }
+         break;
+       case 1:
+         // 空间集合要素
+         // console.log(this.labelFeatureComponent.features);
+         this.addSourceInfo.geoms = this.labelFeatureComponent.features;
+         this.addStatueIndex ++;
+         break;
 
+     }
+    // 显示绘制工具
+    this.toggleDrawTool(this.addStatueIndex);
+
+  }
+  closeContainer():void {
+    this.isOpen = false;
   }
   beforeClick(): void {
     this.addStatueIndex -= 1;
     // show draw  Tool
-    this.toggleDrawTool(this.addStatueIndex);
+    this.toggleDrawTool(this.addStatueIndex)
+  }
+
+  createAgain():void{
+    this.addStatueIndex =   0 ;
+  }
+  viewDetail():void{
 
   }
    toggleDrawTool(statueIndex: number): void {

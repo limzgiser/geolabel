@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
-  OnInit,
+  Component, Input, OnChanges, OnDestroy,
+  OnInit, SimpleChanges,
 } from '@angular/core';
 import { Feature } from '@turf/turf';
 import { remove } from 'lodash';
@@ -17,14 +17,15 @@ import { EditToolService } from '../../services/edit-tool.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DatePipe],
 })
-export class LabelFeatureComponent implements OnInit {
+export class LabelFeatureComponent implements OnInit ,OnDestroy,OnChanges{
   constructor(
     private editToolService: EditToolService,
     private datePipe: DatePipe,
     private changeDetectorRef: ChangeDetectorRef
-  ) {}
+  ) {
 
-  features: Array<FeatureListItem> = [];
+  }
+  @Input()  features: Array<FeatureListItem> = [];
   addsub = null;
   editsub = null;
   deletesub = null;
@@ -71,6 +72,14 @@ export class LabelFeatureComponent implements OnInit {
   removeFeature(featureListItem: FeatureListItem): void {
     this.editToolService.deleteFeature(featureListItem.feature);
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if(this.features){
+      // 如果features 绘制要素回填地图
+      let features =  this.features.map((item)=>item.feature);
+      this.editToolService.addFeatureToMap(features);
+    }
+  }
+
   ngOnDestroy(): void {
     this.editsub && this.editsub.unsubscribe();
     this.addsub && this.addsub.unsubscribe();

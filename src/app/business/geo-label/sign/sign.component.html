@@ -3,6 +3,7 @@
   <app-label-add
     *ngIf="markerStatue == 2"
     (showEditToolEvent)="toggleEditTool($event)"
+
   ></app-label-add>
   <!-- <app-label-add></app-label-add> -->
   <div class="add-mark">
@@ -13,7 +14,7 @@
       <button nz-button nzType="default" (click)="stopMarker()">取消</button>
     </div>
   </div>
-  <div class="edit-tool" *ngIf="showEditTool">
+  <div class="edit-tool" *ngIf="showEditTool"  >
     <lb-edit-tool></lb-edit-tool>
   </div>
 </div>

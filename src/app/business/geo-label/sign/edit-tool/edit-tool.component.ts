@@ -27,9 +27,10 @@ import {
   event_draw_update,
   offMapEvent,
 } from '../../utils/mapTool';
-import { remove } from 'lodash';
+
 import {drawStyles} from "./style";
 import {tools} from "./toolConfig";
+
 
 @Component({
   selector: 'lb-edit-tool',
@@ -68,7 +69,8 @@ export class EditToolComponent implements OnInit {
   mapboxglmap: mapboxgl.Map = null;
   mapboxDraw: MapboxDraw = null;
   selectIndex: number = -1;
-  deletesub = null;
+  deleteSub = null;
+  addToMapSub= null;
   @Input() tools: Array<drawToolItem> =tools;
   eventCallBack = {};
   constructor(
@@ -89,10 +91,12 @@ export class EditToolComponent implements OnInit {
 
   ngOnInit(): void {}
   mapInit(): void {
+
     let self = this;
     function updateArea(data: any, type: 'create' | 'delete' | 'update') {
       self.cdr.markForCheck();
       self.selectIndex = -1;
+      console.log(data)
       switch (type) {
         case 'create':
           self.editToolService.addFeature(data.features[0]);
@@ -121,6 +125,7 @@ export class EditToolComponent implements OnInit {
       },
     });
     this.mapboxglmap.addControl(this.mapboxDraw, 'bottom-right');
+
     this.eventCallBack[event_draw_create] = function (e) {
       updateArea(e, 'create');
     };
@@ -136,12 +141,23 @@ export class EditToolComponent implements OnInit {
     this.mapboxglmap.on('draw.update', this.eventCallBack[event_draw_update]);
 
 
-    this.deletesub = this.editToolService.deleteFeature$.subscribe(
+    this.deleteSub = this.editToolService.deleteFeature$.subscribe(
       (feature: Feature) => {
          this.delete([feature.id as string]);
       }
     );
+    this.addToMapSub = this.editToolService.addToMap$.subscribe((features:Array<Feature>)=>{
+        this.initDrawFeaturesToMap(features);
+    });
   }
+
+  initDrawFeaturesToMap(features:Array<Feature>):void{
+
+    features.forEach(feature=>{
+       this.mapboxDraw.add(feature);
+    })
+  }
+
   tooItemClick(item: drawToolItem, index: number): void {
     this.selectIndex = index;
     this.mapboxDraw.changeMode(item.type);
@@ -167,6 +183,8 @@ export class EditToolComponent implements OnInit {
     if (this.mapboxDraw) {
       this.mapboxglmap.removeControl(this.mapboxDraw);
     }
+    this.deleteSub && this.deleteSub.unsubscribe();
+    this.addToMapSub && this.addToMapSub.unsubscribe();
     offMapEvent(
       this.mapboxglmap,
       'draw.create',

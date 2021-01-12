@@ -5,6 +5,8 @@ export interface NavItem {
   type?: string;
   select: boolean;
   path: string;
+  defaultIcon?:string;
+  selectIcon?:string;
 }
 
 export interface labelItem {
@@ -31,4 +33,18 @@ export interface FeatureListItem {
   type: string ;// 'Point' | 'LineString' | 'Polygon';
   des?: string;
   icon?: string;
+}
+export interface LabelgeoFeature {
+  "title":string;
+  "desc": string;
+  "geotype": 'Point' | 'LineString' | 'Polygon' | 'MultiLineString'| 'MultiPlygon';
+  "geom":  string;
+}
+export interface LabelBaseInfo {
+  "title": string;
+  "ispublic": number|string;
+  "categoryid": number|string;
+  "taginfos":string;
+  "desc": string;
+  "geoms":Array<LabelgeoFeature>
 }
