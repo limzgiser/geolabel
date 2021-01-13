@@ -1,35 +1,35 @@
 <div class="search">
-  <app-label-container title="标记查询" [closeble] = 'false' *ngIf="isOpen" (closed)="closePancel($event)">
+  <app-label-container title="标记查询" [closeble] = 'false' *ngIf="isOpen" (closed)="closeContainer()">
     <div class="top">
       <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
-        <input type="text" nz-input placeholder="请输入关键字" />
+        <input type="text" nz-input [(ngModel)]="keyString" placeholder="请输入关键字" />
       </nz-input-group>
       <div class="condition param-item">
-        <span
+        <span class="toggle" (click)="toggleFilter =!toggleFilter"
           >属性筛选<i
             nz-icon
             style="margin-left: 5px"
-            nzType="up"
+            [nzType]="toggleFilter?'up':'down'"
             nzTheme="outline"
           ></i
         ></span>
-        <span>清空条件</span>
+        <span class="clear" (click)="clearParams()">清空条件</span>
       </div>
-      <div class="mark-classify param-item">
-        <span>标记分类：</span>
-        <nz-select ngModel="道路">
-          <nz-option nzValue="道路" nzLabel="道路"></nz-option>
-          <nz-option nzValue="道路" nzLabel="道路"></nz-option>
-          <nz-option nzValue="道路" nzLabel="道路" nzDisabled></nz-option>
-        </nz-select>
-      </div>
-      <div class="select-time param-item">
-        <span>创建时间：</span>
-        <nz-range-picker
-          [(ngModel)]="dateRange"
-          (ngModelChange)="onChange($event)"
-        ></nz-range-picker>
-      </div>
+       <ng-container *ngIf="toggleFilter">
+         <div class="mark-classify param-item">
+           <span>标记分类：</span>
+           <nz-cascader    [(ngModel)]="classifyValues"  [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="classifyOnChanges($event)"  >
+           </nz-cascader>
+         </div>
+         <div class="select-time param-item">
+           <span>创建时间：</span>
+           <nz-range-picker
+             [nzFormat]="dateFormat"
+             [(ngModel)]="dateRange"
+             (ngModelChange)="timeRangeOnChange($event)"
+           ></nz-range-picker>
+         </div>
+       </ng-container>
     </div>
     <div class="bottom">
       <app-label-list ></app-label-list>
@@ -38,5 +38,5 @@
 </div>
 
 <ng-template #suffixButton>
-  <button nz-button nzType="primary" nzSize="large" nzSearch>查询</button>
+  <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doSearch();">查询</button>
 </ng-template>

@@ -18,4 +18,7 @@ export class SignService {
       headers: needToken
     }).pipe(map((res:Base<boolean>)=>res.data));
   }
+  getTag():Observable<any>{
+   return  this.cfHttp.get('get.tags').pipe(map((res:any)=>res.data));
+  }
 }

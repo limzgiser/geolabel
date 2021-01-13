@@ -12,10 +12,7 @@ import {CfhttpService} from "../../../services/cfhttp.service";
   providedIn: 'root',
 })
 export class MapboxmapService {
-  styleinit = false;
-
   specialStyel = null;
-
   mapboxmap = null;
   firstFullLoaded = false;
   constructor(
@@ -24,10 +21,7 @@ export class MapboxmapService {
   ) {
     this.init().subscribe((res) => {
       console.log('地图创建完成');
-      this.mapboxmap.on('load', () => {
-        console.log('样式加载完成');
-        this.addSplieGroupLayer();
-      });
+
     });
   }
   /**

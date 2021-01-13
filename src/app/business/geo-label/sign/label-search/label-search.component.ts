@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {NzCascaderOption} from "ng-zorro-antd/cascader";
+import {SearchParams} from "../../types";
+
+
 
 @Component({
   selector: 'app-label-search',
@@ -7,17 +11,82 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class LabelSearchComponent implements OnInit {
-
-  dateRange = [];
+  keyString:string = "";
+  nowData :Date = new Date();
+  dateRange :Array<Date>= [];
   isOpen: boolean = true;
-  constructor() {}
+  toggleFilter:boolean = true;
+  dateFormat:string = 'yyyy/MM/dd';
+  classifyValues = ['1','11','111']
+  options = [
+    {
+      value: '1',
+      label: '道路',
+      children: [
+        {
+          value: '11',
+          label: '高速',
+          children: [
+            {
+              value: '111',
+              label: '钢型路面',
+              isLeaf: true
+            }
+          ]
+        },
+        {
+          value: '111',
+          label: '国道',
+          isLeaf: true
+        }
+      ]
+    },
+    {
+      value: '1111',
+      label: '铁路',
+      children: [
+        {
+          value: '1111',
+          label: '国道',
+          children: [
+            {
+              value: '1111',
+              label: '柔性路面',
+              isLeaf: true
+            }
+          ]
+        }
+      ]
+    }
+  ];
+  nzOptions: NzCascaderOption[] =  this.options;
+  @Output() search= new EventEmitter<any>();
+  constructor( ) {
 
+  }
   ngOnInit() {}
-  closePancel(e){
+
+  closeContainer(){
     this.isOpen = false;
   }
-  onChange(result: Date): void {
+  clearParams():void{
+    this.dateRange = [];
+    this.classifyValues  = [];
+    this.keyString =  '';
+  }
+ timeRangeOnChange(result: Array<string>): void {
     console.log('onChange: ', result);
+  }
+  doSearch():void{
+    let searchParams:SearchParams =  {
+      keyword:this.keyString,
+      dataRage:this.dateRange,
+      classifyValues:this.classifyValues
+    }
+    this.search.emit(searchParams)
+  }
+  classifyOnChanges($event){
+
   }
 
 }

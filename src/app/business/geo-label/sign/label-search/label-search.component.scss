@@ -12,6 +12,9 @@
       justify-content: space-between;
       border-bottom: 1px dashed #d9d9d9;
       color: #1890ff;
+      .toggle,.clear{
+        cursor: pointer;
+      }
     }
     .mark-classify,
     .select-time {
@@ -19,6 +22,9 @@
       display: flex;
       align-items: center;
       justify-content: flex-start;
+      nz-cascader{
+        flex: 1;
+      }
       span {
         display: flex;
         width: 75px;

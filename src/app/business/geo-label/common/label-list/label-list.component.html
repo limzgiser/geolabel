@@ -12,12 +12,26 @@
   <div class="data-content" *ngIf="showPanel">
     <!--  @listToggle -->
     <app-cf-scroll>
-      <div class="content">
-        <div class="item" *ngFor="let item of labelList; let i = index">
+      <div class="content" (mouseleave)="mouseLeave()" >
+        <div class="item" [style.opacity]="item.hidden?0.2:1" *ngFor="let item of labelList; let i = index" (mouseenter)="mouseenter(item)" >
           <img class="index-logo" src="./assets/img/map/pin_{{ i + 1 }}.png" />
           <div class="right">
             <img [src]="'./assets/img/map/icon_list_private.png'" />
             <span>{{ item.title }}</span>
+            <ng-container *ngIf="!item.hidden">
+              <img class="eyeImg"
+                   *ngIf="item.id==hoverItem?.id"
+                   [src]="'./assets/img/map/icon_list_display.png'"
+                   (click)="hideItem(item);"
+              />
+            </ng-container>
+            <ng-container *ngIf="item.hidden">
+              <img class="eyeImg"
+                   *ngIf="item.id==hoverItem?.id"
+                   [src]="'./assets/img/map/icon_list_hide.png'"
+                   (click)="hideItem(item);"
+              />
+            </ng-container>
             <img [src]="'./assets/img/map/icon_list_selected.png'" />
           </div>
         </div>

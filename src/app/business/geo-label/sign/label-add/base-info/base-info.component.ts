@@ -76,7 +76,7 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
       this.validateForm.controls[i].updateValueAndValidity();
     }
   }
-  onChanges(value){
+  classifyNgModelChange(value){
 
   }
 

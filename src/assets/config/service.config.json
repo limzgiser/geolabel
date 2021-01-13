@@ -42,6 +42,11 @@
       "id": "add.tag",
       "des": "添加标记",
       "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagAdd"
+    },
+    {
+      "id": "get.tags",
+      "des": "获取标签列表",
+      "url": "./assets/config/mock.data/point.json"
     }
   ]
 }

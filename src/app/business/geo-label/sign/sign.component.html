@@ -1,5 +1,8 @@
 <div class="wrapper">
-  <app-label-search *ngIf="markerStatue != 2"></app-label-search>
+  <app-label-search
+    *ngIf="markerStatue != 2"
+    (search)="doSearch($event)"
+  ></app-label-search>
   <app-label-add
     *ngIf="markerStatue == 2"
     (showEditToolEvent)="toggleEditTool($event)"

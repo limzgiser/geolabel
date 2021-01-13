@@ -9,6 +9,9 @@ import {
   MarkerStatue,
 } from '../utils/mapTool';
 import { DOCUMENT } from '@angular/common';
+import {SearchParams} from "../types";
+import {CfhttpService} from "../../../services/cfhttp.service";
+import {SignService} from "./sign.service";
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
@@ -16,10 +19,12 @@ import { DOCUMENT } from '@angular/common';
 })
 export class SignComponent implements OnInit {
   constructor(
-    private mapboxmapService: MapboxmapService,
-    @Inject(DOCUMENT) private doc: Document
+    private mapboxMapService: MapboxmapService,
+    @Inject(DOCUMENT) private doc: Document,
+    private  signService:SignService
+
   ) {}
-  mapboxmap: mapboxgl.Map = null;
+  mapboxMap: mapboxgl.Map = null;
   markerStatue: MarkerStatue = MarkerStatue.none; // 状态
   moveMarker: mapboxgl.Marker = null;
   editMarker: mapboxgl.Marker = null;
@@ -28,33 +33,33 @@ export class SignComponent implements OnInit {
     // key: function () {},
   };
   ngOnInit() {
-    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
-      this.mapboxmap = mapboxglmap;
+    this.mapboxMapService.init().subscribe((mapboxMap: any) => {
+      this.mapboxMap = mapboxMap;
       if (
-        mapboxglmap.isStyleLoaded() ||
-        this.mapboxmapService.firstFullLoaded
+        mapboxMap.isStyleLoaded() ||
+        this.mapboxMapService.firstFullLoaded
       ) {
         this.mapInit();
       }
-      mapboxglmap.on('load', () => {
+      mapboxMap.on('load', () => {
         this.mapInit();
       });
     });
   }
-  mapInit() {
+  mapInit():void {
     this.bindMapEvent();
   }
 
-  bindMapEvent() {}
+  bindMapEvent():void {}
   /**
    * 添加标记
    */
   addMarker(): void {
     let self = this;
     this.markerStatue = MarkerStatue.moveing;
-    this.mapboxmapService.setCursor('default');
+    this.mapboxMapService.setCursor('default');
     offMapEvent(
-      this.mapboxmap,
+      this.mapboxMap,
       'mousemove',
       event_mousemove_key,
       this.eventCallBack
@@ -63,35 +68,35 @@ export class SignComponent implements OnInit {
       let { lng, lat } = e.lngLat;
       self.addMoveMarker([lng, lat], true);
     };
-    this.mapboxmap.on('mousemove', this.eventCallBack[event_mousemove_key]);
+    this.mapboxMap.on('mousemove', this.eventCallBack[event_mousemove_key]);
 
-    offMapEvent(this.mapboxmap, 'click', event_click_key, this.eventCallBack);
+    offMapEvent(this.mapboxMap, 'click', event_click_key, this.eventCallBack);
 
     this.eventCallBack[event_click_key] = function (e) {
       self.markerStatue = MarkerStatue.editing;
       let { lng, lat } = e.lngLat;
       self.addMoveMarker([lng, lat], false);
-      self.mapboxmapService.setCursor('grab');
+      self.mapboxMapService.setCursor('grab');
       offMapEvent(
-        self.mapboxmap,
+        self.mapboxMap,
         'mousemove',
         event_mousemove_key,
         self.eventCallBack
       );
     };
-    this.mapboxmap.once('click', this.eventCallBack[event_click_key]);
+    this.mapboxMap.once('click', this.eventCallBack[event_click_key]);
   }
   /**
    * 停止标记
    */
   stopMarker(): void {
     offMapEvent(
-      this.mapboxmap,
+      this.mapboxMap,
       'mousemove',
       event_mousemove_key,
       this.eventCallBack
     );
-    //  offMapEvent(this.mapboxmap, 'click', event_click_key, this.eventCallBack);
+    //  offMapEvent(this.mapboxMap, 'click', event_click_key, this.eventCallBack);
     this.markerStatue = MarkerStatue.none;
     if (this.moveMarker) {
       this.moveMarker.remove();
@@ -101,7 +106,7 @@ export class SignComponent implements OnInit {
       this.editMarker.remove();
       this.editMarker = null;
     }
-    this.mapboxmapService.setCursor('default');
+    this.mapboxMapService.setCursor('default');
     this.showEditTool = false;
   }
   // 添加 Move Marker
@@ -120,7 +125,7 @@ export class SignComponent implements OnInit {
           offset: [0, -20],
         })
           .setLngLat(coordinate)
-          .addTo(this.mapboxmap);
+          .addTo(this.mapboxMap);
       }
     } else {
       if (this.editMarker) {
@@ -131,12 +136,22 @@ export class SignComponent implements OnInit {
           offset: [0, -20],
         })
           .setLngLat(coordinate)
-          .addTo(this.mapboxmap);
+          .addTo(this.mapboxMap);
       }
     }
   }
 
   toggleEditTool(isShow:boolean):void{
     this.showEditTool = isShow;
+  }
+
+  doSearch(searchParams:SearchParams){
+    console.log("调用查询接口",searchParams)
+    this.getTags();
+  }
+  getTags(){
+     this.signService.getTag().subscribe(res=>{
+        console.log(res);
+     })
   }
 }

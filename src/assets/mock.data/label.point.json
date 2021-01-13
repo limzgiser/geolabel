@@ -1,0 +1,57 @@
+{
+  "msg": "success",
+  "code": 1,
+  "data": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            120.6868314743042,
+            31.30451512249619
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            120.70095062255858,
+            31.3130949590222
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            120.67642450332643,
+            31.319309352546167
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {},
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            120.69786071777344,
+            31.323433723598782
+          ]
+        }
+      }
+    ]
+  }
+}
+
+

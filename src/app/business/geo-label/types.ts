@@ -9,10 +9,12 @@ export interface NavItem {
   selectIcon?:string;
 }
 
-export interface labelItem {
+export interface ListLabelItem {
+  id:string;
   title: string;
   type: string;
   collected: boolean;
+  hidden?:boolean
 }
 
 export interface MarkerStatueItem {
@@ -53,4 +55,10 @@ export interface LabelBaseInfo {
 export interface soureTagInfo {
   baseInfo:LabelBaseInfo;
   graphs:Array<any>
+}
+
+export interface  SearchParams {
+  keyword:string;
+  dataRage:Array<Date>;
+  classifyValues:Array<string>;
 }
