@@ -5,9 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-
-// import * as  mapboxgl from 'mapbox-gl';
-
+import mapboxgl from 'cityfun-gl';
 import { MapboxmapService } from 'src/app/cityfun/mapbox-map/service/mapboxmap.service';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import DrawRectangle from 'mapbox-gl-draw-rectangle-mode';

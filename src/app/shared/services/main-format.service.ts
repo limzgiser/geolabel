@@ -200,7 +200,7 @@ export class MainFormatService {
   }
   // 归一化geojson
   normalizationGoeJsonField(geojson, field) {
-    const maxFeature = maxBy(geojson.features, (i) => {
+    const maxFeature = maxBy(geojson.features, (i:any) => {
       return Number(i.properties[field]);
     });
     if (maxFeature) {

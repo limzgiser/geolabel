@@ -1,4 +1,4 @@
-import { NgxG2Directive } from './graphics/ngxG2.directive';
+// import { NgxG2Directive } from './graphics/ngxG2.directive';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -45,7 +45,7 @@ const antZORRO = [
   NzCascaderModule
 ];
 
-const directive = [NgxG2Directive];
+const directive = [];
 // ng 核心模块
 const coreModule = [
   CommonModule,

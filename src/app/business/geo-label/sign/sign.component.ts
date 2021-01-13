@@ -1,7 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ViewChild } from '@angular/core';
 import { MapboxmapService } from 'src/app/cityfun/mapbox-map/service/mapboxmap.service';
-import * as mapboxgl from 'mapbox-gl';
-
+import mapboxgl from 'cityfun-gl';
 import {
   event_mousemove_key,
   offMapEvent,
@@ -9,9 +8,10 @@ import {
   MarkerStatue,
 } from '../utils/mapTool';
 import { DOCUMENT } from '@angular/common';
-import {SearchParams} from "../types";
-import {CfhttpService} from "../../../services/cfhttp.service";
+import {ListLabelItem, SearchParams} from "../types";
 import {SignService} from "./sign.service";
+import {listWktToGeoJson} from "../utils/main-format";
+
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
@@ -29,10 +29,13 @@ export class SignComponent implements OnInit {
   moveMarker: mapboxgl.Marker = null;
   editMarker: mapboxgl.Marker = null;
   showEditTool:boolean = false;
+  tagList = [];
   eventCallBack = {
     // key: function () {},
   };
+
   ngOnInit() {
+
     this.mapboxMapService.init().subscribe((mapboxMap: any) => {
       this.mapboxMap = mapboxMap;
       if (
@@ -48,8 +51,8 @@ export class SignComponent implements OnInit {
   }
   mapInit():void {
     this.bindMapEvent();
+    this.getTags();
   }
-
   bindMapEvent():void {}
   /**
    * 添加标记
@@ -69,9 +72,7 @@ export class SignComponent implements OnInit {
       self.addMoveMarker([lng, lat], true);
     };
     this.mapboxMap.on('mousemove', this.eventCallBack[event_mousemove_key]);
-
     offMapEvent(this.mapboxMap, 'click', event_click_key, this.eventCallBack);
-
     this.eventCallBack[event_click_key] = function (e) {
       self.markerStatue = MarkerStatue.editing;
       let { lng, lat } = e.lngLat;
@@ -140,18 +141,54 @@ export class SignComponent implements OnInit {
       }
     }
   }
-
   toggleEditTool(isShow:boolean):void{
     this.showEditTool = isShow;
   }
-
   doSearch(searchParams:SearchParams){
     console.log("调用查询接口",searchParams)
     this.getTags();
   }
-  getTags(){
+  getTags():void{
      this.signService.getTag().subscribe(res=>{
-        console.log(res);
-     })
+         this.tagList = res;
+         let geoSource = listWktToGeoJson(res,'wkt');
+
+       this.drawTags(geoSource);
+
+     });
+  }
+  drawTags(geoSource):void{
+    this.mapboxMapService.removeLayerByIds(['tag-layer']);
+    this.mapboxMap.loadImage('./assets/img/map/icon_map_switch_mine.png',(error,image)=>{
+      this.mapboxMap.addImage('tag-layer',image);
+      this.mapboxMap.addLayer({
+        'id': 'tag-layer',
+        'type': 'symbol',
+        'source':  {
+          'type':'geojson',
+          'data':geoSource
+        },
+        'layout': {
+          'icon-image': 'tag-layer',
+          'icon-size':1,
+          'text-field': ['get','index'],
+          'text-font': ['MicrosoftYaHeiRegular'],
+          'text-offset': [0, -.2],
+          "icon-allow-overlap":true
+        },
+        'paint': {
+          'text-color': '#fff'
+        },
+      })
+    })
+  }
+  hideTagFeatures(ids:Array<string>):void{
+
+    if(ids.length<=0){
+      return;
+    }
+    this.mapboxMap.setFilter('tag-layer', ['match', ['get', 'id'], ids.map((item)=> {
+      return item
+    }), false, true]);
   }
 }

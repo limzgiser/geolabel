@@ -1,4 +1,4 @@
-import * as mapboxgl from 'mapbox-gl';
+import mapboxgl from 'cityfun-gl';
 
 export enum MarkerStatue {
   none = 0, // 默认状态

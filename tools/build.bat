@@ -3,7 +3,7 @@
 @echo off & setlocal enabledelayedexpansion
 pushd
 cd %~dp0\..\
-set appname=onemapbox
+set appname=geolabel
 if not defined appname echo please set appname & goto :end
 echo 启动angular编译
 

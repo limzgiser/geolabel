@@ -1,6 +1,6 @@
 import { lineString, polygon } from '@turf/turf';
 import { throttle } from 'lodash';
-import * as mapboxgl from 'mapbox-gl';
+import mapboxgl from 'cityfun-gl';
 interface Point {
   lng: number;
   lat: number;

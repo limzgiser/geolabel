@@ -95,7 +95,12 @@ export class TreelyrControlComponent implements OnInit {
   changeBaseMap(baseItem) {
     const { style } = baseItem;
     this.removeBaseLayer();
-    this.mapboxmapService.addMapStyle(style, { baseMap: true });
+    this.http.get(style).subscribe(styleObj=>{
+      this.mapboxglmap.addMapStyle(styleObj,{
+        styleid: 'base.map',
+        isBaseMap:true,
+      })
+    });
   }
   removeBaseLayer() {
     const baseStyleJson = this.mapboxglmap.getStyle();

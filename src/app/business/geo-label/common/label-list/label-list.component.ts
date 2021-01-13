@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
-  Input,
+  Input, Output, EventEmitter,
 } from '@angular/core';
 import { ListLabelItem } from '../../types';
 import {
@@ -12,6 +12,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import {SignComponent} from "../../sign/sign.component";
 @Component({
   selector: 'app-label-list',
   templateUrl: './label-list.component.html',
@@ -50,89 +51,10 @@ import {
 
 export class LabelListComponent implements OnInit {
   total = 12;
-   hoverItem:ListLabelItem = null;
+  hoverItem:ListLabelItem = null;
   showPanel: boolean = true;
-  @Input() labelList: Array<ListLabelItem> = [
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'123cc'
-    },
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'11dcs'
-    },
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'1aw'
-    },
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'12c1'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'qe1'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'421'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'341'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'1123'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'212'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'10'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'11'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'12'
-    } ,
-    {
-      title: '苏沪线点位注意事项',
-      type: '0',
-      collected: true,
-      id:'1222',
-
-    }
-  ];
+  @Input() labelList: Array<ListLabelItem> = [];
+  @Output() hideFeature = new EventEmitter<ListLabelItem>();
   constructor() {}
 
   ngOnInit() {}
@@ -151,5 +73,6 @@ export class LabelListComponent implements OnInit {
   }
   hideItem(item:ListLabelItem):void{
     item.hidden = !item.hidden;
+    this.hideFeature.emit(item);
   }
 }

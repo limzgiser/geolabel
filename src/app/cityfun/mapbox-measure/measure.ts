@@ -1,5 +1,5 @@
 import * as turf from '@turf/turf';
-import * as mapboxgl from 'mapbox-gl';
+import mapboxgl from 'cityfun-gl';
 import { Mapdraw } from './mapdraw';
 
 export class MapMeasure {

@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NzCascaderOption} from "ng-zorro-antd/cascader";
-import {SearchParams} from "../../types";
+import {ListLabelItem, SearchParams} from "../../types";
+import {SignComponent} from "../sign.component";
 
 
 
@@ -11,13 +12,15 @@ import {SearchParams} from "../../types";
   changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class LabelSearchComponent implements OnInit {
+  @Input() tagList  = [];
   keyString:string = "";
   nowData :Date = new Date();
   dateRange :Array<Date>= [];
   isOpen: boolean = true;
   toggleFilter:boolean = true;
   dateFormat:string = 'yyyy/MM/dd';
-  classifyValues = ['1','11','111']
+  classifyValues = ['1','11','111'];
+
   options = [
     {
       value: '1',
@@ -61,7 +64,7 @@ export class LabelSearchComponent implements OnInit {
   ];
   nzOptions: NzCascaderOption[] =  this.options;
   @Output() search= new EventEmitter<any>();
-  constructor( ) {
+  constructor(private  signComponent:SignComponent) {
 
   }
   ngOnInit() {}
@@ -88,5 +91,14 @@ export class LabelSearchComponent implements OnInit {
   classifyOnChanges($event){
 
   }
+  hideFeature(Item:ListLabelItem){
+   let ids = [];
+   this.tagList.forEach(item=>{
+     if(item.hidden){
+       ids.push((item.id));
+     }
+   })
 
+    this.signComponent.hideTagFeatures(ids);
+  }
 }

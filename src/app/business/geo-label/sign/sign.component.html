@@ -2,8 +2,9 @@
   <app-label-search
     *ngIf="markerStatue != 2"
     (search)="doSearch($event)"
+    [tagList]="tagList"
   ></app-label-search>
-  <app-label-add
+  <app-label-add #labelAddComponent
     *ngIf="markerStatue == 2"
     (showEditToolEvent)="toggleEditTool($event)"
   ></app-label-add>

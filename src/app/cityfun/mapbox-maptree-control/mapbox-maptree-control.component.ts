@@ -75,9 +75,11 @@ export class MapboxMaptreeControlComponent implements OnInit {
     }
   }
   loadStyle(layer) {
-    const layerObser = this.mapboxmapService.addMapStyle(layer.url, {
-      idbeg: layer.id
-    });
+    const layerObser =  this.http.get(layer.url).subscribe(styleObj=>{
+      this.mapboxglmap.addMapStyle(styleObj,{
+        styleid: layer.id
+      })
+    })
     this.xhrs[layer.id] = layerObser;
   }
 
@@ -96,7 +98,7 @@ export class MapboxMaptreeControlComponent implements OnInit {
         this.xhrs[layer.id].unsubscribe();
         delete this.xhrs[layer.id];
       }
-      this.mapboxmapService.removeLayerByBegId(layer.id);
+      this.mapboxglmap.removeMapStyle(layer.id);
     });
   }
 
