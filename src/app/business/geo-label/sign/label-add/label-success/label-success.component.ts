@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-label-success',
@@ -7,8 +7,8 @@ import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LabelSuccessComponent implements OnInit {
-
   constructor() { }
+  @Input() addTagSuccess = false;
   @Output() createAgainEmit = new EventEmitter<void>();
   @Output() viewDetailEmit = new EventEmitter<void>();
   ngOnInit() {

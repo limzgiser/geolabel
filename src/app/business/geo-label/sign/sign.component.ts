@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MapboxmapService } from 'src/app/cityfun/mapbox-map/service/mapboxmap.service';
 import * as mapboxgl from 'mapbox-gl';
-import { point, featureCollection } from '@turf/turf';
+
 import {
   event_mousemove_key,
   offMapEvent,

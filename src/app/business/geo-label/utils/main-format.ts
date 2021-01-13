@@ -3,8 +3,8 @@ import { parse,stringify } from 'wellknown';
 import {cloneDeep} from 'lodash'
 export function sourceTagToParams(geo:[number,number],source:soureTagInfo) :LabelBaseInfo{
   let {baseInfo,graphs} = cloneDeep(source);
-  baseInfo.categoryid =  [baseInfo.categoryid.shift()];
-  baseInfo.taginfos = baseInfo.taginfos;
+  baseInfo.categoryid = (baseInfo.categoryid && baseInfo.categoryid.length) ? baseInfo.categoryid [baseInfo.categoryid.length-1] as string:'';
+  baseInfo.taginfos = baseInfo.taginfos.toString();
   baseInfo.geo = `Point(${geo[0]} ${geo[1]})` ;
   let feature = [];
     graphs.forEach(item=>{

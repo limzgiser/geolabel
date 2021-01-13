@@ -9,6 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import {NzMessageService} from "ng-zorro-antd/message";
 
 // interface CustomHttpConfig {
 //   headers?: HttpHeaders;
@@ -18,33 +19,27 @@ const ERR_MSG = '请求失败';
 
 @Injectable()
 export class InterceptorService implements HttpInterceptor {
-  constructor() {}
+  constructor(    private mzMessageService: NzMessageService,) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     let url = req.url;
     let httpConfig = {};
-    let accessToken = JSON.parse(sessionStorage.getItem('authInfo')).data.accessToken;
-    // if (url.indexOf('?') > -1) {
-    //   url = accessToken ? url + '&token=' + accessToken : url;
-    // } else {
-    //   url = accessToken ? url + '?token=' + accessToken : url;
-    // }
-    if(accessToken){
-      httpConfig = {
-       url,
-      // headers: req.headers .set('Authorization', `Bearer ${accessToken}`) // .set('Content-Type', `application/json`)
-      };
+    let autInfo = sessionStorage.getItem('authInfo');
+    if(autInfo){
+      let accessToken = JSON.parse(autInfo).data.accessToken;
+      const needToken = req.headers.get('needToken');
+      if(needToken){
+        httpConfig = {  url,  headers: req.headers .set('Authorization', `Bearer ${accessToken}`)
+        };
+      }else{
+        httpConfig = {    url };
+      }
     }else{
-      httpConfig = {
-        url,
-        //headers: req.headers.set('Authorization', `Bearer ${accessToken}`)
-      };
+      httpConfig = {  url };
     }
 
-    // }
-    // console.log(url);
     const copyReq = req.clone(httpConfig);
     return next
       .handle(copyReq)
@@ -52,12 +47,12 @@ export class InterceptorService implements HttpInterceptor {
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
-    // if (typeof error.error?.ret === 'number') {
-    //   // 后台拒绝请求
-    //   this.messageServe.error(error.error.message || ERR_MSG);
-    // } else {
-    //   this.messageServe.error(ERR_MSG);
-    // }
+    if (typeof error.error?.ret === 'number') {
+      // 后台拒绝请求
+      this.mzMessageService.error(error.error.message || ERR_MSG);
+    } else {
+      this.mzMessageService.error(ERR_MSG);
+    }
     return throwError(error);
   }
 }

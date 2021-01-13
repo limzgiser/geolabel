@@ -9,6 +9,7 @@ import { MarkerStatueItem } from '../../types';
 })
 export class AddMarkerStatueComponent implements OnInit {
   constructor() {}
+  @Input() addTagSuccess :boolean= true;
 
   @Input() selectIndex:number =  0 ;
   @Input() statues: Array<MarkerStatueItem> = [
@@ -28,6 +29,6 @@ export class AddMarkerStatueComponent implements OnInit {
 
   ngOnInit() {}
   ngOnChanges(changes: SimpleChanges): void {
-    
+
   }
 }

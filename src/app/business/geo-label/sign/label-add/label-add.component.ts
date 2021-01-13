@@ -7,6 +7,7 @@ import { cloneDeep } from 'lodash';
 import {SignComponent} from "../sign.component";
 import {SignService} from "../sign.service";
 import {sourceTagToParams} from "../../utils/main-format";
+import {NzMessageService} from "ng-zorro-antd/message";
 
 
 @Component({
@@ -19,6 +20,7 @@ import {sourceTagToParams} from "../../utils/main-format";
 export class LabelAddComponent implements OnInit {
   addStatueIndex: number = 0;
   isOpen: boolean = true;
+  addTagSuccess:boolean = true;
   @Output() showEditToolEvent = new EventEmitter<boolean>();
   @ViewChild('baseInfoComponent', { static: false }) private baseInfoComponent: BaseInfoComponent;
   @ViewChild('labelFeatureComponent',{static:false}) private  labelFeatureComponent:LabelFeatureComponent;
@@ -28,7 +30,12 @@ export class LabelAddComponent implements OnInit {
     baseInfo: null,
     graphs: [],
   };
-  constructor(private  signComponent:SignComponent,private  signService:SignService) {}
+  constructor(private  signComponent:SignComponent,
+              private  signService:SignService,
+              private  mzMessageService: NzMessageService,
+              private  cdr :ChangeDetectorRef
+              ) {
+  }
   ngOnInit() {
 
   }
@@ -66,16 +73,24 @@ export class LabelAddComponent implements OnInit {
   }
 
   createAgain():void{
-    this.addStatueIndex =   0 ;
+    // this.addStatueIndex =   0 ;
+    this.signComponent.stopMarker();
   }
   viewDetail():void{
 
   }
   addTag(geo:[number,number],source:soureTagInfo){
-  let res =    sourceTagToParams(geo,source);
+  let res = sourceTagToParams(geo,source);
     this.signService.addTag(res).subscribe((success:boolean)=>{
+      console.log(success)
       if(success){
         this.addStatueIndex ++;
+        this.addTagSuccess = true;
+        this.cdr.markForCheck();
+        this.mzMessageService.success('新建标记成功!')
+      } else{
+        this.addTagSuccess = false;
+        this.mzMessageService.error('新建标记失败!')
       }
     })
   }

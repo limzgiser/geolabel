@@ -1,11 +1,11 @@
 <div id="container">
-  <div
-    class="item"
-    [class.active]="i==selectIndex"
-    *ngFor="let item of statues;let i = index"
-  >
-    {{ item.title }}
-  </div>
+
+  <ng-container  *ngFor="let item of statues;let i = index">
+    <div  class="item" [class.active]="i==selectIndex"  [class.errorStatue] = "!addTagSuccess && i==statues.length-1">
+      {{ item.title }}
+    </div>
+  </ng-container>
+
   <img class="arrow arrow01" [src]="'./assets/img/map/icon_detail_arrow.png'" />
   <img class="arrow arrow02" [src]="'./assets/img/map/icon_detail_arrow.png'" />
 </div>
