@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   }
   canActivate(): boolean {
     // const cookieExists: boolean = this.cookieService.check('islogin');
-    // console.log(cookieExists);
+    // (cookieExists);
 
     // if (cookieExists) {
     //   return true;

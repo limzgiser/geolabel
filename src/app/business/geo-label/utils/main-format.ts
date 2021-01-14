@@ -41,7 +41,7 @@ export  function  tagDetailToSourceTagInfo(tagDetailInfo:tagDetailInfo):soureTag
   };
   let list = [];
   if(graphs){
-    graphs.forEach((item:LabelgeoFeature)=>{
+    graphs.forEach((item:LabelgeoFeature,index)=>{
       let geometry = parse(item.geom);
         list.push({
           icon:'',
@@ -50,6 +50,7 @@ export  function  tagDetailToSourceTagInfo(tagDetailInfo:tagDetailInfo):soureTag
           type:item.geotype,
           feature:{
             type:"Feature",
+            id:index,
             geometry:geometry,
             properties: {}
           }
