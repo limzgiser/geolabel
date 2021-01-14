@@ -4,7 +4,12 @@
       <div class="header"(click)="hide()"> <i nz-icon nzType="arrow-left" nzTheme="outline"></i> 返回</div>
     </ng-container>
     <ng-container name="content">
-     <lb-label-detail-content [data]="data" (delete)="deleteTag($event)"></lb-label-detail-content>
+      <ng-container *ngIf="isEdit && addSourceInfo">
+        <lb-add-content [addSourceInfo] = "addSourceInfo"  [isEdit]="true" ></lb-add-content>
+      </ng-container>
+      <ng-container *ngIf="!isEdit">
+        <lb-label-detail-content [data]="data" (delete)="deleteTag($event)" (edit)="editTag()" ></lb-label-detail-content>
+      </ng-container>
     </ng-container>
   </app-label-container>
 </div>

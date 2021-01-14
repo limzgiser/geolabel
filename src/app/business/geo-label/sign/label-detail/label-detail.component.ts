@@ -7,9 +7,11 @@ import {
   EventEmitter,
   ChangeDetectorRef
 } from '@angular/core';
-import {tagDetailInfo} from "../../types";
+import {soureTagInfo, tagDetailInfo} from "../../types";
 import {SignService} from "../sign.service";
 import {NzMessageService} from "ng-zorro-antd/message";
+import {tagDetailToSourceTagInfo, wktToGeoJson} from "../../utils/main-format";
+import {SignComponent} from "../sign.component";
 @Component({
   selector: 'lb-label-detail',
   templateUrl: './label-detail.component.html',
@@ -20,13 +22,13 @@ export class LabelDetailComponent implements OnInit {
 
   @Input() data:tagDetailInfo= null;
   @Output() close = new EventEmitter<void>();
-
+  isEdit:boolean = false;
+  @Input()  addSourceInfo :soureTagInfo = null;
   constructor(private signService:SignService,
               private cdr:ChangeDetectorRef,
-              private nzMessageService:NzMessageService
+              private nzMessageService:NzMessageService,
+              private  signComponent:SignComponent
   ) { }
-
-
   ngOnInit(): void {
 
   }
@@ -43,6 +45,12 @@ export class LabelDetailComponent implements OnInit {
         this.nzMessageService.error('删除失败!');
       }
     })
-
+  }
+  editTag(){
+    this.isEdit = true;
+    this.addSourceInfo =  tagDetailToSourceTagInfo(this.data);
+    let {coordinates} = wktToGeoJson(this.data.geom);
+    this.signComponent.addMoveMarker(coordinates,false);
+    this.signComponent.addMarker();
   }
 }

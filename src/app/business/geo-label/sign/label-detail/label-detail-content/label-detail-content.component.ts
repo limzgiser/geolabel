@@ -11,6 +11,7 @@ import {NzMessageService} from "ng-zorro-antd";
 export class LabelDetailContentComponent implements OnInit {
   @Input() data:tagDetailInfo= null;
   @Output() delete = new EventEmitter<string>();
+  @Output() edit = new EventEmitter<void>();
   constructor(private nzMessageService: NzMessageService) { }
 
   ngOnInit(): void {
@@ -18,12 +19,11 @@ export class LabelDetailContentComponent implements OnInit {
   }
 
   editTag():void{
-
+    this.edit.emit()
   }
   cancel(): void {
 
   }
-
   confirm(): void {
     this.delete.emit(this.data.tagid);
   }

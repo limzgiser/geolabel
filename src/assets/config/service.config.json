@@ -57,6 +57,11 @@
       "id": "delete.tag",
       "des": "标记详情",
       "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagDelete"
+    },
+    {
+      "id": "edit.tag",
+      "des": "编辑tag",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagEdit"
     }
   ]
 }

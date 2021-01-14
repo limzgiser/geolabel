@@ -1,4 +1,4 @@
-import {LabelBaseInfo, soureTagInfo} from "../types";
+import {LabelBaseInfo, LabelgeoFeature, soureTagInfo, tagDetailInfo} from "../types";
 import { parse,stringify } from 'wellknown';
 import {cloneDeep} from 'lodash'
 
@@ -24,6 +24,42 @@ export function sourceTagToParams(geo:[number,number],source:soureTagInfo) :Labe
     });
     baseInfo['graphs'] = feature;
     return baseInfo;
+}
+export  function  tagDetailToSourceTagInfo(tagDetailInfo:tagDetailInfo):soureTagInfo {
+  let {title,
+    taginfos,
+    ispublic,
+    desc,
+    categoryid,
+    graphs} = tagDetailInfo;
+  let baseInfo = {
+    title:title,
+    taginfos:taginfos?taginfos.split(','):[],
+    ispublic:ispublic.toString(),
+    desc:desc,
+    categoryid:taginfos?categoryid.split(','):[],
+  };
+  let list = [];
+  if(graphs){
+    graphs.forEach((item:LabelgeoFeature)=>{
+      let geometry = parse(item.geom);
+        list.push({
+          icon:'',
+          title:item.title,
+          des:item.desc,
+          type:item.geotype,
+          feature:{
+            type:"Feature",
+            geometry:geometry,
+            properties: {}
+          }
+        })
+    })
+  }
+  return {
+    baseInfo,
+    graphs:list
+  };
 }
 
 /**

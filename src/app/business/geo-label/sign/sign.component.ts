@@ -70,6 +70,7 @@ export class SignComponent implements OnInit {
   mapInit():void {
     this.bindMapEvent();
     this.getTags(null);
+    // this.getAllTagListPoint();
   }
   bindMapEvent():void {}
   /**
@@ -166,19 +167,20 @@ export class SignComponent implements OnInit {
     this.tagDetailInfo = null;
     this.getTags(null);
   }
-  drawTags(geoSource):void{
-    this.mapboxMapService.removeLayerByIds(['tag-layer']);
-    this.mapboxMap.loadImage('./assets/img/map/pin.png',(error,image)=>{
-      this.mapboxMap.addImage('tag-layer',image);
+
+  drawTags(geoSource,iconUrl,layerid):void{
+    this.mapboxMapService.removeLayerByIds([layerid]);
+    this.mapboxMap.loadImage(iconUrl,(error,image)=>{
+      this.mapboxMap.addImage(layerid,image);
       this.mapboxMap.addLayer({
-        'id': 'tag-layer',
+        'id': layerid,
         'type': 'symbol',
         'source':  {
           'type':'geojson',
           'data':geoSource
         },
         'layout': {
-          'icon-image': 'tag-layer',
+          'icon-image': layerid,
           'icon-size':1,
           'text-field': ['get','index'],
           'text-font': ['MicrosoftYaHeiRegular'],
@@ -228,7 +230,14 @@ export class SignComponent implements OnInit {
     this.signService.getTagList(params).subscribe((searchTagResult:searchTagResult)=>{
       this.tagList = searchTagResult;
       let geoSource = listWktToGeoJson(searchTagResult.list,'geom');
-      this.drawTags(geoSource);
+      this.drawTags(geoSource,'./assets/img/map/pin.png','tag-layer');
     });
   }
+  getAllTagListPoint():void{
+    this.signService.getAllTagListPoint(null).subscribe((tagList:Array<tagListItem> )=>{
+     let geoSource = listWktToGeoJson(tagList,'geom');
+     this.drawTags(geoSource,'./assets/img/map/icon_map_switch_others.png','all-tag-points')
+    })
+  }
+
 }

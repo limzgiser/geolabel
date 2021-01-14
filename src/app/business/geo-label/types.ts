@@ -9,8 +9,6 @@ export interface NavItem {
   selectIcon?:string;
 }
 
-
-
 export interface MarkerStatueItem {
   title: string;
   id?: string;
@@ -35,7 +33,7 @@ export interface LabelgeoFeature {
   "gid"?:string;
   "title":string;
   "desc": string;
-  "geotype": 'Point' | 'LineString' | 'Polygon' | 'MultiLineString'| 'MultiPlygon';
+  "geotype":string ; //'Point' | 'LineString' | 'Polygon' | 'MultiLineString'| 'MultiPlygon';
   "geom":  string;
   icon?:string;
 }

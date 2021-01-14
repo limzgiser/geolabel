@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
+  Input, OnDestroy,
   OnInit,
   Output,
   ViewChild
@@ -24,16 +24,15 @@ import {EditToolService} from "../../services/edit-tool.service";
   styleUrls: ['./add-content.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddContentComponent implements OnInit {
+export class AddContentComponent implements OnInit ,OnDestroy{
 
+  @Input() isEdit =false;
+  tagId:string = '';
   addStatueIndex: number = 0;
-
   addTagSuccess:boolean = true;
   @Output() showEditToolEvent = new EventEmitter<boolean>();
   @ViewChild('baseInfoComponent', { static: false }) private baseInfoComponent: BaseInfoComponent;
   @ViewChild('labelFeatureComponent',{static:false}) private  labelFeatureComponent:LabelFeatureComponent;
-
-  addServeInfo:LabelBaseInfo =   null;
   @Input()  addSourceInfo :soureTagInfo = {
     baseInfo: null,
     graphs: [],
@@ -70,7 +69,6 @@ export class AddContentComponent implements OnInit {
     }
     // 显示绘制工具
     this.toggleDrawTool(this.addStatueIndex);
-
   }
 
   beforeClick(): void {
@@ -82,22 +80,26 @@ export class AddContentComponent implements OnInit {
   createAgain():void{
     // this.addStatueIndex =   0 ;
     this.signComponent.stopMarker();
+    this.signComponent.tagDetailInfo = null;
   }
   viewDetail():void{
-
+    this.signComponent.getTagDetail(this.tagId);
   }
   addTag(geo:[number,number],source:soureTagInfo){
     let res = sourceTagToParams(geo,source);
-    this.signService.addTag(res).subscribe((success:string)=>{
-      if(success){
+    let funName:string = this.isEdit?"editTag":'addTag';
+    let message = this.isEdit?"编辑":'新建';
+    this.signService[funName](res).subscribe((tagId:string)=>{
+      if(tagId){
+        this.tagId = tagId;
         this.addStatueIndex ++;
         this.addTagSuccess = true;
         this.cdr.markForCheck();
-        this.mzMessageService.success('新建标记成功!');
+        this.mzMessageService.success( `${message}标记成功!`);
         this.signComponent.getTags(null);
       } else{
         this.addTagSuccess = false;
-        this.mzMessageService.error('新建标记失败!')
+        this.mzMessageService.error(`${message}标记失败!`)
       }
     })
   }
@@ -107,5 +109,8 @@ export class AddContentComponent implements OnInit {
     } else {
       this.editToolService.toggleTool(false)
     }
+  }
+  ngOnDestroy(): void {
+    this.editToolService.toggleTool(false)
   }
 }

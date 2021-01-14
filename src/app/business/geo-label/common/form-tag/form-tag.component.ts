@@ -15,17 +15,13 @@ import {ControlValueAccessor, FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms
 })
 export class FormTagComponent implements   ControlValueAccessor {
   @Input() _tags: Array<string> = [];
-
   get tags() {
     return this._tags;
   }
-
   set tags(value: Array<string>) {
     this._tags = value;
     this.propagateChange(this._tags);
   }
-
-
   inputValue: string = '';
   inputVisible=false;
   validateForm!: FormGroup;
@@ -33,6 +29,7 @@ export class FormTagComponent implements   ControlValueAccessor {
   constructor() { }
 
   ngOnInit(): void {
+
   }
   handleClose(removedTag: {}): void {
     this.tags = this.tags.filter((tag) => tag !== removedTag);
@@ -53,12 +50,10 @@ export class FormTagComponent implements   ControlValueAccessor {
   handleInputConfirm(): void {
     if (this.inputValue && this.tags.indexOf(this.inputValue) === -1) {
       this.tags = [...this.tags, this.inputValue];
-
     }
     this.inputValue = '';
     this.inputVisible = false;
   }
-
 
   propagateChange = (_: any) => { };
 

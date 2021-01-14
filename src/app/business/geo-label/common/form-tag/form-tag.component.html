@@ -2,7 +2,7 @@
       <div class="tags">
         <nz-tag class="item-tag"
                 *ngFor="let tag of tags; let i = index"
-                [nzMode]="i === 0 ? 'default' : 'closeable'"
+                [nzMode]="'closeable'"
                 (nzAfterClose)="handleClose(tag)"
         >
           {{ sliceTagName(tag) }}

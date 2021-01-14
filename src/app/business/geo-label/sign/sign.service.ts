@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Base} from "../../../types/types";
 import {HttpHeaders} from "@angular/common/http";
-import {searchTagResult, tagDetailInfo} from "../types";
+import {searchTagResult, tagDetailInfo, tagListItem} from "../types";
 
 const needToken = new HttpHeaders().set('needToken', 'true');
 
@@ -25,6 +25,15 @@ export class SignService {
     }).pipe(map((res:Base<string>)=>res.data));
   }
   /**
+   * 编辑
+   * @param body
+   */
+  editTag(body): Observable<string>{
+    return this.cfHttp.post('edit.tag',body,{
+      headers: needToken
+    }).pipe(map((res:Base<string>)=>res.data));
+  }
+  /**
    * 获取标记列表
    * @param params
    */
@@ -33,6 +42,12 @@ export class SignService {
      params:params,
      headers: needToken
    }).pipe(map((res:Base<searchTagResult>)=>res.data));
+  }
+  getAllTagListPoint(params):Observable<tagListItem[]>{
+    return  this.cfHttp.get('get.tags' ,{
+      params:params,
+      headers: needToken
+    }).pipe(map((res:Base<Array<tagListItem>>)=>res.data));
   }
 
   /**
