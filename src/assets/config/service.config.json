@@ -46,7 +46,7 @@
     {
       "id": "get.tags",
       "des": "获取标签列表",
-      "url": "./assets/config/mock.data/tag.list.json"
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagListQuery"
     }
   ]
 }

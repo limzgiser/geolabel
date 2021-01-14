@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject,ViewChild } from '@angular/core';
+import {Component, OnInit, Inject, ViewChild, Input} from '@angular/core';
 import { MapboxmapService } from 'src/app/cityfun/mapbox-map/service/mapboxmap.service';
 import mapboxgl from 'cityfun-gl';
 import {
@@ -8,11 +8,10 @@ import {
   MarkerStatue,
 } from '../utils/mapTool';
 import { DOCUMENT } from '@angular/common';
-import {ListLabelItem, SearchParams} from "../types";
+import {ListLabelItem, SearchParams, searchTagResult, tagListItem} from "../types";
 import {SignService} from "./sign.service";
-import {listWktToGeoJson} from "../utils/main-format";
-import {Feature} from "@turf/turf";
 import {EditToolService} from "./services/edit-tool.service";
+import {listWktToGeoJson} from "../utils/main-format";
 
 @Component({
   selector: 'app-sign',
@@ -33,7 +32,15 @@ export class SignComponent implements OnInit {
   moveMarker: mapboxgl.Marker = null;
   editMarker: mapboxgl.Marker = null;
   showEditTool:boolean = false;
-  tagList = [];
+  defaultSearchParams:SearchParams = {
+    keyWord:'',
+    categoryId: '',
+    startTime:   '',
+    endTime: '',
+    pageSize: 10,
+    pageNo: 1
+  }
+  tagList:Array<tagListItem> =  [];
   eventCallBack = {
     // key: function () {},
   };
@@ -60,7 +67,7 @@ export class SignComponent implements OnInit {
   }
   mapInit():void {
     this.bindMapEvent();
-    this.getTags();
+    this.getTags(this.defaultSearchParams);
   }
   bindMapEvent():void {}
   /**
@@ -148,15 +155,13 @@ export class SignComponent implements OnInit {
 
   doSearch(searchParams:SearchParams){
     console.log("调用查询接口",searchParams)
-    this.getTags();
+    this.getTags(searchParams);
   }
-  getTags():void{
-     this.signService.getTag().subscribe(res=>{
-         this.tagList = res;
-         let geoSource = listWktToGeoJson(res,'wkt');
-
+  getTags(searchParams:SearchParams):void{
+     this.signService.getTag(searchParams).subscribe((searchTagResult:searchTagResult)=>{
+        this.tagList = searchTagResult.list;
+       let geoSource = listWktToGeoJson(searchTagResult.list,'geom');
        this.drawTags(geoSource);
-
      });
   }
   drawTags(geoSource):void{

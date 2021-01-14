@@ -59,7 +59,30 @@ export interface soureTagInfo {
 }
 
 export interface  SearchParams {
-  keyword:string;
-  dataRage:Array<Date>;
-  classifyValues:Array<string>;
+  keyWord:string;
+  categoryId:string;
+  startTime:String;
+  endTime:String;
+  pageSize:number;
+  pageNo:number
+}
+export  enum tagStatue {
+  "MY-PRIVATE",
+  "MY-PUBLIC",
+  "OHTER-PRIVATE",
+  "OHTER-PUBLIC"
+}
+
+export interface tagListItem {
+  tagid:string;
+  title:string;
+  issubscribe:0|1;
+  status:tagStatue;
+  geom:string;
+  hidden:boolean
+}
+export interface  searchTagResult {
+  totalRecord:number;
+  totalPage:number;
+  list:Array<tagListItem>
 }

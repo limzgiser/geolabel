@@ -1,27 +1,30 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NzCascaderOption} from "ng-zorro-antd/cascader";
-import {ListLabelItem, SearchParams} from "../../types";
+import {ListLabelItem, SearchParams, searchTagResult,tagListItem} from "../../types";
 import {SignComponent} from "../sign.component";
-import {wktToGeoJSOn} from "../../utils/main-format";
-
+import {wktToGeoJson} from "../../utils/main-format";
+import { DatePipe } from '@angular/common';
 
 
 @Component({
   selector: 'app-label-search',
   templateUrl: './label-search.component.html',
   styleUrls: ['./label-search.component.scss'],
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection:ChangeDetectionStrategy.OnPush,
+  providers:[DatePipe]
 })
 export class LabelSearchComponent implements OnInit {
-  @Input() tagList  = [];
+  @Input() tagList:Array<tagListItem> =  [];
   keyString:string = "";
   nowData :Date = new Date();
   dateRange :Array<Date>= [];
   isOpen: boolean = true;
   toggleFilter:boolean = true;
   dateFormat:string = 'yyyy/MM/dd';
-  classifyValues = ['1','11','111'];
-
+  classifyValues = [ ];
+  pageSize :number = 10;
+  pageNumber:number = 1;
+  @Input() defaultSearchParams = null;
   options = [
     {
       value: '1',
@@ -65,7 +68,7 @@ export class LabelSearchComponent implements OnInit {
   ];
   nzOptions: NzCascaderOption[] =  this.options;
   @Output() search= new EventEmitter<any>();
-  constructor(private  signComponent:SignComponent) {
+  constructor(private  signComponent:SignComponent,private  datePipe:DatePipe) {
 
   }
   ngOnInit() {}
@@ -82,12 +85,15 @@ export class LabelSearchComponent implements OnInit {
     console.log('onChange: ', result);
   }
   doSearch():void{
-    let searchParams:SearchParams =  {
-      keyword:this.keyString,
-      dataRage:this.dateRange,
-      classifyValues:this.classifyValues
+   let defaultSearchParams:SearchParams = {
+      keyWord:this.keyString,
+      categoryId: this.classifyValues.pop() ||'',
+      startTime: this.dateRange  &&  this.datePipe.transform(this.dateRange[0],'yyyy-MM-dd HH:mm:ss') ||'',
+      endTime:this.dateRange  &&  this.datePipe.transform(this.dateRange[1],'yyyy-MM-dd HH:mm:ss')  ||'',
+      pageSize: this.pageSize,
+      pageNo: this.pageNumber,
     }
-    this.search.emit(searchParams)
+    this.search.emit(defaultSearchParams)
   }
   classifyOnChanges($event){
 
@@ -96,13 +102,13 @@ export class LabelSearchComponent implements OnInit {
    let ids = [];
    this.tagList.forEach(item=>{
      if(item.hidden){
-       ids.push((item.id));
+       ids.push((item.tagid));
      }
    })
     this.signComponent.hideTagFeatures(ids);
   }
-  centerToFeature(item:ListLabelItem){
-     let {coordinates} = wktToGeoJSOn(item.wkt);
+  centerToFeature(item:tagListItem){
+     let {coordinates} = wktToGeoJson(item.geom);
      console.log(coordinates);
      this.signComponent.mapboxMap.flyTo({
          center:coordinates,

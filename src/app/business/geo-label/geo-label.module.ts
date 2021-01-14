@@ -5,10 +5,11 @@ import { TreelyrControlComponent } from './components/treelyr-control/treelyr-co
 import { CityfunModule } from './../../cityfun/cityfun.module';
 import { GeoLabelRoutesModule } from './home.routing';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { LabelDetailContentComponent } from './label-detail/label-detail-content/label-detail-content.component';
 
 @NgModule({
   imports: [CommonModule, CityfunModule, GeoLabelRoutesModule],
-  declarations: [GeoLabelComponent, TreelyrControlComponent, SideNavComponent],
+  declarations: [GeoLabelComponent, TreelyrControlComponent, SideNavComponent, LabelDetailContentComponent],
   providers: [],
 })
 export class GeoLabelModule {}

@@ -2,6 +2,7 @@
 <!--  MarkerStatue 1 none ,1 moving 2 edit -->
   <app-label-search
     *ngIf="markerStatue != 2"
+    [defaultSearchParams]="defaultSearchParams"
     (search)="doSearch($event)"
     [tagList]="tagList"
   ></app-label-search>

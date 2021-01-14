@@ -1,7 +1,7 @@
 <div class="container">
   <div class="title">
     <div class="left">
-      {{ title }}
+      <ng-content select="[name=header]"> </ng-content>
     </div>
     <div class="right">
       <span class="toggle" *ngIf="toggleble"  (click)="togglePanel(!showPanel)">
@@ -21,6 +21,6 @@
     </div>
   </div>
   <div class="content" @toggle *ngIf="showPanel">
-    <ng-content></ng-content>
+    <ng-content select="[name=content]"></ng-content>
   </div>
 </div>

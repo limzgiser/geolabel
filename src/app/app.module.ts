@@ -15,12 +15,11 @@ import {InterceptorService} from "./services/interceptor.service";
 import {MainConfigService} from "./services/main.config.service";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    Layout01Component
-  ],
+    Layout01Component,
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -14,7 +14,7 @@ import { AddTagIconPipe } from './label-add/label-feature/addTagIcon.pipe';
 import { LabelSuccessComponent } from './label-add/label-success/label-success.component';
 import {SignService} from "./sign.service";
 import { AddContentComponent } from './label-add/add-content/add-content.component';
-
+import {LabelDetailComponent} from "../label-detail/label-detail.component";
 
 @NgModule({
   imports: [CommonModule, SiginRoutes, LabelCommonModule, SharedModule],
@@ -28,6 +28,7 @@ import { AddContentComponent } from './label-add/add-content/add-content.compone
     AddTagIconPipe,
     LabelSuccessComponent,
     AddContentComponent,
+    LabelDetailComponent
   ],
   providers: [EditToolService,SignService],
 })

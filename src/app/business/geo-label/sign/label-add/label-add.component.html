@@ -1,11 +1,16 @@
 <div class="editmark">
   <app-label-container
-    [title]="'新建标记'"
+
     [closeble]="false"
     [toggleble]="false"
     *ngIf="isOpen"
     (closed)="closeContainer()"
   >
-    <lb-add-content ></lb-add-content>
+    <ng-container name="header">
+      添加标记
+    </ng-container>
+    <ng-container name="content">
+      <lb-add-content ></lb-add-content>
+    </ng-container>
     </app-label-container>
 </div>

@@ -1,8 +1,5 @@
 
 <div id="pancel">
-  <!-- <div class="map-tool">
-    <app-mapbox-map-tool></app-mapbox-map-tool>
-  </div> -->
   <div  class="side-nav">
     <app-side-nav></app-side-nav>
   </div>
@@ -13,21 +10,4 @@
     <app-mapbox-measure (clearMeasure) = "clearMeasure($event)"></app-mapbox-measure>
   </div>
   <app-treelyr-control></app-treelyr-control>
-  <!-- <div class="search-pancel" *ngIf="treeNodeInfo">
-    <div id="draw-tool">
-      <app-mapbox-draw-tool (drawEnd)="drawEnd($event)"></app-mapbox-draw-tool>
-    </div>
-    <div class="header">
-      <div>
-        <span>
-          {{treeNodeInfo.title}}
-        </span>
-
-      </div>
-      <i style="cursor: pointer;" nz-icon nzType="close" (click)="hideSearchPancel()" nzTheme="outline"></i> 
-    </div>
-     <app-search-control [treeNodeInfo]="treeNodeInfo" [searchGeometry]="searchGeometry"></app-search-control> 
-  </div> -->
- 
-
 </div>

@@ -53,6 +53,6 @@ export function listWktToGeoJson(wktList:Array<any>,wktField:string){
   return result;
 }
 
-export function wktToGeoJSOn(wkt:string) {
+export function wktToGeoJson(wkt:string) {
     return parse(wkt);
 }

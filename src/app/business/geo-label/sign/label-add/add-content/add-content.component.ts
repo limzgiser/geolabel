@@ -1,4 +1,13 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import {BaseInfoComponent} from "../base-info/base-info.component";
 import {LabelFeatureComponent} from "../label-feature/label-feature.component";
 import {LabelBaseInfo, soureTagInfo} from "../../../types";
@@ -12,7 +21,8 @@ import {EditToolService} from "../../services/edit-tool.service";
 @Component({
   selector: 'lb-add-content',
   templateUrl: './add-content.component.html',
-  styleUrls: ['./add-content.component.scss']
+  styleUrls: ['./add-content.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddContentComponent implements OnInit {
 
