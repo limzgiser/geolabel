@@ -5,12 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AddTagIconPipe implements PipeTransform {
   transform(value: any, args?: any): any {
-    switch (args) {
-      case 'Point': // // 'Point' | 'LineString' | 'Polygon';
+    switch (args.toLocaleLowerCase()) {
+      case 'point': // // 'Point' | 'LineString' | 'Polygon';
         return './assets/img/map/icon_detail_point.png';
-      case 'LineString':
+      case 'linestring' :
+      case 'polyline':
         return './assets/img/map/icon_detail_line.png';
-      case 'Polygon':
+      case 'polygon':
         return './assets/img/map/icon_detail_rectangle.png';
       default:
         return './assets/img/map/icon_detail_rectangle.png';

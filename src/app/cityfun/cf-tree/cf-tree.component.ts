@@ -29,7 +29,7 @@ export class CfTreeComponent implements OnInit, OnChanges, OnDestroy {
   constructor(private nzContextMenuService: NzContextMenuService, private coreMessageService: CoreMessageService) { }
   ngOnInit() {
 
-    // console.log(this.getAllChilds(this.nodes, 1));
+    // (this.getAllChilds(this.nodes, 1));
     // let defaultsNodesKey = this.getAllChilds(this.nodes,1)
     // this.showDefaultLayers()
   }
@@ -48,7 +48,7 @@ export class CfTreeComponent implements OnInit, OnChanges, OnDestroy {
       this.selectKeys.emit([node.key]);
     } else {
       // 移除图层
-      // console.log('remove', node.key)
+      // ('remove', node.key)
       this.removeKeys.emit([node.key]);
     }
   }
@@ -161,7 +161,7 @@ export class CfTreeComponent implements OnInit, OnChanges, OnDestroy {
     this.nzContextMenuService.create($event, menu);
   }
   selectDropdown(): void {
-    // console.log(123);
+    // (123);
   }
   treeSearch(node) {
     // this.nodeSearch.emit(node);

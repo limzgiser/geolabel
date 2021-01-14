@@ -1,0 +1,14 @@
+<div class="feature-info">
+  <lb-tag-title>
+    <!-- 公开|苏沪线点位注意事项-->
+    标记要素 | ({{data.length}})个
+  </lb-tag-title>
+  <app-cf-scroll>
+    <div class="content">
+      <div class="item" *ngFor="let item of data">
+        <div class="title"> <img [src]="item.icon | addTagIcon:item.geotype" ><span>{{item.title}}</span></div>
+        <div class="des">{{item.desc||'暂无说明'}}</div>
+      </div>
+    </div>
+  </app-cf-scroll>
+</div>

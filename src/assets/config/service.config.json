@@ -47,6 +47,16 @@
       "id": "get.tags",
       "des": "获取标签列表",
       "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagListQuery"
+    },
+    {
+      "id": "get.taginfo",
+      "des": "标记详情",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagDetailQuery"
+    },
+    {
+      "id": "delete.tag",
+      "des": "标记详情",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagDelete"
     }
   ]
 }

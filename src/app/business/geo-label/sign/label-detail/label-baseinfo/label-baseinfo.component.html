@@ -1,0 +1,28 @@
+<lb-tag-title>
+  <!-- 公开|苏沪线点位注意事项-->
+  <span *ngIf="data.ispublic">公开 | </span>
+  <span *ngIf="!data.ispublic">私有 | </span>
+  <span style="margin-left: 3px">{{data?.title}}</span>
+</lb-tag-title>
+<div class="content">
+  <div class="item">
+    <span>分类：</span>
+    <span>{{data?.categoryname}}</span>
+  </div>
+  <div class="item">
+    <span>标签：</span>
+    <span>{{data?.taginfos}}</span>
+  </div>
+  <div class="item">
+    <span>描述信息：</span>
+    <span>{{data?.desc}}</span>
+  </div>
+  <div class="item">
+    <span>创建人：</span>
+    <span>{{data?.createaccount}}</span>
+  </div>
+  <div class="item">
+    <span>创建：</span>
+    <span>{{data?.createtime}}</span>
+  </div>
+</div>

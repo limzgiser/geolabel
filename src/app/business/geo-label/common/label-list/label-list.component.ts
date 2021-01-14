@@ -4,7 +4,7 @@ import {
   OnInit,
   Input, Output, EventEmitter,
 } from '@angular/core';
-import { ListLabelItem } from '../../types';
+import {searchTagResult, tagListItem} from '../../types';
 import {
   animate,
   state,
@@ -50,35 +50,40 @@ import {SignComponent} from "../../sign/sign.component";
 })
 
 export class LabelListComponent implements OnInit {
+  imgs={
+    0:'./assets/img/map/icon_list_private.png',
+    1:'./assets/img/map/icon_list_public.png',
+    2:'./assets/img/map/icon_list_private_others.png',
+    3:'./assets/img/map/icon_list_public_others.png'
+  }
   total = 12;
-  hoverItem:ListLabelItem = null;
+  hoverItem:tagListItem = null;
   showPanel: boolean = true;
-  @Input() labelList: Array<ListLabelItem> = [];
-  @Output() hideFeature = new EventEmitter<ListLabelItem>();
-  @Output() centerToFeature = new EventEmitter<ListLabelItem>();
+  @Input() labelList:  searchTagResult= null;
+  @Output() hideFeature = new EventEmitter<tagListItem>();
+  @Output() tagItemClick = new EventEmitter<tagListItem>();
   constructor() {}
 
   ngOnInit() {}
   togglePanel(show: boolean): void {
-    // if (show) {
-    //   this.showPanel = true;
-    // } else {
-    //   this.showPanel = false;
-    // }
     show? this.showPanel = true: this.showPanel = false;
   }
-  mouseenter(hoverItem:ListLabelItem):void{
+  mouseenter(hoverItem:tagListItem):void{
    this.hoverItem = hoverItem;
   }
   mouseLeave():void{
     this.hoverItem = null;
   }
-  hideItem(item:ListLabelItem):void{
+  hideItem(item:tagListItem,e:MouseEvent):void{
     item.hidden = !item.hidden;
     this.hideFeature.emit(item);
+    e.stopPropagation();
+
   }
-  centerToPointer(item:ListLabelItem){
-   this.centerToFeature.emit(item)
+
+  itemClick(item:tagListItem){
+    this.tagItemClick.emit(item);
+
   }
 
 }

@@ -8,7 +8,7 @@ import {
   MarkerStatue,
 } from '../utils/mapTool';
 import { DOCUMENT } from '@angular/common';
-import {ListLabelItem, SearchParams, searchTagResult, tagListItem} from "../types";
+import {SearchParams, searchTagResult, tagDetailInfo, tagListItem} from "../types";
 import {SignService} from "./sign.service";
 import {EditToolService} from "./services/edit-tool.service";
 import {listWktToGeoJson} from "../utils/main-format";
@@ -32,6 +32,8 @@ export class SignComponent implements OnInit {
   moveMarker: mapboxgl.Marker = null;
   editMarker: mapboxgl.Marker = null;
   showEditTool:boolean = false;
+  showTagDetail:boolean = false;
+  tagDetailInfo :tagDetailInfo = null;
   defaultSearchParams:SearchParams = {
     keyWord:'',
     categoryId: '',
@@ -40,13 +42,13 @@ export class SignComponent implements OnInit {
     pageSize: 10,
     pageNo: 1
   }
-  tagList:Array<tagListItem> =  [];
+  tagList:searchTagResult =  null;
+  totalCount:number = 0 ;
   eventCallBack = {
     // key: function () {},
   };
 
   ngOnInit() {
-
     this.mapboxMapService.init().subscribe((mapboxMap: any) => {
       this.mapboxMap = mapboxMap;
       if (
@@ -67,7 +69,7 @@ export class SignComponent implements OnInit {
   }
   mapInit():void {
     this.bindMapEvent();
-    this.getTags(this.defaultSearchParams);
+    this.getTags(null);
   }
   bindMapEvent():void {}
   /**
@@ -121,7 +123,7 @@ export class SignComponent implements OnInit {
     this.mapboxMapService.setCursor('default');
     this.showEditTool = false;
   }
-  // 添加 Move Marker
+
   addMoveMarker(coordinate: [number, number], isMoveing?: boolean): void {
     let el = this.doc.createElement('div');
     el.className = 'add-marker marker';
@@ -153,20 +155,20 @@ export class SignComponent implements OnInit {
     }
   }
 
+  /**
+   * 執行查詢標記
+   * @param searchParams
+   */
   doSearch(searchParams:SearchParams){
-    console.log("调用查询接口",searchParams)
     this.getTags(searchParams);
   }
-  getTags(searchParams:SearchParams):void{
-     this.signService.getTag(searchParams).subscribe((searchTagResult:searchTagResult)=>{
-        this.tagList = searchTagResult.list;
-       let geoSource = listWktToGeoJson(searchTagResult.list,'geom');
-       this.drawTags(geoSource);
-     });
+  closeDetail():void{
+    this.tagDetailInfo = null;
+    this.getTags(null);
   }
   drawTags(geoSource):void{
     this.mapboxMapService.removeLayerByIds(['tag-layer']);
-    this.mapboxMap.loadImage('./assets/img/map/icon_map_switch_mine.png',(error,image)=>{
+    this.mapboxMap.loadImage('./assets/img/map/pin.png',(error,image)=>{
       this.mapboxMap.addImage('tag-layer',image);
       this.mapboxMap.addLayer({
         'id': 'tag-layer',
@@ -180,7 +182,8 @@ export class SignComponent implements OnInit {
           'icon-size':1,
           'text-field': ['get','index'],
           'text-font': ['MicrosoftYaHeiRegular'],
-          'text-offset': [0, -.2],
+          'text-offset': [0, -.3],
+          'text-anchor':'center',
           "icon-allow-overlap":true
         },
         'paint': {
@@ -190,12 +193,42 @@ export class SignComponent implements OnInit {
     })
   }
   hideTagFeatures(ids:Array<string>):void{
-
     if(ids.length<=0){
       return;
     }
-    this.mapboxMap.setFilter('tag-layer', ['match', ['get', 'id'], ids.map((item)=> {
+    this.mapboxMap.setFilter('tag-layer', ['match', ['get', 'tagid'], ids.map((item)=> {
       return item
     }), false, true]);
+  }
+  toggleDetail(tagid:string):void{
+    this.showTagDetail =true;
+    this.getTagDetail(tagid);
+  }
+
+  /**
+   * 查询标签详情
+   * @param tagid
+   */
+  getTagDetail(tagid:string):void{
+    this.signService.getTagDetail({tagid:tagid}).subscribe((result:tagDetailInfo)=>{
+       this.tagDetailInfo = result;
+    });
+  }
+  /**
+   * 获取tag 列表
+   * @param searchParams
+   */
+  getTags(searchParams:SearchParams):void{
+    let params = null;
+    if(!searchParams){
+      params = this.defaultSearchParams;
+    }else{
+      params = searchParams;
+    }
+    this.signService.getTagList(params).subscribe((searchTagResult:searchTagResult)=>{
+      this.tagList = searchTagResult;
+      let geoSource = listWktToGeoJson(searchTagResult.list,'geom');
+      this.drawTags(geoSource);
+    });
   }
 }

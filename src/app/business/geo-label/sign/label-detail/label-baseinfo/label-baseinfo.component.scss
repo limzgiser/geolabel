@@ -1,0 +1,21 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  .item{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    cursor: pointer;
+    span:first-child{
+      flex: 2;
+      display: flex;
+      justify-content:flex-end;
+      color: #999999;
+    }
+    span:last-child{
+      flex: 5;
+      font-weight: bold;
+    }
+  }
+}

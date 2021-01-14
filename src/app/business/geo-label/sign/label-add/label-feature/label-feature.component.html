@@ -2,21 +2,24 @@
   <p *ngIf="features.length <= 0">
     请点击右上方点、线、面、圆按钮在地图上绘制。
   </p>
-  <div class="item" *ngFor="let item of features">
-    <div class="top">
-       <div class="top-left">
-         <img [src]="item.icon | addTagIcon:item.type" >
-         <input style="width: 280px;height: 32px;" nz-input placeholder="" [(ngModel)]="item.title" />
-       </div>
-      <img src="./assets/img/map/icon_detail_delete.png"  (click)="removeFeature(item)">
+  <app-cf-scroll>
+    <div class="content">
+      <div class="item" *ngFor="let item of features">
+        <div class="top">
+          <div class="top-left">
+            <img [src]="item.icon | addTagIcon:item.type" >
+            <input style="width: 280px;height: 32px;" nz-input placeholder="" [(ngModel)]="item.title" />
+          </div>
+          <img src="./assets/img/map/icon_detail_delete.png"  (click)="removeFeature(item)">
+        </div>
+        <div class="bottom">
+        <textarea
+          nz-input
+          [(ngModel)]="item.des"
+          [nzAutosize]="{ minRows: 2, maxRows: 6 }"
+        ></textarea>
+        </div>
+      </div>
     </div>
-
-    <div class="bottom">
-      <textarea
-      nz-input
-      [(ngModel)]="item.des" 
-      [nzAutosize]="{ minRows: 2, maxRows: 6 }"
-    ></textarea>
-    </div>
-  </div>
+  </app-cf-scroll>
 </div>

@@ -1,28 +1,37 @@
 .container{
-  
-   &>p{
-       margin-top: 16px;
-   }
-   .item{
-       margin-top: 16px;
-       .top{
-           height: 32px;
-           display: flex;
-           align-items: center;
-           justify-content: space-between;
-           .top-left{
-               img{
-                   margin-right: 5px;
-               }
-           }
-           img{
-               cursor: pointer;
-           }
-           
-       }
-       .bottom{
-           margin-top: 10px;
-           padding-left: 20px;
-       }
-   }
+  p{
+    margin-top: 16px;
+  }
+  app-cf-scroll {
+    display: block;
+    height: 600px;
+    position: relative;
+    overflow: auto;
+    .content{
+      display: flex;
+      flex-direction: column;
+      .item{
+        margin-top: 16px;
+        .top{
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .top-left{
+            img{
+              margin-right: 5px;
+            }
+          }
+          img{
+            cursor: pointer;
+          }
+        }
+        .bottom{
+          margin-top: 10px;
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+
 }

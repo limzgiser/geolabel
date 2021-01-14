@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NzCascaderOption} from "ng-zorro-antd/cascader";
-import {ListLabelItem, SearchParams, searchTagResult,tagListItem} from "../../types";
+import {tagListItem, SearchParams, searchTagResult} from "../../types";
 import {SignComponent} from "../sign.component";
 import {wktToGeoJson} from "../../utils/main-format";
 import { DatePipe } from '@angular/common';
@@ -14,7 +14,7 @@ import { DatePipe } from '@angular/common';
   providers:[DatePipe]
 })
 export class LabelSearchComponent implements OnInit {
-  @Input() tagList:Array<tagListItem> =  [];
+  @Input() tagList:searchTagResult =  null;
   keyString:string = "";
   nowData :Date = new Date();
   dateRange :Array<Date>= [];
@@ -98,21 +98,21 @@ export class LabelSearchComponent implements OnInit {
   classifyOnChanges($event){
 
   }
-  hideFeature(item:ListLabelItem){
+  hideFeature(item:tagListItem){
    let ids = [];
-   this.tagList.forEach(item=>{
+   this.tagList.list.forEach(item=>{
      if(item.hidden){
        ids.push((item.tagid));
      }
    })
     this.signComponent.hideTagFeatures(ids);
   }
-  centerToFeature(item:tagListItem){
+  tagItemClick(item:tagListItem){
      let {coordinates} = wktToGeoJson(item.geom);
-     console.log(coordinates);
      this.signComponent.mapboxMap.flyTo({
          center:coordinates,
          zoom:15
-     })
+     });
+     this.signComponent.toggleDetail(item.tagid);
   }
 }

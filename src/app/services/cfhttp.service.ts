@@ -11,9 +11,7 @@ import { map, filter, switchMap } from 'rxjs/operators';
 export class CfhttpService {
   sevConfig = null;
   sevCfgURL :string= '';
-
   constructor(private http: HttpClient) {
-
     this.sevCfgURL = JSON.parse(sessionStorage.getItem('main.config'))['service.config'];
   }
   /**
@@ -66,6 +64,25 @@ export class CfhttpService {
       }),
       switchMap((url: string) => {
         return this.http.post(url, body, options);
+      })
+    );
+  }
+  /**
+   *
+   * @param sevid;
+   */
+  delete(serverId, body): Observable<any> {
+    return this.getSevConfig().pipe(
+      map((data: any) => {
+        let item = data.list.find((item) => item.id === serverId);
+        if(!item){
+          throw new Error(`${serverId}未配置服務`);
+        }
+        let url = this.getFullUrl(item.url, this.sevConfig.host);
+        return url;
+      }),
+      switchMap((url: string) => {
+        return this.http.delete(url, body);
       })
     );
   }

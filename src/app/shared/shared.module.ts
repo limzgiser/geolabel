@@ -25,7 +25,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
-
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 const antZORRO = [
   NzMenuModule,
   NzMessageModule,
@@ -42,7 +42,8 @@ const antZORRO = [
   NzFormModule,
   NzRadioModule,
   NzTagModule,
-  NzCascaderModule
+  NzCascaderModule,
+  NzPopconfirmModule
 ];
 
 const directive = [];

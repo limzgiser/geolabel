@@ -1,0 +1,16 @@
+.tag-title{
+  display: flex;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  align-items: center;
+  color: #333333;
+  border-bottom: 1px solid #E5E5E5;
+
+  .hight-border{
+    width: 6px;
+    height: 12px;
+    background: #1890FF;
+    margin-right: 8px;
+  }
+}

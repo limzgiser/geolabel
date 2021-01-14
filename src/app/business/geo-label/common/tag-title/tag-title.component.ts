@@ -1,12 +1,12 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'lb-label-detail',
-  templateUrl: './label-detail.component.html',
-  styleUrls: ['./label-detail.component.scss'],
+  selector: 'lb-tag-title',
+  templateUrl: './tag-title.component.html',
+  styleUrls: ['./tag-title.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LabelDetailComponent implements OnInit {
+export class TagTitleComponent implements OnInit {
 
   constructor() { }
 

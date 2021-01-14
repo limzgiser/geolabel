@@ -1,0 +1,35 @@
+.feature-info{
+  padding: 0 16px;
+  app-cf-scroll {
+    display: block;
+    height: 350px;
+    position: relative;
+  }
+  .content{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    .item{
+      display: flex;
+      flex-direction: column;
+      border-bottom:  1px solid #E5E5E5;
+      cursor: pointer;
+      .title{
+        display: flex;
+        height: 40px;
+        place-items: center;
+        img{
+          margin-right: 5px;
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .des{
+        color: #333333;
+        margin-left: 21px;
+        margin-bottom: 5px;
+      }
+
+    }
+  }
+}

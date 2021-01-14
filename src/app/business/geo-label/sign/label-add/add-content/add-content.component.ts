@@ -88,13 +88,13 @@ export class AddContentComponent implements OnInit {
   }
   addTag(geo:[number,number],source:soureTagInfo){
     let res = sourceTagToParams(geo,source);
-    this.signService.addTag(res).subscribe((success:boolean)=>{
-      console.log(success)
+    this.signService.addTag(res).subscribe((success:string)=>{
       if(success){
         this.addStatueIndex ++;
         this.addTagSuccess = true;
         this.cdr.markForCheck();
-        this.mzMessageService.success('新建标记成功!')
+        this.mzMessageService.success('新建标记成功!');
+        this.signComponent.getTags(null);
       } else{
         this.addTagSuccess = false;
         this.mzMessageService.error('新建标记失败!')

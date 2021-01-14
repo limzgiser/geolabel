@@ -9,9 +9,10 @@ import {cloneDeep} from 'lodash'
  */
 export function sourceTagToParams(geo:[number,number],source:soureTagInfo) :LabelBaseInfo{
   let {baseInfo,graphs} = cloneDeep(source);
-  baseInfo.categoryid = (baseInfo.categoryid && baseInfo.categoryid.length) ? baseInfo.categoryid [baseInfo.categoryid.length-1] as string:'';
+  baseInfo.categoryid = baseInfo.categoryid ?baseInfo.categoryid.toString():'';
   baseInfo.taginfos = baseInfo.taginfos.toString();
-  baseInfo.geo = `Point(${geo[0]} ${geo[1]})` ;
+  baseInfo.geom = `Point(${geo[0]} ${geo[1]})` ;
+  baseInfo.ispublic = +baseInfo.ispublic;
   let feature = [];
     graphs.forEach(item=>{
       feature.push({
@@ -37,7 +38,7 @@ export function listWktToGeoJson(wktList:Array<any>,wktField:string){
   };
   if(wktList){
     wktList.forEach((item,index)=>{
-      item.index = index.toString();
+      item.index = (++index).toString();
       let wkt = item[wktField];
       let geometry = parse(wkt);
       // delete item[wktField];

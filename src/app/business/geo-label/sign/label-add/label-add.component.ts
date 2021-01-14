@@ -16,9 +16,7 @@ export class LabelAddComponent implements OnInit {
   closeContainer():void {
     this.isOpen = false;
   }
-  toggleEditTool($event){
 
-  }
   ngOnInit(): void {
   }
 }

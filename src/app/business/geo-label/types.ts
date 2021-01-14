@@ -9,14 +9,7 @@ export interface NavItem {
   selectIcon?:string;
 }
 
-export interface ListLabelItem {
-  id:string;
-  title: string;
-  type: string;
-  collected: boolean;
-  hidden?:boolean,
-  wkt:string;
-}
+
 
 export interface MarkerStatueItem {
   title: string;
@@ -38,10 +31,13 @@ export interface FeatureListItem {
   icon?: string;
 }
 export interface LabelgeoFeature {
+   tagid?:string;
+  "gid"?:string;
   "title":string;
   "desc": string;
   "geotype": 'Point' | 'LineString' | 'Polygon' | 'MultiLineString'| 'MultiPlygon';
   "geom":  string;
+  icon?:string;
 }
 export interface LabelBaseInfo {
   "title": string;
@@ -49,7 +45,7 @@ export interface LabelBaseInfo {
   "categoryid"?: Array<number|string> | string;
   "taginfos":Array<string> | string;
   "desc": string;
-  "geo"?:string;
+  "geom"?:string;
   "graphs"?:Array<LabelgeoFeature>;
 }
 
@@ -85,4 +81,26 @@ export interface  searchTagResult {
   totalRecord:number;
   totalPage:number;
   list:Array<tagListItem>
+}
+
+export interface  tagDetailInfo {
+  "tagid": string;
+  "title":  string;
+  "ispublic": number;
+  "issubscribe": number;
+  "categoryid":  string;
+  "categoryname": string|string[];
+  "taginfos":  string;
+  "desc": string;
+  "createby": string;
+  "createaccount":  string;
+  "createtime":  string;
+  "updateby":  string;
+  "updateaccount": string;
+  "updatetime":  string;
+  "geom":  string;
+  "isdelete": number;
+  "graphCount":number;
+  "topicCount":number;
+  "graphs"?:LabelgeoFeature[];
 }

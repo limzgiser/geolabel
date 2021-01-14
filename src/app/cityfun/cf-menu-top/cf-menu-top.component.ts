@@ -34,7 +34,7 @@ export class CfMenuTopComponent implements OnInit {
  * @ param routerName
  */
   private initRouter(routerArr, routerName) {
-    // console.log(routerName);
+    // (routerName);
 
     this.activeNavBarSelect(routerArr);
   }

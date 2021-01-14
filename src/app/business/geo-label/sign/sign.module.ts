@@ -14,7 +14,11 @@ import { AddTagIconPipe } from './label-add/label-feature/addTagIcon.pipe';
 import { LabelSuccessComponent } from './label-add/label-success/label-success.component';
 import {SignService} from "./sign.service";
 import { AddContentComponent } from './label-add/add-content/add-content.component';
-import {LabelDetailComponent} from "../label-detail/label-detail.component";
+import {LabelDetailComponent} from "./label-detail/label-detail.component";
+import {LabelDetailContentComponent} from "./label-detail/label-detail-content/label-detail-content.component";
+import {FeatureDetailComponent} from "./label-detail/feature-detail/feature-detail.component";
+import { LabelCommentComponent } from './label-detail/label-comment/label-comment.component';
+import { LabelBaseinfoComponent } from './label-detail/label-baseinfo/label-baseinfo.component';
 
 @NgModule({
   imports: [CommonModule, SiginRoutes, LabelCommonModule, SharedModule],
@@ -28,7 +32,11 @@ import {LabelDetailComponent} from "../label-detail/label-detail.component";
     AddTagIconPipe,
     LabelSuccessComponent,
     AddContentComponent,
-    LabelDetailComponent
+    LabelDetailComponent,
+    LabelDetailContentComponent,
+    FeatureDetailComponent,
+    LabelCommentComponent,
+    LabelBaseinfoComponent
   ],
   providers: [EditToolService,SignService],
 })
