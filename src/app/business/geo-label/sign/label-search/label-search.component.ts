@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output}
 import {NzCascaderOption} from "ng-zorro-antd/cascader";
 import {ListLabelItem, SearchParams} from "../../types";
 import {SignComponent} from "../sign.component";
+import {wktToGeoJSOn} from "../../utils/main-format";
 
 
 
@@ -91,14 +92,21 @@ export class LabelSearchComponent implements OnInit {
   classifyOnChanges($event){
 
   }
-  hideFeature(Item:ListLabelItem){
+  hideFeature(item:ListLabelItem){
    let ids = [];
    this.tagList.forEach(item=>{
      if(item.hidden){
        ids.push((item.id));
      }
    })
-
     this.signComponent.hideTagFeatures(ids);
+  }
+  centerToFeature(item:ListLabelItem){
+     let {coordinates} = wktToGeoJSOn(item.wkt);
+     console.log(coordinates);
+     this.signComponent.mapboxMap.flyTo({
+         center:coordinates,
+         zoom:15
+     })
   }
 }

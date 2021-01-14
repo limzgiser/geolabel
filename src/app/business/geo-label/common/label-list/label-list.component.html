@@ -13,7 +13,11 @@
     <!--  @listToggle -->
     <app-cf-scroll>
       <div class="content" (mouseleave)="mouseLeave()" >
-        <div class="item" [style.opacity]="item.hidden?0.2:1" *ngFor="let item of labelList; let i = index" (mouseenter)="mouseenter(item)" >
+        <div class="item" [style.opacity]="item.hidden?0.2:1"
+             *ngFor="let item of labelList;
+             let i = index" (mouseenter)="mouseenter(item)"
+             (click)="centerToPointer(item)"
+        >
           <img class="index-logo" src="./assets/img/map/pin_{{ i + 1 }}.png" />
           <div class="right">
             <img [src]="'./assets/img/map/icon_list_private.png'" />

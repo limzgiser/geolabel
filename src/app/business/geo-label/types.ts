@@ -14,7 +14,8 @@ export interface ListLabelItem {
   title: string;
   type: string;
   collected: boolean;
-  hidden?:boolean
+  hidden?:boolean,
+  wkt:string;
 }
 
 export interface MarkerStatueItem {

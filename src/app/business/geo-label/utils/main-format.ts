@@ -40,7 +40,7 @@ export function listWktToGeoJson(wktList:Array<any>,wktField:string){
       item.index = index.toString();
       let wkt = item[wktField];
       let geometry = parse(wkt);
-      delete item[wktField];
+      // delete item[wktField];
       let feature = {
         type:'feature',
         geometry:geometry,
@@ -51,4 +51,8 @@ export function listWktToGeoJson(wktList:Array<any>,wktField:string){
   }
 
   return result;
+}
+
+export function wktToGeoJSOn(wkt:string) {
+    return parse(wkt);
 }

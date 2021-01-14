@@ -32,7 +32,11 @@
        </ng-container>
     </div>
     <div class="bottom">
-      <app-label-list  [labelList]='tagList' (hideFeature)="hideFeature($event)"></app-label-list>
+      <app-label-list
+        [labelList]='tagList'
+        (hideFeature)="hideFeature($event)"
+        (centerToFeature)="centerToFeature($event)"
+      ></app-label-list>
     </div>
   </app-label-container>
 </div>
