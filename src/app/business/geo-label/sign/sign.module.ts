@@ -13,6 +13,7 @@ import { EditToolService } from './services/edit-tool.service';
 import { AddTagIconPipe } from './label-add/label-feature/addTagIcon.pipe';
 import { LabelSuccessComponent } from './label-add/label-success/label-success.component';
 import {SignService} from "./sign.service";
+import { AddContentComponent } from './label-add/add-content/add-content.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {SignService} from "./sign.service";
     EditToolComponent,
     AddTagIconPipe,
     LabelSuccessComponent,
+    AddContentComponent,
   ],
   providers: [EditToolService,SignService],
 })

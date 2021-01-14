@@ -1,12 +1,12 @@
 <div class="wrapper">
+<!--  MarkerStatue 1 none ,1 moving 2 edit -->
   <app-label-search
     *ngIf="markerStatue != 2"
     (search)="doSearch($event)"
     [tagList]="tagList"
   ></app-label-search>
-  <app-label-add #labelAddComponent
+  <app-label-add
     *ngIf="markerStatue == 2"
-    (showEditToolEvent)="toggleEditTool($event)"
   ></app-label-add>
   <div class="add-mark">
     <button nz-button nzType="primary" (click)="addMarker()">

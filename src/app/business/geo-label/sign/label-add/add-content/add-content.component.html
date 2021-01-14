@@ -1,0 +1,33 @@
+<div class="top">
+  <app-add-marker-statue
+    [selectIndex]="addStatueIndex"
+    [addTagSuccess] = 'addTagSuccess'
+  ></app-add-marker-statue>
+  <app-base-info #baseInfoComponent
+                 *ngIf="addStatueIndex == 0"
+                 [baseInfo]="addSourceInfo.baseInfo"
+  ></app-base-info>
+  <app-label-feature
+    #labelFeatureComponent
+    *ngIf="addStatueIndex == 1"
+    [features]="addSourceInfo.graphs"
+  >
+
+  </app-label-feature>
+  <app-label-success *ngIf="addStatueIndex == 2"
+                     (createAgainEmit)="createAgain();"
+                     (viewDetailEmit)="viewDetail()"
+                     [addTagSuccess] = 'addTagSuccess'
+  ></app-label-success>
+</div>
+<div class="bottom" *ngIf="addStatueIndex < 2">
+  <button
+    nz-button
+    nzType="default"
+    (click)="beforeClick()"
+    *ngIf="addStatueIndex == 1"
+  >
+    上一步
+  </button>
+  <button nz-button nzType="primary" (click)="nextClick()">下一步</button>
+</div>

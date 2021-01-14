@@ -11,6 +11,8 @@ import { DOCUMENT } from '@angular/common';
 import {ListLabelItem, SearchParams} from "../types";
 import {SignService} from "./sign.service";
 import {listWktToGeoJson} from "../utils/main-format";
+import {Feature} from "@turf/turf";
+import {EditToolService} from "./services/edit-tool.service";
 
 @Component({
   selector: 'app-sign',
@@ -21,9 +23,11 @@ export class SignComponent implements OnInit {
   constructor(
     private mapboxMapService: MapboxmapService,
     @Inject(DOCUMENT) private doc: Document,
-    private  signService:SignService
+    private  signService:SignService,
+    private  editToolService:EditToolService
 
   ) {}
+  toggleEditTool$ = null;
   mapboxMap: mapboxgl.Map = null;
   markerStatue: MarkerStatue = MarkerStatue.none; // 状态
   moveMarker: mapboxgl.Marker = null;
@@ -48,6 +52,11 @@ export class SignComponent implements OnInit {
         this.mapInit();
       });
     });
+    this.toggleEditTool$ = this.editToolService.toggleTool$.subscribe(
+      (isShow: boolean) => {
+        this.showEditTool = isShow;
+      }
+    );
   }
   mapInit():void {
     this.bindMapEvent();
@@ -91,12 +100,7 @@ export class SignComponent implements OnInit {
    * 停止标记
    */
   stopMarker(): void {
-    offMapEvent(
-      this.mapboxMap,
-      'mousemove',
-      event_mousemove_key,
-      this.eventCallBack
-    );
+    offMapEvent(  this.mapboxMap,  'mousemove',   event_mousemove_key,  this.eventCallBack );
     //  offMapEvent(this.mapboxMap, 'click', event_click_key, this.eventCallBack);
     this.markerStatue = MarkerStatue.none;
     if (this.moveMarker) {
@@ -141,9 +145,7 @@ export class SignComponent implements OnInit {
       }
     }
   }
-  toggleEditTool(isShow:boolean):void{
-    this.showEditTool = isShow;
-  }
+
   doSearch(searchParams:SearchParams){
     console.log("调用查询接口",searchParams)
     this.getTags();
