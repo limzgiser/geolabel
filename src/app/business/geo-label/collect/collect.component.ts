@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tagDetailInfo } from '../types';
 
 @Component({
   selector: 'app-collect',
@@ -8,8 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class CollectComponent implements OnInit {
 
   constructor() { }
-
+  isEdit = false;
+  tagDetailInfo: tagDetailInfo = null;
+  
   ngOnInit() {
   }
+  closeDetail(){
 
+  }
 }

@@ -35,15 +35,14 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzRequired nzFor="tag">标签</nz-form-label>
-      <nz-form-control [nzSpan]="18" nzErrorTip="请添加标签!">
+      <nz-form-label [nzSpan]="6"  nzFor="tag">标签</nz-form-label>
+      <nz-form-control [nzSpan]="18" >
         <lb-form-tag id="taginfos" formControlName="taginfos"></lb-form-tag>
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-label [nzSpan]="6" nzRequired nzFor="desInfo"
-        >描述信息</nz-form-label
-      >
+      <nz-form-label [nzSpan]="6"  nzFor="desInfo"
+        >描述信息</nz-form-label>
       <nz-form-control [nzSpan]="18" nzErrorTip="请输入描述信息！!">
         <textarea
           id="desc"

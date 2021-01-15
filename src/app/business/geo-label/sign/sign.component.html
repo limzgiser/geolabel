@@ -4,7 +4,7 @@
     <lb-label-detail [data]="tagDetailInfo" (close)="closeDetail()" [isEdit]="isEdit" ></lb-label-detail>
   </ng-container>
   <ng-container *ngIf="!tagDetailInfo">
-    <app-label-search #labelSearchComponent
+    <app-label-search
       *ngIf="markerStatue != 2"
       (search)="doSearch($event)"
       [tagList]="tagList"
@@ -13,7 +13,7 @@
       *ngIf="markerStatue == 2"
     ></app-label-add>
   </ng-container>
-  <div class="add-mark">
+  <div class="add-mark"  *ngIf="modelName=='sign'">
     <button nz-button nzType="primary" (click)="addMarker()">
       <i nz-icon nzType="plus" nzTheme="outline"></i>添加标记
     </button>
@@ -24,7 +24,8 @@
   <div class="edit-tool" *ngIf="showEditTool"  >
     <lb-edit-tool></lb-edit-tool>
   </div>
-  <div class="legend">
+
+  <div class="legend" *ngIf="modelName=='sign'">
     <lb-label-legend (legendToggle)="legendToggle($event)"></lb-label-legend>
   </div>
 </div>

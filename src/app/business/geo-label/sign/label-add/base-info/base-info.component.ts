@@ -49,9 +49,9 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
     this.validateForm = this.fb.group({
       title: [title,  [Validators.required]],
       ispublic: [ ispublic, [Validators.required]],
-      categoryid: [categoryid, [Validators.required ]],
-      desc: [desc, [Validators.required]],
-      taginfos:[ taginfos , [Validators.required]],
+      categoryid: [categoryid,[Validators.required]],
+      desc: [desc],
+      taginfos:[ taginfos , ],
     });
   }
   getClassifyTree():void{

@@ -72,6 +72,11 @@
       "id": "classify.tree",
       "des": "切换收藏状态",
       "url": "{{api}}yztbhser/api/cf/loctagmanage/LocTagTreeQuery"
+    },
+    {
+      "id": "collect.list",
+      "des": "查询收藏列表",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/subScribeListQuery"
     }
   ]
 }

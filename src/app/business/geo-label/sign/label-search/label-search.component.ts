@@ -19,6 +19,7 @@ import { wktToGeoJson } from '../../utils/main-format';
 import { DatePipe } from '@angular/common';
 import { CfhttpService } from '../../../../services/cfhttp.service';
 import { SignService } from '../sign.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-label-search',
@@ -47,14 +48,19 @@ export class LabelSearchComponent implements OnInit {
     pageNo: this.pageNumber,
   };
   classifyTree = [];
-
+  modelName :string = 'sign';
   @Output() search = new EventEmitter<any>();
   constructor(
     private signComponent: SignComponent,
     private datePipe: DatePipe,
     private signService: SignService,
-    private cdr: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef,
+    private route:ActivatedRoute,
+  ) {
+    this.route.data.subscribe((data) => {
+      this.modelName = data.path;
+   });
+  }
   ngOnInit() {
     this.getClassifyTree();
   }

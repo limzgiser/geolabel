@@ -23,8 +23,8 @@ import { SignService } from './sign.service';
 import { EditToolService } from './services/edit-tool.service';
 import { listWktToGeoJson } from '../utils/main-format';
 import { getAllTagsStyle, getSageNationTagsStyle } from './styles/style';
-import { LabelSearchComponent } from './label-search/label-search.component';
 import { NzMessageService } from 'ng-zorro-antd';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sign',
@@ -40,8 +40,14 @@ export class SignComponent implements OnInit, OnDestroy {
     private editToolService: EditToolService,
     private cdr: ChangeDetectorRef,
     private nzMessageService: NzMessageService,
-    private appref: ApplicationRef
-  ) {}
+    private appref: ApplicationRef,
+    private route:ActivatedRoute
+  ) {
+    this.route.data.subscribe((data) => {
+       this.modelName = data.path;
+    });
+  }
+  modelName :'collect'|'sign' = 'sign'
   toggleEditTool$ = null;
   mapboxMap: mapboxgl.Map = null;
   markerStatue: MarkerStatue = MarkerStatue.none; // 状态
@@ -65,8 +71,6 @@ export class SignComponent implements OnInit, OnDestroy {
     pageNo: 1,
   };
 
-  @ViewChild('labelSearchComponent', { static: false })
-  private labelSearchComponent: LabelSearchComponent;
   ngOnInit() {
     this.mapboxMapService
       .init()
@@ -207,6 +211,7 @@ export class SignComponent implements OnInit, OnDestroy {
       self.addMoveMarker([lng, lat], true);
     };
     this.eventCallBack['click-map'] = function (e) {
+      self.tagDetailInfo = null;
       let { lng, lat } = e.lngLat;
       self.addMoveMarker([lng, lat], false);
       self.mapboxMapService.setCursor('grab');
@@ -341,8 +346,8 @@ export class SignComponent implements OnInit, OnDestroy {
     } else {
       params = searchParams;
     }
-    this.signService
-      .getTagList(params)
+    let methods = this.modelName =='sign'?'getTagList':"getCollectList";
+    this.signService[methods](params)
       .subscribe((searchTagResult: searchTagResult) => {
         this.tagList = searchTagResult;
         let geoSource = listWktToGeoJson(searchTagResult.list, 'geom');
@@ -357,8 +362,10 @@ export class SignComponent implements OnInit, OnDestroy {
       });
   }
   getAllTagListPoint(): void {
+    let methods = this.modelName =='sign'?'getAllTagListPoint':"getAllCollecPoint";
+    
     this.signService
-      .getAllTagListPoint(null)
+      [methods](null)
       .subscribe((tagList: Array<tagListItem>) => {
         let myTags = [],
           otherTags = [];

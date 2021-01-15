@@ -89,5 +89,22 @@ export class SignService {
       params:params,
       headers: needToken
     }).pipe(map((res:Base<classifyTree>)=>res.data));
+  } 
+
+   /**
+   * 获取收藏列表
+   * @param params
+   */
+  getCollectList(params):Observable<searchTagResult>{
+    return  this.cfHttp.get('collect.list' ,{
+      params:params,
+      headers: needToken
+    }).pipe(map((res:Base<searchTagResult>)=>res.data));
+   }
+   getAllCollecPoint(params):Observable<tagListItem[]>{
+    return  this.cfHttp.get('collect.list' ,{
+      params:params,
+      headers: needToken
+    }).pipe(map((res:Base<Array<tagListItem>>)=>res.data));
   }
 }

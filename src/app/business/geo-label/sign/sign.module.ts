@@ -41,5 +41,9 @@ import { LabelLegendComponent } from './label-legend/label-legend.component';
     LabelLegendComponent
   ],
   providers: [EditToolService,SignService,ApplicationRef],
+  exports:[
+    LabelSearchComponent,
+    LabelDetailComponent
+  ]
 })
 export class SignModule {}

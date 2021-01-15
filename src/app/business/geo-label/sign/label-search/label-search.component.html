@@ -1,7 +1,7 @@
 <div class="search">
   <app-label-container [closeble] = 'false' *ngIf="isOpen" (closed)="closeContainer()">
     <ng-container name="header">
-      查询标记
+     {{modelName=='sign'?'查询标记':'收藏夹'}}
     </ng-container>
     <ng-container name="content">
       <div class="top">
