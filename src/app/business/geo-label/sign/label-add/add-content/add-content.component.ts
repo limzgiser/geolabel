@@ -34,6 +34,7 @@ export class AddContentComponent implements OnInit ,OnDestroy{
   @Output() showEditToolEvent = new EventEmitter<boolean>();
   @ViewChild('baseInfoComponent', { static: false }) private baseInfoComponent: BaseInfoComponent;
   @ViewChild('labelFeatureComponent',{static:false}) private  labelFeatureComponent:LabelFeatureComponent;
+  @Output() showDetail = new EventEmitter<void>();
   @Input()  addSourceInfo :soureTagInfo = {
     baseInfo: null,
     graphs: [],
@@ -85,10 +86,9 @@ export class AddContentComponent implements OnInit ,OnDestroy{
   }
   viewDetail():void{
     this.signComponent.getTagDetail(this.tagId);
-    // if(this.isEdit){
-    //   this.signComponent.isEdit =  false;
-    //   this.addStatueIndex  = 0;
-    // }
+    if(this.isEdit){
+      this.showDetail.emit();
+    }
   }
   addTag(geo:[number,number],source:soureTagInfo){
     let res = sourceTagToParams(geo,source);

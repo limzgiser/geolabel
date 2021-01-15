@@ -1,57 +1,63 @@
 <div class="container">
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    <nz-form-item >
-      <nz-form-label  [nzSpan]="6" nzRequired nzFor="name">名称</nz-form-label>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired nzFor="name">名称</nz-form-label>
       <nz-form-control [nzSpan]="18" nzErrorTip="请输入名称!">
-        <input nz-input formControlName="title"   />
+        <input nz-input formControlName="title" />
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item >
-      <nz-form-label    [nzSpan]="6"  nzRequired nzFor="">公开度</nz-form-label>
-      <nz-form-control  [nzSpan]="18"  nzErrorTip="请选择公开度!">
-        <nz-radio-group   id="ispublic"  formControlName="ispublic">
-          <label nz-radio nzValue='1'>公开</label>
-          <label nz-radio nzValue='0'>私有</label>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired nzFor="">公开度</nz-form-label>
+      <nz-form-control [nzSpan]="18" nzErrorTip="请选择公开度!">
+        <nz-radio-group id="ispublic" formControlName="ispublic">
+          <label nz-radio nzValue="1">公开</label>
+          <label nz-radio nzValue="0">私有</label>
         </nz-radio-group>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item >
-      <nz-form-label [nzSpan]="6"  nzRequired nzFor="classify">分类</nz-form-label>
-      <nz-form-control [nzSpan]="18"   nzErrorTip="请选择分类!">
-<!--        <nz-cascader id="categoryid" formControlName="categoryid"   [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="classifyNgModelChange($event)"  >-->
-<!--        </nz-cascader>-->
-        <nz-cascader id="categoryid"
-                     formControlName="categoryid"
-                     [nzExpandTrigger]="'hover'"
-                       [nzOptions]="classifyTree"
-                       (ngModelChange)="classifyNgModelChange($event)"
-                       [nzValueProperty]="'nodeid'"
-                       [nzLabelProperty]="'title'"
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired nzFor="classify"
+        >分类</nz-form-label
+      >
+      <nz-form-control [nzSpan]="18" nzErrorTip="请选择分类!">
+        <!--        <nz-cascader id="categoryid" formControlName="categoryid"   [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="classifyNgModelChange($event)"  >-->
+        <!--        </nz-cascader>-->
+        <nz-cascader
+          id="categoryid"
+          formControlName="categoryid"
+          [nzExpandTrigger]="'hover'"
+          [nzOptions]="classifyTree"
+          (ngModelChange)="classifyNgModelChange($event)"
+          [nzValueProperty]="'nodeid'"
+          [nzLabelProperty]="'title'"
         >
         </nz-cascader>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item >
-      <nz-form-label [nzSpan]="6"  nzRequired nzFor="tag">标签</nz-form-label>
-      <nz-form-control [nzSpan]="18"   nzErrorTip="请添加标签!">
-        <lb-form-tag  id="taginfos" formControlName="taginfos"  ></lb-form-tag>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired nzFor="tag">标签</nz-form-label>
+      <nz-form-control [nzSpan]="18" nzErrorTip="请添加标签!">
+        <lb-form-tag id="taginfos" formControlName="taginfos"></lb-form-tag>
       </nz-form-control>
     </nz-form-item>
-    <nz-form-item >
-      <nz-form-label [nzSpan]="6"  nzRequired nzFor="desInfo">描述信息</nz-form-label>
-      <nz-form-control [nzSpan]="18"  nzErrorTip="请输入描述信息！!">
-     <textarea id="desc"
-               nz-input
-               formControlName="desc"
-               placeholder="请输入该标记描述信息"
-               [nzAutosize]="{ minRows: 3, maxRows: 3 }"
-     ></textarea>
+    <nz-form-item>
+      <nz-form-label [nzSpan]="6" nzRequired nzFor="desInfo"
+        >描述信息</nz-form-label
+      >
+      <nz-form-control [nzSpan]="18" nzErrorTip="请输入描述信息！!">
+        <textarea
+          id="desc"
+          nz-input
+          formControlName="desc"
+          placeholder="请输入该标记描述信息"
+          [nzAutosize]="{ minRows: 3, maxRows: 3 }"
+        ></textarea>
       </nz-form-control>
     </nz-form-item>
-<!--    <nz-form-item>-->
-<!--      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 16, offset: 8 }">-->
-<!--        <button nz-button nzType="primary" [disabled]="!validateForm.valid" >Submit</button>-->
-<!--      </nz-form-control>-->
-<!--    </nz-form-item>-->
+    <!--    <nz-form-item>-->
+    <!--      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 16, offset: 8 }">-->
+    <!--        <button nz-button nzType="primary" [disabled]="!validateForm.valid" >Submit</button>-->
+    <!--      </nz-form-control>-->
+    <!--    </nz-form-item>-->
   </form>
 </div>

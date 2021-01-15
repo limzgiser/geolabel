@@ -40,7 +40,7 @@ export class LabelSearchComponent implements OnInit {
   pageNumber: number = 1;
   @Input() defaultSearchParams = {
     keyWord: '',
-    categoryId: '',
+    // categoryId: '',
     startTime: '',
     endTime: '',
     pageSize: this.pageSize,
@@ -73,7 +73,7 @@ export class LabelSearchComponent implements OnInit {
   doSearch(): void {
     let defaultSearchParams: SearchParams = {
       keyWord: this.keyString,
-      categoryId: this.classifyValues.pop() || '',
+      // categoryId: this.classifyValues.pop() || '',
       startTime:
         (this.dateRange &&
           this.datePipe.transform(this.dateRange[0], 'yyyy-MM-dd HH:mm:ss')) ||

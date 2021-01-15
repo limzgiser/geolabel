@@ -52,7 +52,7 @@ export class SignComponent implements OnInit, OnDestroy {
   tagDetailInfo: tagDetailInfo = null;
   tagList: searchTagResult = null;
   totalCount: number = 0;
-  isEdit:boolean = false;
+  isEdit: boolean = false;
   eventCallBack = {
     // key: function () {},
   };
@@ -299,9 +299,10 @@ export class SignComponent implements OnInit, OnDestroy {
 
   hideTagFeatures(ids: Array<string>): void {
     if (ids.length <= 0) {
+      this.mapboxMap.setFilter('search-tag-layer', null);
       return;
     }
-    this.mapboxMap.setFilter('tag-layer', [
+    this.mapboxMap.setFilter('search-tag-layer', [
       'match',
       ['get', 'tagid'],
       ids.map((item) => {
@@ -324,7 +325,6 @@ export class SignComponent implements OnInit, OnDestroy {
     this.signService
       .getTagDetail({ tagid: tagid })
       .subscribe((result: tagDetailInfo) => {
-
         this.tagDetailInfo = result;
         this.appref.tick();
         this.cdr.markForCheck();
@@ -429,5 +429,7 @@ export class SignComponent implements OnInit, OnDestroy {
       'all-tag-points-other',
       'search-tag-layer',
     ]);
+    this.editMarker && this.editMarker.remove();
+    this.moveMarker && this.moveMarker.remove();
   }
 }

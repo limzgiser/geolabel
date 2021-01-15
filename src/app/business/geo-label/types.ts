@@ -55,7 +55,7 @@ export interface soureTagInfo {
 
 export interface  SearchParams {
   keyWord:string;
-  categoryId:string;
+  categoryId?:string;
   startTime:String;
   endTime:String;
   pageSize:number;

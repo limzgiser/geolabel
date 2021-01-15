@@ -20,7 +20,7 @@
           <span class="clear" (click)="clearParams()">清空条件</span>
         </div>
         <ng-container *ngIf="toggleFilter">
-          <div class="mark-classify param-item">
+          <!-- <div class="mark-classify param-item">
             <span>标记分类：</span>
             <nz-cascader   [nzOptionRender]="renderTpl"
                            [(ngModel)]="classifyValues"
@@ -31,7 +31,7 @@
                            [nzLabelProperty]="'title'"
             >
             </nz-cascader>
-          </div>
+          </div> -->
           <div class="select-time param-item">
             <span>创建时间：</span>
             <nz-range-picker

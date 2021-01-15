@@ -1,10 +1,8 @@
 <div class="wrapper">
-<!--  MarkerStatue 1 none ,1 moving 2 edit -->
-
+<!-- MarkerStatue 1 none ,1 moving 2 edit -->
   <ng-container  *ngIf="tagDetailInfo">
     <lb-label-detail [data]="tagDetailInfo" (close)="closeDetail()" [isEdit]="isEdit" ></lb-label-detail>
   </ng-container>
-
   <ng-container *ngIf="!tagDetailInfo">
     <app-label-search #labelSearchComponent
       *ngIf="markerStatue != 2"

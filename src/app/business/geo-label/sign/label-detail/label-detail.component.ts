@@ -53,11 +53,14 @@ export class LabelDetailComponent implements OnInit {
   editTag() {
     this.isEdit = true;
     this.addSourceInfo = tagDetailToSourceTagInfo(this.data);
-    let { coordinates } = wktToGeoJson(this.data.geom);
-    this.signComponent.addMoveMarker(coordinates, false);
-    this.signComponent.addMarker();
+     let { coordinates } = wktToGeoJson(this.data.geom);
+     this.signComponent.addMoveMarker(coordinates, false);
+    // this.signComponent.addMarker();
+  }
+  showDetail(){
+    this.isEdit = false;
   }
   ngOnChanges(): void {
-    console.log(this.isEdit)
+    
   }
 }
