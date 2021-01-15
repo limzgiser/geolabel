@@ -14,7 +14,7 @@
     <app-cf-scroll>
       <div class="content" (mouseleave)="mouseLeave()" >
         <div class="item" [style.opacity]="item.hidden?0.2:1"
-             *ngFor="let item of labelList?.list;
+             *ngFor="let item of labelList?.list;  trackBy: trackById
              let i = index" (mouseenter)="mouseenter(item)"
              (click)="itemClick(item)"
         >

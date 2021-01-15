@@ -84,10 +84,10 @@ export class SignService {
    *  获取分类树
    * @param params
    */
-  getClassifyTree(params):Observable<[]>{
+  getClassifyTree(params):Observable<classifyTree>{
     return this.cfHttp.get('classify.tree',{
       params:params,
       headers: needToken
-    }).pipe(map((res:Base<[]>)=>res.data));
+    }).pipe(map((res:Base<classifyTree>)=>res.data));
   }
 }

@@ -99,4 +99,7 @@ export class LabelListComponent implements OnInit {
     this.toggleSub.emit(item)
     e.stopPropagation();
   }
+  trackById(index:number,item:tagListItem){
+      return item.tagid;
+  }
 }

@@ -38,6 +38,7 @@ export interface LabelgeoFeature {
   icon?:string;
 }
 export interface LabelBaseInfo {
+  tagid?:string;
   "title": string;
   "ispublic": number|string;
   "categoryid"?: Array<number|string> | string;

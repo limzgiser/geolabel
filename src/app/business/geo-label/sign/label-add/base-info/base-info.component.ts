@@ -31,7 +31,7 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
 
   }
   ngOnInit() {
-
+    this.getClassifyTree();
   }
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -55,11 +55,9 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
     });
   }
   getClassifyTree():void{
-    this.signService.getClassifyTree({treeid:'875ee2e3-e994-96ae-7def-9cb3e9f2593e'}).subscribe(
-      (result:[])=>{
-        // let {jsontree} = result;
-        // let json = JSON.parse(jsontree);
-        // this.classifyTree = json;
-      })
+    this.signService.getClassifyTree({treeid:''}).subscribe(
+      (result:classifyTree)=>{
+        this.classifyTree = JSON.parse(result.jsontree);;
+      });
   }
 }

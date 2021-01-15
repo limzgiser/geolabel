@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ApplicationRef, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignComponent } from './sign.component';
 import { SiginRoutes } from './sigin.routing';
@@ -40,6 +40,6 @@ import { LabelLegendComponent } from './label-legend/label-legend.component';
     LabelBaseinfoComponent,
     LabelLegendComponent
   ],
-  providers: [EditToolService,SignService],
+  providers: [EditToolService,SignService,ApplicationRef],
 })
 export class SignModule {}

@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import {BaseInfoComponent} from "../base-info/base-info.component";
 import {LabelFeatureComponent} from "../label-feature/label-feature.component";
-import {LabelBaseInfo, soureTagInfo} from "../../../types";
+import {LabelBaseInfo, soureTagInfo, tagDetailInfo} from "../../../types";
 import {SignComponent} from "../../sign.component";
 import {SignService} from "../../sign.service";
 import {NzMessageService} from "ng-zorro-antd/message";
@@ -27,7 +27,7 @@ import {EditToolService} from "../../services/edit-tool.service";
 export class AddContentComponent implements OnInit ,OnDestroy{
 
   @Input() isEdit =false;
-  @Input() 
+  @Input()
   tagId:string = '';
   addStatueIndex: number = 0;
   addTagSuccess:boolean = true;
@@ -85,11 +85,20 @@ export class AddContentComponent implements OnInit ,OnDestroy{
   }
   viewDetail():void{
     this.signComponent.getTagDetail(this.tagId);
+    // if(this.isEdit){
+    //   this.signComponent.isEdit =  false;
+    //   this.addStatueIndex  = 0;
+    // }
   }
   addTag(geo:[number,number],source:soureTagInfo){
     let res = sourceTagToParams(geo,source);
     let funName:string = this.isEdit?"editTag":'addTag';
     let message = this.isEdit?"编辑":'新建';
+    if(this.isEdit){
+      res.tagid = this.tagId;
+    }else{
+      delete res.tagid;
+    }
     this.signService[funName](res).subscribe((tagId:string)=>{
       if(tagId){
         this.tagId = tagId;
@@ -97,8 +106,8 @@ export class AddContentComponent implements OnInit ,OnDestroy{
         this.addTagSuccess = true;
         this.cdr.markForCheck();
         this.mzMessageService.success( `${message}标记成功!`);
-        this.signComponent.getTags(null);
-        this.signComponent.stopMarker();
+         this.signComponent.getTags(null);
+       
       } else{
         this.addTagSuccess = false;
         this.mzMessageService.error(`${message}标记失败!`)

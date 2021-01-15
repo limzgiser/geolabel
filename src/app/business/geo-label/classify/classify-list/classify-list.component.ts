@@ -3,8 +3,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 @Component({
   selector: 'lb-classify-list',
   templateUrl: './classify-list.component.html',
-  styles: [
-  ],
+  styleUrls: ['./classify-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ClassifyListComponent implements OnInit {
