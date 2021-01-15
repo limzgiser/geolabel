@@ -5,7 +5,7 @@
     </ng-container>
     <ng-container name="content">
       <ng-container *ngIf="isEdit && addSourceInfo">
-        <lb-add-content [addSourceInfo] = "addSourceInfo"  [isEdit]="true" ></lb-add-content>
+        <lb-add-content [addSourceInfo] = "addSourceInfo"  [tagId]="data?.tagid"  [isEdit]="true" ></lb-add-content>
       </ng-container>
       <ng-container *ngIf="!isEdit">
         <lb-label-detail-content [data]="data" (delete)="deleteTag($event)" (edit)="editTag()" ></lb-label-detail-content>

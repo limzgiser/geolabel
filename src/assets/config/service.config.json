@@ -62,6 +62,16 @@
       "id": "edit.tag",
       "des": "编辑tag",
       "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagEdit"
+    },
+    {
+      "id": "toggle.sub",
+      "des": "切换收藏状态",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagSubscribe"
+    },
+    {
+      "id": "classify.tree",
+      "des": "切换收藏状态",
+      "url": "{{api}}yztbhser/api/cf/loctagmanage/LocTagTreeQuery"
     }
   ]
 }

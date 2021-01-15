@@ -1,9 +1,19 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import {NzCascaderOption} from "ng-zorro-antd/cascader";
-import {tagListItem, SearchParams, searchTagResult} from "../../types";
+import {tagListItem, SearchParams, searchTagResult, classifyTree} from "../../types";
 import {SignComponent} from "../sign.component";
 import {wktToGeoJson} from "../../utils/main-format";
 import { DatePipe } from '@angular/common';
+import {CfhttpService} from "../../../../services/cfhttp.service";
+import {SignService} from "../sign.service";
 
 
 @Component({
@@ -32,53 +42,19 @@ export class LabelSearchComponent implements OnInit {
     pageSize: this.pageSize,
     pageNo: this.pageNumber
   };
-  options = [
-    {
-      value: '1',
-      label: '道路',
-      children: [
-        {
-          value: '11',
-          label: '高速',
-          children: [
-            {
-              value: '111',
-              label: '钢型路面',
-              isLeaf: true
-            }
-          ]
-        },
-        {
-          value: '111',
-          label: '国道',
-          isLeaf: true
-        }
-      ]
-    },
-    {
-      value: '1111',
-      label: '铁路',
-      children: [
-        {
-          value: '1111',
-          label: '国道',
-          children: [
-            {
-              value: '1111',
-              label: '柔性路面',
-              isLeaf: true
-            }
-          ]
-        }
-      ]
-    }
-  ];
-  nzOptions: NzCascaderOption[] =  this.options;
+ classifyTree= [ ]
+
   @Output() search= new EventEmitter<any>();
-  constructor(private  signComponent:SignComponent,private  datePipe:DatePipe) {
+  constructor(private  signComponent:SignComponent,
+              private  datePipe:DatePipe,
+              private  signService:SignService,
+              private  cdr:ChangeDetectorRef
+  ) {
 
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.getClassifyTree();
+  }
 
   closeContainer(){
     this.isOpen = false;
@@ -95,8 +71,10 @@ export class LabelSearchComponent implements OnInit {
    let defaultSearchParams:SearchParams = {
       keyWord:this.keyString,
       categoryId: this.classifyValues.pop() ||'',
-      startTime: this.dateRange  &&  this.datePipe.transform(this.dateRange[0],'yyyy-MM-dd HH:mm:ss') ||'',
-      endTime:this.dateRange  &&  this.datePipe.transform(this.dateRange[1],'yyyy-MM-dd HH:mm:ss')  ||'',
+      startTime: this.dateRange  &&
+        this.datePipe.transform(this.dateRange[0],'yyyy-MM-dd HH:mm:ss') ||'',
+      endTime:this.dateRange  &&
+        this.datePipe.transform(this.dateRange[1],'yyyy-MM-dd HH:mm:ss')  ||'',
       pageSize: this.pageSize,
       pageNo: this.pageNumber,
     }
@@ -125,5 +103,17 @@ export class LabelSearchComponent implements OnInit {
   pageItemClick(pageIndex:number):void{
     this.pageNumber = pageIndex;
     this.doSearch();
+  }
+  toggleSub(data:tagListItem):void{
+  this.signComponent.toggleSub(data);
+  }
+
+  getClassifyTree():void{
+     this.signService.getClassifyTree({treeid:'875ee2e3-e994-96ae-7def-9cb3e9f2593e'}).subscribe(
+       (result:[])=>{
+       // let json = JSON.parse(result);
+       // console.log(json);
+       // this.classifyTree = json;
+     })
   }
 }

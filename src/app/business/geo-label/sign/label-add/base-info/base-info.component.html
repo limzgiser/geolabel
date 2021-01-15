@@ -18,7 +18,16 @@
     <nz-form-item >
       <nz-form-label [nzSpan]="6"  nzRequired nzFor="classify">分类</nz-form-label>
       <nz-form-control [nzSpan]="18"   nzErrorTip="请选择分类!">
-        <nz-cascader id="categoryid" formControlName="categoryid"   [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="classifyNgModelChange($event)"  >
+<!--        <nz-cascader id="categoryid" formControlName="categoryid"   [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="classifyNgModelChange($event)"  >-->
+<!--        </nz-cascader>-->
+        <nz-cascader id="categoryid"
+                     formControlName="categoryid"
+                     [nzExpandTrigger]="'hover'"
+                       [nzOptions]="classifyTree"
+                       (ngModelChange)="classifyNgModelChange($event)"
+                       [nzValueProperty]="'nodeid'"
+                       [nzLabelProperty]="'title'"
+        >
         </nz-cascader>
       </nz-form-control>
     </nz-form-item>

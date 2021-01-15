@@ -9,7 +9,8 @@ import {
 } from '@angular/core';
 import { NzCascaderOption } from 'ng-zorro-antd/cascader';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {LabelBaseInfo, LabelgeoFeature} from "../../../types";
+import {classifyTree, LabelBaseInfo, LabelgeoFeature} from "../../../types";
+import {SignService} from "../../sign.service";
 
 @Component({
   selector: 'app-base-info',
@@ -22,49 +23,11 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
 @Input() baseInfo:LabelBaseInfo = null;
   validateForm!: FormGroup;
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
-   options = [
-    {
-      value: '1',
-      label: '道路',
-      children: [
-        {
-          value: '11',
-          label: '高速',
-          children: [
-            {
-              value: '111',
-              label: '钢型路面',
-              isLeaf: true
-            }
-          ]
-        },
-        {
-          value: '111',
-          label: '国道',
-          isLeaf: true
-        }
-      ]
-    },
-    {
-      value: '1111',
-      label: '铁路',
-      children: [
-        {
-          value: '1111',
-          label: '国道',
-          children: [
-            {
-              value: '1111',
-              label: '柔性路面',
-              isLeaf: true
-            }
-          ]
-        }
-      ]
-    }
-  ];
-  nzOptions: NzCascaderOption[] =  this.options;
-  constructor(private fb: FormBuilder,   private cdr: ChangeDetectorRef) {
+  classifyTree = [];
+  constructor(private fb: FormBuilder,
+              private cdr: ChangeDetectorRef,
+              private  signService:SignService
+  ) {
 
   }
   ngOnInit() {
@@ -91,5 +54,12 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
       taginfos:[ taginfos , [Validators.required]],
     });
   }
-
+  getClassifyTree():void{
+    this.signService.getClassifyTree({treeid:'875ee2e3-e994-96ae-7def-9cb3e9f2593e'}).subscribe(
+      (result:[])=>{
+        // let {jsontree} = result;
+        // let json = JSON.parse(jsontree);
+        // this.classifyTree = json;
+      })
+  }
 }

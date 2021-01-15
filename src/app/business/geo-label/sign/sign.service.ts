@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Base} from "../../../types/types";
 import {HttpHeaders} from "@angular/common/http";
-import {searchTagResult, tagDetailInfo, tagListItem} from "../types";
+import {classifyTree, searchTagResult, tagDetailInfo, tagListItem} from "../types";
 
 const needToken = new HttpHeaders().set('needToken', 'true');
 
@@ -60,10 +60,34 @@ export class SignService {
       headers: needToken
       }).pipe(map((res:Base<tagDetailInfo>)=>res.data));
   }
+
+  /**
+   * 删除标签
+   * @param params
+   */
   deleteTag(params):Observable<boolean>{
     return this.cfHttp.delete('delete.tag',{
       params:params,
       headers: needToken
     }).pipe(map((res:Base<boolean>)=>res.data));
+  }
+  /**
+   *  切换收藏
+   * @param params
+   */
+   toggleSub(body):Observable<number>{
+    return this.cfHttp.post('toggle.sub',body,{
+      headers: needToken
+    }).pipe(map((res:Base<number>)=>res.data));
+  }
+  /**
+   *  获取分类树
+   * @param params
+   */
+  getClassifyTree(params):Observable<[]>{
+    return this.cfHttp.get('classify.tree',{
+      params:params,
+      headers: needToken
+    }).pipe(map((res:Base<[]>)=>res.data));
   }
 }

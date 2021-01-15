@@ -1,4 +1,12 @@
-import {ChangeDetectorRef, Component, Inject, OnInit, ViewChild} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import {MapboxmapService} from 'src/app/cityfun/mapbox-map/service/mapboxmap.service';
 import mapboxgl from 'cityfun-gl';
 import {MarkerStatue, offMapEvent, preventMapDefault,} from '../utils/mapTool';
@@ -9,19 +17,22 @@ import {EditToolService} from "./services/edit-tool.service";
 import {listWktToGeoJson} from "../utils/main-format";
 import {getAllTagsStyle, getSageNationTagsStyle} from "./styles/style";
 import {LabelSearchComponent} from "./label-search/label-search.component";
+import {NzMessageService} from "ng-zorro-antd";
 
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
   styleUrls: ['./sign.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush,
 })
-export class SignComponent implements OnInit {
+export class SignComponent implements OnInit,OnDestroy {
   constructor(
     private mapboxMapService: MapboxmapService,
     @Inject(DOCUMENT) private doc: Document,
     private  signService:SignService,
     private  editToolService:EditToolService,
-    private cdr:ChangeDetectorRef
+    private cdr:ChangeDetectorRef,
+    private  nzMessageService:NzMessageService
 
   ) {}
   toggleEditTool$ = null;
@@ -239,14 +250,15 @@ export class SignComponent implements OnInit {
     this.showTagDetail =true;
     this.getTagDetail(tagid);
   }
-
   /**
    * 查询标签详情
    * @param tagid
    */
   getTagDetail(tagid:string):void{
+    this.markerStatue = MarkerStatue.none;
     this.signService.getTagDetail({tagid:tagid}).subscribe((result:tagDetailInfo)=>{
        this.tagDetailInfo = result;
+       console.log(this.tagDetailInfo)
     });
   }
   /**
@@ -265,6 +277,7 @@ export class SignComponent implements OnInit {
       let geoSource = listWktToGeoJson(searchTagResult.list,'geom');
       let style = getSageNationTagsStyle('search-tag-layer',geoSource);
       this.drawTags(style,'./assets/img/map/pin.png','search-tag-layer','cityfun.null.1');
+      this.cdr.markForCheck();
     });
   }
   getAllTagListPoint():void{
@@ -283,11 +296,46 @@ export class SignComponent implements OnInit {
       let otherTagStyle = getAllTagsStyle('all-tag-points-other',otherTagSource);
       this.drawTags(myTagStyle,'./assets/img/map/icon_map_switch_mine.png','all-tag-points-my','cityfun.null.2');
       this.drawTags(otherTagStyle,'./assets/img/map/icon_map_switch_others.png','all-tag-points-other','cityfun.null.2');
+      this.cdr.markForCheck();
     })
   }
+
+  /**
+   * 显隐图例对应图层
+   * @param legnedIem
+   */
   legendToggle(legnedIem:legentItem):void{
     let visibility = legnedIem.active?"visible":"none";
     this.mapboxMap.setLayoutProperty(legnedIem.id,'visibility',visibility);
   }
 
+  /**
+   * 切换收藏状态
+   * @param data
+   */
+  toggleSub(data:tagListItem){
+    let {tagid,issubscribe} = data;
+     let msg = issubscribe==1?"取消收藏":"收藏";
+    this.signService.toggleSub({
+      tagid:tagid,
+      isSubscribe:issubscribe==1?0:1
+    }).subscribe(res=>{
+      this.cdr.markForCheck()
+      if(res){
+        this.cdr.markForCheck();
+        this.doSearch(null);
+        this.nzMessageService.success(msg+'成功!');
+      }else{
+        this.nzMessageService.error(msg+'失败!');
+      }
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.mapboxMapService.removeLayerByIds([
+      'all-tag-points-my',
+      'all-tag-points-other',
+      'search-tag-layer'
+    ])
+  }
 }

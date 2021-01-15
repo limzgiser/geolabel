@@ -27,6 +27,7 @@ import {EditToolService} from "../../services/edit-tool.service";
 export class AddContentComponent implements OnInit ,OnDestroy{
 
   @Input() isEdit =false;
+  @Input() 
   tagId:string = '';
   addStatueIndex: number = 0;
   addTagSuccess:boolean = true;
@@ -97,6 +98,7 @@ export class AddContentComponent implements OnInit ,OnDestroy{
         this.cdr.markForCheck();
         this.mzMessageService.success( `${message}标记成功!`);
         this.signComponent.getTags(null);
+        this.signComponent.stopMarker();
       } else{
         this.addTagSuccess = false;
         this.mzMessageService.error(`${message}标记失败!`)

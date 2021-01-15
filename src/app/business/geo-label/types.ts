@@ -107,3 +107,7 @@ export interface legentItem {
   icon:string;
   active:boolean;
 }
+export interface classifyTree {
+ treeid:string;
+ jsontree:string;
+}

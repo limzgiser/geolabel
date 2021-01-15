@@ -69,6 +69,7 @@ export class LabelListComponent implements OnInit {
   @Input() labelList:  searchTagResult= null;
   @Output() hideFeature = new EventEmitter<tagListItem>();
   @Output() tagItemClick = new EventEmitter<tagListItem>();
+  @Output() toggleSub = new EventEmitter<tagListItem>();
   @Output() pageItemClick = new EventEmitter<number>();
   constructor() {}
 
@@ -93,5 +94,9 @@ export class LabelListComponent implements OnInit {
   }
   pageIndexChange(index:number):void{
      this.pageItemClick.emit(index);
+  }
+  toggleSubScribe(item:tagListItem,e){
+    this.toggleSub.emit(item)
+    e.stopPropagation();
   }
 }

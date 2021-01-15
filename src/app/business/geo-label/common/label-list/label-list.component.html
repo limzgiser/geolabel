@@ -40,8 +40,8 @@
                    (click)="hideItem(item,$event);"
               />
             </ng-container>
-            <img *ngIf="item.issubscribe==1" [src]="'./assets/img/map/icon_list_selected.png'" />
-            <img *ngIf="item.issubscribe==0" [src]="'./assets/img/map/icon_list_select.png'" />
+            <img *ngIf="item.issubscribe==1" [src]="'./assets/img/map/icon_list_selected.png'"  (click)="toggleSubScribe(item,$event)" />
+            <img *ngIf="item.issubscribe==0" [src]="'./assets/img/map/icon_list_select.png'"  (click)="toggleSubScribe(item,$event)"/>
           </div>
         </div>
       </div>

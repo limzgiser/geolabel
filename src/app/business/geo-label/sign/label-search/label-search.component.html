@@ -22,7 +22,14 @@
         <ng-container *ngIf="toggleFilter">
           <div class="mark-classify param-item">
             <span>标记分类：</span>
-            <nz-cascader    [(ngModel)]="classifyValues"  [nzExpandTrigger]="'hover'" [nzOptions]="nzOptions" (ngModelChange)="classifyOnChanges($event)"  >
+            <nz-cascader   [nzOptionRender]="renderTpl"
+                           [(ngModel)]="classifyValues"
+                           [nzExpandTrigger]="'hover'"
+                           [nzOptions]="classifyTree"
+                           (ngModelChange)="classifyOnChanges($event)"
+                           [nzValueProperty]="'nodeid'"
+                           [nzLabelProperty]="'title'"
+            >
             </nz-cascader>
           </div>
           <div class="select-time param-item">
@@ -43,6 +50,7 @@
           (hideFeature)="hideFeature($event)"
           (tagItemClick)="tagItemClick($event)"
           (pageItemClick) = "pageItemClick($event)"
+          (toggleSub)="toggleSub($event)"
         ></app-label-list>
       </div>
     </ng-container>
@@ -51,3 +59,4 @@
 <ng-template #suffixButton>
   <button nz-button nzType="primary" nzSize="large" nzSearch (click)="doSearch();">查询</button>
 </ng-template>
+<ng-template #renderTpl let-option let-index="index">  {{ option?.title }} </ng-template>
