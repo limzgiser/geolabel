@@ -37,9 +37,12 @@
       </div>
       <div class="bottom">
         <app-label-list
+          [currentPage] = 'pageNumber'
+          [pageSize]="pageSize"
           [labelList]='tagList'
           (hideFeature)="hideFeature($event)"
           (tagItemClick)="tagItemClick($event)"
+          (pageItemClick) = "pageItemClick($event)"
         ></app-label-list>
       </div>
     </ng-container>

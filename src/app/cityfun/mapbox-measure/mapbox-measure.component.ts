@@ -10,6 +10,7 @@ import {MapMeasure} from './measure'
 export class MapboxMeasureComponent implements OnInit {
 
   constructor(private mapboxmapService: MapboxmapService,) { }
+  @Input()
   mapboxglmap = null;
   draw = null;
   startDraw = false; // 记录是否开始绘制
@@ -61,25 +62,20 @@ export class MapboxMeasureComponent implements OnInit {
     }
   ];
   ngOnInit() {
-    this.mapboxmapService.init().subscribe((mapboxglmap: any) => {
-      this.mapboxglmap = mapboxglmap;
-      if (mapboxglmap.isStyleLoaded() || this.mapboxmapService.firstFullLoaded) {
-        this.init();
-      }
-      mapboxglmap.on('load', () => {
-        this.init();
-      });
-    });
+
+
   }
   init() {
-    this.mapMeasure = new MapMeasure(this.mapboxglmap);
-    
+    if(this.mapboxglmap){
+      this.mapMeasure = new MapMeasure(this.mapboxglmap);
+    }
+
   }
 
   drawClick(e) {
     // this.draw.deleteAll();
     // this.mapboxDrawService.reset(this.mapboxglmap);
- 
+
     this.pupup ? this.pupup.remove() : null;
     switch (e.id) {
       case 'full-ext':

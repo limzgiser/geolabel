@@ -6,8 +6,8 @@
   <div class="children-container">
     <router-outlet></router-outlet>
   </div>
-  <div id="measure-tool">
-    <app-mapbox-measure (clearMeasure) = "clearMeasure($event)"></app-mapbox-measure>
+  <div id="measure-tool" >
+    <app-mapbox-measure *ngIf="mapboxglmap" [mapboxglmap]="mapboxglmap" (clearMeasure) = "clearMeasure($event)"></app-mapbox-measure>
   </div>
   <app-treelyr-control></app-treelyr-control>
 </div>

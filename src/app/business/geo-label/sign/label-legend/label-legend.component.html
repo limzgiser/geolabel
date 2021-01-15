@@ -1,0 +1,7 @@
+<div class="legend">
+   <div class="item" *ngFor="let item of data">
+     <img [src]="item.icon"/>
+      {{item.title}}
+     <nz-switch [(ngModel)]="item.active" (ngModelChange)="modelChange(item)"></nz-switch>
+   </div>
+</div>

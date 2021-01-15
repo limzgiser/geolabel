@@ -14,10 +14,21 @@ export function offMapEvent(
   map: mapboxgl.Map,
   type: string,
   eventKey: string,
-  callfuns: {}
+  callfuns: {},
+  layerid?
 ): void {
-  if (callfuns[eventKey]) {
+  if(layerid){
+      map.off(type,layerid, callfuns[eventKey]);
+  }else{
     map.off(type, callfuns[eventKey]);
   }
 }
- 
+
+export const  preventMapDefault = function (e):boolean{
+  if (e.defaultPrevented) {
+    return true;
+  }
+  e.preventDefault();
+}
+
+

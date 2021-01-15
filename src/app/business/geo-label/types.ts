@@ -102,3 +102,8 @@ export interface  tagDetailInfo {
   "topicCount":number;
   "graphs"?:LabelgeoFeature[];
 }
+export interface legentItem {
+  id:string;
+  icon:string;
+  active:boolean;
+}

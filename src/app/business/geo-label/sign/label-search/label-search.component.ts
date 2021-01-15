@@ -22,9 +22,16 @@ export class LabelSearchComponent implements OnInit {
   toggleFilter:boolean = true;
   dateFormat:string = 'yyyy/MM/dd';
   classifyValues = [ ];
-  pageSize :number = 10;
+  pageSize :number = 9;
   pageNumber:number = 1;
-  @Input() defaultSearchParams = null;
+  @Input() defaultSearchParams =  {
+    keyWord:'',
+    categoryId: '',
+    startTime:   '',
+    endTime: '',
+    pageSize: this.pageSize,
+    pageNo: this.pageNumber
+  };
   options = [
     {
       value: '1',
@@ -107,12 +114,16 @@ export class LabelSearchComponent implements OnInit {
    })
     this.signComponent.hideTagFeatures(ids);
   }
-  tagItemClick(item:tagListItem){
+  tagItemClick(item:tagListItem):void{
      let {coordinates} = wktToGeoJson(item.geom);
      this.signComponent.mapboxMap.flyTo({
          center:coordinates,
          zoom:15
      });
      this.signComponent.toggleDetail(item.tagid);
+  }
+  pageItemClick(pageIndex:number):void{
+    this.pageNumber = pageIndex;
+    this.doSearch();
   }
 }

@@ -26,6 +26,7 @@ import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzCascaderModule } from 'ng-zorro-antd/cascader';
 import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
+import { NzSwitchModule } from 'ng-zorro-antd/switch';
 const antZORRO = [
   NzMenuModule,
   NzMessageModule,
@@ -43,7 +44,8 @@ const antZORRO = [
   NzRadioModule,
   NzTagModule,
   NzCascaderModule,
-  NzPopconfirmModule
+  NzPopconfirmModule,
+  NzSwitchModule
 ];
 
 const directive = [];

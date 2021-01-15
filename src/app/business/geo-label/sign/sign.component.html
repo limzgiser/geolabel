@@ -5,12 +5,10 @@
     <lb-label-detail [data]="tagDetailInfo" (close)="closeDetail()" ></lb-label-detail>
   </ng-container>
   <ng-container *ngIf="!tagDetailInfo">
-    <app-label-search
+    <app-label-search #labelSearchComponent
       *ngIf="markerStatue != 2"
-      [defaultSearchParams]="defaultSearchParams"
       (search)="doSearch($event)"
       [tagList]="tagList"
-
     ></app-label-search>
     <app-label-add
       *ngIf="markerStatue == 2"
@@ -26,6 +24,9 @@
   </div>
   <div class="edit-tool" *ngIf="showEditTool"  >
     <lb-edit-tool></lb-edit-tool>
+  </div>
+  <div class="legend">
+    <lb-label-legend (legendToggle)="legendToggle($event)"></lb-label-legend>
   </div>
 </div>
 

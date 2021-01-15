@@ -149,7 +149,6 @@ export class EditToolComponent implements OnInit {
   }
 
   initDrawFeaturesToMap(features:Array<Feature>):void{
-
     features.forEach(feature=>{
        this.mapboxDraw.add(feature);
     })

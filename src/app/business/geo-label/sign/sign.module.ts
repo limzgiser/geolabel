@@ -19,6 +19,7 @@ import {LabelDetailContentComponent} from "./label-detail/label-detail-content/l
 import {FeatureDetailComponent} from "./label-detail/feature-detail/feature-detail.component";
 import { LabelCommentComponent } from './label-detail/label-comment/label-comment.component';
 import { LabelBaseinfoComponent } from './label-detail/label-baseinfo/label-baseinfo.component';
+import { LabelLegendComponent } from './label-legend/label-legend.component';
 
 @NgModule({
   imports: [CommonModule, SiginRoutes, LabelCommonModule, SharedModule],
@@ -36,7 +37,8 @@ import { LabelBaseinfoComponent } from './label-detail/label-baseinfo/label-base
     LabelDetailContentComponent,
     FeatureDetailComponent,
     LabelCommentComponent,
-    LabelBaseinfoComponent
+    LabelBaseinfoComponent,
+    LabelLegendComponent
   ],
   providers: [EditToolService,SignService],
 })

@@ -27,7 +27,7 @@ export class Mapdraw {
 
   init() {
     this.map.addLayer({
-      id: this.lineLayerId,
+
       type: 'line',
       source: {
         type: 'geojson',

@@ -12,7 +12,10 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import {SignComponent} from "../../sign/sign.component";
+interface pageNationChangeInfo {
+  currentPage:number;
+  item:tagListItem
+}
 @Component({
   selector: 'app-label-list',
   templateUrl: './label-list.component.html',
@@ -56,12 +59,17 @@ export class LabelListComponent implements OnInit {
     2:'./assets/img/map/icon_list_private_others.png',
     3:'./assets/img/map/icon_list_public_others.png'
   }
-  total = 12;
+  @Input()
+  currentPage:number=1;
+  @Input()
+  pageSize:number =9;
+  @Input()
   hoverItem:tagListItem = null;
   showPanel: boolean = true;
   @Input() labelList:  searchTagResult= null;
   @Output() hideFeature = new EventEmitter<tagListItem>();
   @Output() tagItemClick = new EventEmitter<tagListItem>();
+  @Output() pageItemClick = new EventEmitter<number>();
   constructor() {}
 
   ngOnInit() {}
@@ -78,12 +86,12 @@ export class LabelListComponent implements OnInit {
     item.hidden = !item.hidden;
     this.hideFeature.emit(item);
     e.stopPropagation();
-
   }
 
   itemClick(item:tagListItem){
     this.tagItemClick.emit(item);
-
   }
-
+  pageIndexChange(index:number):void{
+     this.pageItemClick.emit(index);
+  }
 }

@@ -1,0 +1,21 @@
+.legend{
+  display: flex;
+  flex-direction: column;
+  width: 134px;
+  height: 90px;
+  background: #FFFFFF;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.1);
+  opacity: 1;
+  border-radius: 4px;
+  pointer-events: all;
+  align-items: center;
+  justify-content: center;
+  .item{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    justify-content: space-around;
+    color: #333333;;
+  }
+}
