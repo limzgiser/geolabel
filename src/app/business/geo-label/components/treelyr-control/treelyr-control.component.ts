@@ -94,37 +94,17 @@ export class TreelyrControlComponent implements OnInit {
   }
   changeBaseMap(baseItem) {
     const { style } = baseItem;
-    this.removeBaseLayer();
-    this.http.get(style).subscribe(styleObj=>{
-      this.mapboxglmap.addMapStyle(styleObj,{
+    this.http.get(style).subscribe((styleObj:any)=>{
+      delete styleObj.center;
+      delete styleObj.zoom;
+      this.mapboxglmap.changeBaseMap(styleObj,{
         styleid: 'base.map',
         isBaseMap:true,
-      })
+      });
+ 
     });
   }
-  removeBaseLayer() {
-    const baseStyleJson = this.mapboxglmap.getStyle();
-    const removeLayers = [];
-    for (let item of baseStyleJson.layers) {
-      if (item.id === 'sp-layer-fill') {
-        break;
-      }
-      removeLayers.push(item);
-    }
-    const removeSource = new Set();
-    for (const layer of removeLayers) {
-
-      if (this.mapboxglmap.getLayer(layer.id)) {
-        this.mapboxglmap.removeLayer(layer.id);
-        removeSource.add(layer.source);
-      }
-    }
-    Array.from(removeSource).forEach(key => {
-      if (this.mapboxglmap.getSource(key)) {
-        this.mapboxglmap.removeSource(key);
-      }
-    });
-  }
+ 
   showLegend(legends) {
      // console.log(legends);
   }

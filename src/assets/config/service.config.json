@@ -1,13 +1,13 @@
 {
 
   "host": {
-    "{{api}}": "http://192.168.2.88/"
+    "{{api}}": "http://192.168.2.76/"
   },
   "list": [
     {
       "id": "base.map",
       "des": "底图样式",
-      "url": "http://192.168.84.184/sip/map.json"
+      "url": "http://webres.cityfun.com.cn/szmap/szmap_dark/3857/map_dark.json"
     }, {
       "id": "mapbox.map",
       "des": "mapbox服务配置文件",
@@ -36,47 +36,47 @@
     {
       "id": "login",
       "des": "登陆",
-      "url": "{{api}}yztbhser/api/admin/auth/login"
+      "url": "{{api}}GeolabelSer/api/admin/auth/login"
     },
     {
       "id": "add.tag",
       "des": "添加标记",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagAdd"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/locTagAdd"
     },
     {
       "id": "get.tags",
       "des": "获取标签列表",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagListQuery"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/locTagListQuery"
     },
     {
       "id": "get.taginfo",
       "des": "标记详情",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagDetailQuery"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/locTagDetailQuery"
     },
     {
       "id": "delete.tag",
       "des": "标记详情",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagDelete"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/locTagDelete"
     },
     {
       "id": "edit.tag",
       "des": "编辑tag",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagEdit"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/locTagEdit"
     },
     {
       "id": "toggle.sub",
       "des": "切换收藏状态",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/locTagSubscribe"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/locTagSubscribe"
     },
     {
       "id": "classify.tree",
       "des": "切换收藏状态",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/LocTagTreeQuery"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeQuery"
     },
     {
       "id": "collect.list",
       "des": "查询收藏列表",
-      "url": "{{api}}yztbhser/api/cf/loctagmanage/subScribeListQuery"
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/subScribeListQuery"
     }
   ]
 }
