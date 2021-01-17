@@ -3,7 +3,8 @@
     "版权所有：©2019 苏州城方信息技术有限公司",
     "技术支持：苏州城方信息技术有限公司"
   ],
-  "loginimg": "./assets/img/login/login_logo.png",
-  "headerimg": "./assets/img/login/logo.png",
+  "loginimg": "./assets/img/login/img_login_logo.png",
+  "loginimgtitle": "空间资源智慧管理平台",
+  "headerimg": "./assets/img/login/img_nav_logo.png",
   "cfemail": false
 }

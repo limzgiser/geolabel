@@ -43,7 +43,7 @@ export const drawStyles =  [
     "type": "fill",
     "filter": ["all", ["==", "$type", "Polygon"], ["!=", "mode", "static"]],
     "paint": {
-      "fill-color": "#D20C0C",
+      "fill-color": "#1890ff",
       "fill-outline-color": "#D20C0C",
       "fill-opacity": 0.1
     }
@@ -59,7 +59,7 @@ export const drawStyles =  [
       "line-join": "round"
     },
     "paint": {
-      "line-color": "#D20C0C",
+      "line-color": "#1890ff",
       "line-dasharray": [0.2, 2],
       "line-width": 2
     }

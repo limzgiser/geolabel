@@ -5,7 +5,7 @@ import {
   Input,
   Output,
   EventEmitter,
-  ChangeDetectorRef,
+  ChangeDetectorRef, ViewChild,
 } from '@angular/core';
 import { soureTagInfo, tagDetailInfo } from '../../types';
 import { SignService } from '../sign.service';
@@ -15,6 +15,7 @@ import {
   wktToGeoJson,
 } from '../../utils/main-format';
 import { SignComponent } from '../sign.component';
+import {LabelDetailContentComponent} from "./label-detail-content/label-detail-content.component";
 @Component({
   selector: 'lb-label-detail',
   templateUrl: './label-detail.component.html',
@@ -27,15 +28,22 @@ export class LabelDetailComponent implements OnInit {
 
   @Input()  isEdit: boolean = false;
   @Input() addSourceInfo: soureTagInfo = null;
+
   constructor(
     private signService: SignService,
     private cdr: ChangeDetectorRef,
     private nzMessageService: NzMessageService,
     private signComponent: SignComponent
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
   hide(): void {
-    this.close.emit();
+    if(this.isEdit){
+      this.isEdit = false;
+    }else{
+      this.close.emit();
+    }
   }
   deleteTag(tagid: string): void {
     this.signService
@@ -61,6 +69,6 @@ export class LabelDetailComponent implements OnInit {
     this.isEdit = false;
   }
   ngOnChanges(): void {
-    
+
   }
 }

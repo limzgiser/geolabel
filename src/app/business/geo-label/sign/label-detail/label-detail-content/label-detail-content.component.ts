@@ -21,21 +21,17 @@ export class LabelDetailContentComponent implements OnInit {
   @Input() data: tagDetailInfo = null;
   @Output() delete = new EventEmitter<string>();
   @Output() edit = new EventEmitter<void>();
+
   map = null;
   constructor(
     private nzMessageService: NzMessageService,
     private mapboxmapService: MapboxmapService
   ) {}
 
-  ngOnInit(): void {
+  initMap(){
     this. map = this.mapboxmapService.getMap();
-   
     let geojson = listWktToGeoJson(this.data.graphs, 'geom');
-    
-    this. map .addSource('tag-geo', {
-      type: 'geojson',
-      data: geojson,
-    });
+    this. map .addSource('tag-geo', { type: 'geojson', data: geojson,  });
     this. map .addLayer({
       id: 'line',
       type: 'line',
@@ -58,7 +54,7 @@ export class LabelDetailContentComponent implements OnInit {
         'circle-color': '#0076ff',
       },
     });
- this.   map.addLayer({
+    this.   map.addLayer({
       id: 'polygon',
       type: 'fill',
       source: 'tag-geo',
@@ -70,6 +66,9 @@ export class LabelDetailContentComponent implements OnInit {
       },
     });
   }
+  ngOnInit(): void {
+
+  }
 
   editTag(): void {
     this.edit.emit();
@@ -78,10 +77,20 @@ export class LabelDetailContentComponent implements OnInit {
   confirm(): void {
     this.delete.emit(this.data.tagid);
   }
+  removelayer(){
+    if(this.map){
+      this.map.removeLayer('line');
+      this.map.removeLayer('circle');
+      this.map.removeLayer('polygon')
+      this.map.removeSource('tag-geo');
+    }
+  }
+  ngOnChanges(): void {
+    this.removelayer()
+    this.initMap();
+  }
   ngOnDestroy(): void {
-   this.map.removeLayer('line');
-   this.map.removeLayer('circle');
-   this.map.removeLayer('polygon')
-   this.map.removeSource('tag-geo');
+      this.removelayer()
+
   }
 }

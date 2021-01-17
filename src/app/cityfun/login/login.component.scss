@@ -10,9 +10,23 @@ $login-bg1px-iamge: $login-base-url+'BG_px.png';
   height: 100%;
   overflow: hidden;
   background: #f8f8f8;
+
 }
-
-
+.ctitle{
+  display: flex;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  img{
+    margin-top: -5px;
+  }
+  .cname{
+    display: inline-block;
+    color: #0f8ced;
+    align-items: center;
+    margin-left: 10px;
+  }
+}
 .website-header {
   height: 15%;
   min-height: 92px;

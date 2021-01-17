@@ -363,7 +363,7 @@ export class SignComponent implements OnInit, OnDestroy {
   }
   getAllTagListPoint(): void {
     let methods = this.modelName =='sign'?'getAllTagListPoint':"getAllCollecPoint";
-    
+
     this.signService
       [methods](null)
       .subscribe((tagList: Array<tagListItem>) => {

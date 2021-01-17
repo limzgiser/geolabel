@@ -5,7 +5,7 @@
   </lb-tag-title>
   <app-cf-scroll>
     <div class="content">
-      <div class="item" *ngFor="let item of data">
+      <div class="item" *ngFor="let item of data" (click)="featureItemClick(item)">
         <div class="title"> <img [src]="item.icon | addTagIcon:item.geotype" ><span>{{item.title}}</span></div>
         <div class="des">{{item.desc||'暂无说明'}}</div>
       </div>

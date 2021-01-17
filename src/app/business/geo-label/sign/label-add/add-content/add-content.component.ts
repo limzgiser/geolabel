@@ -85,10 +85,12 @@ export class AddContentComponent implements OnInit ,OnDestroy{
     this.signComponent.tagDetailInfo = null;
   }
   viewDetail():void{
-    this.signComponent.getTagDetail(this.tagId);
+
     if(this.isEdit){
+      this.signComponent.stopMarker();
       this.showDetail.emit();
     }
+    this.signComponent.toggleDetail(this.tagId);
   }
   addTag(geo:[number,number],source:soureTagInfo){
     let res = sourceTagToParams(geo,source);
@@ -107,7 +109,7 @@ export class AddContentComponent implements OnInit ,OnDestroy{
         this.cdr.markForCheck();
         this.mzMessageService.success( `${message}标记成功!`);
          this.signComponent.getTags(null);
-       
+
       } else{
         this.addTagSuccess = false;
         this.mzMessageService.error(`${message}标记失败!`)
