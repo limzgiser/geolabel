@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import mapboxgl from 'cityfun-gl';
+import cityfun from 'cityfun-gl';
 import { Observable, of } from 'rxjs';
 import { take, switchMap } from 'rxjs/operators';
 import { cursorType } from './mapboxTypes';
 import {CfhttpService} from "../../../services/cfhttp.service";
+const cfToken = encodeURIComponent( 'yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA==');
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ import {CfhttpService} from "../../../services/cfhttp.service";
 export class MapboxmapService {
   specialStyel = null;
   mapboxmap = null;
+
   firstFullLoaded = false;
   constructor(
     private http: HttpClient,
@@ -47,16 +49,22 @@ export class MapboxmapService {
    *
    * @param style  创建地图
    */
-  private createMap(style): Observable<mapboxgl.Map> {
+  private createMap(style): Observable<cityfun.Map> {
     let self = this;
     if (this.mapboxmap) {
       return of(this.mapboxmap);
     } else {
-      let tmpstyle = {
-        container: 'mapboxmap',
-        style: style,
-      };
-      self.mapboxmap = new mapboxgl.Map(tmpstyle);
+      cityfun.setConfig({
+        cfToken:cfToken
+           
+      });
+      self.mapboxmap = new  cityfun.Map({
+        container: "mapboxmap",
+        center: [120.70044254024515, 31.301339366724918],
+        zoom: 14,
+        pitch: 60,
+        style: "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/VT/c772577d-6200-4469-8147-35d8009ab728",
+      });
       self.mapboxmap.on('load', () => {
         this.firstFullLoaded = true;
       });

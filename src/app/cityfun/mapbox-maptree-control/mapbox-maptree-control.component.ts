@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { MapboxmapService } from './../mapbox-map/service/mapboxmap.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {CfhttpService} from "../../services/cfhttp.service";
+import { addLayers, removeLayers } from './tree-tool';
 
 
 
@@ -69,9 +70,7 @@ export class MapboxMaptreeControlComponent implements OnInit {
       this.isLoadedDefaultLayers = true;
       // 加载默认图层
       let layers = this.getMapLayersInfoByAids(this.defaultKeys);
-      layers.forEach(layer => {
-        this.loadStyle(layer);
-      });
+      addLayers(this.mapboxglmap,layers);
     }
   }
   loadStyle(layer) {
@@ -86,20 +85,19 @@ export class MapboxMaptreeControlComponent implements OnInit {
   selectLayers(nodekeys) {
     this.showLegends(nodekeys, 'add');
     const layers = this.getMapLayersInfoByAids(nodekeys);
-    layers.forEach(layer => {
-      this.loadStyle(layer);
-    });
+    addLayers(this.mapboxglmap,layers);
   }
-  removeLayers(keys) {
-    this.showLegends(keys, 'remove');
+  removeKeys(keys) {
+ 
     const layers = this.getMapLayersInfoByAids(keys);
-    layers.forEach(layer => {
-      if (this.xhrs[layer.id]) {
-        this.xhrs[layer.id].unsubscribe();
-        delete this.xhrs[layer.id];
-      }
-      this.mapboxglmap.removeMapStyle(layer.id);
-    });
+    removeLayers(this.mapboxglmap,layers,this.mapboxmapService);
+    // layers.forEach(layer => {
+    //   if (this.xhrs[layer.id]) {
+    //     this.xhrs[layer.id].unsubscribe();
+    //     delete this.xhrs[layer.id];
+    //   }
+    //   this.mapboxglmap.removeMapStyle(layer.id);
+    // });
   }
 
   // 获取配置文件
@@ -163,7 +161,7 @@ export class MapboxMaptreeControlComponent implements OnInit {
 
   treeDestroy(data) {
 
-    this.removeLayers(data);
+    this.removeKeys(data);
     //  this.mapboxmapService.removeLayerByIds();
   }
 
@@ -174,8 +172,13 @@ export class MapboxMaptreeControlComponent implements OnInit {
     aids.forEach(aid => {
       const alayer = config.alayers.find(item => item.aid === aid);
       config.layers.forEach(layer => {
-        if (alayer.layers.findIndex(i => i.id === layer.id) > -1) {
-          layersInfo.push(layer);
+        let alayerItem = alayer.layers.find(i => i.id === layer.id)  
+        if (alayerItem) {
+          layersInfo.push({
+            layer,
+            aid:alayer.aid,
+            meta:alayerItem
+          });
         }
       });
     });

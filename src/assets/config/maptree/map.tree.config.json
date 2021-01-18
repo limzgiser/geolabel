@@ -8,12 +8,27 @@
   },
   "data": [
     {
-      "key": "B914AA73-4A67-484F-B30A-FCB44463653B",
-      "title": "建筑高度分布",
-      "query": true,
-      "isLeaf": true,
-      "checked": false
-    }
+      "key": "10388E84-1372-49A2-B406-A81483AE535F",
+        "title": "测试服务",
+        "icon": "root.png",
+        "expanded": true,
+        "children": [
+          {
+            "key": "B914AA73-4A67-484F-B30A-FCB44463653B",
+            "title": "绿地-wms服务",
+            "query": false,
+            "isLeaf": true,
+            "checked": false
+          },
+          {
+            "key": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
+            "title": "地块-ArcGIS Dynamic",
+            "query": false,
+            "isLeaf": true,
+            "checked": false
+          }
+        ]
+      }
   ],
   "template": null,
   "userkey": "653b8a0d-7951-46d0-926c-5d45470832dd"

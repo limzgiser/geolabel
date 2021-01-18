@@ -1,18 +1,11 @@
 {
   "basemaps": [
     {
-      "title": "苏州底图-深色",
-      "des": "",
-      "img": "./assets/img/mapthumbnail/dark.png",
-      "style": "http://webres.cityfun.com.cn/szmap/szmap_dark/3857/map_dark.json",
-      "active": true
-    },
-    {
       "title": "苏州底图-彩色",
       "des": "",
       "img": "./assets/img/mapthumbnail/color.png",
-      "style": "http://webres.cityfun.com.cn/szmap/szmap/3857/map.json",
-      "active": false
+      "style": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/VT/c772577d-6200-4469-8147-35d8009ab728",
+      "active": true
     }
   ],
   "images": [
@@ -21,14 +14,7 @@
       "des": "",
       "img": "./assets/img/mapthumbnail/map01.png",
       "active": true,
-      "style": "http://webres.cityfun.com.cn/sip_std_zt/3857/image.json"
-    },
-    {
-      "title": "2017年影像",
-      "des": "",
-      "img": "./assets/img/mapthumbnail/map01.png",
-      "active": false,
-      "style": "http://webres.cityfun.com.cn/sip_std_zt/3857/image_2017.json"
+      "style": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/VT/fcc4bf24-1815-42d1-9650-4c4fa8e9ff81"
     }
   ],
   "labels": [

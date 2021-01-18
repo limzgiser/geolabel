@@ -27,7 +27,7 @@
     "@mapbox/mapbox-gl-draw": "^1.2.0",
     "@turf/turf": "^5.1.6",
     "better-scroll": "^2.0.7",
-    "cityfun-gl": "^1.2.1",
+    "cityfun-gl": "^1.2.3",
     "classlist.js": "^1.1.20150312",
     "lodash": "^4.17.15",
     "mapbox-gl": "^1.11.1",

@@ -3,7 +3,7 @@ import { of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { map, filter, switchMap } from 'rxjs/operators';
+import {map, filter, switchMap, take, debounce, delay} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +11,7 @@ import { map, filter, switchMap } from 'rxjs/operators';
 export class CfhttpService {
   sevConfig = null;
   sevCfgURL :string= '';
+  serviceCOnfigHttp$ = null;
   constructor(private http: HttpClient) {
     this.sevCfgURL = JSON.parse(sessionStorage.getItem('main.config'))['service.config'];
   }
@@ -21,12 +22,19 @@ export class CfhttpService {
     if (this.sevConfig) {
       return of(this.sevConfig);
     } else {
-      return this.http.get(this.sevCfgURL).pipe(
-        map((res: any) => {
-          this.sevConfig = res;
-          return res;
-        })
-      );
+      if(this.serviceCOnfigHttp$){
+        return this.serviceCOnfigHttp$.pipe(take(1));
+      }else{
+
+        this.serviceCOnfigHttp$ =  this.http.get(this.sevCfgURL).pipe(delay(20),take(1),
+          map((res: any) => {
+            this.sevConfig = res;
+            return res;
+          })
+        );
+        return this.serviceCOnfigHttp$;
+      }
+
     }
   }
   /**

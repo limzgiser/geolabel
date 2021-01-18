@@ -36,26 +36,6 @@ export class TreelyrControlComponent implements OnInit {
     });
   }
 
-  mapInit() {
-    if (this[this.type]) {
-      const item = this[this.type].find(item => item.active);
-      if (item) {
-        this.changeBaseMap(item);
-      }
-    } else {
-      this.getData().subscribe((res: any) => {
-        this.basemaps = res.basemaps;
-        this.images = res.images;
-        this.basemaps[0].active = true;
-        this.images[0].active = true;
-        const item = this[this.type].find(item => item.active);
-        if (item) {
-          this.changeBaseMap(item);
-        }
-      });
-    }
-
-  }
   switchClick(event) {
     this.showIndex = this.getShowIndexByType(event[0]);
     if (event[0] === 'layers') {
@@ -94,17 +74,17 @@ export class TreelyrControlComponent implements OnInit {
   }
   changeBaseMap(baseItem) {
     const { style } = baseItem;
-    this.http.get(style).subscribe((styleObj:any)=>{
-      delete styleObj.center;
-      delete styleObj.zoom;
-      this.mapboxglmap.changeBaseMap(styleObj,{
-        styleid: 'base.map',
-        isBaseMap:true,
-      });
- 
+    this.mapboxglmap.loadMapStyle(style).then(styleObj=>{
+        delete styleObj.center;
+        delete styleObj.zoom;
+        this.mapboxglmap.changeBaseMap(styleObj,{
+          styleid: 'base.map',
+          isBaseMap:true,
+        });
+
     });
   }
- 
+
   showLegend(legends) {
      // console.log(legends);
   }

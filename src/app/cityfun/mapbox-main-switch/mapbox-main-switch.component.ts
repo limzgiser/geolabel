@@ -17,7 +17,7 @@ export class MapboxMainSwitchComponent implements OnInit {
       dimg: "./assets/img/maptree/btn_mapMode_map.png",
       simg: "./assets/img/maptree/btn_mapMode_map_select.png",
       class: 'switch-map',
-      active: false,
+      active: true,
       type: "basemaps",
       index: 0,
     },

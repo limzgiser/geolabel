@@ -12,13 +12,6 @@
         "xmax": 120.70445265714949,
         "ymax": 31.34402267651852
       },
-      "camera": null,
-      "camera_tpl": {
-        "position": [120.66301081752493, 31.31077324680751, 100.5191284881641],
-        "pitch": -10.77667031556409,
-        "heading": 16.692613541711115,
-        "roll": 0.0
-      },
       "spatialReference": "EPSG:3857",
       "zoom": 1
     },
@@ -29,63 +22,47 @@
       }
     ],
     "layers": [
+       {
+        "id": "",
+        "name": "",
+        "type": "PT-VTStyle,PT-WMS,PT-WMTS,PT-ESRI-Tile,PT-ESRI-Dynamic"
+        
+      },
       {
         "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70",
-        "name": "建筑高度分布",
-        "type": "mapbox-style",
+        "name": "绿地-wms服务",
+        "type": "PT-WMS",
         "tokenid": "",
-        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzgdfb.json",
+        "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/OGC/3b6bc948-e4e9-4bc6-a0da-a8e8634785b5",
         "des": ""
       },
       {
-        "id": "FA0593A5-9A52-4B45-BA80-D9E56B579256",
-        "name": "建筑年代分布",
-        "type": "mapbox-style",
+      "id": "4F12BAD4-9B64-487F-881D-AF98810959D8",
+        "name": "地块-ArcGIS Dynamic",
+        "type": "PT-ESRI-Dynamic",
         "tokenid": "",
-        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzndfb.json",
-        "des": ""
-      },
-      {
-        "id": "234D8324-EA53-46ED-BAF4-E2757BD93575",
-        "name": "建筑用途分布",
-        "type": "mapbox-style",
-        "tokenid": "",
-        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzlxfb.json",
-        "des": ""
-      },
-      {
-        "id": "5186F9D2-DC69-42E6-95B3-EFF7C11A5D6A",
-        "name": "法人注册分布",
-        "type": "mapbox-style",
-        "tokenid": "",
-        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/mdfb.json",
-        "des": ""
-      },
-      {
-        "id": "4248CDE5-5332-45EC-A684-C1AB99006996",
-        "name": "人口精细化管理",
-        "type": "mapbox-style",
-        "tokenid": "",
-        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/gefhydhfx.json",
+        "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/ESRI/ced7d6b9-2aca-48f9-89be-d0376ced9de7",
         "des": ""
       }
     ],
     "alayers": [
       {
         "aid": "B914AA73-4A67-484F-B30A-FCB44463653B",
-        "name": "建筑高度分布",
+        "name": "绿地-wms服务",
         "layers": [
           {
-            "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70"
+            "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70",
+            "layers": "Test_20210118:LD_GY_P"
           }
         ]
       },
       {
         "aid": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
-        "name": "建筑年代分布",
+        "name": "地块-ArcGIS Dynamic",
         "layers": [
           {
-            "id": "FA0593A5-9A52-4B45-BA80-D9E56B579256"
+            "id": "4F12BAD4-9B64-487F-881D-AF98810959D8",
+            "layers": ""
           }
         ]
       },
