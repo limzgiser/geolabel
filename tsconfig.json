@@ -11,7 +11,6 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es5",
-    
     "typeRoots": [
       "node_modules/@types",
       "src/typings.d.ts"

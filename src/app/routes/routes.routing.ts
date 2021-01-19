@@ -3,6 +3,7 @@ import { Layout01Component } from '../layout/layout01/layout01.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {MainConfigService} from "../services/main.config.service";
+import { APP_BASE_HREF } from '@angular/common';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -33,8 +34,10 @@ export const routes: Routes = [
     RouterModule.forRoot(routes, {
       useHash: true,
       preloadingStrategy: PreloadAllModules,
+      
     }),
   ],
   exports: [RouterModule],
+  providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/geolabel' : '/' }]
 })
 export class RouteRoutingModule {}
