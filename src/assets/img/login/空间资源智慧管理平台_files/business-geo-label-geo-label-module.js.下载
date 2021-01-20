@@ -1,0 +1,537 @@
+(window["webpackJsonp_geolabel"] = window["webpackJsonp_geolabel"] || []).push([["business-geo-label-geo-label-module"],{
+
+/***/ "./src/app/business/geo-label/components/side-nav/side-nav.component.ts":
+/*!******************************************************************************!*\
+  !*** ./src/app/business/geo-label/components/side-nav/side-nav.component.ts ***!
+  \******************************************************************************/
+/*! exports provided: SideNavComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SideNavComponent", function() { return SideNavComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm5/router.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
+
+
+
+
+
+
+function SideNavComponent_div_1_img_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 4);
+} if (rf & 2) {
+    var item_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", item_r1.defaultIcon, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+} }
+function SideNavComponent_div_1_img_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "img", 4);
+} if (rf & 2) {
+    var item_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", item_r1.selectIcon, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+} }
+function SideNavComponent_div_1_Template(rf, ctx) { if (rf & 1) {
+    var _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function SideNavComponent_div_1_Template_div_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); var item_r1 = ctx.$implicit; var ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.itemClick(item_r1); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SideNavComponent_div_1_img_1_Template, 1, 1, "img", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, SideNavComponent_div_1_img_2_Template, 1, 1, "img", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var item_r1 = ctx.$implicit;
+    var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("select", item_r1.title == ctx_r0.selectItem.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", item_r1.title != ctx_r0.selectItem.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", item_r1.title == ctx_r0.selectItem.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", item_r1.title, "");
+} }
+var SideNavComponent = /** @class */ (function () {
+    function SideNavComponent(router, route) {
+        var _this = this;
+        this.router = router;
+        this.route = route;
+        this.navData = [
+            {
+                title: '标记',
+                type: 'appstore-add',
+                select: true,
+                path: 'sign',
+                defaultIcon: './assets/img/map/icon_sidebar_mark.png',
+                selectIcon: './assets/img/map/icon_sidebar_mark_selected.png',
+            },
+            {
+                title: '分类',
+                type: 'appstore-add',
+                select: false,
+                path: 'classify',
+                defaultIcon: './assets/img/map/icon_sidebar_classify.png',
+                selectIcon: './assets/img/map/icon_sidebar_classify_selected.png',
+            },
+            {
+                title: '收藏',
+                type: 'appstore-add',
+                select: false,
+                path: 'collect',
+                defaultIcon: './assets/img/map/icon_sidebar_collect.png',
+                selectIcon: './assets/img/map/icon_sidebar_collect_selected.png',
+            },
+        ];
+        this.selectItem = this.navData[0];
+        this.router.events
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["filter"])(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"]; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["switchMap"])(function () { return _this.route.firstChild.data; }))
+            .subscribe(function (data) {
+            if (data.path) {
+                _this.selectItem = _this.navData.find(function (item) { return item.path === data.path; });
+            }
+        });
+    }
+    SideNavComponent.prototype.ngOnInit = function () { };
+    SideNavComponent.prototype.itemClick = function (item) {
+        this.selectItem = item;
+        this.router.navigate(["./" + item.path], { relativeTo: this.route });
+    };
+    SideNavComponent.ɵfac = function SideNavComponent_Factory(t) { return new (t || SideNavComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"])); };
+    SideNavComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: SideNavComponent, selectors: [["app-side-nav"]], inputs: { navData: "navData" }, decls: 2, vars: 1, consts: [[1, "container"], ["class", "item", 3, "select", "click", 4, "ngFor", "ngForOf"], [1, "item", 3, "click"], [3, "src", 4, "ngIf"], [3, "src"]], template: function SideNavComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, SideNavComponent_div_1_Template, 5, 5, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.navData);
+        } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"]], styles: [".container[_ngcontent-%COMP%] {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  pointer-events: all;\n}\n.container[_ngcontent-%COMP%]   .item[_ngcontent-%COMP%] {\n  cursor: pointer;\n  width: 100%;\n  height: 66px;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  color: #333333;\n}\n.container[_ngcontent-%COMP%]   .select[_ngcontent-%COMP%] {\n  color: #1890FF;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYnVzaW5lc3MvZ2VvLWxhYmVsL2NvbXBvbmVudHMvc2lkZS1uYXYvRTpcXFByb2oyMDIwXFznqbrpl7TotYTmupDmmbrmhafnrqHnkIZcXEdlb0xhYmVsL3NyY1xcYXBwXFxidXNpbmVzc1xcZ2VvLWxhYmVsXFxjb21wb25lbnRzXFxzaWRlLW5hdlxcc2lkZS1uYXYuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2J1c2luZXNzL2dlby1sYWJlbC9jb21wb25lbnRzL3NpZGUtbmF2L3NpZGUtbmF2LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0JBQUE7RUFBQSxhQUFBO0VBQ0EsMEJBQUE7TUFBQSxzQkFBQTtFQUNBLG1CQUFBO0FDQ0Y7QURBRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDBCQUFBO01BQUEsc0JBQUE7RUFDQSxzQkFBQTtNQUFBLG1CQUFBO0VBQ0EscUJBQUE7TUFBQSx1QkFBQTtFQUNBLGNBQUE7QUNFSjtBREVFO0VBQ0UsY0FBQTtBQ0FKIiwiZmlsZSI6InNyYy9hcHAvYnVzaW5lc3MvZ2VvLWxhYmVsL2NvbXBvbmVudHMvc2lkZS1uYXYvc2lkZS1uYXYuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcclxuICAuaXRlbSB7XHJcbiAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogNjZweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgY29sb3I6ICMzMzMzMzM7XHJcbiAgXHJcbiAgIFxyXG4gIH1cclxuICAuc2VsZWN0e1xyXG4gICAgY29sb3I6ICMxODkwRkY7XHJcbn1cclxufVxyXG4iLCIuY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcbn1cbi5jb250YWluZXIgLml0ZW0ge1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDY2cHg7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBjb2xvcjogIzMzMzMzMztcbn1cbi5jb250YWluZXIgLnNlbGVjdCB7XG4gIGNvbG9yOiAjMTg5MEZGO1xufSJdfQ== */"], changeDetection: 0 });
+    return SideNavComponent;
+}());
+
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SideNavComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-side-nav',
+                templateUrl: './side-nav.component.html',
+                styleUrls: ['./side-nav.component.scss'],
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] }]; }, { navData: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
+
+
+/***/ }),
+
+/***/ "./src/app/business/geo-label/components/treelyr-control/treelyr-control.component.ts":
+/*!********************************************************************************************!*\
+  !*** ./src/app/business/geo-label/components/treelyr-control/treelyr-control.component.ts ***!
+  \********************************************************************************************/
+/*! exports provided: TreelyrControlComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TreelyrControlComponent", function() { return TreelyrControlComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+/* harmony import */ var _cityfun_mapbox_map_service_mapboxmap_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../cityfun/mapbox-map/service/mapboxmap.service */ "./src/app/cityfun/mapbox-map/service/mapboxmap.service.ts");
+/* harmony import */ var _cityfun_mapbox_main_switch_mapbox_main_switch_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../cityfun/mapbox-main-switch/mapbox-main-switch.component */ "./src/app/cityfun/mapbox-main-switch/mapbox-main-switch.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
+/* harmony import */ var _cityfun_mapbox_maptree_control_mapbox_maptree_control_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../cityfun/mapbox-maptree-control/mapbox-maptree-control.component */ "./src/app/cityfun/mapbox-maptree-control/mapbox-maptree-control.component.ts");
+/* harmony import */ var _cityfun_map_image_list_map_image_list_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../cityfun/map-image-list/map-image-list.component */ "./src/app/cityfun/map-image-list/map-image-list.component.ts");
+
+
+
+
+
+
+
+
+
+function TreelyrControlComponent_div_3_Template(rf, ctx) { if (rf & 1) {
+    var _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "app-map-image-list", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("miClick", function TreelyrControlComponent_div_3_Template_app_map_image_list_miClick_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r3); var ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r2.mapImgClick($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("data", ctx_r0.basemaps)("type", "basemaps");
+} }
+function TreelyrControlComponent_div_4_Template(rf, ctx) { if (rf & 1) {
+    var _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "app-map-image-list", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("miClick", function TreelyrControlComponent_div_4_Template_app_map_image_list_miClick_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r5); var ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r4.mapImgClick($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("data", ctx_r1.images)("type", "images");
+} }
+var SURL = './assets/config/mapbox.style.config/base.map/base.config.json';
+var TreelyrControlComponent = /** @class */ (function () {
+    function TreelyrControlComponent(http, mapboxmapService) {
+        this.http = http;
+        this.mapboxmapService = mapboxmapService;
+        this.type = 'basemaps';
+        this.showIndex = -1;
+        // layerListData = null;
+        this.basemaps = null;
+        this.images = null;
+        this.mapboxglmap = null;
+    }
+    TreelyrControlComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.getData().subscribe(function (res) {
+            _this.basemaps = res.basemaps;
+            _this.images = res.images;
+            _this.basemaps[0].active = true;
+            _this.images[0].active = true;
+        });
+        this.mapboxmapService.init().subscribe(function (mapboxglmap) {
+            _this.mapboxglmap = mapboxglmap;
+            if (mapboxglmap.isStyleLoaded()) {
+                // this.mapInit();
+            }
+            else {
+                mapboxglmap.on('load', function () {
+                    //   this.mapInit();
+                });
+            }
+        });
+    };
+    TreelyrControlComponent.prototype.switchClick = function (event) {
+        this.showIndex = this.getShowIndexByType(event[0]);
+        if (event[0] === 'layers') {
+            return;
+        }
+        var activeInte = this[event[0]].find(function (i) { return i.active; });
+        this.changeBaseMap(activeInte);
+    };
+    TreelyrControlComponent.prototype.switchMouseEnter = function (event) {
+        this.showIndex = this.getShowIndexByType(event[0]);
+    };
+    TreelyrControlComponent.prototype.toggleList = function (state) {
+        this.showIndex = -1;
+    };
+    TreelyrControlComponent.prototype.resetSwitchLayer = function () {
+        this.images.forEach(function (element) {
+            element.active = false;
+        });
+        this.images[0].active = true;
+        this.basemaps.forEach(function (element) {
+            element.active = false;
+        });
+        this.basemaps[0].active = true;
+    };
+    // 显示类别更具索引
+    TreelyrControlComponent.prototype.getShowIndexByType = function (type) {
+        switch (type) {
+            case 'basemaps':
+                return 0;
+            case 'images':
+                return 1;
+            case 'layers':
+                return 2;
+        }
+    };
+    TreelyrControlComponent.prototype.changeBaseMap = function (baseItem) {
+        var _this = this;
+        var style = baseItem.style;
+        this.mapboxglmap.loadMapStyle(style).then(function (styleObj) {
+            delete styleObj.center;
+            delete styleObj.zoom;
+            _this.mapboxglmap.changeBaseMap(styleObj, {
+                styleid: 'base.map',
+                isBaseMap: true,
+            });
+        });
+    };
+    TreelyrControlComponent.prototype.showLegend = function (legends) {
+        // console.log(legends);
+    };
+    TreelyrControlComponent.prototype.mapImgClick = function (event) {
+        var _a = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__read"])(event, 2), type = _a[0], index = _a[1];
+        this.changeBaseMap(this[type][index]);
+    };
+    TreelyrControlComponent.prototype.getData = function () {
+        return this.http.get(SURL);
+    };
+    TreelyrControlComponent.ɵfac = function TreelyrControlComponent_Factory(t) { return new (t || TreelyrControlComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_cityfun_mapbox_map_service_mapboxmap_service__WEBPACK_IMPORTED_MODULE_3__["MapboxmapService"])); };
+    TreelyrControlComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: TreelyrControlComponent, selectors: [["app-treelyr-control"]], decls: 7, vars: 4, consts: [[1, "tree-list-container", 3, "mouseleave"], ["id", "switch-tool"], [3, "iclick", "iMouseEnter"], ["class", "map-layer", 4, "ngIf"], ["class", "map-image", 4, "ngIf"], [1, "map-tree"], [3, "showLegend"], [1, "map-layer"], [3, "data", "type", "miClick"], [1, "map-image"]], template: function TreelyrControlComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("mouseleave", function TreelyrControlComponent_Template_div_mouseleave_0_listener() { return ctx.toggleList("hide"); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "app-mapbox-main-switch", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("iclick", function TreelyrControlComponent_Template_app_mapbox_main_switch_iclick_2_listener($event) { return ctx.switchClick($event); })("iMouseEnter", function TreelyrControlComponent_Template_app_mapbox_main_switch_iMouseEnter_2_listener($event) { return ctx.switchMouseEnter($event); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](3, TreelyrControlComponent_div_3_Template, 2, 2, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, TreelyrControlComponent_div_4_Template, 2, 2, "div", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "app-mapbox-maptree-control", 6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("showLegend", function TreelyrControlComponent_Template_app_mapbox_maptree_control_showLegend_6_listener($event) { return ctx.showLegend($event); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.showIndex === 0 && ctx.basemaps.length > 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.showIndex === 1 && ctx.images.length > 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("display", ctx.showIndex === 2 ? "flex" : "none");
+        } }, directives: [_cityfun_mapbox_main_switch_mapbox_main_switch_component__WEBPACK_IMPORTED_MODULE_4__["MapboxMainSwitchComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _cityfun_mapbox_maptree_control_mapbox_maptree_control_component__WEBPACK_IMPORTED_MODULE_6__["MapboxMaptreeControlComponent"], _cityfun_map_image_list_map_image_list_component__WEBPACK_IMPORTED_MODULE_7__["MapImageListComponent"]], styles: [".tree-list-container[_ngcontent-%COMP%] {\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-direction: column;\n      flex-direction: column;\n  -ms-flex-align: end;\n      align-items: flex-end;\n}\n.tree-list-container[_ngcontent-%COMP%]   #switch-tool[_ngcontent-%COMP%] {\n  margin-bottom: 20px;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-tree[_ngcontent-%COMP%] {\n  position: relative;\n  width: 300px;\n  height: calc(100vh - 200px);\n  background: #ffffff;\n  box-shadow: 0 0 6px #c9c9c9;\n  display: -ms-flexbox;\n  display: flex;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-tree[_ngcontent-%COMP%]   *[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-tree[_ngcontent-%COMP%]::before {\n  content: \"\";\n  position: absolute;\n  top: -10px;\n  right: 35px;\n  width: 16px;\n  height: 10px;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n  border-bottom: 10px solid #fff;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-image[_ngcontent-%COMP%], .tree-list-container[_ngcontent-%COMP%]   .map-layer[_ngcontent-%COMP%] {\n  position: relative;\n  height: 200px;\n  width: 160px;\n  background: #ffffff;\n  box-shadow: 0 0 6px #c9c9c9;\n  display: -ms-flexbox;\n  display: flex;\n  margin-right: 90px;\n  pointer-events: all;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-image[_ngcontent-%COMP%]   *[_ngcontent-%COMP%], .tree-list-container[_ngcontent-%COMP%]   .map-layer[_ngcontent-%COMP%]   *[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-image[_ngcontent-%COMP%]::before {\n  content: \"\";\n  position: absolute;\n  top: -10px;\n  right: 35px;\n  width: 16px;\n  height: 10px;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n  border-bottom: 10px solid #fff;\n}\n.tree-list-container[_ngcontent-%COMP%]   .map-layer[_ngcontent-%COMP%]::before {\n  content: \"\";\n  position: absolute;\n  top: -10px;\n  left: 35px;\n  width: 16px;\n  height: 10px;\n  border-left: 8px solid transparent;\n  border-right: 8px solid transparent;\n  border-bottom: 10px solid #fff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYnVzaW5lc3MvZ2VvLWxhYmVsL2NvbXBvbmVudHMvdHJlZWx5ci1jb250cm9sL0U6XFxQcm9qMjAyMFxc56m66Ze06LWE5rqQ5pm65oWn566h55CGXFxHZW9MYWJlbC9zcmNcXGFwcFxcYnVzaW5lc3NcXGdlby1sYWJlbFxcY29tcG9uZW50c1xcdHJlZWx5ci1jb250cm9sXFx0cmVlbHlyLWNvbnRyb2wuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL2J1c2luZXNzL2dlby1sYWJlbC9jb21wb25lbnRzL3RyZWVseXItY29udHJvbC90cmVlbHlyLWNvbnRyb2wuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0U7RUFFRSxvQkFBQTtFQUFBLGFBQUE7RUFDQSwwQkFBQTtNQUFBLHNCQUFBO0VBQ0EsbUJBQUE7TUFBQSxxQkFBQTtBQ0RKO0FERUk7RUFDRSxtQkFBQTtBQ0FOO0FER0k7RUFFRSxrQkFBQTtFQUNBLFlBQUE7RUFDQSwyQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMkJBQUE7RUFDQSxvQkFBQTtFQUFBLGFBQUE7QUNGTjtBRElNO0VBQ0UsV0FBQTtFQUNBLFlBQUE7QUNGUjtBRE1JO0VBQ0UsV0FBQTtFQUNBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtDQUFBO0VBQ0EsbUNBQUE7RUFDQSw4QkFBQTtBQ0pOO0FET0k7O0VBRUUsa0JBQUE7RUFDQSxhQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EsMkJBQUE7RUFDQSxvQkFBQTtFQUFBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDTE47QURNTTs7RUFDRSxXQUFBO0VBQ0EsWUFBQTtBQ0hSO0FET0k7RUFDRSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0NBQUE7RUFDQSxtQ0FBQTtFQUNBLDhCQUFBO0FDTE47QURPSTtFQUNFLFdBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxVQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQ0FBQTtFQUNBLG1DQUFBO0VBQ0EsOEJBQUE7QUNMTiIsImZpbGUiOiJzcmMvYXBwL2J1c2luZXNzL2dlby1sYWJlbC9jb21wb25lbnRzL3RyZWVseXItY29udHJvbC90cmVlbHlyLWNvbnRyb2wuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcclxuICAudHJlZS1saXN0LWNvbnRhaW5lciB7XHJcblxyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XHJcbiAgICBhbGlnbi1pdGVtczogZmxleC1lbmQ7XHJcbiAgICAjc3dpdGNoLXRvb2wge1xyXG4gICAgICBtYXJnaW4tYm90dG9tOiAyMHB4O1xyXG4gICAgfVxyXG5cclxuICAgIC5tYXAtdHJlZSB7XHJcbiAgICAgIC8vIHBhZGRpbmc6IDEwcHggMTBweDtcclxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICB3aWR0aDogMzAwcHg7XHJcbiAgICAgIGhlaWdodDogY2FsYygxMDB2aCAtIDIwMHB4KTtcclxuICAgICAgYmFja2dyb3VuZDogI2ZmZmZmZjtcclxuICAgICAgYm94LXNoYWRvdzogMCAwIDZweCAjYzljOWM5O1xyXG4gICAgICBkaXNwbGF5OiBmbGV4O1xyXG5cclxuICAgICAgKiB7XHJcbiAgICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgICB9XHJcbiAgICB9XHJcblxyXG4gICAgLm1hcC10cmVlOjpiZWZvcmUge1xyXG4gICAgICBjb250ZW50OiBcIlwiO1xyXG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAgIHRvcDogLTEwcHg7XHJcbiAgICAgIHJpZ2h0OiAzNXB4O1xyXG4gICAgICB3aWR0aDogMTZweDtcclxuICAgICAgaGVpZ2h0OiAxMHB4O1xyXG4gICAgICBib3JkZXItbGVmdDogOHB4IHNvbGlkIHRyYW5zcGFyZW50O1xyXG4gICAgICBib3JkZXItcmlnaHQ6IDhweCBzb2xpZCB0cmFuc3BhcmVudDtcclxuICAgICAgYm9yZGVyLWJvdHRvbTogMTBweCBzb2xpZCAjZmZmO1xyXG4gICAgfVxyXG5cclxuICAgIC5tYXAtaW1hZ2UsXHJcbiAgICAubWFwLWxheWVyIHtcclxuICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgICBoZWlnaHQ6IDIwMHB4O1xyXG4gICAgICB3aWR0aDogMTYwcHg7XHJcbiAgICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgICAgIGJveC1zaGFkb3c6IDAgMCA2cHggI2M5YzljOTtcclxuICAgICAgZGlzcGxheTogZmxleDtcclxuICAgICAgbWFyZ2luLXJpZ2h0OiA5MHB4O1xyXG4gICAgICBwb2ludGVyLWV2ZW50czogYWxsO1xyXG4gICAgICAqIHtcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAubWFwLWltYWdlOjpiZWZvcmUge1xyXG4gICAgICBjb250ZW50OiBcIlwiO1xyXG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAgIHRvcDogLTEwcHg7XHJcbiAgICAgIHJpZ2h0OiAzNXB4O1xyXG4gICAgICB3aWR0aDogMTZweDtcclxuICAgICAgaGVpZ2h0OiAxMHB4O1xyXG4gICAgICBib3JkZXItbGVmdDogOHB4IHNvbGlkIHRyYW5zcGFyZW50O1xyXG4gICAgICBib3JkZXItcmlnaHQ6IDhweCBzb2xpZCB0cmFuc3BhcmVudDtcclxuICAgICAgYm9yZGVyLWJvdHRvbTogMTBweCBzb2xpZCAjZmZmO1xyXG4gICAgfVxyXG4gICAgLm1hcC1sYXllcjo6YmVmb3JlIHtcclxuICAgICAgY29udGVudDogXCJcIjtcclxuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgICB0b3A6IC0xMHB4O1xyXG4gICAgICBsZWZ0OiAzNXB4O1xyXG4gICAgICB3aWR0aDogMTZweDtcclxuICAgICAgaGVpZ2h0OiAxMHB4O1xyXG4gICAgICBib3JkZXItbGVmdDogOHB4IHNvbGlkIHRyYW5zcGFyZW50O1xyXG4gICAgICBib3JkZXItcmlnaHQ6IDhweCBzb2xpZCB0cmFuc3BhcmVudDtcclxuICAgICAgYm9yZGVyLWJvdHRvbTogMTBweCBzb2xpZCAjZmZmO1xyXG5cclxuICAgIH1cclxuICB9XHJcbiIsIi50cmVlLWxpc3QtY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYWxpZ24taXRlbXM6IGZsZXgtZW5kO1xufVxuLnRyZWUtbGlzdC1jb250YWluZXIgI3N3aXRjaC10b29sIHtcbiAgbWFyZ2luLWJvdHRvbTogMjBweDtcbn1cbi50cmVlLWxpc3QtY29udGFpbmVyIC5tYXAtdHJlZSB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgd2lkdGg6IDMwMHB4O1xuICBoZWlnaHQ6IGNhbGMoMTAwdmggLSAyMDBweCk7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gIGJveC1zaGFkb3c6IDAgMCA2cHggI2M5YzljOTtcbiAgZGlzcGxheTogZmxleDtcbn1cbi50cmVlLWxpc3QtY29udGFpbmVyIC5tYXAtdHJlZSAqIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cbi50cmVlLWxpc3QtY29udGFpbmVyIC5tYXAtdHJlZTo6YmVmb3JlIHtcbiAgY29udGVudDogXCJcIjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IC0xMHB4O1xuICByaWdodDogMzVweDtcbiAgd2lkdGg6IDE2cHg7XG4gIGhlaWdodDogMTBweDtcbiAgYm9yZGVyLWxlZnQ6IDhweCBzb2xpZCB0cmFuc3BhcmVudDtcbiAgYm9yZGVyLXJpZ2h0OiA4cHggc29saWQgdHJhbnNwYXJlbnQ7XG4gIGJvcmRlci1ib3R0b206IDEwcHggc29saWQgI2ZmZjtcbn1cbi50cmVlLWxpc3QtY29udGFpbmVyIC5tYXAtaW1hZ2UsXG4udHJlZS1saXN0LWNvbnRhaW5lciAubWFwLWxheWVyIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBoZWlnaHQ6IDIwMHB4O1xuICB3aWR0aDogMTYwcHg7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gIGJveC1zaGFkb3c6IDAgMCA2cHggI2M5YzljOTtcbiAgZGlzcGxheTogZmxleDtcbiAgbWFyZ2luLXJpZ2h0OiA5MHB4O1xuICBwb2ludGVyLWV2ZW50czogYWxsO1xufVxuLnRyZWUtbGlzdC1jb250YWluZXIgLm1hcC1pbWFnZSAqLFxuLnRyZWUtbGlzdC1jb250YWluZXIgLm1hcC1sYXllciAqIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cbi50cmVlLWxpc3QtY29udGFpbmVyIC5tYXAtaW1hZ2U6OmJlZm9yZSB7XG4gIGNvbnRlbnQ6IFwiXCI7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAtMTBweDtcbiAgcmlnaHQ6IDM1cHg7XG4gIHdpZHRoOiAxNnB4O1xuICBoZWlnaHQ6IDEwcHg7XG4gIGJvcmRlci1sZWZ0OiA4cHggc29saWQgdHJhbnNwYXJlbnQ7XG4gIGJvcmRlci1yaWdodDogOHB4IHNvbGlkIHRyYW5zcGFyZW50O1xuICBib3JkZXItYm90dG9tOiAxMHB4IHNvbGlkICNmZmY7XG59XG4udHJlZS1saXN0LWNvbnRhaW5lciAubWFwLWxheWVyOjpiZWZvcmUge1xuICBjb250ZW50OiBcIlwiO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTEwcHg7XG4gIGxlZnQ6IDM1cHg7XG4gIHdpZHRoOiAxNnB4O1xuICBoZWlnaHQ6IDEwcHg7XG4gIGJvcmRlci1sZWZ0OiA4cHggc29saWQgdHJhbnNwYXJlbnQ7XG4gIGJvcmRlci1yaWdodDogOHB4IHNvbGlkIHRyYW5zcGFyZW50O1xuICBib3JkZXItYm90dG9tOiAxMHB4IHNvbGlkICNmZmY7XG59Il19 */"] });
+    return TreelyrControlComponent;
+}());
+
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](TreelyrControlComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+                selector: 'app-treelyr-control',
+                templateUrl: './treelyr-control.component.html',
+                styleUrls: ['./treelyr-control.component.scss']
+            }]
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }, { type: _cityfun_mapbox_map_service_mapboxmap_service__WEBPACK_IMPORTED_MODULE_3__["MapboxmapService"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/business/geo-label/geo-label.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/business/geo-label/geo-label.component.ts ***!
+  \***********************************************************/
+/*! exports provided: GeoLabelComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeoLabelComponent", function() { return GeoLabelComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var _cityfun_mapbox_map_service_mapboxmap_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../../cityfun/mapbox-map/service/mapboxmap.service */ "./src/app/cityfun/mapbox-map/service/mapboxmap.service.ts");
+/* harmony import */ var _services_cfhttp_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/cfhttp.service */ "./src/app/services/cfhttp.service.ts");
+/* harmony import */ var _cityfun_cityfun_services_core_message_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../../cityfun/cityfun-services/core-message.service */ "./src/app/cityfun/cityfun-services/core-message.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/http.js");
+/* harmony import */ var _components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/side-nav/side-nav.component */ "./src/app/business/geo-label/components/side-nav/side-nav.component.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm5/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
+/* harmony import */ var _components_treelyr_control_treelyr_control_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/treelyr-control/treelyr-control.component */ "./src/app/business/geo-label/components/treelyr-control/treelyr-control.component.ts");
+/* harmony import */ var _cityfun_mapbox_measure_mapbox_measure_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../cityfun/mapbox-measure/mapbox-measure.component */ "./src/app/cityfun/mapbox-measure/mapbox-measure.component.ts");
+
+
+
+
+
+
+
+
+
+
+
+function GeoLabelComponent_app_mapbox_measure_6_Template(rf, ctx) { if (rf & 1) {
+    var _r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "app-mapbox-measure", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("clearMeasure", function GeoLabelComponent_app_mapbox_measure_6_Template_app_mapbox_measure_clearMeasure_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r2); var ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r1.clearMeasure($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    var ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("mapboxglmap", ctx_r0.mapboxglmap);
+} }
+var GeoLabelComponent = /** @class */ (function () {
+    function GeoLabelComponent(mapboxmapService, cfHttp, coreMessageService, http) {
+        this.mapboxmapService = mapboxmapService;
+        this.cfHttp = cfHttp;
+        this.coreMessageService = coreMessageService;
+        this.http = http;
+        this.mapboxglmap = null;
+        this.nodeInfo = null; // 查询node节点信息
+        this.treeNodeInfo = null;
+        this.searchGeometry = null;
+    }
+    GeoLabelComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.sub = this.coreMessageService.nodemessage.subscribe(function (nodeinfo) {
+            _this.treeNodeInfo = nodeinfo;
+        });
+        this.mapboxmapService.init().subscribe(function (mapboxglmap) {
+            _this.mapboxglmap = mapboxglmap;
+            if (_this.mapboxmapService.firstFullLoaded) {
+                _this.mapInit(1);
+            }
+            mapboxglmap.on('load', function () {
+            });
+            _this.mapboxglmap = mapboxglmap;
+        });
+    };
+    GeoLabelComponent.prototype.mapInit = function (type) {
+    };
+    GeoLabelComponent.prototype.clearMeasure = function (e) {
+    };
+    GeoLabelComponent.prototype.ngOnDestroy = function () {
+        this.sub.unsubscribe();
+    };
+    GeoLabelComponent.ɵfac = function GeoLabelComponent_Factory(t) { return new (t || GeoLabelComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_cityfun_mapbox_map_service_mapboxmap_service__WEBPACK_IMPORTED_MODULE_1__["MapboxmapService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cfhttp_service__WEBPACK_IMPORTED_MODULE_2__["CfhttpService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_cityfun_cityfun_services_core_message_service__WEBPACK_IMPORTED_MODULE_3__["CoreMessageService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"])); };
+    GeoLabelComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: GeoLabelComponent, selectors: [["app-geo-label"]], decls: 8, vars: 1, consts: [["id", "pancel"], [1, "side-nav"], [1, "children-container"], ["id", "measure-tool"], [3, "mapboxglmap", "clearMeasure", 4, "ngIf"], [3, "mapboxglmap", "clearMeasure"]], template: function GeoLabelComponent_Template(rf, ctx) { if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "app-side-nav");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "router-outlet");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, GeoLabelComponent_app_mapbox_measure_6_Template, 1, 1, "app-mapbox-measure", 4);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "app-treelyr-control");
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        } if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.mapboxglmap);
+        } }, directives: [_components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_5__["SideNavComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _components_treelyr_control_treelyr_control_component__WEBPACK_IMPORTED_MODULE_8__["TreelyrControlComponent"], _cityfun_mapbox_measure_mapbox_measure_component__WEBPACK_IMPORTED_MODULE_9__["MapboxMeasureComponent"]], styles: ["#pancel[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 200;\n  pointer-events: none;\n  display: -ms-flexbox;\n  display: flex;\n}\n#pancel[_ngcontent-%COMP%]   .side-nav[_ngcontent-%COMP%] {\n  width: 60px;\n  height: 100%;\n  background: #ffffff;\n}\n#pancel[_ngcontent-%COMP%]   .children-container[_ngcontent-%COMP%] {\n  width: 100%;\n  height: 100%;\n  -ms-flex: 1;\n      flex: 1;\n}\n#pancel[_ngcontent-%COMP%]   #measure-tool[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 20px;\n  right: 20px;\n  display: -ms-flexbox;\n  display: flex;\n  display: flex;\n  -ms-flex-align: center;\n      align-items: center;\n  -ms-flex-pack: center;\n      justify-content: center;\n  pointer-events: all;\n}\n#pancel[_ngcontent-%COMP%]   app-treelyr-control[_ngcontent-%COMP%] {\n  position: absolute;\n  right: 80px;\n  top: 20px;\n  pointer-events: all;\n}\n#pancel[_ngcontent-%COMP%]   .search-pancel[_ngcontent-%COMP%] {\n  position: absolute;\n  left: 20px;\n  top: 20px;\n  pointer-events: all;\n  height: calc(100% - 100px);\n  width: 360px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYnVzaW5lc3MvZ2VvLWxhYmVsL0U6XFxQcm9qMjAyMFxc56m66Ze06LWE5rqQ5pm65oWn566h55CGXFxHZW9MYWJlbC9zcmNcXGFwcFxcYnVzaW5lc3NcXGdlby1sYWJlbFxcZ2VvLWxhYmVsLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9idXNpbmVzcy9nZW8tbGFiZWwvZ2VvLWxhYmVsLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usa0JBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLG9CQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0FDQ0Y7QURBRTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7QUNFSjtBREFFO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxXQUFBO01BQUEsT0FBQTtBQ0VKO0FEQ0U7RUFDRSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO01BQUEsbUJBQUE7RUFDQSxxQkFBQTtNQUFBLHVCQUFBO0VBQ0EsbUJBQUE7QUNDSjtBRENFO0VBQ0Usa0JBQUE7RUFDQSxXQUFBO0VBQ0EsU0FBQTtFQUNBLG1CQUFBO0FDQ0o7QURDRTtFQUNFLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFNBQUE7RUFDQSxtQkFBQTtFQUNBLDBCQUFBO0VBQ0EsWUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvYnVzaW5lc3MvZ2VvLWxhYmVsL2dlby1sYWJlbC5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNwYW5jZWwge1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICB0b3A6IDBweDtcclxuICBsZWZ0OiAwcHg7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgaGVpZ2h0OiAxMDAlO1xyXG4gIHotaW5kZXg6IDIwMDtcclxuICBwb2ludGVyLWV2ZW50czogbm9uZTtcclxuICBkaXNwbGF5OiBmbGV4O1xyXG4gIC5zaWRlLW5hdiB7XHJcbiAgICB3aWR0aDogNjBweDtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgfVxyXG4gIC5jaGlsZHJlbi1jb250YWluZXIge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbiAgICBmbGV4OiAxO1xyXG4gIH1cclxuXHJcbiAgI21lYXN1cmUtdG9vbCB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDIwcHg7XHJcbiAgICByaWdodDogMjBweDtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG4gICAgcG9pbnRlci1ldmVudHM6IGFsbDtcclxuICB9XHJcbiAgYXBwLXRyZWVseXItY29udHJvbCB7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICByaWdodDogODBweDtcclxuICAgIHRvcDogMjBweDtcclxuICAgIHBvaW50ZXItZXZlbnRzOiBhbGw7XHJcbiAgfVxyXG4gIC5zZWFyY2gtcGFuY2VsIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGxlZnQ6IDIwcHg7XHJcbiAgICB0b3A6IDIwcHg7XHJcbiAgICBwb2ludGVyLWV2ZW50czogYWxsO1xyXG4gICAgaGVpZ2h0OiBjYWxjKDEwMCUgLSAxMDBweCk7XHJcbiAgICB3aWR0aDogMzYwcHg7XHJcbiAgfVxyXG59XHJcbiIsIiNwYW5jZWwge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogMHB4O1xuICBsZWZ0OiAwcHg7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIHotaW5kZXg6IDIwMDtcbiAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG4jcGFuY2VsIC5zaWRlLW5hdiB7XG4gIHdpZHRoOiA2MHB4O1xuICBoZWlnaHQ6IDEwMCU7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG59XG4jcGFuY2VsIC5jaGlsZHJlbi1jb250YWluZXIge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBmbGV4OiAxO1xufVxuI3BhbmNlbCAjbWVhc3VyZS10b29sIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDIwcHg7XG4gIHJpZ2h0OiAyMHB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcbn1cbiNwYW5jZWwgYXBwLXRyZWVseXItY29udHJvbCB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgcmlnaHQ6IDgwcHg7XG4gIHRvcDogMjBweDtcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcbn1cbiNwYW5jZWwgLnNlYXJjaC1wYW5jZWwge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDIwcHg7XG4gIHRvcDogMjBweDtcbiAgcG9pbnRlci1ldmVudHM6IGFsbDtcbiAgaGVpZ2h0OiBjYWxjKDEwMCUgLSAxMDBweCk7XG4gIHdpZHRoOiAzNjBweDtcbn0iXX0= */"] });
+    return GeoLabelComponent;
+}());
+
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GeoLabelComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-geo-label',
+                templateUrl: './geo-label.component.html',
+                styleUrls: ['./geo-label.component.scss']
+            }]
+    }], function () { return [{ type: _cityfun_mapbox_map_service_mapboxmap_service__WEBPACK_IMPORTED_MODULE_1__["MapboxmapService"] }, { type: _services_cfhttp_service__WEBPACK_IMPORTED_MODULE_2__["CfhttpService"] }, { type: _cityfun_cityfun_services_core_message_service__WEBPACK_IMPORTED_MODULE_3__["CoreMessageService"] }, { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/business/geo-label/geo-label.module.ts":
+/*!********************************************************!*\
+  !*** ./src/app/business/geo-label/geo-label.module.ts ***!
+  \********************************************************/
+/*! exports provided: GeoLabelModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeoLabelModule", function() { return GeoLabelModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm5/common.js");
+/* harmony import */ var _geo_label_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./geo-label.component */ "./src/app/business/geo-label/geo-label.component.ts");
+/* harmony import */ var _components_treelyr_control_treelyr_control_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/treelyr-control/treelyr-control.component */ "./src/app/business/geo-label/components/treelyr-control/treelyr-control.component.ts");
+/* harmony import */ var _cityfun_cityfun_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../cityfun/cityfun.module */ "./src/app/cityfun/cityfun.module.ts");
+/* harmony import */ var _home_routing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./home.routing */ "./src/app/business/geo-label/home.routing.ts");
+/* harmony import */ var _components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/side-nav/side-nav.component */ "./src/app/business/geo-label/components/side-nav/side-nav.component.ts");
+
+
+
+
+
+
+
+
+var GeoLabelModule = /** @class */ (function () {
+    function GeoLabelModule() {
+    }
+    GeoLabelModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: GeoLabelModule });
+    GeoLabelModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function GeoLabelModule_Factory(t) { return new (t || GeoLabelModule)(); }, providers: [], imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _cityfun_cityfun_module__WEBPACK_IMPORTED_MODULE_4__["CityfunModule"], _home_routing__WEBPACK_IMPORTED_MODULE_5__["GeoLabelRoutesModule"]]] });
+    return GeoLabelModule;
+}());
+
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](GeoLabelModule, { declarations: [_geo_label_component__WEBPACK_IMPORTED_MODULE_2__["GeoLabelComponent"],
+        _components_treelyr_control_treelyr_control_component__WEBPACK_IMPORTED_MODULE_3__["TreelyrControlComponent"],
+        _components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_6__["SideNavComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _cityfun_cityfun_module__WEBPACK_IMPORTED_MODULE_4__["CityfunModule"], _home_routing__WEBPACK_IMPORTED_MODULE_5__["GeoLabelRoutesModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GeoLabelModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _cityfun_cityfun_module__WEBPACK_IMPORTED_MODULE_4__["CityfunModule"], _home_routing__WEBPACK_IMPORTED_MODULE_5__["GeoLabelRoutesModule"]],
+                declarations: [
+                    _geo_label_component__WEBPACK_IMPORTED_MODULE_2__["GeoLabelComponent"],
+                    _components_treelyr_control_treelyr_control_component__WEBPACK_IMPORTED_MODULE_3__["TreelyrControlComponent"],
+                    _components_side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_6__["SideNavComponent"],
+                ],
+                providers: [],
+                exports: []
+            }]
+    }], null, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/business/geo-label/home.routing.ts":
+/*!****************************************************!*\
+  !*** ./src/app/business/geo-label/home.routing.ts ***!
+  \****************************************************/
+/*! exports provided: GeoLabelRoutesModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeoLabelRoutesModule", function() { return GeoLabelRoutesModule; });
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm5/router.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm5/core.js");
+/* harmony import */ var _geo_label_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./geo-label.component */ "./src/app/business/geo-label/geo-label.component.ts");
+
+
+
+
+
+var routes = [
+    {
+        path: '',
+        component: _geo_label_component__WEBPACK_IMPORTED_MODULE_2__["GeoLabelComponent"],
+        children: [
+            { path: '', redirectTo: 'sign', pathMatch: 'full' },
+            {
+                path: 'sign',
+                loadChildren: function () {
+                    return Promise.all(/*! import() | sign-sign-module */[__webpack_require__.e("default~classify-classify-module~sign-sign-module"), __webpack_require__.e("sign-sign-module")]).then(__webpack_require__.bind(null, /*! ./sign/sign.module */ "./src/app/business/geo-label/sign/sign.module.ts")).then(function (m) { return m.SignModule; });
+                },
+                data: { path: 'sign' },
+            },
+            {
+                path: 'classify',
+                loadChildren: function () {
+                    return Promise.all(/*! import() | classify-classify-module */[__webpack_require__.e("default~classify-classify-module~sign-sign-module"), __webpack_require__.e("classify-classify-module")]).then(__webpack_require__.bind(null, /*! ./classify/classify.module */ "./src/app/business/geo-label/classify/classify.module.ts")).then(function (m) { return m.ClassifyModule; });
+                },
+                data: { path: 'classify' },
+            },
+            {
+                path: 'collect',
+                loadChildren: function () {
+                    return Promise.all(/*! import() | sign-sign-module */[__webpack_require__.e("default~classify-classify-module~sign-sign-module"), __webpack_require__.e("sign-sign-module")]).then(__webpack_require__.bind(null, /*! ./sign/sign.module */ "./src/app/business/geo-label/sign/sign.module.ts")).then(function (m) { return m.SignModule; });
+                },
+                data: { path: 'collect' },
+            },
+        ],
+    },
+];
+var GeoLabelRoutesModule = /** @class */ (function () {
+    function GeoLabelRoutesModule() {
+    }
+    GeoLabelRoutesModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: GeoLabelRoutesModule });
+    GeoLabelRoutesModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function GeoLabelRoutesModule_Factory(t) { return new (t || GeoLabelRoutesModule)(); }, imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)],
+            _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+    return GeoLabelRoutesModule;
+}());
+
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](GeoLabelRoutesModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](GeoLabelRoutesModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forChild(routes)],
+                exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]],
+            }]
+    }], null, null); })();
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=business-geo-label-geo-label-module.js.map
