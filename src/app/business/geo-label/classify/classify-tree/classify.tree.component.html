@@ -1,1 +1,17 @@
-<p>classify-tree works!</p>
+<div class="classify-tree">
+  <lb-tag-title>
+    <div class="title">
+      <span>分类树</span>
+    </div>
+  </lb-tag-title>
+  <lb-tree-content
+               [nodes]="nodes"
+               (initSelectKeys)="loadInitLayers($event)"
+               (selectKeys)="selectLayers($event)"
+               (removeKeys)="removeKeys($event)"
+               (treeDestroy)="treeDestroy($event)">
+  </lb-tree-content >
+
+</div>
+
+

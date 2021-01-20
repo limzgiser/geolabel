@@ -5,8 +5,9 @@
     <img *ngIf="data.issubscribe==0" [src]="'./assets/img/map/icon_list_select.png'" />
   </div>
   <div class="right">
-    <button nz-button nzType="primary" (click)="editTag()"><i nz-icon nzType="edit" nzTheme="outline"></i>编辑</button>
-    <button
+
+    <button [disabled]="data?.isedit==1"  nz-button nzType="primary" (click)="editTag()"><i nz-icon nzType="edit" nzTheme="outline"></i>编辑</button>
+    <button [disabled]="data?.isedit==1"
       nz-popconfirm
       nzPopconfirmTitle="确认删除？"
       (nzOnConfirm)="confirm()"

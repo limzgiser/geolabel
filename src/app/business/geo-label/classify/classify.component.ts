@@ -1,4 +1,5 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ClassifyService} from "./classify.service";
 
 @Component({
   selector: 'lb-classify',
@@ -9,10 +10,9 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 export class ClassifyComponent implements OnInit {
 
   constructor() { }
-  aaa = true;
+
   ngOnInit(): void {
+
   }
-  test(){
-    this.aaa=!this.aaa;
-  }
+
 }

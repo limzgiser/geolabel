@@ -70,13 +70,28 @@
     },
     {
       "id": "classify.tree",
-      "des": "切换收藏状态",
+      "des": "获取分类树",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeQuery"
     },
     {
       "id": "collect.list",
       "des": "查询收藏列表",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/subScribeListQuery"
+    },
+    {
+      "id": "classify.root.list",
+      "des": "查询收藏列表",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeListQuery"
+    },
+    {
+      "id": "update.root.list",
+      "des": "新增\\编辑\\删除分类清单",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeEdit"
+    },
+    {
+      "id": "get.classify.tree",
+      "des": "根据跟节点获取分类树",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeQuery"
     }
   ]
 }
