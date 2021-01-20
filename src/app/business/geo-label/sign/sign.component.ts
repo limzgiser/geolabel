@@ -48,7 +48,7 @@ export class SignComponent implements OnInit, OnDestroy {
        this.modelName = data.path;
     });
   }
-  modelName :'collect'|'sign' = 'sign'
+  modelName :'collect'|'sign' |'' = 'sign'
   toggleEditTool$ = null;
   mapboxMap: mapboxgl.Map = null;
   markerStatue: MarkerStatue = MarkerStatue.none; // 状态
@@ -96,6 +96,9 @@ export class SignComponent implements OnInit, OnDestroy {
     );
   }
   mapInit(): void {
+    if(this.modelName == ''){
+        return ;
+    }
     this.bindMapEvent();
     this.addGroupLayer();
     this.getTags(null);
@@ -431,6 +434,7 @@ export class SignComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): void {
+    this.modelName = '';
     this.mapboxMapService.removeLayerByIds([
       'all-tag-points-my',
       'all-tag-points-other',

@@ -9,7 +9,9 @@
                (initSelectKeys)="loadInitLayers($event)"
                (selectKeys)="selectLayers($event)"
                (removeKeys)="removeKeys($event)"
-               (treeDestroy)="treeDestroy($event)">
+               (treeDestroy)="treeDestroy($event)"
+  (editNodeEvent)="editNodeEvent($event)"
+  >
   </lb-tree-content >
 
 </div>

@@ -194,11 +194,11 @@ export class TreeContentComponent implements OnInit {
       });
     });
     this.defaultCheckedKeys = [...tmpdefaultCheckedKeys];
-    const removeNodes = leafNodes.filter(i => {
+    const removeNodes:any = leafNodes.filter(i => {
       return this.defaultCheckedKeys.indexOf(i) === -1;
     });
 
-    this.removeKeys.emit(removeNodes);
+    this.removeKeys.emit(['',removeNodes]);
   }
   contextMenu($event: MouseEvent, menu: NzDropdownMenuComponent): void {
     this.nzContextMenuService.create($event, menu);
