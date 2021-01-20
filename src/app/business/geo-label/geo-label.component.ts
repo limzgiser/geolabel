@@ -5,8 +5,6 @@ import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {CfhttpService} from "../../services/cfhttp.service";
 
-
-
 @Component({
   selector: 'app-geo-label',
   templateUrl: './geo-label.component.html',
@@ -24,7 +22,6 @@ export class GeoLabelComponent implements OnInit {
   treeNodeInfo = null;
   searchGeometry = null;
   ngOnInit() {
-
     this.sub = this.coreMessageService.nodemessage.subscribe((nodeinfo: any) => {
       this.treeNodeInfo = nodeinfo;
     });

@@ -120,3 +120,17 @@ export interface classifyRootItem{
   isAdd?:boolean;
   isDelete?:boolean;
 }
+export interface  classifyTree {
+  treeid:string;
+  jsontree:string;
+}
+export interface classifyTreeNode {
+      key?:string;
+      count:number;
+      isLeaf:boolean;
+      nodeid:string;
+      sn:number;
+      title:string;
+      isEdit?:boolean;
+      children:classifyTreeNode[]
+}

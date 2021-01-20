@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {NzFormatEmitEvent, NzTreeNode} from "ng-zorro-antd";
 import {NzContextMenuService, NzDropdownMenuComponent} from "ng-zorro-antd/dropdown";
 
@@ -9,20 +18,25 @@ import {NzContextMenuService, NzDropdownMenuComponent} from "ng-zorro-antd/dropd
   changeDetection:ChangeDetectionStrategy.OnPush,
 })
 export class TreeContentComponent implements OnInit {
-  activedNode: NzTreeNode;
+
   @Input() nodes = [];
   searchValue = null;
   @Output() initSelectKeys = new EventEmitter<Array<string>>(); // 默认选中节点
   @Output() selectKeys = new EventEmitter<Array<string>>(); //   选中keys
   @Output() removeKeys = new EventEmitter<Array<string>>(); //   取消选中keys
   @Output() treeDestroy = new EventEmitter<Array<string>>();
-
+  @Output() editNodeEvent = new EventEmitter<any>();
+  @Output() deleteNodeEvent = new EventEmitter<any>();
+  @Output() addNodeEvent = new EventEmitter<any>();
   totalLayer: number = 0;
   defaultCheckedKeys = [];  // 默认选中的key -- 内容回更改
   defaultCheckedKeysBack = [];  // 默认选中的key 备份-- 内容不会更改
-  constructor(private nzContextMenuService: NzContextMenuService) { }
+  editNode = null;
+  selecNode = null;
+  expandAll = true;
+  updateNodeNameValue:string = '';
+  constructor(private nzContextMenuService: NzContextMenuService,private cdr:ChangeDetectorRef) { }
   ngOnInit() {
-
 
   }
   checkChange(e) {
@@ -34,28 +48,65 @@ export class TreeContentComponent implements OnInit {
   }
   // 叶子节点控制
   leafNodeInteraction(node) {
+    let {key} = node;
     if (node.isChecked) {
       /// 加载图层
       // 选中图层
-      this.selectKeys.emit([node.key]);
+      this.selectKeys.emit( [key,[node.key]]);
     } else {
       // 移除图层
       // ('remove', node.key)
-      this.removeKeys.emit([node.key]);
+      this.removeKeys.emit( [key,[node.key]]);
     }
+  }
+  delete(node,e):void{
+    console.log('delete');
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  add(node,e):void{
+    console.log('add')
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  edit(node,e):void{
+   this.editNode = node;
+   this.updateNodeNameValue = node.origin.title;
+    // this.editNode.emit(node);
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  mouseover(node){
+    this.selecNode = node;
+  }
+  mouseleave(){
+    this.selecNode = null;
+  }
+  nodeMouseLeave(){
+    this.editNode = null;
+  }
+  onKey(node,e:KeyboardEvent){
+    if(e.keyCode ==13){
+      node._title = this.updateNodeNameValue;
+      this.editNode = null;
+      this.editNodeEvent.emit({
+        key:node.key,
+        value:this.updateNodeNameValue
+      })
+    }
+
   }
   // 非叶子节点控制
   // 要向下递归查询所有叶子节点
   nonleafNodeInteraction(node) {
-
+    let {key} = node;
     const childsKes = this.getAllChilds(node, 0);
     if (node.isChecked) {
-
       //  选中图层
-      this.selectKeys.emit(childsKes);
+      this.selectKeys.emit([key,childsKes]);
     } else {
       // 移除图层
-      this.removeKeys.emit(childsKes);
+      this.removeKeys.emit([key,childsKes]);
     }
   }
   /**

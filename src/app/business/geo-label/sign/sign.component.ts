@@ -25,6 +25,7 @@ import { listWktToGeoJson } from '../utils/main-format';
 import { getAllTagsStyle, getSageNationTagsStyle } from './styles/style';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
+import {delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-sign',
@@ -71,10 +72,10 @@ export class SignComponent implements OnInit, OnDestroy {
     pageNo: 1,
   };
 
+  xhrs = {};
   ngOnInit() {
-    this.mapboxMapService
+   this.xhrs['mapInit'] = this.mapboxMapService
       .init()
-      .pipe()
       .subscribe((mapboxMap: any) => {
         this.mapboxMap = mapboxMap;
         if (
@@ -347,7 +348,7 @@ export class SignComponent implements OnInit, OnDestroy {
       params = searchParams;
     }
     let methods = this.modelName =='sign'?'getTagList':"getCollectList";
-    this.signService[methods](params)
+    this.xhrs['getTags'] =  this.signService[methods](params).pipe(delay(2000))
       .subscribe((searchTagResult: searchTagResult) => {
         this.tagList = searchTagResult;
         let geoSource = listWktToGeoJson(searchTagResult.list, 'geom');
@@ -364,7 +365,7 @@ export class SignComponent implements OnInit, OnDestroy {
   getAllTagListPoint(): void {
     let methods = this.modelName =='sign'?'getAllTagListPoint':"getAllCollecPoint";
 
-    this.signService
+    this.xhrs['getAllTagListPoint'] = this.signService
       [methods](null)
       .subscribe((tagList: Array<tagListItem>) => {
         let myTags = [],
@@ -398,7 +399,6 @@ export class SignComponent implements OnInit, OnDestroy {
         this.cdr.markForCheck();
       });
   }
-
   /**
    * 显隐图例对应图层
    * @param legnedIem
@@ -438,5 +438,9 @@ export class SignComponent implements OnInit, OnDestroy {
     ]);
     this.editMarker && this.editMarker.remove();
     this.moveMarker && this.moveMarker.remove();
+
+     Object.keys(this.xhrs) .forEach(key=>{
+       this.xhrs[key].unsubscribe();
+     })
   }
 }

@@ -92,6 +92,16 @@
       "id": "get.classify.tree",
       "des": "根据跟节点获取分类树",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeQuery"
+    },
+    {
+      "id": "get.classifyNode.datalist",
+      "des": "查看分类结点下标签位置信息",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagNodeDataListQuery"
+    },
+    {
+      "id": "edit.classify.node",
+      "des": "编辑node节点",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeEdit"
     }
   ]
 }

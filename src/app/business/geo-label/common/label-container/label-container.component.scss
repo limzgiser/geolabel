@@ -1,6 +1,9 @@
 .container {
   border-radius: 4px 4px 0px 0px;
   pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   .title {
     height: 40px;
     background: linear-gradient(95deg, #005ccd 0%, #0092de 100%);
@@ -30,5 +33,6 @@
   .content{
     //   height: 500px;
     //   background: #fff;
+    flex: 1;
    }
 }

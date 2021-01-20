@@ -4,8 +4,8 @@
       标记分类
     </ng-container>
     <ng-container name="content">
-      <lb-classify-list></lb-classify-list>
-      <lb-classify-tree></lb-classify-tree>
+      <lb-classify-list (iclick) = "searchNodeTree($event);"></lb-classify-list>
+      <lb-classify-tree [nodes]="treeNodes"></lb-classify-tree>
     </ng-container>
   </app-label-container>
 

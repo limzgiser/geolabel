@@ -19,7 +19,6 @@ export class EditClassifyComponent implements OnInit {
   }
   deleteItem(item:classifyRootItem):void{
        item.isDelete = true;
-
   }
   addItem():void{
     let item = {  name:'',tacount:0,treeid:'0',isAdd:true, }

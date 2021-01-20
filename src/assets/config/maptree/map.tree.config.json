@@ -18,7 +18,7 @@
             "title": "绿地-wms服务",
             "query": false,
             "isLeaf": true,
-            "checked": false
+            "checked": true
           },
           {
             "key": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",

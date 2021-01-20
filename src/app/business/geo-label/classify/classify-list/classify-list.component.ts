@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Output, EventEmitter} from '@angular/core';
 import {ClassifyService} from "../classify.service";
 import {classifyRootItem} from "../../types";
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
@@ -14,6 +14,7 @@ import {NzMessageService} from "ng-zorro-antd";
 })
 export class ClassifyListComponent implements OnInit {
 
+  @Output() iclick = new EventEmitter<classifyRootItem>();
   constructor(private classifyService:ClassifyService,
               private  cdr:ChangeDetectorRef,
               private modal: NzModalService,
@@ -26,7 +27,8 @@ export class ClassifyListComponent implements OnInit {
   this.getRootClassifyList();
   }
   itemClick(item:classifyRootItem):void{
-   this.selectIitem = item;
+    this.iclick.emit(item);
+
   }
 
   getRootClassifyList(){
@@ -34,6 +36,7 @@ export class ClassifyListComponent implements OnInit {
       this.nodeList = res;
       if(this.nodeList.length){
         this.selectIitem = res[0];
+        this.iclick.emit(this.selectIitem )
       }
       this.cdr.markForCheck();
     })
