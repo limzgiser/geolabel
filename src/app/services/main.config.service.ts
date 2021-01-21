@@ -10,6 +10,7 @@ const uri = './assets/config/main.config.json';
 })
 export class MainConfigService implements Resolve<any> {
   constructor(private http: HttpClient) {}
+
   resolve(): Observable<any> | Observable<never> {
     return this.http
       .get(uri, {

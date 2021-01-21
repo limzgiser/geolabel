@@ -27,13 +27,14 @@ export class ClassifyListComponent implements OnInit {
     this.getRootClassifyList();
   }
   itemClick(item:classifyRootItem):void{
+    this.selectIitem = item;
     this.iclick.emit(item.treeid);
   }
   getRootClassifyList(){
     this.classifyService.getRootClassifyList(null).subscribe(res=>{
       this.nodeList = res;
-      console.log(res);
-      if(this.nodeList.length){
+
+      if(this.nodeList && this.nodeList.length){
         this.selectIitem = res[0];
         this.iclick.emit(this.selectIitem.treeid )
       }

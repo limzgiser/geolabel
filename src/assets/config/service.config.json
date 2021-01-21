@@ -107,6 +107,11 @@
       "id": "add.classify.node",
       "des": "添加",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeAdd"
+    },
+    {
+      "id": "delete.classify.node",
+      "des": "添加",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeDel"
     }
   ]
 }

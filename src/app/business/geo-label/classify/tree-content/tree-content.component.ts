@@ -19,6 +19,7 @@ import {NzContextMenuService, NzDropdownMenuComponent} from "ng-zorro-antd/dropd
 })
 export class TreeContentComponent implements OnInit {
 
+ 
   @Input() nodes = [];
   searchValue = null;
   @Output() initSelectKeys = new EventEmitter<Array<string>>(); // 默认选中节点
@@ -65,11 +66,19 @@ export class TreeContentComponent implements OnInit {
     }
   }
   delete(node,e):void{
+    if(node.title=='默认'){
+      this.nzMessageService.warning('不能操作默认分类节点!');
+      return ;
+    }
     this.deleteNodeEvent.emit(node.key )
     e.stopPropagation();
     e.preventDefault();
   }
   add(node,e):void{
+    if(node.title=='默认'){
+      this.nzMessageService.warning('不能操作默认分类节点!');
+      return ;
+    }
     this.editNode  = null;
     node._isExpanded = true;
     let key =   new Date().getTime();
@@ -97,7 +106,10 @@ export class TreeContentComponent implements OnInit {
     e.preventDefault();
   }
   edit(node,e):void{
-
+    if(node.title=='默认'){
+      this.nzMessageService.warning('不能操作默认分类节点!');
+      return ;
+    }
    this.editNode = node;
    this.updateNodeNameValue = node.origin.title;
     // this.editNode.emit(node);

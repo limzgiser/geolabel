@@ -60,7 +60,10 @@ export class LabelDetailComponent implements OnInit {
   }
   editTag() {
     this.isEdit = true;
+    console.log(this.data);
+    
     this.addSourceInfo = tagDetailToSourceTagInfo(this.data);
+    console.log(this.addSourceInfo)
      let { coordinates } = wktToGeoJson(this.data.geom);
      this.signComponent.addMoveMarker(coordinates, false);
     // this.signComponent.addMarker();

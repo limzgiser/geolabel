@@ -51,4 +51,9 @@ export class ClassifyService {
       headers: needToken
     }).pipe(map((res:Base<string>)=>res.data));
   }
+  deleteClassifyNode(body):Observable<boolean>{
+    return this.cfHttp.post('delete.classify.node',body,{
+      headers: needToken
+    }).pipe(map((res:Base<boolean>)=>res.data));
+  }
 }

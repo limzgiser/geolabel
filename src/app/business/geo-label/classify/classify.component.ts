@@ -10,17 +10,21 @@ import {classifyRootItem, classifyTreeNode} from "../types";
 })
 export class ClassifyComponent implements OnInit {
 
+
+  treeId:string = '';
   treeNodes :classifyTreeNode[]= [];
   constructor(private  classifyService:ClassifyService,private  cdr:ChangeDetectorRef) { }
 
   ngOnInit(): void {}
   searchNodeTree(rootNodeId:string):void{
+  this.treeId = rootNodeId;
     this.classifyService.getClassifyTree({treeId:rootNodeId}).subscribe(result=>{
+    
       let resNodes :classifyTreeNode[]=  JSON.parse(result.jsontree);
       if(resNodes.length<=0){
         return ;
       }
-      resNodes[0].expanded = true;
+     // resNodes[0].expanded = true;
       let each = function (node:classifyTreeNode){
         node.key = node.nodeid;
         node.isEdit = false;
