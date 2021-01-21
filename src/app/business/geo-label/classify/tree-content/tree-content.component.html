@@ -14,16 +14,16 @@
   <app-cf-scroll id="tree-container">
     <div class="content" (mouseleave)="mouseleave()" >
       <nz-tree [(nzData)]="nodes" nzCheckable nzMultiple (nzClick)="openFolder($event)"
-               (nzDblClick)="openFolder($event)" [nzHideUnMatched]='false' [nzSearchValue]="searchValue"
+               (nzDblClick)="openFolder($event)"  [nzSearchValue]="searchValue"
                [nzCheckedKeys]="defaultCheckedKeys" [nzTreeTemplate]="nzTreeTemplate" (nzCheckBoxChange)="checkChange($event)"
                [nzExpandedIcon]="mutiExpandedIconTpl" (nzSearchValueChange)=searchValueChange($event)>
       </nz-tree>
       <ng-template #nzTreeTemplate let-node>
-        <span class="custom-node"(mouseover)="mouseover(node)" (mouseleave)="nodeMouseLeave();" >
+        <span class="custom-node"(mouseover)="mouseover(node)"  >
           <div *ngIf="!node.isLeaf">
             <img src="./assets/img/maptree/group-node.png" />
             <span [ngStyle]="{'color': node.origin.searched?'#1077e9':'rgba(0,0,0,0.65)'}" class="parent-name">
-              {{ node.title }} ({{node.origin.count}})</span>
+              {{ node.title }}({{node.origin.count}})</span>
           </div>
           <div *ngIf="node.isLeaf" >
             <!-- (contextmenu)="contextMenu($event, menu)" -->
@@ -32,9 +32,12 @@
             <img class="chilld-search" *ngIf="node.origin.query"  src="./assets/img/maptree/search.png" />
           </div>
           <div class="editInput" *ngIf="node.key===editNode?.key">
-         <input nz-input  [(ngModel)]="updateNodeNameValue" (keyup)="onKey(node,$event)" />
+             <input nz-input  [(ngModel)]="updateNodeNameValue"  (click)="inputClick($event)" (keyup)="editOnKey(node,$event)" />
           </div>
-          <div class="icons" *ngIf="selecNode && node.origin.key===selecNode.origin.key">
+           <div class="editInput" *ngIf="node.key===addNode?.key">
+             <input nz-input  [(ngModel)]="updateNodeNameValue" (click)="inputClick($event)"  (keyup)="addOnKey(node,$event)" />
+           </div>
+          <div class="icons" *ngIf="hoverNode && node.origin.key===hoverNode.origin.key">
             <i nz-icon nzType="delete" (click)="delete(node,$event)"  nzTheme="outline"></i>
             <i nz-icon nzType="edit" (click)="edit(node,$event)" nzTheme="outline"></i>
             <i nz-icon nzType="plus" (click)="add(node,$event)" nzTheme="outline"></i>

@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {NzFormatEmitEvent, NzTreeNode} from "ng-zorro-antd";
+import {NzFormatEmitEvent, NzMessageService, NzTreeNode} from "ng-zorro-antd";
 import {NzContextMenuService, NzDropdownMenuComponent} from "ng-zorro-antd/dropdown";
 
 @Component({
@@ -32,10 +32,15 @@ export class TreeContentComponent implements OnInit {
   defaultCheckedKeys = [];  // 默认选中的key -- 内容回更改
   defaultCheckedKeysBack = [];  // 默认选中的key 备份-- 内容不会更改
   editNode = null;
-  selecNode = null;
-  expandAll = true;
+  addNode = null;
+  hoverNode = null;
+
+
   updateNodeNameValue:string = '';
-  constructor(private nzContextMenuService: NzContextMenuService,private cdr:ChangeDetectorRef) { }
+
+  constructor(private nzContextMenuService: NzContextMenuService,
+              private cdr:ChangeDetectorRef,
+              private nzMessageService: NzMessageService,) { }
   ngOnInit() {
 
   }
@@ -60,16 +65,39 @@ export class TreeContentComponent implements OnInit {
     }
   }
   delete(node,e):void{
-    console.log('delete');
+    this.deleteNodeEvent.emit(node.key )
     e.stopPropagation();
     e.preventDefault();
   }
   add(node,e):void{
-    console.log('add')
+    this.editNode  = null;
+    node._isExpanded = true;
+    let key =   new Date().getTime();
+    this.updateNodeNameValue ='新建节点';
+     let addTmpnode =   {
+       key :key,
+       count:0,
+       isLeaf:true,
+       nodeid:key,
+       sn:0,
+       title:  this.updateNodeNameValue,
+       isEdit:true,
+     }
+     if(node._children && node._children.length==0){
+       node.origin.isLeaf= false;
+        node.isLeaf = false;
+        node._isLeaf = false;
+     }
+     node.addChildren([
+         addTmpnode
+       ]);
+     this.addNode = addTmpnode;
+
     e.stopPropagation();
     e.preventDefault();
   }
   edit(node,e):void{
+
    this.editNode = node;
    this.updateNodeNameValue = node.origin.title;
     // this.editNode.emit(node);
@@ -77,15 +105,20 @@ export class TreeContentComponent implements OnInit {
     e.preventDefault();
   }
   mouseover(node){
-    this.selecNode = node;
+    this.hoverNode = node;
+  }
+  inputClick(e){
+    e.stopPropagation();
+    e.preventDefault();
   }
   mouseleave(){
-    this.selecNode = null;
-  }
-  nodeMouseLeave(){
+    // this.selecNode = null;
+    this.hoverNode  = null;
     this.editNode = null;
+    this.addNode = null;
   }
-  onKey(node,e:KeyboardEvent){
+
+  editOnKey(node,e:KeyboardEvent){
     if(e.keyCode ==13){
       node._title = this.updateNodeNameValue;
       this.editNode = null;
@@ -94,7 +127,19 @@ export class TreeContentComponent implements OnInit {
         value:this.updateNodeNameValue
       })
     }
-
+  }
+  addOnKey(node,e:KeyboardEvent){
+    if(e.keyCode ==13){
+      node._title = this.updateNodeNameValue;
+      this.addNode = null;
+      this.addNodeEvent.emit(
+        {
+          "parentId":node.parentNode.key,
+          "nodeName": node._title,
+          "preNodeId": ""
+        }
+      )
+    }
   }
   // 非叶子节点控制
   // 要向下递归查询所有叶子节点
@@ -146,6 +191,7 @@ export class TreeContentComponent implements OnInit {
     return result;
   }
   openFolder(data: NzTreeNode | Required<NzFormatEmitEvent>): void {
+    this.editNode = this.addNode = null;
     // do something if u want
     if (data instanceof NzTreeNode) {
       data.isExpanded = !data.isExpanded;
@@ -157,7 +203,6 @@ export class TreeContentComponent implements OnInit {
     }
   }
   searchValueChange(nodes) {
-
     let func = function forNodes(node, key) {
       if (node.key === key) {
         node.searched = true;
@@ -180,9 +225,7 @@ export class TreeContentComponent implements OnInit {
       });
     }
   }
-  activeNode(data: NzFormatEmitEvent): void {
-    // this.activedNode = data.node!;
-  }
+
   clearAllSelected() {
     const leafNodes = this.getAllChilds(this.nodes, 1);
     const tmpdefaultCheckedKeys = [];
@@ -200,13 +243,6 @@ export class TreeContentComponent implements OnInit {
 
     this.removeKeys.emit(['',removeNodes]);
   }
-  contextMenu($event: MouseEvent, menu: NzDropdownMenuComponent): void {
-    this.nzContextMenuService.create($event, menu);
-  }
-  selectDropdown(): void {
-    // (123);
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     const defaultsNodesKey: Array<string> = this.getAllChilds(this.nodes, 1);
     this.totalLayer = (this.getAllChilds(this.nodes, 0) || []).length;
@@ -220,8 +256,7 @@ export class TreeContentComponent implements OnInit {
       return this.defaultCheckedKeys.indexOf(item) === -1;
     });
     this.treeDestroy.emit(filterNodes);
-    // console
-    // .log(this.getAllChilds(this.nodes[0],0,))
+
   }
 
 }

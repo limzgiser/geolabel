@@ -102,6 +102,11 @@
       "id": "edit.classify.node",
       "des": "编辑node节点",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeEdit"
+    },
+    {
+      "id": "add.classify.node",
+      "des": "添加",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeAdd"
     }
   ]
 }

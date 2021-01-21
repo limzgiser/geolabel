@@ -115,7 +115,7 @@ export interface classifyTree {
 
 export interface classifyRootItem{
   name:string;
-  tacount:number;
+  tagcount:number;
   treeid:string;
   isAdd?:boolean;
   isDelete?:boolean;
@@ -132,5 +132,7 @@ export interface classifyTreeNode {
       sn:number;
       title:string;
       isEdit?:boolean;
+      expanded?:boolean;
+
       children:classifyTreeNode[]
 }

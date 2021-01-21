@@ -18,7 +18,6 @@ export class MenuConfigService implements Resolve<any> {
     }).pipe(
       switchMap((res: any) => {
         sessionStorage.setItem('menu.config', JSON.stringify(res.data));
-        console.log('b')
         return of(res);
       })
     );

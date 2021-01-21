@@ -1,14 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, map, switchMap, take } from 'rxjs/operators';
 import { Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+const uri = './assets/config/mapboxmap.config.json';
 
-import { HttpClient } from '@angular/common/http';
-const uri = './assets/config/main.config.json';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class MainConfigService implements Resolve<any> {
+export class MapConfigService  implements Resolve<any> {
+
   constructor(private http: HttpClient) {}
   resolve(): Observable<any> | Observable<never> {
     return this.http
@@ -18,7 +19,7 @@ export class MainConfigService implements Resolve<any> {
         },
       }) .pipe(
         switchMap((res: any) => {
-          sessionStorage.setItem('main.config', JSON.stringify(res.data));
+          sessionStorage.setItem('map.config', JSON.stringify(res.data));
           return of(res);
         })
       )

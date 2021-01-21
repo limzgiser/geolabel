@@ -5,7 +5,7 @@
     </ng-container>
     <ng-container name="content">
       <lb-classify-list (iclick) = "searchNodeTree($event);"></lb-classify-list>
-      <lb-classify-tree [nodes]="treeNodes"></lb-classify-tree>
+      <lb-classify-tree [nodes]="treeNodes" (refreshTree)="refreshTree($event)"></lb-classify-tree>
     </ng-container>
   </app-label-container>
 

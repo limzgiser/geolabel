@@ -13,16 +13,18 @@ export class ClassifyComponent implements OnInit {
   treeNodes :classifyTreeNode[]= [];
   constructor(private  classifyService:ClassifyService,private  cdr:ChangeDetectorRef) { }
 
-  ngOnInit(): void {
-
-  }
-  searchNodeTree(rootNode:classifyRootItem):void{
-    this.classifyService.getClassifyTree({treeId:rootNode.treeid}).subscribe(result=>{
-      let resNodes :[]=  JSON.parse(result.jsontree);
+  ngOnInit(): void {}
+  searchNodeTree(rootNodeId:string):void{
+    this.classifyService.getClassifyTree({treeId:rootNodeId}).subscribe(result=>{
+      let resNodes :classifyTreeNode[]=  JSON.parse(result.jsontree);
+      if(resNodes.length<=0){
+        return ;
+      }
+      resNodes[0].expanded = true;
       let each = function (node:classifyTreeNode){
         node.key = node.nodeid;
         node.isEdit = false;
-        if(node.children){
+        if(node.children && node.children.length>0){
           node.children.forEach((node:classifyTreeNode)=>{
                each(node);
           })
@@ -34,5 +36,9 @@ export class ClassifyComponent implements OnInit {
       this.treeNodes = resNodes;
       this.cdr.markForCheck();
     })
+  }
+
+  refreshTree(nodeId:string){
+    this.searchNodeTree(nodeId);
   }
 }

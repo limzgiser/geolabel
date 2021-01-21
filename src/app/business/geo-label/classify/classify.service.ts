@@ -41,9 +41,14 @@ export class ClassifyService {
       headers: needToken
     }).pipe(map((res:Base<any>)=>res.data));
   }
-  editClassifyNode(body):Observable<any>{
-    return this.cfHttp.post('get.classifyNode.datalist',body,{
+  editClassifyNode(body):Observable<string>{
+    return this.cfHttp.post('edit.classify.node',body,{
       headers: needToken
-    }).pipe(map((res:Base<any>)=>res.data));
+    }).pipe(map((res:Base<string>)=>res.data));
+  }
+  addClassifyNode(body):Observable<string>{
+    return this.cfHttp.post('add.classify.node',body,{
+      headers: needToken
+    }).pipe(map((res:Base<string>)=>res.data));
   }
 }

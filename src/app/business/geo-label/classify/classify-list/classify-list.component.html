@@ -11,14 +11,13 @@
         <div class="item"
              [class.active]="item.treeid==selectIitem?.treeid"
              *ngFor="let item of nodeList"
-             (click)="itemClick(item)"
-        >
-          {{item.name}}  {{item.tacount}}
+             (click)="itemClick(item)">
+          {{item.name}}  {{item.tagcount}}
         </div>
       </div>
     </div>
   </app-cf-scroll>
   <div *ngIf="nodeList.length==0">
-    <nz-empty nzNotFoundContent = '暂无分类' nzNotFoundImage="simple"></nz-empty>
+    <nz-empty style="height: 80px" nzNotFoundContent = '暂无分类' ></nz-empty>
   </div>
 </div>

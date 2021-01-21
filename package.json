@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --deploy-url http://localhost:4100/ --disable-host-check --port 4100 --base-href /geolabel --live-reload false",
+    "start2": "ng serve --deploy-url http://localhost:4100 --disable-host-check --port 4100 --base-href /geolabel/ --live-reload false",
     "build": "tools\\build.bat",
     "test": "ng test",
     "lint": "ng lint",
@@ -27,7 +28,7 @@
     "@mapbox/mapbox-gl-draw": "^1.2.0",
     "@turf/turf": "^5.1.6",
     "better-scroll": "^1.15.2",
-    "cityfun-gl": "^1.2.3",
+    "cityfun-gl": "^1.2.5",
     "classlist.js": "^1.1.20150312",
     "lodash": "^4.17.15",
     "mapbox-gl": "^1.11.1",

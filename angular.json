@@ -35,14 +35,13 @@
             "styles": [
               "src/theme.less",
               "src/styles.scss"
-
-
             ],
             "scripts": [
+
             ],
               "customWebpackConfig": {
                   "path": "./custom-webpack.config.js"
-                 }
+         }
           },
           "configurations": {
             "production": {

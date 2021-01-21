@@ -14,7 +14,7 @@ import {NzMessageService} from "ng-zorro-antd";
 })
 export class ClassifyListComponent implements OnInit {
 
-  @Output() iclick = new EventEmitter<classifyRootItem>();
+  @Output() iclick = new EventEmitter<string>();
   constructor(private classifyService:ClassifyService,
               private  cdr:ChangeDetectorRef,
               private modal: NzModalService,
@@ -24,19 +24,18 @@ export class ClassifyListComponent implements OnInit {
   selectIitem:classifyRootItem = null;
 
   ngOnInit(): void {
-  this.getRootClassifyList();
+    this.getRootClassifyList();
   }
   itemClick(item:classifyRootItem):void{
-    this.iclick.emit(item);
-
+    this.iclick.emit(item.treeid);
   }
-
   getRootClassifyList(){
     this.classifyService.getRootClassifyList(null).subscribe(res=>{
       this.nodeList = res;
+      console.log(res);
       if(this.nodeList.length){
         this.selectIitem = res[0];
-        this.iclick.emit(this.selectIitem )
+        this.iclick.emit(this.selectIitem.treeid )
       }
       this.cdr.markForCheck();
     })

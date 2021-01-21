@@ -21,7 +21,7 @@ export class EditClassifyComponent implements OnInit {
        item.isDelete = true;
   }
   addItem():void{
-    let item = {  name:'',tacount:0,treeid:'0',isAdd:true, }
+    let item = {  name:'',tagcount:0,treeid:'0',isAdd:true, }
      this.nodeList .push(item);
   }
 }

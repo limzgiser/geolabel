@@ -5,19 +5,15 @@
   },
   "data": {
     "mapinfo": {
-      "extent": null,
-      "extent_tpl": {
-        "xmin": 120.67967269912378,
-        "ymin": 31.2938931596835,
-        "xmax": 120.70445265714949,
-        "ymax": 31.34402267651852
-      },
-      "spatialReference": "EPSG:3857",
-      "zoom": 1
+      "center": [120.70044254024515, 31.301339366724918],
+      "zoom": 14,
+      "pitch": 60,
+      "spatialReference": "EPSG:3857"
+
     },
     "defaultlayers": [
       {
-        "aid": "google-image-aid",
+        "aid": "20D202D3-0373-4B6B-99AC-A3ED2AC4461B",
         "isbase": true
       }
     ],
@@ -26,7 +22,21 @@
         "id": "",
         "name": "",
         "type": "PT-VTStyle,PT-WMS,PT-WMTS,PT-ESRI-Tile,PT-ESRI-Dynamic"
-        
+      },
+      {
+        "id": "BEEF00F5-EF18-488F-94DB-C96DE3FB95D5",
+        "name": "浅色底图服务",
+        "type": "PT-VTStyle",
+        "tokenid": "",
+        "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/VT/c772577d-6200-4469-8147-35d8009ab728",
+        "des": ""
+      }, {
+        "id": "CA7A7586-3D01-4A1B-BBEA-313AB9EC2D59",
+        "name": "建筑高度分布",
+        "type": "PT-VTStyle",
+        "tokenid": "",
+        "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzgdfb.json",
+        "des": ""
       },
       {
         "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70",
@@ -67,33 +77,26 @@
         ]
       },
       {
-        "aid": "E75382D0-1BFC-4CC3-86FF-5429D39FA0E8",
+        "aid": "569C4609-EE35-4287-9A8F-52C3BAB385EF",
         "name": "建筑用途分布",
         "layers": [
           {
-            "id": "234D8324-EA53-46ED-BAF4-E2757BD93575"
+            "id": "CA7A7586-3D01-4A1B-BBEA-313AB9EC2D59"
           }
         ]
-      },
+      }
+      ,
       {
-        "aid": "D2E7EEA9-6443-4BD6-B633-F1790B0960E4",
-        "name": "法人注册分布",
+        "aid": "20D202D3-0373-4B6B-99AC-A3ED2AC4461B",
+        "name": "浅色-平台底图服务",
         "layers": [
           {
-            "id": "5186F9D2-DC69-42E6-95B3-EFF7C11A5D6A"
-          }
-        ]
-      },
-      {
-        "aid": "69206F39-F91A-40B7-AD36-17847101D41B",
-        "name": "人口精细化管理",
-        "layers": [
-          {
-            "id": "4248CDE5-5332-45EC-A684-C1AB99006996"
+            "id": "BEEF00F5-EF18-488F-94DB-C96DE3FB95D5"
           }
         ]
       }
     ],
+    "mapToken":"yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA=='",
     "tokens": [
       {
         "id": "Token_scm",

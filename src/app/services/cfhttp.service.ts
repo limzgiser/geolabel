@@ -13,6 +13,7 @@ export class CfhttpService {
   sevCfgURL :string= '';
   serviceCOnfigHttp$ = null;
   constructor(private http: HttpClient) {
+    if(sessionStorage.getItem('main.config'))
     this.sevCfgURL = JSON.parse(sessionStorage.getItem('main.config'))['service.config'];
   }
   /**

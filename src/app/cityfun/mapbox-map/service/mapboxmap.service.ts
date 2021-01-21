@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import cityfun from 'cityfun-gl';
-import { Observable, of } from 'rxjs';
-import { take, switchMap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+
 import { cursorType } from './mapboxTypes';
-import {CfhttpService} from "../../../services/cfhttp.service";
-const cfToken = encodeURIComponent( 'yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA==');
+import { CfhttpService } from '../../../services/cfhttp.service';
+import { ActivatedRoute } from '@angular/router';
+const cfToken =
+  'yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA==';
 
 @Injectable({
   providedIn: 'root',
@@ -13,15 +15,18 @@ const cfToken = encodeURIComponent( 'yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp
 export class MapboxmapService {
   specialStyel = null;
   mapboxmap = null;
-
+  mapConfig = null;
   firstFullLoaded = false;
+  xhrs = {};
   constructor(
     private http: HttpClient,
-    private cfHttp: CfhttpService
+    private cfHttp: CfhttpService,
+    private route: ActivatedRoute
   ) {
-    this.init().subscribe((res) => {
-      console.log('地图创建完成');
-    });
+    this.mapConfig = JSON.parse(sessionStorage.getItem('map.config'));
+    // this.init().subscribe((res) => {
+    //   console.log('地图创建完成');
+    // });
   }
   /**
    * 底图初始化、单例创建地图、加载专题图配置文件
@@ -30,40 +35,31 @@ export class MapboxmapService {
     if (this.mapboxmap || this.specialStyel) {
       return of(this.mapboxmap);
     } else {
-      return this.getBaseMapStyle().pipe(
-        switchMap((style_base) => {
-          return this.createMap(style_base);
-        })
-      );
+      return this.createMap();
     }
   }
-
-  /**
-   * 获取底图样式配置文件
-   */
-  private getBaseMapStyle() {
-    return this.cfHttp.get('base.map').pipe(take(1)); //.toPromise();
-  }
-
   /**
    *
    * @param style  创建地图
    */
-  private createMap(style): Observable<cityfun.Map> {
+  private createMap(): Observable<cityfun.Map> {
+    let basMapAid = this.mapConfig.defaultlayers[0].aid;
+    let baseMapInfo = this.getMapLayersInfoByAids([basMapAid]);
+    let { url } = baseMapInfo[0].layer;
+    let { center, zoom, pitch } = this.mapConfig.mapinfo;
     let self = this;
     if (this.mapboxmap) {
       return of(this.mapboxmap);
     } else {
       cityfun.setConfig({
-        cfToken:cfToken
-           
+        cfToken: cfToken,
       });
-      self.mapboxmap = new  cityfun.Map({
-        container: "mapboxmap",
-        center: [120.70044254024515, 31.301339366724918],
-        zoom: 14,
-        pitch: 60,
-        style: "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/VT/c772577d-6200-4469-8147-35d8009ab728",
+      self.mapboxmap = new cityfun.Map({
+        container: 'mapboxmap',
+        center: center,
+        zoom: zoom,
+        pitch: pitch,
+        style: url,
       });
       self.mapboxmap.on('load', () => {
         this.firstFullLoaded = true;
@@ -71,7 +67,77 @@ export class MapboxmapService {
       return of(self.mapboxmap);
     }
   }
+  // 通过 aid获取地图服务信息
+  public getMapLayersInfoByAids(aids) {
+    if (!this.mapConfig) {
+      return;
+    }
+    const config = this.mapConfig;
+    const layersInfo = [];
+    aids.forEach((aid) => {
+      const alayer = config.alayers.find((item) => item.aid === aid);
+      config.layers.forEach((layer) => {
+        let alayerItem = alayer.layers.find((i) => i.id === layer.id);
+        if (alayerItem) {
+          layersInfo.push({
+            layer,
+            aid: alayer.aid,
+            meta: alayerItem,
+          });
+        }
+      });
+    });
+    return layersInfo;
+  }
+  addLayers(layers) {
+    let map = this.mapboxmap;
+    layers.forEach((layerInfo) => {
+      switch (layerInfo.layer.type) {
+        // PT-VTStyle,PT-WMS,PT-WMTS,PT-ESRI-Tile,PT-ESRI-Dynamic
+        case 'PT-WMS':
+          map.addWMSLayer(layerInfo.layer.url, {
+            layerid: layerInfo.aid,
+            layers: layerInfo.meta.layers,
+          });
+          break;
+        case 'PT-ESRI-Dynamic':
+          map.addArcGISDynamicLayer(layerInfo.layer.url, {
+            layerid: layerInfo.aid,
+            layers: layerInfo.meta.layers,
+          });
+          break;
 
+        case 'PT-VTStyle':
+          this.xhrs[layerInfo.aid] = from( map.loadMapStyle(layerInfo.layer.url)) .subscribe((styleObj) => {
+            map.addMapStyle(styleObj, {
+              styleid: layerInfo.aid,
+              isFlyTo: false, // 默认false
+            });
+          });
+          break;
+        default:
+          break;
+      }
+    });
+  }
+  removeLayers(layers, mapboxservice) {
+    let map = this.mapboxmap;
+    layers.forEach((layerInfo) => {
+      switch (layerInfo.layer.type) {
+        // PT-VTStyle,PT-WMS,PT-WMTS,PT-ESRI-Tile,PT-ESRI-Dynamic
+        case 'PT-WMS':
+        case 'PT-ESRI-Dynamic':
+          this.removeLayerByIds([layerInfo.aid]);
+          break;
+        case 'PT-VTStyle':
+          this.xhrs[layerInfo.aid] && this.xhrs[layerInfo.aid].unsubscribe();
+          map.removeMapStyle(layerInfo.aid);
+            break;
+        default:
+          break;
+      }
+    });
+  }
   /**
    * 获取地图
    */
