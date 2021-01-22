@@ -117,13 +117,28 @@
     },
     {
       "id": "add.classify.node",
-      "des": "添加",
+      "des": "",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeAdd"
     },
     {
       "id": "delete.classify.node",
-      "des": "添加",
+      "des": "",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeDel"
+    },
+    {
+      "id": "get.comment.list",
+      "des": "",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/TopicDetailQuery"
+    },
+    {
+      "id": "make.comment",
+      "des": "添加评论",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/topicInfoAdd"
+    },
+    {
+      "id": "delete.comment",
+      "des": "删除评论",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/topicInfoDel"
     }
   ]
 }

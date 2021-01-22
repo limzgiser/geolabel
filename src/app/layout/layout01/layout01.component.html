@@ -1,5 +1,5 @@
 <div class="inner-content">
-  <div class="headder" *ngIf="!isInMicroApp">
+  <div class="headder" [style.display]="!isInMicroApp?'block':'none'" >
      <app-cf-menu-top></app-cf-menu-top> 
   </div>
   <div class="main-container">

@@ -1,16 +1,24 @@
 <div class="label-detail">
-  <app-label-container [closeble] = 'false'  [toggleble]="false"  >
-    <ng-container name="header">
-      <div class="header"(click)="hide()"> <i nz-icon nzType="arrow-left" nzTheme="outline"></i> 返回</div>
-    </ng-container>
-    <ng-container name="content">
-      <ng-container *ngIf="isEdit && addSourceInfo">
-        <lb-add-content [addSourceInfo] = "addSourceInfo"  [tagId]="data?.tagid"  [isEdit]="true" (showDetail)="showDetail();" ></lb-add-content>
-      </ng-container>
-      <ng-container *ngIf="!isEdit">
-        <lb-label-detail-content [data]="data" (delete)="deleteTag($event)" (edit)="editTag()"  ></lb-label-detail-content>
-      </ng-container>
-    </ng-container>
-  </app-label-container>
+
+  <app-cf-scroll>
+    <div class="content">
+  
+      <app-label-container [closeble] = 'false'  [toggleble]="false"  >
+        <ng-container name="header">
+          <div class="header"(click)="hide()"> <i nz-icon nzType="arrow-left" nzTheme="outline"></i> 返回</div>
+        </ng-container>
+        <ng-container name="content">
+          <ng-container *ngIf="isEdit && addSourceInfo">
+            <lb-add-content [addSourceInfo] = "addSourceInfo"  [tagId]="data?.tagid"  [isEdit]="true" (showDetail)="showDetail();" ></lb-add-content>
+          </ng-container>
+          <ng-container *ngIf="!isEdit">
+            <lb-label-detail-content [data]="data" (delete)="deleteTag($event)" (edit)="editTag()"  ></lb-label-detail-content>
+          </ng-container>
+        </ng-container>
+      </app-label-container>
+    </div>
+  </app-cf-scroll>
+
+
 </div>
 

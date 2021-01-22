@@ -23,8 +23,7 @@ export class UserAdminV1Component implements OnInit {
   ngOnInit() {
     this.logined = this.isLogin();
     this.authInfo =  JSON.parse(localStorage.getItem('user-info'));
-    console.log(this.authInfo );
-    
+    // console.log(this.authInfo );
   }
   /**
    * 登录

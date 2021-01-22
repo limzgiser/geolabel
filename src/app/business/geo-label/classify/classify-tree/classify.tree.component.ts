@@ -13,8 +13,7 @@ import { ClassifyService } from '../classify.service';
 import { MapboxmapService } from '../../../../cityfun/mapbox-map/service/mapboxmap.service';
 import { listWktToGeoJson } from '../../utils/main-format';
 import { groupBy } from 'lodash';
-import { Evented } from 'mapbox-gl';
-
+ 
 interface nodeType {
   type: 'add' | 'remove';
   key: string;
