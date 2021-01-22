@@ -13,7 +13,8 @@
   </div>
   <app-cf-scroll id="tree-container">
     <div class="content" (mouseleave)="mouseleave()" >
-      <nz-tree [(nzData)]="nodes" nzCheckable nzMultiple (nzClick)="openFolder($event)"
+      <nz-tree [(nzData)]="nodes" nzCheckable nzMultiple 
+            
                (nzDblClick)="openFolder($event)"  [nzSearchValue]="searchValue"
                [nzCheckedKeys]="defaultCheckedKeys" [nzTreeTemplate]="nzTreeTemplate" (nzCheckBoxChange)="checkChange($event)"
                [nzExpandedIcon]="mutiExpandedIconTpl" (nzSearchValueChange)=searchValueChange($event)>
@@ -38,7 +39,7 @@
              <input nz-input  [(ngModel)]="updateNodeNameValue" (click)="inputClick($event)"  (keyup)="addOnKey(node,$event)" />
            </div>
           <div class="icons" *ngIf="hoverNode && node.origin.key===hoverNode.origin.key">
-            <i nz-icon nzType="delete" (click)="delete(node,$event)"  nzTheme="outline"></i>
+            <i nz-icon nzType="delete" (click)="showDeleteConfirm(node,$event)"  nzTheme="outline"></i>
             <i nz-icon nzType="edit" (click)="edit(node,$event)" nzTheme="outline"></i>
             <i nz-icon nzType="plus" (click)="add(node,$event)" nzTheme="outline"></i>
           </div>

@@ -24,7 +24,7 @@ export class ClassifyComponent implements OnInit {
       if(resNodes.length<=0){
         return ;
       }
-     // resNodes[0].expanded = true;
+       resNodes[0].expanded = true;
       let each = function (node:classifyTreeNode){
         node.key = node.nodeid;
         node.isEdit = false;

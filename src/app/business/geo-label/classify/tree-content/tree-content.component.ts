@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges
 } from '@angular/core';
-import {NzFormatEmitEvent, NzMessageService, NzTreeNode} from "ng-zorro-antd";
+import {NzFormatEmitEvent, NzMessageService, NzModalService, NzTreeNode} from "ng-zorro-antd";
 import {NzContextMenuService, NzDropdownMenuComponent} from "ng-zorro-antd/dropdown";
 
 @Component({
@@ -39,9 +39,11 @@ export class TreeContentComponent implements OnInit {
 
   updateNodeNameValue:string = '';
 
-  constructor(private nzContextMenuService: NzContextMenuService,
+  constructor( 
+              private modal: NzModalService,
               private cdr:ChangeDetectorRef,
-              private nzMessageService: NzMessageService,) { }
+              private nzMessageService: NzMessageService,
+              ) { }
   ngOnInit() {
 
   }
@@ -65,12 +67,21 @@ export class TreeContentComponent implements OnInit {
       this.removeKeys.emit( [key,[node.key]]);
     }
   }
-  delete(node,e):void{
+ 
+  
+  showDeleteConfirm(node,e): void {
     if(node.title=='默认'){
       this.nzMessageService.warning('不能操作默认分类节点!');
       return ;
     }
-    this.deleteNodeEvent.emit(node.key )
+    this.modal.confirm({
+      nzTitle: '确认删除?',
+      nzOkText: '确认',
+      nzOkType: 'danger',
+      nzOnOk: () =>  this.deleteNodeEvent.emit(node.key ),
+      nzCancelText: '取消',
+      nzOnCancel: () => console.log('Cancel')
+    });
     e.stopPropagation();
     e.preventDefault();
   }

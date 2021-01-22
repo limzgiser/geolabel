@@ -19,7 +19,9 @@ export class ClassifyListComponent implements OnInit {
               private  cdr:ChangeDetectorRef,
               private modal: NzModalService,
               private  nzMessageService:NzMessageService
-  ) { }
+  ) { 
+    
+  }
   nodeList :classifyRootItem[] = [];
   selectIitem:classifyRootItem = null;
 
@@ -33,7 +35,6 @@ export class ClassifyListComponent implements OnInit {
   getRootClassifyList(){
     this.classifyService.getRootClassifyList(null).subscribe(res=>{
       this.nodeList = res;
-
       if(this.nodeList && this.nodeList.length){
         this.selectIitem = res[0];
         this.iclick.emit(this.selectIitem.treeid )

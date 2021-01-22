@@ -27,7 +27,8 @@ export class InterceptorService implements HttpInterceptor {
     let url = req.url;
     let httpConfig = {};
     let autInfo = sessionStorage.getItem('authInfo');
-    if(window['__POWERED_BY_QIANKUN__']){   
+    // if(window['__POWERED_BY_QIANKUN__']){   
+      if(false){
       if(url.startsWith('./assets/')){
         let tmpUlrs = url.split('./assets/')
         let hostUrl = document.querySelector('meta[name="sevHost"]').getAttribute('content'); 
