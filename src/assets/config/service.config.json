@@ -1,14 +1,16 @@
 {
 
   "host": {
-    "{{api}}": "http://192.168.2.76/"
+    "{{api}}": "http://192.168.2.76/",
+    "{{cityufnTest}}": "http://test.cityfun.com.cn/"
   },
   "list": [
     {
       "id": "base.map",
       "des": "底图样式",
       "url": "http://webres.cityfun.com.cn/szmap/szmap_base/3857/map_color.json"
-    }, {
+    }, 
+    {
       "id": "mapbox.map",
       "des": "mapbox服务配置文件",
       "url": "./assets/config/mapboxmap.config.json"
@@ -32,6 +34,16 @@
     },
     {
       "id": "--------------------------------------------------------------------"
+    },
+    {
+      "id": "pt.login",
+      "des": "登陆",
+      "url": "{{cityufnTest}}geocms/api/admin/auth/Login"
+    },
+    {
+      "id": "authinfo",
+      "des": "登陆",
+      "url": "{{cityufnTest}}/geocms/api/admin/auth/authinfo"
     },
     {
       "id": "login",

@@ -114,7 +114,7 @@ export class ClassifyTreeComponent implements OnInit, OnDestroy {
     });
   }
   deleteNodeEvent(e) {
-    console.log(e);
+    // console.log(e);
     let nodeId = e;
     let treeId = this.treeid;
     let prams = {treeId,nodeId};
@@ -129,7 +129,7 @@ export class ClassifyTreeComponent implements OnInit, OnDestroy {
   }
 
   addNodeEvent(e) {
-    console.log(this.treeid);
+    // console.log(this.treeid);
 
     e.treeId = this.treeid;
     this.classifyService.addClassifyNode(e).subscribe((result) => {
@@ -147,7 +147,7 @@ export class ClassifyTreeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
-    console.log();
+    // console.log();
     // @ts-ignore
     const ids: Array<string> = Array.from(this.keys);
     this.mapboxmapService.removeLayerByIds(ids);

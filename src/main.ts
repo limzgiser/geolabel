@@ -20,6 +20,7 @@ export async function bootstrap (props: Object) {
 }
 export async function mount (props: Object) {
   render();
+  console.log(props);
 }
 export async function unmount (props: Object) {
   console.log(props);

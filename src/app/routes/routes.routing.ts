@@ -7,7 +7,7 @@ import { APP_BASE_HREF } from '@angular/common';
 import { MapConfigService } from '../services/map-config.service';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'layout', pathMatch: 'full' },
   {
     path: 'login',
     resolve: {
@@ -19,9 +19,9 @@ export const routes: Routes = [
   {
     path: 'layout',
     component: Layout01Component,
-    // resolve: {
-    //   maincfg: MainConfigService,
-    // },
+    resolve: {
+      maincfg: MainConfigService,
+    },
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'geolabel', pathMatch: 'full' },

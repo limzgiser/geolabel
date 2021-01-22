@@ -10,7 +10,9 @@ import {
 } from '@angular/forms';
 import { calcMD5 } from '../../shared/services/md5';
 import {CfhttpService} from "../../services/cfhttp.service";
-import {Base, loginInfo} from "../../types/types";
+import {accessTokenInfo, Base, loginInfo} from "../../types/types";
+
+import { switchMap ,map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -55,41 +57,47 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.getMeta(); // web meta info
   }
   public onSubmit(values: Object): void {
+    let accessToken = ''; 
     this.submitted = true;
     if (this.form.valid) {
-      // const params = {
-      //   account: this.account.value,
-      //   password: calcMD5(this.password.value),
-      // };
-      this.cfHttp.post('login',{
+      this.cfHttp.post('pt.login',{ // pt.login
         password: this.password.value,
         userName: this.account.value,
-      }).subscribe(
-        (res: Base<loginInfo>) => {
-          if (res && res.code == 1 ) {
-            let userInfo   = Object.assign(res.data,{userName:this.account.value,})         ;
-            this.loginSuccessCallBack(userInfo);
-            this.mzMessageService.info(res.msg);
+      })
+      .pipe(
+        map((res: Base<loginInfo>) => res.data),
+        switchMap((loginInfo: loginInfo) => {
+            accessToken = loginInfo.accessToken;
+          return this.cfHttp
+            .get('authinfo', {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
+            })
+        })
+      ).subscribe((result:Base<any>)=>{
+          if (result && result.code == 1 ) {
+            this.loginSuccessCallBack(result.data,accessToken);
+            this.mzMessageService.info(result.msg);
             this.router.navigate(['./layout']);
           } else {
             this.submitted = false;
-            this.mzMessageService.error(res.msg);
+            this.mzMessageService.error(result.msg);
           }
         },
         (error) => {
           this.loginError(error);
-        }
-      );
+        });
     }
+   
   }
-  private loginSuccessCallBack(userInfo) {
-    // console.log(userInfo);
-    const data = {
-      data: userInfo,
-      islogin: true,
-    };
+  private loginSuccessCallBack(userInfo,accessToken) {
     this.submitted = false;
-    sessionStorage.setItem('authInfo', JSON.stringify(data));
+    localStorage.setItem('accessToken',JSON.stringify({
+      value:accessToken
+    }));
+    localStorage.setItem('user-info', JSON.stringify(userInfo));
   }
 
   private loginError(error) {

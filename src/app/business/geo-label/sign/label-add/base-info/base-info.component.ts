@@ -31,7 +31,7 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
 
   }
   ngOnInit() {
-    console.log(this.baseInfo);
+    // console.log(this.baseInfo);
     
     this.getClassifyTree();
   }

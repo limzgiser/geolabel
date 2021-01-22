@@ -50,7 +50,7 @@ export  function  tagDetailToSourceTagInfo(tagDetailInfo:tagDetailInfo):soureTag
           type:item.geotype,
           feature:{
             type:"Feature",
-            id:index,
+            id:item.gid,
             geometry:geometry,
             properties: {}
           }

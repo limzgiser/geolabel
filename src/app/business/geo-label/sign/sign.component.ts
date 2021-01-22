@@ -60,6 +60,7 @@ export class SignComponent implements OnInit, OnDestroy {
   tagList: searchTagResult = null;
   totalCount: number = 0;
   isEdit: boolean = false;
+  isTree = false;
   eventCallBack = {
     // key: function () {},
   };
@@ -334,9 +335,11 @@ export class SignComponent implements OnInit, OnDestroy {
     this.signService
       .getTagDetail({ tagid: tagid })
       .subscribe((result: tagDetailInfo) => {
-        this.tagDetailInfo = result;
-        this.appref.tick();
+        this.isTree = true;
+        console.log(this.isTree);
         this.cdr.markForCheck();
+        this.tagDetailInfo = result;
+        // this.appref.tick();
       });
   }
   /**
@@ -351,7 +354,7 @@ export class SignComponent implements OnInit, OnDestroy {
       params = searchParams;
     }
     let methods = this.modelName =='sign'?'getTagList':"getCollectList";
-    this.xhrs['getTags'] =  this.signService[methods](params).pipe(delay(2000))
+    this.xhrs['getTags'] =  this.signService[methods](params)
       .subscribe((searchTagResult: searchTagResult) => {
         this.tagList = searchTagResult;
         let geoSource = listWktToGeoJson(searchTagResult.list, 'geom');
@@ -442,7 +445,6 @@ export class SignComponent implements OnInit, OnDestroy {
     ]);
     this.editMarker && this.editMarker.remove();
     this.moveMarker && this.moveMarker.remove();
-
      Object.keys(this.xhrs) .forEach(key=>{
        this.xhrs[key].unsubscribe();
      })
