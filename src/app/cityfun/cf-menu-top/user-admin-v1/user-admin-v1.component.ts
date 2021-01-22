@@ -22,8 +22,9 @@ export class UserAdminV1Component implements OnInit {
   isFullscreen: any = true;   // 全屏事件
   ngOnInit() {
     this.logined = this.isLogin();
-    this.authInfo = JSON.parse(sessionStorage.getItem('authInfo'));
-
+    this.authInfo =  JSON.parse(localStorage.getItem('user-info'));
+    console.log(this.authInfo );
+    
   }
   /**
    * 登录
@@ -32,7 +33,7 @@ export class UserAdminV1Component implements OnInit {
     this.exit();
   }
   isLogin() {
-    const authInfo: any = JSON.parse(sessionStorage.getItem('authInfo'));
+    const authInfo: any = JSON.parse(localStorage.getItem('user-info'));
     if (authInfo !== null && authInfo.islogin === true) {
       return true;
     } else {
@@ -40,7 +41,7 @@ export class UserAdminV1Component implements OnInit {
     }
   }
   exit() {
-    sessionStorage.removeItem('authInfo');
+    localStorage.removeItem('user-info');
     this.router.navigate(['login']);
   }
   switchFullScreen() {

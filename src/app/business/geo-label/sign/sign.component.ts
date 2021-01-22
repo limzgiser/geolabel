@@ -298,6 +298,7 @@ export class SignComponent implements OnInit, OnDestroy {
     this.markerStatue = MarkerStatue.none;
     this.tagDetailInfo = null;
     this.getTags(null);
+    // this.getAllTagListPoint();//
   }
   drawTags(style, iconUrl, layerid, beforeId): void {
     this.mapboxMapService.removeLayerByIds([layerid]);
@@ -335,11 +336,12 @@ export class SignComponent implements OnInit, OnDestroy {
     this.signService
       .getTagDetail({ tagid: tagid })
       .subscribe((result: tagDetailInfo) => {
-        this.isTree = true;
-        console.log(this.isTree);
-        this.cdr.markForCheck();
+        if(!result){
+          this.nzMessageService.error('获取详情失败!');
+        }
         this.tagDetailInfo = result;
-        // this.appref.tick();
+        this.appref.tick();
+        this.cdr.markForCheck();
       });
   }
   /**
