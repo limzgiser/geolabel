@@ -152,27 +152,30 @@ export class SignComponent implements OnInit, OnDestroy {
     );
     // 阻止点击事件多选要素
     this.eventCallBack['search-tag-layer-click'] = function (e) {
-      if (preventMapDefault(e)) {
-        return;
-      }
+      // if (e.defaultPrevented) {
+      //   return true;
+      // }
+      // e.preventDefault();
       if (e.features && e.features.length) {
         const { tagid } = e.features[0].properties;
         self.getTagDetail(tagid);
       }
     };
     this.eventCallBack['all-tag-points-my-click'] = function (e) {
-      if (preventMapDefault(e)) {
-        return;
-      }
+      // if (e.defaultPrevented) {
+      //   return true;
+      // }
+      // e.preventDefault();
       if (e.features && e.features.length) {
         const { tagid } = e.features[0].properties;
         self.getTagDetail(tagid);
       }
     };
     this.eventCallBack['all-tag-points-other-click'] = function (e) {
-      if (preventMapDefault(e)) {
-        return;
-      }
+      // if (e.defaultPrevented) {
+      //   return true;
+      // }
+      // e.preventDefault();
       if (e.features && e.features.length) {
         const { tagid } = e.features[0].properties;
         self.getTagDetail(tagid);

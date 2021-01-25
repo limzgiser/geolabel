@@ -29,14 +29,16 @@
         "type": "PT-VTStyle",
         "tokenid": "",
         "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/VT/c772577d-6200-4469-8147-35d8009ab728",
-        "des": ""
+        "des": "",
+        "token":"token1"
       }, {
         "id": "CA7A7586-3D01-4A1B-BBEA-313AB9EC2D59",
         "name": "建筑高度分布",
         "type": "PT-VTStyle",
         "tokenid": "",
         "url": "http://webres.cityfun.com.cn/sip_std_zt/3857/jzgdfb.json",
-        "des": ""
+        "des": "",
+        "token":"token1"
       },
       {
         "id": "0CF78BB9-AF6C-4F50-9445-4C293E02CE70",
@@ -53,6 +55,24 @@
         "tokenid": "",
         "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/ESRI/ced7d6b9-2aca-48f9-89be-d0376ced9de7",
         "des": ""
+      },
+      {
+      "id": "DFE9FD4D-F9B1-43EB-98EF-21F1F89ECBB2",
+        "name": "平台-ArcGIS切片服务",
+        "type": "PT-ESRI-Tile",
+        "tokenid": "",
+        "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/ESRI/c67c1f52-3ae4-38d9-5912-39fa4a3e7159",
+        "des": ""
+    
+      },
+      {
+      "id": "58033CDD-962E-49C0-B7AC-38847F7C758C",
+        "name": "平台-WMTS服务源",
+        "type": "PT-ESRI-Tile",
+        "tokenid": "",
+        "url": "http://192.168.2.76/geocms/v1/cf/rest/services/MapService/OGC/1babbd91-f871-ac0e-fbb7-39fa4a3e7159",
+        "des": ""
+  
       }
     ],
     "alayers": [
@@ -94,15 +114,27 @@
             "id": "BEEF00F5-EF18-488F-94DB-C96DE3FB95D5"
           }
         ]
+      } ,
+      {
+        "aid": "B072A0D7-5D32-45FE-9E71-196074FA45BD",
+        "name": "平台-arcgis 切片服务",
+        "layers": [
+          {
+            "id": "DFE9FD4D-F9B1-43EB-98EF-21F1F89ECBB2"
+          }
+        ]
+      },
+      {
+        "aid": "C4FBC4D3-EEE3-431B-91EA-421531535501",
+        "name": "平台-WMTS",
+        "layers": [
+          {
+            "id": "58033CDD-962E-49C0-B7AC-38847F7C758C",
+            "layers": "SZ_IMAGE_2020_3857"
+          }
+        ]
       }
     ],
-    "mapToken":"yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA=='",
-    "tokens": [
-      {
-        "id": "Token_scm",
-        "type": "result",
-        "val": ""
-      }
-    ]
+    "mapToken":"yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA=="
   }
 }

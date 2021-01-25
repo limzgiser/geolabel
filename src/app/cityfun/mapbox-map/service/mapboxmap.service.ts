@@ -6,8 +6,6 @@ import { from, Observable, of } from 'rxjs';
 import { cursorType } from './mapboxTypes';
 import { CfhttpService } from '../../../services/cfhttp.service';
 import { ActivatedRoute } from '@angular/router';
-const cfToken =
-  'yAkqtubPdGtD61/l8DNLXhQrBCUcCeCQR9dzlyiMXHp3Qe9zsEtfy9k0YMAmXwOzx9p6BulJNYrLbejxUp6zYWpHhnKqZcgr3FjHGv8ybhHqLd4eWoGztA==';
 
 @Injectable({
   providedIn: 'root',
@@ -52,7 +50,7 @@ export class MapboxmapService {
       return of(this.mapboxmap);
     } else {
       cityfun.setConfig({
-        cfToken: cfToken,
+        cfToken: self.mapConfig.mapToken,
       });
       self.mapboxmap = new cityfun.Map({
         container: 'mapboxmap',
@@ -106,9 +104,21 @@ export class MapboxmapService {
             layers: layerInfo.meta.layers,
           });
           break;
-
+        case 'PT-ESRI-Tile':
+          map.addArcGISTileLayer(layerInfo.layer.url, {
+            layerid: layerInfo.aid,
+          });
+          break;
+        case 'PT-WMTS':
+          map.addWMTSLayer(layerInfo.layer.url, {
+            layerid: layerInfo.aid,
+            layers: layerInfo.meta.layers,
+          });
+          break;
         case 'PT-VTStyle':
-          this.xhrs[layerInfo.aid] = from( map.loadMapStyle(layerInfo.layer.url)) .subscribe((styleObj) => {
+          this.xhrs[layerInfo.aid] = from(
+            map.loadMapStyle(layerInfo.layer.url)
+          ).subscribe((styleObj) => {
             map.addMapStyle(styleObj, {
               styleid: layerInfo.aid,
               isFlyTo: false, // 默认false
@@ -127,12 +137,14 @@ export class MapboxmapService {
         // PT-VTStyle,PT-WMS,PT-WMTS,PT-ESRI-Tile,PT-ESRI-Dynamic
         case 'PT-WMS':
         case 'PT-ESRI-Dynamic':
+        case 'PT-ESRI-Tile':
+        case 'PT-WMTS':
           this.removeLayerByIds([layerInfo.aid]);
           break;
         case 'PT-VTStyle':
           this.xhrs[layerInfo.aid] && this.xhrs[layerInfo.aid].unsubscribe();
           map.removeMapStyle(layerInfo.aid);
-            break;
+          break;
         default:
           break;
       }

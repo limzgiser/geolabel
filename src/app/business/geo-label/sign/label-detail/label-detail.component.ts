@@ -42,6 +42,7 @@ export class LabelDetailComponent implements OnInit {
     if(this.isEdit){
       this.isEdit = false;
     }else{
+      this.signComponent.stopMarker();
       this.close.emit();
     }
   }

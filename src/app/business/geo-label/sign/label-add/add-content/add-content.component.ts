@@ -85,9 +85,8 @@ export class AddContentComponent implements OnInit ,OnDestroy{
     this.signComponent.tagDetailInfo = null;
   }
   viewDetail():void{
-
+    this.signComponent.stopMarker();
     if(this.isEdit){
-      this.signComponent.stopMarker();
       this.showDetail.emit();
     }
     this.signComponent.toggleDetail(this.tagId);

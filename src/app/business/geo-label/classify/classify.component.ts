@@ -15,7 +15,9 @@ export class ClassifyComponent implements OnInit {
   treeNodes :classifyTreeNode[]= [];
   constructor(private  classifyService:ClassifyService,private  cdr:ChangeDetectorRef) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
   searchNodeTree(rootNodeId:string):void{
   this.treeId = rootNodeId;
     this.classifyService.getClassifyTree({treeId:rootNodeId}).subscribe(result=>{
