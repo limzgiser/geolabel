@@ -30,7 +30,7 @@
           <div class="replay-control"  *ngIf="item.topicid ===selectItem?.topicid">
             <textarea nz-input placeholder=""   rows="2"   [(ngModel)]="replayMesg" ></textarea>
             <button nz-button nzType="primary" [nzSize]="'small'" (click)="cancel()">取消</button>
-            <button nz-button nzType="default" [nzSize]="'small'" nzDanger>发布</button>
+            <button nz-button nzType="default" [nzSize]="'small'" (click)="publish(false)" nzDanger>发布</button>
           </div>
         </div>
         <div class="cnodes">
