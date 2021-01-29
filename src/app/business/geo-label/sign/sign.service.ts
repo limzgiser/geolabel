@@ -107,4 +107,23 @@ export class SignService {
       headers: needToken
     }).pipe(map((res:Base<Array<tagListItem>>)=>res.data));
   }
+
+  getCommandList(params):Observable<any>{
+    return  this.cfHttp.get('get.comment.list' ,{
+      params:params,
+      headers: needToken
+    }).pipe(map((res:Base<Array<any>>)=>res.data));
+  }
+
+  makeCommand(body):Observable<any>{
+    return  this.cfHttp.post('make.comment' ,body,{
+
+      headers: needToken
+    }).pipe(map((res:Base<Array<any>>)=>res.data));
+  }
+  deleteCommand(body):Observable<any>{
+    return  this.cfHttp.post('delete.comment' ,body,{
+      headers: needToken
+    }).pipe(map((res:Base<Array<any>>)=>res.data));
+  }
 }

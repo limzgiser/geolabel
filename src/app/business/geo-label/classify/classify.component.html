@@ -1,7 +1,14 @@
 <div class="wrapper">
- 
-  <ng-container >
-    
-  </ng-container>
+  <app-label-container [closeble] = 'false'>
+    <ng-container name="header">
+      标记分类
+    </ng-container>
+    <ng-container name="content">
+      <lb-classify-list (iclick) = "searchNodeTree($event);"></lb-classify-list>
+      <lb-classify-tree [treeid]="treeId"  [nodes]="treeNodes" (refreshTree)="refreshTree($event)"></lb-classify-tree>
+    </ng-container>
+  </app-label-container>
+
 </div>
+
 

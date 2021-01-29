@@ -9,5 +9,5 @@
   <div id="measure-tool" >
     <app-mapbox-measure *ngIf="mapboxglmap" [mapboxglmap]="mapboxglmap" (clearMeasure) = "clearMeasure($event)"></app-mapbox-measure>
   </div>
-  <app-treelyr-control></app-treelyr-control>
+  <app-treelyr-control *ngIf="mapboxglmap" ></app-treelyr-control>
 </div>

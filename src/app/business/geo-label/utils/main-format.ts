@@ -9,7 +9,7 @@ import {cloneDeep} from 'lodash'
  */
 export function sourceTagToParams(geo:[number,number],source:soureTagInfo) :LabelBaseInfo{
   let {baseInfo,graphs} = cloneDeep(source);
-  baseInfo.categoryid = baseInfo.categoryid ?baseInfo.categoryid.toString():'';
+  baseInfo.categoryid = baseInfo.categoryid ? baseInfo.categoryid.toString():'';
   baseInfo.taginfos = baseInfo.taginfos.toString();
   baseInfo.geom = `Point(${geo[0]} ${geo[1]})` ;
   baseInfo.ispublic = +baseInfo.ispublic;
@@ -37,7 +37,7 @@ export  function  tagDetailToSourceTagInfo(tagDetailInfo:tagDetailInfo):soureTag
     taginfos:taginfos?taginfos.split(','):[],
     ispublic:ispublic.toString(),
     desc:desc,
-    categoryid:taginfos?categoryid.split(','):[],
+    categoryid:categoryid?categoryid.split(','):[],
   };
   let list = [];
   if(graphs){
@@ -50,7 +50,7 @@ export  function  tagDetailToSourceTagInfo(tagDetailInfo:tagDetailInfo):soureTag
           type:item.geotype,
           feature:{
             type:"Feature",
-            id:index,
+            id:item.gid,
             geometry:geometry,
             properties: {}
           }

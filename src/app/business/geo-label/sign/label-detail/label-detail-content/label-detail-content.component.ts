@@ -85,6 +85,7 @@ export class LabelDetailContentComponent implements OnInit {
       this.map.removeSource('tag-geo');
     }
   }
+   
   ngOnChanges(): void {
     this.removelayer()
     this.initMap();

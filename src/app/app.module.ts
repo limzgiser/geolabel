@@ -13,6 +13,7 @@ import { CfhttpService } from './services/cfhttp.service';
 import { MapboxmapService } from './cityfun/mapbox-map/service/mapboxmap.service';
 import {InterceptorService} from "./services/interceptor.service";
 import {MainConfigService} from "./services/main.config.service";
+import { MapConfigService } from './services/map-config.service';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {MainConfigService} from "./services/main.config.service";
   providers: [
     MapboxmapService,
     MainConfigService,
+    MapConfigService,
     MenuConfigService,
     CfhttpService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },

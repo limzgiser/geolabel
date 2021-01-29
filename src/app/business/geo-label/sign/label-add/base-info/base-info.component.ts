@@ -31,6 +31,8 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
 
   }
   ngOnInit() {
+    // console.log(this.baseInfo);
+    
     this.getClassifyTree();
   }
   submitForm(): void {
@@ -46,6 +48,7 @@ defaultValue:LabelBaseInfo = { "title": '',"ispublic":  '1', "taginfos": [], "de
   ngOnChanges(changes: SimpleChanges): void {
 
     const {title,ispublic,taginfos,desc,categoryid} = this.baseInfo ||  this.defaultValue;
+    // console.log(categoryid);
     this.validateForm = this.fb.group({
       title: [title,  [Validators.required]],
       ispublic: [ ispublic, [Validators.required]],

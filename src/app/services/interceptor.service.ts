@@ -26,20 +26,35 @@ export class InterceptorService implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     let url = req.url;
     let httpConfig = {};
-    let autInfo = sessionStorage.getItem('authInfo');
-    if(autInfo){
-      let accessToken = JSON.parse(autInfo).data.accessToken;
+    let accessTokenInfo = localStorage.getItem('accessToken')
+    
+  // // if(window['__POWERED_BY_QIANKUN__']){   
+  //     if(false){
+  //     if(url.startsWith('./assets/')){
+  //       let tmpUlrs = url.split('./assets/')
+  //       let hostUrl = document.querySelector('meta[name="sevHost"]').getAttribute('content'); 
+  //       let resURL   = hostUrl + 'assets/'+ tmpUlrs[1];
+  //       httpConfig = {   
+  //        url:resURL,
+  //        withCredentials: true 
+  //       };
+  //     }
+  //  }else{
+    if(accessTokenInfo){
+      let accessToken = JSON.parse(accessTokenInfo).value;
       const needToken = req.headers.get('needToken');
       if(needToken){
-        httpConfig = {  url,  headers: req.headers .set('Authorization', `Bearer ${accessToken}`)
+        httpConfig = {  url, 
+           headers: req.headers .set('Authorization', `Bearer ${accessToken}`),
         };
       }else{
-        httpConfig = {    url };
+        httpConfig = {    url,   };
       }
     }else{
-      httpConfig = {  url };
+      httpConfig = {  url};
     }
-
+  //  }
+ 
     const copyReq = req.clone(httpConfig);
     return next
       .handle(copyReq)

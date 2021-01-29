@@ -50,6 +50,7 @@ export class LabelFeatureComponent implements OnInit ,OnDestroy,OnChanges{
       (feature: Feature) => {
         const ttype: string = feature.geometry.type;
         this.features.forEach((fItem: FeatureListItem) => {
+          // console.log(123);
           if (fItem.feature.id === feature.id) {
             fItem.feature = feature;
             fItem.title = `${ttype} - ${this.datePipe.transform(

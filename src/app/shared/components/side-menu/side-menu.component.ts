@@ -35,7 +35,7 @@ export class SideMenuComponent implements OnInit {
   }
 
   muneClick(item) {
-    console.log(item)
+    // console.log(item)
     // this.router.navigate([`/business/${jtem.value}`]);
   }
 

@@ -22,8 +22,7 @@ const routes: Routes = [
       {
         path: 'collect',
         loadChildren: () =>
-        import('./sign/sign.module').then((m) => m.SignModule),
-      data: { path: 'collect' },
+        import('./sign/sign.module').then((m) => m.SignModule),   data: { path: 'collect' },
       },
     ],
   },

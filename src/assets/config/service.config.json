@@ -1,14 +1,16 @@
 {
 
   "host": {
-    "{{api}}": "http://192.168.2.76/"
+    "{{api}}": "http://192.168.2.76/",
+    "{{cityufnTest}}": "http://test.cityfun.com.cn/"
   },
   "list": [
     {
       "id": "base.map",
       "des": "底图样式",
       "url": "http://webres.cityfun.com.cn/szmap/szmap_base/3857/map_color.json"
-    }, {
+    }, 
+    {
       "id": "mapbox.map",
       "des": "mapbox服务配置文件",
       "url": "./assets/config/mapboxmap.config.json"
@@ -32,6 +34,16 @@
     },
     {
       "id": "--------------------------------------------------------------------"
+    },
+    {
+      "id": "pt.login",
+      "des": "登陆",
+      "url": "{{cityufnTest}}geocms/api/admin/auth/Login"
+    },
+    {
+      "id": "authinfo",
+      "des": "登陆",
+      "url": "{{cityufnTest}}/geocms/api/admin/auth/authinfo"
     },
     {
       "id": "login",
@@ -70,13 +82,63 @@
     },
     {
       "id": "classify.tree",
-      "des": "切换收藏状态",
+      "des": "获取分类树",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeQuery"
     },
     {
       "id": "collect.list",
       "des": "查询收藏列表",
       "url": "{{api}}GeolabelSer/api/cf/loctagmanage/subScribeListQuery"
+    },
+    {
+      "id": "classify.root.list",
+      "des": "查询收藏列表",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeListQuery"
+    },
+    {
+      "id": "update.root.list",
+      "des": "新增\\编辑\\删除分类清单",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeEdit"
+    },
+    {
+      "id": "get.classify.tree",
+      "des": "根据跟节点获取分类树",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeQuery"
+    },
+    {
+      "id": "get.classifyNode.datalist",
+      "des": "查看分类结点下标签位置信息",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagNodeDataListQuery"
+    },
+    {
+      "id": "edit.classify.node",
+      "des": "编辑node节点",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeEdit"
+    },
+    {
+      "id": "add.classify.node",
+      "des": "",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeAdd"
+    },
+    {
+      "id": "delete.classify.node",
+      "des": "",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/LocTagTreeNodeDel"
+    },
+    {
+      "id": "get.comment.list",
+      "des": "",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/TopicDetailQuery"
+    },
+    {
+      "id": "make.comment",
+      "des": "添加评论",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/topicInfoAdd"
+    },
+    {
+      "id": "delete.comment",
+      "des": "删除评论",
+      "url": "{{api}}GeolabelSer/api/cf/loctagmanage/topicInfoDel"
     }
   ]
 }

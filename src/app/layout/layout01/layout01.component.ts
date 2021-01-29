@@ -9,10 +9,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class Layout01Component implements OnInit {
 
   constructor() { }
-  isCollapsed = false;
 
+  isInMicroApp = false;
   ngOnInit() {
-
-
+     this.isInMicroApp = window['__POWERED_BY_QIANKUN__'];
   }
 }

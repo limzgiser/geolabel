@@ -12,17 +12,8 @@ export class AuthGuard implements CanActivate {
 
   }
   canActivate(): boolean {
-    // const cookieExists: boolean = this.cookieService.check('islogin');
-    // (cookieExists);
-
-    // if (cookieExists) {
-    //   return true;
-    // } else {
-    //   this.router.navigate(['/business/login']);
-    //   return false;
-    // }
-    const authInfo: any = JSON.parse(sessionStorage.getItem('authInfo'));
-    if (authInfo !== null && authInfo.islogin === true) {
+    const authInfo: any = JSON.parse(localStorage.getItem('user-info'));
+    if (authInfo) {
       return true;
     } else {
       this.router.navigate(['/login']);

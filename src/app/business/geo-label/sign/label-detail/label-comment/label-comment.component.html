@@ -1,7 +1,59 @@
 <div class="comment">
   <lb-tag-title>
     <!-- 公开|苏沪线点位注意事项-->
-    评论（0条）
+    <span >评论（{{topicCount}}条）</span> 
   </lb-tag-title>
+  <div class="publish-msg">
+    <input nz-input placeholder="请输入评论信息" [(ngModel)]="comentMesg" />
+    <button nz-button nzType="primary" (click)="publish(true)" [nzSize]="'small'">发布</button>
+  </div>
 
+  <app-cf-scroll>
+    <div class="content">
+      <div class="item" *ngFor="let item of topicTrees">
+        <div class="fnode">
+          <div class="creater">
+            {{item.createaccount}}:
+          </div>
+          <div class="content">
+            <span>
+              {{item.content}}  
+            </span>
+            <div >
+              <span class="replay" (click)="reply(item)">回复</span>
+              <span class="delete" *ngIf="item.isdelete" (click)="deleteComment(item.topicid,$event)" >删除</span>
+            </div>
+          </div>
+          <div class="time">
+            {{item.createtime}} 
+          </div>
+          <div class="replay-control"  *ngIf="item.topicid ===selectItem?.topicid">
+            <textarea nz-input placeholder=""   rows="2"   [(ngModel)]="replayMesg" ></textarea>
+            <button nz-button nzType="primary" [nzSize]="'small'" (click)="cancel()">取消</button>
+            <button nz-button nzType="default" [nzSize]="'small'" (click)="publish(false)" nzDanger>发布</button>
+          </div>
+        </div>
+        <div class="cnodes">
+            <div class="jtem" *ngFor="let jtem of item.replies">
+              <div>
+                <span>{{jtem.createaccount}}</span> 
+                <span> 回复 </span>
+                <span>{{jtem.replyaccount}} :</span>
+                <span> {{jtem.content}}  </span>
+                <span class="replay" (click)="reply(jtem)">回复</span>
+                <span *ngIf="item.isdelete" class="delete" (click)="deleteComment(item.topicid,$event)">删除</span>
+              </div>
+              <div class="replay-control" *ngIf="jtem.topicid ===selectItem?.topicid">
+                <textarea nz-input placeholder=""   rows="2"  [(ngModel)]="replayMesg" ></textarea>
+                <button nz-button nzType="default" [nzSize]="'small'" (click)="cancel()">取消</button>
+                <button nz-button nzType="default" [nzSize]="'small'" (click)="publish(false)"  nzDanger>发布</button>
+              </div>
+            </div>
+           
+        </div>
+      
+      </div>
+    </div>
+  </app-cf-scroll>
+   
 </div>

@@ -1,0 +1,13 @@
+<div class="container">
+
+  <ng-container *ngFor="let item of nodeList" (click)="itemClick(item)">
+    <div class="item" *ngIf="!item.isDelete"  >
+      <input  nz-input  [(ngModel)]="item.name" />
+      <i nz-icon nzType="delete" nzTheme="outline" (click)="deleteItem(item)"></i>
+    </div>
+  </ng-container>
+
+  <div class="add" (click)="addItem()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+  </div>
+</div>

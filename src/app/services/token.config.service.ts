@@ -47,7 +47,7 @@ export class TokenConfigService {
             'app_token',
             encodeURIComponent(tokeninfo.token)
           );
-          console.log('c');
+          // console.log('c');
           return of(tokeninfo);
         })
       );

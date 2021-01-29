@@ -13,6 +13,7 @@ export class CfhttpService {
   sevCfgURL :string= '';
   serviceCOnfigHttp$ = null;
   constructor(private http: HttpClient) {
+    if(sessionStorage.getItem('main.config'))
     this.sevCfgURL = JSON.parse(sessionStorage.getItem('main.config'))['service.config'];
   }
   /**
@@ -22,19 +23,12 @@ export class CfhttpService {
     if (this.sevConfig) {
       return of(this.sevConfig);
     } else {
-      if(this.serviceCOnfigHttp$){
-        return this.serviceCOnfigHttp$.pipe(take(1));
-      }else{
-
-        this.serviceCOnfigHttp$ =  this.http.get(this.sevCfgURL).pipe(delay(20),take(1),
+        return  this.http.get(this.sevCfgURL).pipe(
           map((res: any) => {
             this.sevConfig = res;
             return res;
           })
         );
-        return this.serviceCOnfigHttp$;
-      }
-
     }
   }
   /**
@@ -42,6 +36,7 @@ export class CfhttpService {
    * @param sevid;
    */
   get(serverId, options?: any): Observable<any> {
+
     return this.getSevConfig().pipe(
       map((data: any) => {
         let item = data.list.find((item) => item.id === serverId);

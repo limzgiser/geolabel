@@ -98,9 +98,9 @@ export interface  tagDetailInfo {
   "updateaccount": string;
   "updatetime":  string;
   "geom":  string;
-  "isdelete": number;
   "graphCount":number;
   "topicCount":number;
+   "isedit": number;
   "graphs"?:LabelgeoFeature[];
 }
 export interface legentItem {
@@ -111,4 +111,28 @@ export interface legentItem {
 export interface classifyTree {
  treeid:string;
  jsontree:string;
+}
+
+export interface classifyRootItem{
+  name:string;
+  tagcount:number;
+  treeid:string;
+  isAdd?:boolean;
+  isDelete?:boolean;
+}
+export interface  classifyTree {
+  treeid:string;
+  jsontree:string;
+}
+export interface classifyTreeNode {
+      key?:string;
+      count:number;
+      isLeaf:boolean;
+      nodeid:string;
+      sn:number;
+      title:string;
+      isEdit?:boolean;
+      expanded?:boolean;
+
+      children:classifyTreeNode[]
 }

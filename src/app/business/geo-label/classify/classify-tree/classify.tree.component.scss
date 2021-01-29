@@ -1,0 +1,10 @@
+.classify-tree {
+  width: 100%;
+  height: calc(100vh - 300px);
+  padding: 20px;
+  overflow: hidden;
+}
+lb-tree-content {
+  display: block;
+  height: calc(100% - 40px);
+}

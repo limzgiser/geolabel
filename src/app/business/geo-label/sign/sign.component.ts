@@ -25,6 +25,7 @@ import { listWktToGeoJson } from '../utils/main-format';
 import { getAllTagsStyle, getSageNationTagsStyle } from './styles/style';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
+import {delay} from "rxjs/operators";
 
 @Component({
   selector: 'app-sign',
@@ -47,7 +48,7 @@ export class SignComponent implements OnInit, OnDestroy {
        this.modelName = data.path;
     });
   }
-  modelName :'collect'|'sign' = 'sign'
+  modelName :'collect'|'sign' |'' = 'sign'
   toggleEditTool$ = null;
   mapboxMap: mapboxgl.Map = null;
   markerStatue: MarkerStatue = MarkerStatue.none; // 状态
@@ -59,6 +60,7 @@ export class SignComponent implements OnInit, OnDestroy {
   tagList: searchTagResult = null;
   totalCount: number = 0;
   isEdit: boolean = false;
+  isTree = false;
   eventCallBack = {
     // key: function () {},
   };
@@ -71,10 +73,10 @@ export class SignComponent implements OnInit, OnDestroy {
     pageNo: 1,
   };
 
+  xhrs = {};
   ngOnInit() {
-    this.mapboxMapService
+   this.xhrs['mapInit'] = this.mapboxMapService
       .init()
-      .pipe()
       .subscribe((mapboxMap: any) => {
         this.mapboxMap = mapboxMap;
         if (
@@ -95,6 +97,9 @@ export class SignComponent implements OnInit, OnDestroy {
     );
   }
   mapInit(): void {
+    if(this.modelName == ''){
+        return ;
+    }
     this.bindMapEvent();
     this.addGroupLayer();
     this.getTags(null);
@@ -147,27 +152,30 @@ export class SignComponent implements OnInit, OnDestroy {
     );
     // 阻止点击事件多选要素
     this.eventCallBack['search-tag-layer-click'] = function (e) {
-      if (preventMapDefault(e)) {
-        return;
-      }
+      // if (e.defaultPrevented) {
+      //   return true;
+      // }
+      // e.preventDefault();
       if (e.features && e.features.length) {
         const { tagid } = e.features[0].properties;
         self.getTagDetail(tagid);
       }
     };
     this.eventCallBack['all-tag-points-my-click'] = function (e) {
-      if (preventMapDefault(e)) {
-        return;
-      }
+      // if (e.defaultPrevented) {
+      //   return true;
+      // }
+      // e.preventDefault();
       if (e.features && e.features.length) {
         const { tagid } = e.features[0].properties;
         self.getTagDetail(tagid);
       }
     };
     this.eventCallBack['all-tag-points-other-click'] = function (e) {
-      if (preventMapDefault(e)) {
-        return;
-      }
+      // if (e.defaultPrevented) {
+      //   return true;
+      // }
+      // e.preventDefault();
       if (e.features && e.features.length) {
         const { tagid } = e.features[0].properties;
         self.getTagDetail(tagid);
@@ -293,6 +301,7 @@ export class SignComponent implements OnInit, OnDestroy {
     this.markerStatue = MarkerStatue.none;
     this.tagDetailInfo = null;
     this.getTags(null);
+    // this.getAllTagListPoint();//
   }
   drawTags(style, iconUrl, layerid, beforeId): void {
     this.mapboxMapService.removeLayerByIds([layerid]);
@@ -330,6 +339,9 @@ export class SignComponent implements OnInit, OnDestroy {
     this.signService
       .getTagDetail({ tagid: tagid })
       .subscribe((result: tagDetailInfo) => {
+        if(!result){
+          this.nzMessageService.error('获取详情失败!');
+        }
         this.tagDetailInfo = result;
         this.appref.tick();
         this.cdr.markForCheck();
@@ -347,7 +359,7 @@ export class SignComponent implements OnInit, OnDestroy {
       params = searchParams;
     }
     let methods = this.modelName =='sign'?'getTagList':"getCollectList";
-    this.signService[methods](params)
+    this.xhrs['getTags'] =  this.signService[methods](params)
       .subscribe((searchTagResult: searchTagResult) => {
         this.tagList = searchTagResult;
         let geoSource = listWktToGeoJson(searchTagResult.list, 'geom');
@@ -364,7 +376,7 @@ export class SignComponent implements OnInit, OnDestroy {
   getAllTagListPoint(): void {
     let methods = this.modelName =='sign'?'getAllTagListPoint':"getAllCollecPoint";
 
-    this.signService
+    this.xhrs['getAllTagListPoint'] = this.signService
       [methods](null)
       .subscribe((tagList: Array<tagListItem>) => {
         let myTags = [],
@@ -398,7 +410,6 @@ export class SignComponent implements OnInit, OnDestroy {
         this.cdr.markForCheck();
       });
   }
-
   /**
    * 显隐图例对应图层
    * @param legnedIem
@@ -431,6 +442,7 @@ export class SignComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): void {
+    this.modelName = '';
     this.mapboxMapService.removeLayerByIds([
       'all-tag-points-my',
       'all-tag-points-other',
@@ -438,5 +450,8 @@ export class SignComponent implements OnInit, OnDestroy {
     ]);
     this.editMarker && this.editMarker.remove();
     this.moveMarker && this.moveMarker.remove();
+     Object.keys(this.xhrs) .forEach(key=>{
+       this.xhrs[key].unsubscribe();
+     })
   }
 }

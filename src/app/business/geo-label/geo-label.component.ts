@@ -4,8 +4,7 @@ import { MapboxmapService } from './../../cityfun/mapbox-map/service/mapboxmap.s
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {CfhttpService} from "../../services/cfhttp.service";
-
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-geo-label',
@@ -17,14 +16,15 @@ export class GeoLabelComponent implements OnInit {
   constructor(private mapboxmapService: MapboxmapService,
     private cfHttp: CfhttpService
     , private coreMessageService: CoreMessageService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+  
+    ) { }
   mapboxglmap = null;
   nodeInfo = null;  // 查询node节点信息
   sub: Subscription;
   treeNodeInfo = null;
   searchGeometry = null;
   ngOnInit() {
-
     this.sub = this.coreMessageService.nodemessage.subscribe((nodeinfo: any) => {
       this.treeNodeInfo = nodeinfo;
     });

@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import {MainConfigService} from "../services/main.config.service";
 import { APP_BASE_HREF } from '@angular/common';
+import { MapConfigService } from '../services/map-config.service';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'layout', pathMatch: 'full' },
   {
     path: 'login',
     resolve: {
@@ -18,12 +19,17 @@ export const routes: Routes = [
   {
     path: 'layout',
     component: Layout01Component,
+    resolve: {
+      maincfg: MainConfigService,
+    },
     canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'geolabel', pathMatch: 'full' },
-
       {
         path: 'geolabel',
+        resolve: {
+          mapboxConfig: MapConfigService,
+        },
         loadChildren: () =>  import('../business/geo-label/geo-label.module').then( m => m.GeoLabelModule  ),
       },
     ],
@@ -38,6 +44,6 @@ export const routes: Routes = [
     }),
   ],
   exports: [RouterModule],
-  // providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/geolabel' : '/' }]
+  providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/geolabel' : '/' }]
 })
 export class RouteRoutingModule {}

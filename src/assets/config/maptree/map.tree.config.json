@@ -15,17 +15,39 @@
         "children": [
           {
             "key": "B914AA73-4A67-484F-B30A-FCB44463653B",
-            "title": "绿地-wms服务",
+            "title": "平台-WMS服务源",
+            "query": false,
+            "isLeaf": true,
+            "checked": true
+          },
+          {
+            "key": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
+            "title": "平台-ESRI动态服务源",
             "query": false,
             "isLeaf": true,
             "checked": false
           },
           {
-            "key": "71A9BD2F-B703-4DB4-B4CF-6D90B62D37C4",
-            "title": "地块-ArcGIS Dynamic",
+            "key": "569C4609-EE35-4287-9A8F-52C3BAB385EF",
+            "title": "平台-Mapbox矢量服务源",
             "query": false,
             "isLeaf": true,
             "checked": false
+          },
+          {
+            "key": "B072A0D7-5D32-45FE-9E71-196074FA45BD",
+            "title": "平台-ESRI切片服务源",
+            "query": false,
+            "isLeaf": true,
+            "checked": false
+          },
+          {
+            "key": "C4FBC4D3-EEE3-431B-91EA-421531535501",
+            "title": "平台-WMTS服务源",
+            "query": false,
+            "isLeaf": true,
+            "checked": false,
+            "disableCheckbox": false
           }
         ]
       }

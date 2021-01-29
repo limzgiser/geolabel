@@ -3,10 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { MapboxmapService } from './../mapbox-map/service/mapboxmap.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {CfhttpService} from "../../services/cfhttp.service";
-import { addLayers, removeLayers } from './tree-tool';
-
-
-
 @Component({
   selector: 'app-mapbox-maptree-control',
   templateUrl: './mapbox-maptree-control.component.html',
@@ -62,15 +58,13 @@ export class MapboxMaptreeControlComponent implements OnInit {
     this.loadDeafultStyle();
 
   }
-
-
   loadDeafultStyle() {
     if (this.defaultKeys.length > 0 && !this.isLoadedDefaultLayers) {
       this.showLegends(this.defaultKeys);
       this.isLoadedDefaultLayers = true;
       // 加载默认图层
-      let layers = this.getMapLayersInfoByAids(this.defaultKeys);
-      addLayers(this.mapboxglmap,layers);
+      let layers = this.mapboxmapService.getMapLayersInfoByAids(this.defaultKeys);
+      this.mapboxmapService. addLayers(layers);
     }
   }
   loadStyle(layer) {
@@ -84,13 +78,12 @@ export class MapboxMaptreeControlComponent implements OnInit {
 
   selectLayers(nodekeys) {
     this.showLegends(nodekeys, 'add');
-    const layers = this.getMapLayersInfoByAids(nodekeys);
-    addLayers(this.mapboxglmap,layers);
+    const layers = this.mapboxmapService.getMapLayersInfoByAids(nodekeys);
+    this.mapboxmapService.addLayers(layers);
   }
   removeKeys(keys) {
- 
-    const layers = this.getMapLayersInfoByAids(keys);
-    removeLayers(this.mapboxglmap,layers,this.mapboxmapService);
+    const layers = this.mapboxmapService.getMapLayersInfoByAids(keys);
+    this.mapboxmapService.removeLayers(layers,this.mapboxmapService);
     // layers.forEach(layer => {
     //   if (this.xhrs[layer.id]) {
     //     this.xhrs[layer.id].unsubscribe();
@@ -165,23 +158,5 @@ export class MapboxMaptreeControlComponent implements OnInit {
     //  this.mapboxmapService.removeLayerByIds();
   }
 
-  public getMapLayersInfoByAids(aids) {
-    if (!this.mapboxmapConfig) { return; }
-    const config = this.mapboxmapConfig.data;
-    const layersInfo = [];
-    aids.forEach(aid => {
-      const alayer = config.alayers.find(item => item.aid === aid);
-      config.layers.forEach(layer => {
-        let alayerItem = alayer.layers.find(i => i.id === layer.id)  
-        if (alayerItem) {
-          layersInfo.push({
-            layer,
-            aid:alayer.aid,
-            meta:alayerItem
-          });
-        }
-      });
-    });
-    return layersInfo;
-  }
+
 }
