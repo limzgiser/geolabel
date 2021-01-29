@@ -38,6 +38,6 @@ export const routes: Routes = [
     }),
   ],
   exports: [RouterModule],
-  providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/geolabel' : '/' }]
+  // providers: [{ provide: APP_BASE_HREF, useValue: window['__POWERED_BY_QIANKUN__'] ? '/geolabel' : '/' }]
 })
 export class RouteRoutingModule {}

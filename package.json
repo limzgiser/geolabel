@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve  --host 0.0.0.0 --port 4110",
+    "serve:qiankun": "ng serve --deploy-url http://localhost:7106/ --disable-host-check --port 7106 --base-href /angular9 --live-reload false",
+    "build:qiankun": "ng build --prod --deploy-url http://localhost:7106/",
     "build": "tools\\build.bat",
     "test": "ng test",
     "lint": "ng lint",
@@ -35,6 +37,8 @@
     "mapbox-gl-draw-rectangle-mode": "^1.0.4",
     "ng-zorro-antd": "^9.1.2",
     "rxjs": "~6.5.4",
+    "single-spa": "^5.9.0",
+    "single-spa-angular": "^4.3.1",
     "tslib": "^1.10.0",
     "wellknown": "^0.5.0",
     "zone.js": "~0.10.2"
