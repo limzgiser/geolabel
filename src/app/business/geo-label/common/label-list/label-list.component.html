@@ -11,7 +11,7 @@
 
   <div class="data-content" *ngIf="showPanel">
     <!--  @listToggle -->
-    <app-cf-scroll>
+  
       <div class="content" (mouseleave)="mouseLeave()" >
         <div class="item" [style.opacity]="item.hidden?0.2:1"
              *ngFor="let item of labelList?.list;  trackBy: trackById
@@ -45,7 +45,7 @@
           </div>
         </div>
       </div>
-    </app-cf-scroll>
+  
 
     <div class="pagination">
       <nz-pagination (nzPageIndexChange)="pageIndexChange($event)" [nzPageIndex]="currentPage" [nzTotal]="labelList?.totalRecord" [nzPageSize]="pageSize"></nz-pagination>

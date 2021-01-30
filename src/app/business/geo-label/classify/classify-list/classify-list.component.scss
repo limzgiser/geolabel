@@ -18,10 +18,11 @@
       }
     }
   }
-  app-cf-scroll {
+ .list  {
     display: block;
      height: calc(100%);
     position: relative;
+    overflow: auto;
     .content {
       display: flex;
       flex-direction: column;

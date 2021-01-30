@@ -10,15 +10,16 @@
   }
  
 }
-app-cf-scroll {
-  display: block;
-  height: 260px;
-  position: relative;
-  padding: 20px 20px 0px 0px;
-  .content{
+ 
+
+  .list{
+    height: 260px;
+    position: relative;
+    padding: 20px 20px 20px 0px;
     display: flex;
     flex-direction: column;
     font-size: 14px;
+    overflow: auto;
    .item{
      margin-bottom: 6px;
      
@@ -67,5 +68,5 @@ app-cf-scroll {
        flex: 1;
      }
    }
-  }
+  
 }

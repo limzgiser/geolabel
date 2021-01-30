@@ -1,23 +1,27 @@
 <div class="wrapper">
- <lb-tag-title>
+  <lb-tag-title>
     <div class="title">
       <span>标记分类</span>
-      <span class="edit" (click)="createModal();" ><i nz-icon nzType="edit" nzTheme="outline"></i>编辑</span>
+      <span class="edit" (click)="createModal()"
+        ><i nz-icon nzType="edit" nzTheme="outline"></i>编辑</span
+      >
     </div>
   </lb-tag-title>
-  <app-cf-scroll *ngIf="nodeList.length">
+  <div class="list" *ngIf="nodeList.length">
     <div class="content">
       <div class="list">
-        <div class="item"
-             [class.active]="item.treeid==selectIitem?.treeid"
-             *ngFor="let item of nodeList"
-             (click)="itemClick(item)">
-          {{item.name}}  {{item.tagcount}}
+        <div
+          class="item"
+          [class.active]="item.treeid == selectIitem?.treeid"
+          *ngFor="let item of nodeList"
+          (click)="itemClick(item)"
+        >
+          {{ item.name }} {{ item.tagcount }}
         </div>
       </div>
     </div>
-  </app-cf-scroll>
-  <div *ngIf="nodeList.length==0">
-    <nz-empty style="height: 80px" nzNotFoundContent = '暂无分类' ></nz-empty>
+  </div>
+  <div *ngIf="nodeList.length == 0">
+    <nz-empty style="height: 80px" nzNotFoundContent="暂无分类"></nz-empty>
   </div>
 </div>

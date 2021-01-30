@@ -22,14 +22,12 @@
     }
   }
   .data-content {
-    app-cf-scroll {
-      display: block;
-      height: 450px;
-      position: relative;
-    }
+
     .content {
+      height: 450px;
       display: flex;
       flex-direction: column;
+      overflow: auto;
       .item {
         height: 60px;
         display: flex;

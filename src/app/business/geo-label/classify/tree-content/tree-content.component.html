@@ -11,7 +11,7 @@
   <div class="layer-sta">
     共有{{totalLayer}}个叶子分类
   </div>
-  <app-cf-scroll id="tree-container">
+  <div id="tree-container">
     <div class="content" (mouseleave)="mouseleave()" >
       <nz-tree [(nzData)]="nodes" nzCheckable nzMultiple 
             
@@ -52,7 +52,7 @@
     </div>
 
 
-  </app-cf-scroll>
+  </div>
 
 
 </div>
