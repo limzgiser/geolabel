@@ -51,6 +51,8 @@ export class MapboxmapService {
     } else {
       cityfun.setConfig({
         cfToken: self.mapConfig.mapToken,
+        EPSG:3857,
+        geosite:"@cf"
       });
       self.mapboxmap = new cityfun.Map({
         container: 'mapboxmap',
